@@ -122,7 +122,7 @@
 <body>
     <!-- 검색 폼 -->
 <div class="search-form">
-    <form action="${pageContext.request.contextPath}/search2" method="GET">
+    <form action="${pageContext.request.contextPath}artConnect/search2" method="GET">
         <input type="text" name="name" placeholder="미술관명으로 검색" required>
         <button type="submit">검색</button>
     </form>
@@ -144,13 +144,13 @@
                     미술관 전화번호 : <%= bag.getTel()%> <br>
                 </div>
                 <!-- 미술관 이미지 -->
-                <img src="resources/img/<%= bag.getImg()%>" alt="<%= bag.getName() %> 이미지">
+				<img src="resources/img/gallery<%= bag.getImg()%>" alt="<%= bag.getName() %> 이미지">
             </div>
             <hr color="#e75480">
         </div>
     <% } %>
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="gallery/museum.jsp" class="back-btn">처음 화면으로 돌아가기</a>
-    </div>
+<div style="text-align: center; margin-top: 20px;">
+    <a href="${pageContext.request.contextPath}/gallery/museum.jsp" class="back-btn">처음 화면으로 돌아가기</a>
+</div>
 </body>
 </html>

@@ -154,7 +154,7 @@
 
 
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid" style="margin-top: 20px;">
-					<img src="resources/img/home-img/main.png" alt=""
+					<img src="resources/img/gallery/home-img/main.png" alt=""
 						class="img-responsive" />
 			</section>
 

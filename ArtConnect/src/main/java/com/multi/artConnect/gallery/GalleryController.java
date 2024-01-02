@@ -8,19 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
+@RequestMapping("/artConnect/gallery")
 public class GalleryController {
 
     @Autowired
     GalleryDAO dao;
 
-    @RequestMapping("list") // "/artConnect/list"로 수정
+    @RequestMapping("/list") // "/artConnect/list"로 수정
     public void list(Model model) throws Exception {
         List<GalleryVO> list = dao.list();
         System.out.println(list.size());
         model.addAttribute("list", list);
     }
 
-    @RequestMapping("search2") // "/artConnect/search2"로 수정
+    @RequestMapping("/search2") // "/artConnect/search2"로 수정
     public void search(String name, Model model) {
         List<GalleryVO> searchResult = dao.search(name);
         System.out.println(searchResult);

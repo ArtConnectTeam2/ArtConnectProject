@@ -75,10 +75,11 @@
 
 </head>
 <body>
-    <div style="text-align: center;">
-        <img src="resources/img/seoul.jpg" class="img-fluid mb-4" alt="Payco Logo">
-    </div>
+<div style="text-align: center;">
+    <img src="${pageContext.request.contextPath}/resources/img/gallery/seoul.jpg" class="img-fluid mb-4">
+</div>
     <hr color="#c7c7de">
-    <a href="gallery/list" class="link">서울시 미술관 목록</a><br>
+	<a href="${pageContext.request.contextPath}/resources/views/gallery/list.jsp" class="link">서울시 미술관 목록</a><br>
+
 </body>
 </html>
