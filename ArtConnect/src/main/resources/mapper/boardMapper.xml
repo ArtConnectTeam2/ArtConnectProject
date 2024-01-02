@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<select id="select" resultType="boardVO">
+		select * from review
+	</select>
+	
+	<insert id="boardPostOk" parameterType="boardVO">
+		INSERT INTO review(reviewNO, memberID, reviewTitle, reviewContent, reviewDate, reviewHit) 
+		VALUES(null, '임시ID', #{reviewTitle}, <![CDATA[#{reviewContent}]]>, now(), 0)
+	</insert>
+	
+	<select id="one" parameterType="int" resultType="boardVO">
+		select * from review
+		where reviewNO = #{reviewNO}
+	</select>
+	
+	<delete id="del" parameterType="boardVO">
+		delete from review
+		where reviewNO = #{reviewNO}
+	</delete>
+	
+	<update id="increaseHit">
+    	UPDATE review
+    	SET reviewHit = reviewHit + 1
+    	WHERE reviewNO = #{reviewNO}
+	</update>
+	
+</mapper>
