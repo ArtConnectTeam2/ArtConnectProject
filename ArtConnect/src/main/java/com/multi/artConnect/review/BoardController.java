@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class BoardController {
 	
@@ -49,6 +50,19 @@ public class BoardController {
 		dao.del(reviewNO);
 		return "redirect:/boardList";
 	}
+	
+	@RequestMapping("boardModify")  // 수정 폼으로 이동
+    public String boardModify(int reviewNO, Model model) {
+        BoardVO one = dao.one(reviewNO);
+        model.addAttribute("board", one);
+        return "boardModify";
+    }
+
+    @RequestMapping("boardModifyOk")  // 수정 처리
+    public String boardModifyOk(BoardVO vo) {
+        dao.boardModifyOk(vo);
+        return "redirect:boardOne?reviewNO=" + vo.getReviewNO();
+    }
 	
 	
 }

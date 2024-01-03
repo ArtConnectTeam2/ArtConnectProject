@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,31 +70,25 @@
 	
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
-    <h1>REVIEW</h1>
-    <hr>
-    <div class="container mt-3">
-        <div class="review-content">
-            <h3>${board.reviewTitle}</h3><br>
-            <p>
-            <strong>ID:</strong> ${board.memberID} 
-            <span style="float: right;">
-            <strong>등록일:</strong> ${board.reviewDate}
-            <strong>조회수:</strong> ${board.reviewHit}
-            </span>
-            </p>
-            <hr>
-            <p>${board.reviewContent}</p>
-        </div>
+    <div class="container mt-5">
+        <h3>글 수정</h3><br>
+        <form:form action="boardModifyOk" method="post" modelAttribute="board">
+            <input type="hidden" name="reviewNO" value="${board.reviewNO}" />
+            
+            <div class="form-group">
+                <label for="reviewTitle">제목:</label>
+                <form:input type="text" class="form-control" id="reviewTitle" name="reviewTitle" path="reviewTitle" />
+            </div>
+
+            <div class="form-group">
+                <label for="reviewContent">내용:</label>
+                <form:textarea class="form-control" id="reviewContent" name="reviewContent" path="reviewContent" rows="20" cols="150"></form:textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">수정 완료</button>
+        </form:form>
     </div>
-    <hr>
-    <div>
-    	<a href="boardList" type="button" class="btn btn-primary">글 목록</a>
-    	<span style="float: right;">
-    	<a href="boardModify?reviewNO=${board.reviewNO}" class="btn btn-primary">수정</a>
-        <button type="button" class="btn btn-warning" onclick="deleteBoard(${board.reviewNO})">삭제</button>
-        </span>
-    </div>
-    </main>
+     </main>
 	
 	<!-- Footer -->
 	<footer role="footer" class="bg-light mt-5">

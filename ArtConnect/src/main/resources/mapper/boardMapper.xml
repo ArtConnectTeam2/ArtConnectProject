@@ -29,4 +29,10 @@
     	WHERE reviewNO = #{reviewNO}
 	</update>
 	
+	<update id="boardModifyOk" parameterType="boardVO">
+    UPDATE review
+    SET reviewTitle = #{reviewTitle}, reviewContent = #{reviewContent}
+    WHERE reviewNO = #{reviewNO}
+	</update>
+	
 </mapper>

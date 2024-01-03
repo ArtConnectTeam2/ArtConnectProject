@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class BoardDAO {
 	@Autowired
@@ -32,5 +33,8 @@ public class BoardDAO {
 	    my.update("board.increaseHit", reviewNO);
 	  
 	}
+	public void boardModifyOk(BoardVO boardvo) {
+        my.update("board.boardModifyOk", boardvo);
+    }
 	
 }
