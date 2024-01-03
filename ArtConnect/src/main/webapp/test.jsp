@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href="review/boardList" title="Community">커뮤니티</a>
 </body>
 </html>

@@ -14,26 +14,27 @@ public class BoardController {
 	@Autowired
 	BoardDAO dao;
 	
-	@RequestMapping("boardList")
-	public void boardList(Model model) {
+	@RequestMapping("review/boardList")
+	public String boardList(Model model) {
 		List<BoardVO> list = dao.select();
 		model.addAttribute("list", list);
+		return "review/boardList";
 	}
 	
-	@RequestMapping("boardPost")
+	@RequestMapping("review/boardPost")
 	public String boardPost() {
-		return "boardPost";
+		return "review/boardPost";
 	}
 	
-	@RequestMapping("boardPostOk")
+	@RequestMapping("review/boardPostOk")
 	public String boardPostOk(BoardVO vo) {
 		System.out.println(vo.getReviewTitle());
 		System.out.println(vo.getReviewContent());
 		dao.boardPostOk(vo);
-		return "redirect:boardList";
+		return "redirect:review/boardList";
 	}
 	
-	@RequestMapping("boardOne")
+	@RequestMapping("review/boardOne")
 	public void boardOne(int reviewNO, Model model) {
 		//먼저 조회수 증가시킴
 		dao.increaseHit(reviewNO);
@@ -45,23 +46,23 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping("boardDel")
+	@RequestMapping("review/boardDel")
 	public String boardDel(int reviewNO) {
 		dao.del(reviewNO);
-		return "redirect:/boardList";
+		return "redirect:/review/boardList";
 	}
 	
-	@RequestMapping("boardModify")  // 수정 폼으로 이동
+	@RequestMapping("review/boardModify")  // 수정 폼으로 이동
     public String boardModify(int reviewNO, Model model) {
         BoardVO one = dao.one(reviewNO);
         model.addAttribute("board", one);
-        return "boardModify";
+        return "review/boardModify";
     }
 
-    @RequestMapping("boardModifyOk")  // 수정 처리
+    @RequestMapping("review/boardModifyOk")  // 수정 처리
     public String boardModifyOk(BoardVO vo) {
         dao.boardModifyOk(vo);
-        return "redirect:boardOne?reviewNO=" + vo.getReviewNO();
+        return "redirect:review/boardOne?reviewNO=" + vo.getReviewNO();
     }
 	
 	

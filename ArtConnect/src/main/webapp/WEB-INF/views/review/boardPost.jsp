@@ -8,19 +8,19 @@
 <link rel="shortcut icon" href="resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
-<link href="resources/css/bootstrap.min.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
 <!-- style -->
-<link href="resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
-<link href="resources/css/font-awesome.min.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <!-- font-awesome -->
-<link href="resources/css/effects/set2.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/set2.css" rel="stylesheet"
 	type="text/css">
-<link href="resources/css/effects/normalize.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/normalize.css" rel="stylesheet"
 	type="text/css">
-<link href="resources/css/effects/component.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/component.css" rel="stylesheet"
 	type="text/css">
 <style>
 /* 네비게이션 위치 조정 */
@@ -53,7 +53,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="resources/images/art.png" alt="Your Logo" class="img-fluid"
+						src="resources/img/art.png" alt="Your Logo" class="img-fluid"
 						style="max-height: 40px;">
 					</a>
 				</div>
