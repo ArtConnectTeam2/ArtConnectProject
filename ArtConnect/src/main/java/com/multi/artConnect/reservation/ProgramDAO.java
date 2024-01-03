@@ -1,5 +1,5 @@
 package com.multi.artConnect.reservation;
 
-public class reservation {
+public class ProgramDAO {
 
 }
