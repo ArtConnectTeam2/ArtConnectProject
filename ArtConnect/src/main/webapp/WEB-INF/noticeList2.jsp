@@ -8,19 +8,19 @@
 <link rel="shortcut icon" href="resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
-<link href="resources/css/bootstrap.min.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
 <!-- style -->
-<link href="resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
-<link href="resources/css/font-awesome.min.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <!-- font-awesome -->
-<link href="resources/css/effects/set2.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/set2.css" rel="stylesheet"
 	type="text/css">
-<link href="resources/css/effects/normalize.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/normalize.css" rel="stylesheet"
 	type="text/css">
-<link href="resources/css/effects/component.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/component.css" rel="stylesheet"
 	type="text/css">
 <style>
 
