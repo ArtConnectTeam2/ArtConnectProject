@@ -4,20 +4,21 @@
 
 <mapper namespace="member">
 	<insert id="insert" parameterType="memberVO">
-		insert into member_c2
+		insert into member
 		values (
-		#{id_member},
-		#{pw},
-		#{name},
-		#{birth},
-		#{gender},
-		#{addr},
-		#{tel},
-		#{alarm})
+		#{memberID},
+		#{memberPW},
+		#{memberName},
+		#{memberBirth},
+		#{memberGender},
+		#{memberAddr},
+		#{memberTel},
+		#{memberEmail},
+		#{memberAlarm})
 	</insert>
-
-	<select id="login" parameterType="memberVO" resultType="int">
-		SELECT *
-		FROM member_e WHERE id_member = #{id_member} AND pw = #{pw}
-	</select>
+	
+	 <select id="login" parameterType="memberVO" resultType="memberVO">
+        SELECT * FROM member WHERE BINARY memberID = #{memberID} AND BINARY memberPW = #{memberPW}
+        <!-- 대소문자 구분을 위해 BINARY 사용 -->
+    </select>
 </mapper>
