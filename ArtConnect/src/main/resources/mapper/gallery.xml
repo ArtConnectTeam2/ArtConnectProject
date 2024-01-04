@@ -3,11 +3,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="gallery">
-	<select id="list" resultType="GalleryVO">
-		select * from gallery order by #{gallery_id}
+	<select id="list" resultType="galleryVO">
+		select * from gallery order by galleryID
 	</select>
 	
     <select id="search" parameterType="String" resultType="galleryVO">
-        SELECT * FROM gallery WHERE name LIKE CONCAT('%', #{name}, '%')
+        SELECT * FROM gallery WHERE galleryName LIKE CONCAT('%', #{galleryName}, '%')
+    </select>
+    
+    <select id="detail" parameterType="String" resultType="galleryVO">
+        SELECT * FROM gallery WHERE galleryName = #{galleryName}
     </select>
 </mapper>

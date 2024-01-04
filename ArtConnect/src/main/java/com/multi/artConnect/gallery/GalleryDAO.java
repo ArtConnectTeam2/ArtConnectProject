@@ -21,4 +21,8 @@ public class GalleryDAO {
 		List<GalleryVO> list = my.selectList("gallery.search", name);
 		return list;
 	}
+	
+	public GalleryVO detail (String galleryName) {
+		return my.selectOne("gallery.detail", galleryName);
+	}
 }

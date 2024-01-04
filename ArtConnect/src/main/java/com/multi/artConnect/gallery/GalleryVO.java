@@ -5,68 +5,69 @@ import java.util.Date;
 
 public class GalleryVO {
 
-    private int gallery_Id;
-    private String name;
-    private String location;
-    private String img;
-    private Time time_open;
-    private Time time_close;
-    private String closure;
-    private String tel;
+    private int galleryID;
+    private String galleryName;
+    private String galleryImg;
+    private String galleryLocation;
+    private Time galleryOpentime;
+    private Time galleryClosetime;
+    private String closedDay;
+    private String galleryTel;
     
-	public int getGallery_Id() {
-		return gallery_Id;
+	public int getGalleryID() {
+		return galleryID;
 	}
-	public void setGallery_Id(int gallery_Id) {
-		this.gallery_Id = gallery_Id;
+	public void setGalleryID(int galleryID) {
+		this.galleryID = galleryID;
 	}
-	public String getName() {
-		return name;
+	public String getGalleryName() {
+		return galleryName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setGalleryName(String galleryName) {
+		this.galleryName = galleryName;
 	}
-	public String getLocation() {
-		return location;
+	public String getGalleryImg() {
+		return galleryImg;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setGalleryImg(String galleryImg) {
+		this.galleryImg = galleryImg;
 	}
-	public String getImg() {
-		return img;
+	public String getGalleryLocation() {
+		return galleryLocation;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setGalleryLocation(String galleryLocation) {
+		this.galleryLocation = galleryLocation;
 	}
-	public Time getTime_open() {
-		return time_open;
+	public Time getGalleryOpentime() {
+		return galleryOpentime;
 	}
-	public void setTime_open(Time time_open) {
-		this.time_open = time_open;
+	public void setGalleryOpentime(Time galleryOpentime) {
+		this.galleryOpentime = galleryOpentime;
 	}
-	public Time getTime_close() {
-		return time_close;
+	public Time getGalleryClosetime() {
+		return galleryClosetime;
 	}
-	public void setTime_close(Time time_close) {
-		this.time_close = time_close;
+	public void setGalleryClosetime(Time galleryClosetime) {
+		this.galleryClosetime = galleryClosetime;
 	}
-	public String getClosure() {
-		return closure;
+	public String getClosedDay() {
+		return closedDay;
 	}
-	public void setClosure(String closure) {
-		this.closure = closure;
+	public void setClosedDay(String closedDay) {
+		this.closedDay = closedDay;
 	}
-	public String getTel() {
-		return tel;
+	public String getGalleryTel() {
+		return galleryTel;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
-		
+	public void setGallerytel(String galleryTel) {
+		this.galleryTel = galleryTel;
 	}
 	@Override
 	public String toString() {
-		return "GalleryVO [gallery_Id=" + gallery_Id + ", name=" + name + ", location=" + location + ", img=" + img
-				+ ", time_open=" + time_open + ", time_close=" + time_close + ", closure=" + closure + ", tel=" + tel
+		return "GalleryVO [galleryID=" + galleryID + ", galleryName=" + galleryName + ", galleryImg=" + galleryImg
+				+ ", galleryLocation=" + galleryLocation + ", galleryOpentime=" + galleryOpentime
+				+ ", galleryClosetime=" + galleryClosetime + ", closedDay=" + closedDay + ", galleryTel=" + galleryTel
 				+ "]";
 	}
-} 
+	}
+ 

@@ -1,118 +1,226 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.multi.artConnect.gallery.GalleryVO" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
+<head>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<meta charset="utf-8">
+
+<!-- Description, Keywords and Author -->
+
+<meta name="description" content="">
+
+<meta name="author" content="">
+
+
+
+<title>:: 미술관 검색 결과 페이지 ::</title>
+
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
+	type="image/x-icon">
+
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
+
+<!-- bootstrap -->
+
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css">
+
+<!-- responsive -->
+
+<link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet"
+	type="text/css">
+
+<!-- font-awesome -->
+
+<link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
+
+<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+
+<!-- font-awesome -->
+
 <style>
-    /* 전체 페이지 테마 */
-    body {
-        background-color: #bebcba; /* Violet */
-        margin: 20px;
-        font-family: 'Arial', sans-serif;
-    }
+/* 이미지 크기와 위치 조정 */
+#logo-image {
+	max-width: 500px; /* 원하는 크기로 조절 */
+	position: absolute;
+	top: 10px; /* 이미지를 아래로 내리고 싶다면 값을 늘리세요 */
+	left: 650px; /* 이미지를 오른쪽으로 이동하려면 값을 늘리세요 */
+}
 
-    /* 포스트 스타일 */
-    .post-container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #c7c7de; /* Grey */
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
-        margin-bottom: 20px;
-    }
-
-    .post-info {
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #000000; /* 검은색 */
-        position: relative;
-        overflow: hidden; /* 부모 요소에서 넘치는 부분을 숨김 */
-    }
-
-    /* 링크 스타일 */
-    a {
-        color: #383832; /* Grey */
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    a:hover {
-        color: #e75480; /* 인디고 */
-    }
-
-    hr {
-        border: 2px solid #e75480; /* 미드나잇 블루 */
-    }
-
-    .post-info img {
-        width: auto;
-        max-width: 130px; /* 이미지 최대 너비 설정 */
-        height: auto;
-        max-height: 130px; /* 이미지 최대 높이 설정 */
-        position: absolute;
-        top: 50%;
-        right: 10px; /* 텍스트와 이미지 사이 간격 조절 */
-        transform: translateY(-50%); /* 이미지를 세로로 가운데로 이동 */
-    }
-
-    /* 검색 결과 헤더 스타일 */
-    h2 {
-        font-size: 24px;
-        color: #e75480; /* 미드나잇 블루 */
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    /* 처음 화면으로 돌아가기 버튼 스타일 */
-    .back-btn {
-        background-color: #e75480; /* 미드나잇 블루 */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        display: block;
-        width: fit-content;
-        margin: 20px auto 0; /* 위쪽 여백 추가 및 중앙 정렬 */
-    }
-
-    .back-btn:hover {
-        background-color: #4682b4; /* 스틸 블루 */
-    }
+/* 네비게이션 위치 조정 */
+.navy {
+	position: absolute;
+	top: 10px; /* 원하는 값으로 조정해주세요 */
+	right: 10px; /* 원하는 값으로 조정해주세요 */
+}
 </style>
 
-<head>
-    <title>검색 결과</title>
-    <!-- 스타일 및 기타 내용은 그대로 유지하거나 필요에 따라 수정하세요 -->
 </head>
-<body>
-    <!-- 검색 결과를 표시할 부분 -->
-    <div class="result-container">
-        <c:if test="${not empty searchResult}">
-            <input type="hidden" name="keyword" value="${param.name}">
-            <h2>'${param.name}'에 대한 검색결과</h2>
-            <c:forEach var="gallery" items="${searchResult}">
-                <div class="post-container">
-                    <div class="post-info">
-                        <div>
-                            미술관명 : <a href="list2?gallery_Id=${gallery.gallery_Id}">${gallery.name}</a> <br>
-                            미술관 위치 : ${gallery.location} <br>
-                            미술관 운영시간 : ${gallery.time_open} - ${gallery.time_close} <br>
-                            미술관 휴관일 : ${gallery.closure} <br>
-                            미술관 전화번호 : ${gallery.tel} <br>
-                        </div>
-                        <img src="resources/img/${gallery.img}" alt="${gallery.name} 이미지">
-                    </div>
-                    <hr color="#e75480">
-                </div>
-            </c:forEach>
-        </c:if>
-    </div>
 
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="${pageContext.request.contextPath}/list" class="back-btn">이전 화면으로 돌아가기</a>
-    </div>
+<body>
+	<!-- header -->
+
+	<header role="header">
+
+		<div class="container">
+
+			<!-- logo -->
+
+			<h1>
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/gallery/art.png" title="avana LLC" alt="avana LLC" /></a>
+			</h1>
+
+			<!-- nav -->
+			<nav role="header-nav" class="navy">
+
+				<ul>
+
+					<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Work">메인 화면으로 돌아가기</a></li>
+
+					<li><a href="about.html" title="About">예약</a></li>
+
+					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
+
+					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
+
+				</ul>
+
+			</nav>
+			<!-- nav -->
+
+		</div>
+
+	</header>
+
+	<!-- header -->
+
+	<!-- main -->
+
+	<main role="main-inner-wrapper" class="container">
+		<div class="row">
+			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+
+				<article role="pge-title-content">
+
+					<header>
+
+						<h2>
+							<span>Art Museum </span>Search Result
+						</h2>
+
+					</header>
+
+					<p>Here's the result of the <strong>"${param.galleryName}"</strong> you searched for</p>
+
+				</article>
+
+			</section>
+
+			<div class="clearfix"></div>
+
+<div class="thumbnails-pan">
+    <c:if test="${not empty searchResult}">
+        <c:forEach var="gallery" items="${searchResult}">
+            <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
+                <figure>
+                	<a href="${pageContext.request.contextPath}/gallery/detail?galleryName=${gallery.galleryName}">
+                    <img src="${pageContext.request.contextPath}/resources/img/gallery/home-img/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" /> 
+                    </a>
+                    <figcaption>
+                        <h3>${gallery.galleryName}</h3>
+                        <h5>View more</h5>
+                    </figcaption>
+                </figure>
+            </section>
+        </c:forEach>
+    </c:if>
+</div>
+			<!-- thumbnails -->
+
+			<!-- thumbnails -->
+
+		</div>
+
+	</main>
+
+	<!-- main -->
+
+	<!-- footer -->
+
+	<footer role="footer">
+
+		<!-- nav -->
+
+		<nav role="footer-nav">
+
+			<ul>
+
+				<li><a href="index.html" title="Work">Work</a></li>
+
+				<li><a href="about.html" title="About">About</a></li>
+
+				<li><a href="blog.html" title="Blog">Blog</a></li>
+
+				<li><a href="contact.html" title="Contact">Contact</a></li>
+
+			</ul>
+
+		</nav>
+
+		<!-- nav -->
+
+		<ul role="social-icons">
+
+			<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+
+			<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+			<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+			<li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+
+		</ul>
+
+		<p class="copy-right">
+			Shared by <i class="fa fa-love"></i><a
+				href="https://bootstrapthemes.co">BootstrapThemes</a>
+		</p>
+
+	</footer>
+
+	<!-- footer -->
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
+
+	<!-- custom -->
+
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!-- jquery.countdown -->
+
+	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+
 </body>
+
 </html>

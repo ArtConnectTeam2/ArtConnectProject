@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/artConnect/gallery")
+@RequestMapping("/gallery")
 public class GalleryController {
 
     @Autowired
@@ -22,9 +22,16 @@ public class GalleryController {
     }
 
     @RequestMapping("/search2") // "/artConnect/search2"로 수정
-    public void search(String name, Model model) {
-        List<GalleryVO> searchResult = dao.search(name);
+    public void search(String galleryName, Model model) {
+        List<GalleryVO> searchResult = dao.search(galleryName);
         System.out.println(searchResult);
         model.addAttribute("searchResult", searchResult);
+    }
+    
+    @RequestMapping("/detail")
+    public String detail(String galleryName, Model model) {
+    	 GalleryVO gallery = dao.detail(galleryName);
+         model.addAttribute("gallery", gallery);
+        return "gallery/detail"; // 실제 파일 경로에 맞게 수정해주세요
     }
 }
