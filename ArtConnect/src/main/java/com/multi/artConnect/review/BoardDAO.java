@@ -37,4 +37,11 @@ public class BoardDAO {
         my.update("board.boardModifyOk", boardvo);
     }
 	
+	public List<BoardVO> selectWithPaging(int start, int end) {
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("start", start);
+	    map.put("end", end);
+	    return my.selectList("board.selectWithPaging", map);
+	}
+
 }

@@ -35,4 +35,12 @@
     WHERE reviewNO = #{reviewNO}
 	</update>
 	
+	
+	<select id="selectWithPaging" parameterType="map" resultType="boardVO">
+    select * from review
+    order by reviewNO desc
+    limit #{start}, #{end}
+	</select>
+	
+	
 </mapper>

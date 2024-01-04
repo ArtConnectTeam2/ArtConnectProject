@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -15,9 +16,19 @@ public class BoardController {
 	BoardDAO dao;
 	
 	@RequestMapping("review/boardList")
-	public String boardList(Model model) {
-		List<BoardVO> list = dao.select();
+	public String boardList(Model model,
+			 @RequestParam(defaultValue = "1") int page,
+             @RequestParam(defaultValue = "10") int size) {
+		int totalCount = dao.getTotalCount();
+		PageVO pageVO = new PageVO(page, size, totalCount);
+
+		int start = (page - 1) * size;
+		int end = size;
+
+		List<BoardVO> list = dao.selectWithPaging(start, end);
 		model.addAttribute("list", list);
+		model.addAttribute("pageVO", pageVO);
+
 		return "review/boardList";
 	}
 	
