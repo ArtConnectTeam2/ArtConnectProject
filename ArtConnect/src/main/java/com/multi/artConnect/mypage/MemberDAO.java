@@ -25,8 +25,12 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public int delete(MemberVO vo) {
-		int result = my.delete("member.delete", vo);
+	public MemberVO one2(String id_member) {
+		return my.selectOne("member.deleteOne", id_member);
+	}
+	
+	public int delete(String id_member) {
+		int result = my.delete("member.delete", id_member);
 		return result;
 	}
 	

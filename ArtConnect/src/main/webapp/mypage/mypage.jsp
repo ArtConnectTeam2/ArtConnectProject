@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
   <%
-	session.setAttribute("memberID", "apple");
+	session.setAttribute("memberID", "test6");
 
     %>
 <!DOCTYPE HTML>
@@ -74,7 +74,7 @@
                             <a class="nav-link active" aria-current="page" href="updateOne?id_member=${memberID}">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="deleteOk">회원탈퇴</a>
+                        <a class="nav-link" href="deleteOne?id_member=${memberID}">회원탈퇴</a>     
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>
