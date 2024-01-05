@@ -57,7 +57,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="resources/img/art.png" alt="Your Logo" class="img-fluid"
+						src="resources/img/review/art.png" alt="Your Logo" class="img-fluid"
 						style="max-height: 40px;">
 					</a>
 				</div>
@@ -99,11 +99,23 @@
 		</table>
 	</div>
 	<hr>
+	
+	
 	<div>
 	<span style="float: right;">
 		<a href="boardPost" type ="button" class="btn btn-primary">글 쓰기</a>
 	</span>
 	</div>
+	<!-- 페이징 부분 추가 -->
+<div class="container mt-3">
+    <ul class="pagination">
+        <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
+            <li class="${pageVO.page eq i.index ? 'active' : ''}">
+                <a href="boardList?page=${i.index}&size=${pageVO.size}">${i.index}</a>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 	</main>
 	<!-- Footer -->
 	<footer role="footer" class="bg-light mt-5">

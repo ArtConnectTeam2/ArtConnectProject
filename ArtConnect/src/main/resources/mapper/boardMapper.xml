@@ -35,11 +35,15 @@
     WHERE reviewNO = #{reviewNO}
 	</update>
 	
-	
+	<!-- boardMapper.xml -->
 	<select id="selectWithPaging" parameterType="map" resultType="boardVO">
-    select * from review
-    order by reviewNO desc
-    limit #{start}, #{end}
+    SELECT * FROM review
+    ORDER BY reviewNO DESC
+    LIMIT #{start}, #{size}
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+    SELECT COUNT(*) FROM review
 	</select>
 	
 	

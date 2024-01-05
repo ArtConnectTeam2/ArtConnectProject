@@ -15,22 +15,24 @@ public class BoardController {
 	@Autowired
 	BoardDAO dao;
 	
+	
 	@RequestMapping("review/boardList")
-	public String boardList(Model model,
-			 @RequestParam(defaultValue = "1") int page,
-             @RequestParam(defaultValue = "10") int size) {
-		int totalCount = dao.getTotalCount();
-		PageVO pageVO = new PageVO(page, size, totalCount);
+    public String boardList(Model model,
+                            @RequestParam(name = "page", defaultValue = "1") int page,
+                            @RequestParam(name = "size", defaultValue = "10") int size) {
+        int totalCount = dao.getTotalCount();
 
-		int start = (page - 1) * size;
-		int end = size;
+        // 페이징 처리를 위한 정보 설정
+        PageVO pageVO = new PageVO(page, size, totalCount);
+        int start = pageVO.getStart();
+        int end = pageVO.getSize();
 
-		List<BoardVO> list = dao.selectWithPaging(start, end);
-		model.addAttribute("list", list);
-		model.addAttribute("pageVO", pageVO);
+        List<BoardVO> list = dao.selectWithPaging(start, end);
+        model.addAttribute("list", list);
+        model.addAttribute("pageVO", pageVO);
 
-		return "review/boardList";
-	}
+        return "review/boardList";
+    }
 	
 	@RequestMapping("review/boardPost")
 	public String boardPost() {
