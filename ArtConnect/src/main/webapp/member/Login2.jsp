@@ -1,3 +1,6 @@
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,18 +9,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
+
+<!-- 네이버 로그인 -->
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
 <!-- Bootstrap -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
+
 <!-- style -->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet" type="text/css">
+
 <!-- Font Awesome -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-<!-- font-awesome -->
+
 
 <style>
 body {
@@ -118,18 +128,14 @@ button {
 						</p>
 					</form>
 				</div>
-
 				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
-					<div>
-						<a href="naver-login">
-							<img src="${pageContext.request.contextPath}/resources/img/NaverbtnG.png">
-						</a>
-					</div>
+					<!-- 네이버 로그인 버튼 노출 영역 -->
+					<div id="naver_id_login"></div>
 				</div>
+
+
 			</div>
-
-
 		</div>
 	</main>
 
@@ -151,6 +157,29 @@ button {
 	<script
 		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
 		type="text/javascript"></script>
+
+	<!-- 네이버 로그인 관련 -->
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-3.7.0.min.js"></script>
+	<script type="text/javascript"
+		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+		charset="utf-8"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+	<!-- 네이버 로그인 -->
+	<script type="text/javascript">
+		//client-id
+		var naver_id_login = new naver_id_login("S0I5tmOwET9qKf9b3_EL",
+				"http://localhost:8888/artConnect/member/callback.jsp");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 3, 50);
+		naver_id_login.setDomain("http://localhost:8888/artConnect/member/");
+		naver_id_login.setState(state);
+		//naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
+	</script>
+
+
 
 </body>
 </html>
