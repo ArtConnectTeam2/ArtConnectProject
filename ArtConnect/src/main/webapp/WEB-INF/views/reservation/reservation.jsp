@@ -21,6 +21,27 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/responsive.css"
 	rel="stylesheet" type="text/css">
+		<style type="text/css">
+        th, td {
+            vertical-align: middle;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Adjust width for exhibition name and artist */
+        .program-row td:nth-child(2),
+        .program-row td:nth-child(3) {
+            max-width: 200px; /* Adjust the maximum width as needed */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Adjust width for price */
+        .program-row td:nth-child(6) {
+            min-width: 190px; /* Adjust the minimum width as needed */
+        }
+    </style>
 <title>예약 페이지</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>

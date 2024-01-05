@@ -35,7 +35,6 @@
         .program-row td:nth-child(6) {
             min-width: 190px; /* Adjust the minimum width as needed */
         }
-
     </style>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
