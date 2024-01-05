@@ -8,10 +8,14 @@
 	</select>
 	
     <select id="search" parameterType="String" resultType="galleryVO">
-        SELECT * FROM gallery WHERE galleryName LIKE CONCAT('%', #{galleryName}, '%')
+        select * from gallery WHERE galleryName LIKE CONCAT('%', #{galleryName}, '%')
     </select>
     
     <select id="detail" parameterType="String" resultType="galleryVO">
-        SELECT * FROM gallery WHERE galleryName = #{galleryName}
+        select * from gallery WHERE galleryName = #{galleryName}
     </select>
+    
+   	<select id="location" parameterType="String" resultType="galleryVO">
+		select lat, lon from gallery where galleryName = #{galleryName}
+	</select>
 </mapper>

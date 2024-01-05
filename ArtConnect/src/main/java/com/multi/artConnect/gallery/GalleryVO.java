@@ -13,6 +13,8 @@ public class GalleryVO {
     private Time galleryClosetime;
     private String closedDay;
     private String galleryTel;
+    private double lat;
+    private double lon;
     
 	public int getGalleryID() {
 		return galleryID;
@@ -59,15 +61,27 @@ public class GalleryVO {
 	public String getGalleryTel() {
 		return galleryTel;
 	}
-	public void setGallerytel(String galleryTel) {
+	public void setGalleryTel(String galleryTel) {
 		this.galleryTel = galleryTel;
 	}
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLon() {
+		return lon;
+	}
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
+	
 	@Override
 	public String toString() {
 		return "GalleryVO [galleryID=" + galleryID + ", galleryName=" + galleryName + ", galleryImg=" + galleryImg
 				+ ", galleryLocation=" + galleryLocation + ", galleryOpentime=" + galleryOpentime
 				+ ", galleryClosetime=" + galleryClosetime + ", closedDay=" + closedDay + ", galleryTel=" + galleryTel
-				+ "]";
+				+ ", lat=" + lat + ", lon=" + lon + "]";
 	}
-	}
- 
+}

@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/gallery")
@@ -32,6 +35,13 @@ public class GalleryController {
     public String detail(String galleryName, Model model) {
     	 GalleryVO gallery = dao.detail(galleryName);
          model.addAttribute("gallery", gallery);
-        return "gallery/detail"; // 실제 파일 경로에 맞게 수정해주세요
+        return "gallery/detail";
     }
-}
+    
+    @RequestMapping("/location")
+    public String location(@RequestParam String galleryName, Model model) {
+        GalleryVO location = dao.location(galleryName);
+        model.addAttribute("location", location);
+        return "gallery/location";
+    }
+}    

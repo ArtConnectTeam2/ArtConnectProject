@@ -1,6 +1,7 @@
 package com.multi.artConnect.gallery;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,11 @@ public class GalleryDAO {
 		return list;
 	}
 	
-	public GalleryVO detail (String galleryName) {
+	public GalleryVO detail(String galleryName) {
 		return my.selectOne("gallery.detail", galleryName);
+	}
+	
+	public GalleryVO location(String galleryName) {
+	    return my.selectOne("gallery.location", galleryName);
 	}
 }

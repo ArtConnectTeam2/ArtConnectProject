@@ -65,6 +65,7 @@
 	top: 10px; /* 원하는 값으로 조정해주세요 */
 	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
+
 </style>
 
 	</head>
@@ -119,7 +120,7 @@
                 <!-- work details -->
                 	<div class="work-details">
                         <div class="row">
-                        	<div class="col-xs-12 col-sm-12 col-md-4">
+                        	<div class="col-xs-12 col-sm-12 col-md-5">
                             	<header role="work-title">
                                 	<h2>${gallery.galleryName}</h2>
                                     <a href="#">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
@@ -129,7 +130,7 @@
                                 </header>
                             </div>
                             
-                            <div class="col-xs-12 col-sm-12 col-md-8" style="margin-top: 110px;">
+                            <div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
                             	<section>
                             	
                                 	<p>
@@ -149,16 +150,57 @@
                         <div class="clearfix"></div>
 
                         <div class="work-images grid">
+                        	<div class="work-map" style="margin-top: -10px;">
+    							<div class="row">
+        						<div class="col-xs-12 col-sm-12 col-md-12">
+           							<header role="work-title" style="text-align: left;">
+              							<h2 style="margin-left: 0px;">${gallery.galleryName} 찾아오시는 길</h2>
+            						</header>
+       							 </div>
+    							</div>
+							</div>
+                        
+                             <div id="map" style="width: 100%; height: 400px; margin-bottom: 30px;"></div>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79876cb9142b1dc6b254e0869dd8bd91"></script>
+								<script type="text/javascript">
+									var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+									var options = { //지도를 생성할 때 필요한 기본 옵션
+									center: new kakao.maps.LatLng(${gallery.lat}, ${gallery.lon}), //지도의 중심좌표.
+									level: 3 //지도의 레벨(확대, 축소 정도)
+									};
+									var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+									
+									// 마커가 표시될 위치입니다 
+								    var markerPosition = new kakao.maps.LatLng(${gallery.lat},${gallery.lon});
 
-                            <ul class="grid-lod effect-2" id="grid">
+								    // 마커를 생성합니다
+								    var marker = new kakao.maps.Marker({
+								        position: markerPosition
+								    });
 
-                                <li><img src="${pageContext.request.contextPath}/resources/images/work/works-image-1.jpg" alt="" class="img-responsive"/></li>
+								    // 마커가 지도 위에 표시되도록 설정합니다
+								    marker.setMap(map);
+								</script>
+							 
+							<div class="work-program">
+    							<div class="row">
+        						<div class="col-xs-12 col-sm-12 col-md-12">
+           							<header role="work-title" style="text-align: left;">
+              							<h2 style="margin-left: 0px;">${gallery.galleryName} 프로그램</h2>
+            						</header>
+       							 </div>
+    							</div>
+							</div>
 
-                                <li><img src="${pageContext.request.contextPath}/resources/images/work/works-image-2.jpg" alt="" class="img-responsive"/></li>
-
-                                <li><img src="${pageContext.request.contextPath}/resources/images/work/works-image-3.jpg" alt="" class="img-responsive"/></li>
-
-                            </ul>
+<ul class="grid-lod effect-2" id="grid">
+    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
+        <img src="${pageContext.request.contextPath}/resources/images/work/works-image-2.jpg" alt="" class="img-responsive"/>
+    </li>
+    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
+        <img src="${pageContext.request.contextPath}/resources/images/work/works-image-3.jpg" alt="" class="img-responsive"/>
+    </li>
+    <!-- 추가 이미지들도 유사한 방식으로 추가 -->
+</ul>
 
                         </div>
 
