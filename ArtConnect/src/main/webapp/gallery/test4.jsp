@@ -20,42 +20,50 @@
 
 <title>:: ArtConnect ::</title>
 
-<link rel="shortcut icon" href="resources/images/favicon.ico"
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
 
 
 
 <!-- style -->
 
-<link href="resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
 
 <!-- style -->
 
 <!-- bootstrap -->
 
-<link href="resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
 
 <!-- responsive -->
 
-<link href="resources/css/responsive.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/responsive.css"
+	rel="stylesheet" type="text/css">
 
 <!-- font-awesome -->
 
-<link href="resources/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 
 <!-- font-awesome -->
 
-<link href="resources/css/effects/set2.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
+	rel="stylesheet" type="text/css">
 
-<link href="resources/css/effects/normalize.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
+	rel="stylesheet" type="text/css">
 
-<link href="resources/css/effects/component.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
+	rel="stylesheet" type="text/css">
 
 <style>
 /* 이미지 크기와 위치 조정 */
@@ -91,8 +99,9 @@
 			<!-- logo -->
 
 			<h1>
-				<a href="index.html" title="avana LLC"><img  id="logo-image"
-					src="resources/img/art.png" title="avana LLC" alt="avana LLC" /></a>
+				<a href="index.html" title="avana LLC"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/gallery/art.png"
+					title="avana LLC" alt="avana LLC" /></a>
 			</h1>
 
 			<!-- logo -->
@@ -103,7 +112,8 @@
 
 				<ul>
 
-					<li class="nav-active"><a href="list.jsp" title="Work">전시관 조회</a></li>
+					<li class="nav-active"><a href="list.jsp" title="Work">전시관
+							조회</a></li>
 
 					<li><a href="about.html" title="About">예약</a></li>
 
@@ -151,11 +161,19 @@
 
 			</section>
 
-
-
-			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid" style="margin-top: 20px;">
-					<img src="resources/img/gallery/home-img/main.png" alt=""
-						class="img-responsive" />
+			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid"
+				style="margin-top: 20px;">
+				<figure class="effect-oscar">
+					<img
+						src="${pageContext.request.contextPath}/resources/img/gallery/home-img/main.png"
+						alt="" class="img-responsive" />
+					<figcaption>
+					<h2>
+						<p>전체 미술관 목록</p>
+					</h2>
+						<a href="works-details.html">View more</a>
+					</figcaption>
+				</figure>
 			</section>
 
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
@@ -174,18 +192,17 @@
 
 			<div class="clearfix"></div>
 
-
-
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
 
 				<ul class="grid-lod effect-2" id="grid">
-				
-				<li>
+
+					<li>
 
 						<figure class="effect-oscar">
 
-							<img src="resources/img/home-img/1.png" alt=""
-								class="img-responsive" />
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/1.png"
+								alt="" class="img-responsive" />
 
 							<figcaption>
 
@@ -207,8 +224,9 @@
 
 						<figure class="effect-oscar">
 
-							<img src="resources/img/home-img/2.png" alt=""
-								class="img-responsive" />
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/2.png"
+								alt="" class="img-responsive" />
 
 							<figcaption>
 
@@ -226,14 +244,13 @@
 
 					</li>
 
-
-
 					<li>
 
 						<figure class="effect-oscar">
 
-							<img src="resources/img/home-img/3.png" alt=""
-								class="img-responsive" />
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/3.png"
+								alt="" class="img-responsive" />
 
 							<figcaption>
 
@@ -264,8 +281,9 @@
 
 						<figure class="effect-oscar">
 
-							<img src="resources/img/home-img/4.png" alt=""
-								class="img-responsive" />
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/4.png"
+								alt="" class="img-responsive" />
 
 							<figcaption>
 
@@ -287,8 +305,9 @@
 
 						<figure class="effect-oscar">
 
-							<img src="resources/img/home-img/5.png" alt=""
-								class="img-responsive" />
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/5.png"
+								alt="" class="img-responsive" />
 
 							<figcaption>
 
@@ -362,38 +381,50 @@
 
 	<!-- footer -->
 
-
-
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-	<script src="resources/js/jquery.min.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
+		type="text/javascript"></script>
 
 	<!-- custom -->
 
-	<script src="resources/js/nav.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
+		type="text/javascript"></script>
 
-	<script src="resources/js/custom.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
+		type="text/javascript"></script>
 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 
-	<script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<script src="resources/js/effects/masonry.pkgd.min.js"
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
 		type="text/javascript"></script>
 
-	<script src="resources/js/effects/imagesloaded.js"
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
 		type="text/javascript"></script>
 
-	<script src="resources/js/effects/classie.js" type="text/javascript"></script>
-
-	<script src="resources/js/effects/AnimOnScroll.js"
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
 		type="text/javascript"></script>
 
-	<script src="resources/js/effects/modernizr.custom.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
 
 	<!-- jquery.countdown -->
 
-	<script src="resources/js/html5shiv.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
 
 </body>
 
