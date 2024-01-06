@@ -1,10 +1,11 @@
 <%@page import="com.multi.artConnect.mypage.MemberDAO"%>
 <%@page import="com.multi.artConnect.mypage.MemberVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
-    <%
-    	String id = request.getParameter("id_member");
+  <%
+	session.setAttribute("memberID", "test6");
+
     %>
 <!DOCTYPE HTML>
  <html>
@@ -12,25 +13,25 @@
 	  	<meta charset="UTF-8">
 
         <title>::Art Connect ::</title>
-	    <title>회원정보수정</title>
+	    <title>${memberID} 회원정보수정</title>
 	
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
         <!-- style -->
-        <link href="resources/css/style.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
 
         <!-- bootstrap -->
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         
         <!-- responsive -->
-        <link href="resources/css/responsive.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
         
         <!-- font-awesome -->
-        <link href="resources/css/fonts.css" rel="stylesheet" type="text/css">
-        <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		
 		<!-- sidebar CSS -->
-    	<link rel="stylesheet" type="text/css" href="resources/css/sidebar.css">
+    	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
 	  	
     <style>  
     input {
@@ -47,7 +48,7 @@
            
             <!-- Art Connect logo -->
             <h1>
-                <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px; " /></a>
+                <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}/resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px; " /></a>
             </h1>
             
             <!-- nav -->
@@ -70,10 +71,10 @@
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="updateOne">회원정보수정</a>
+                            <a class="nav-link active" aria-current="page" href="updateOne?id_member=${memberID}">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">회원탈퇴</a>
+                        <a class="nav-link" href="deleteOne?id_member=${memberID}">회원탈퇴</a>     
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>
@@ -97,7 +98,7 @@
 
              <!--    <h1>
 
-                    <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
+                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
 
                 </h1>
  -->
@@ -125,14 +126,14 @@
       
         <!-- footer -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="resources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
         <!-- custom -->
-		<script src="resources/js/nav.js" type="text/javascript"></script>
-        <script src="resources/js/custom.js" type="text/javascript"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- jquery.countdown -->
-        <script src="resources/js/html5shiv.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
 
     </body>
 
