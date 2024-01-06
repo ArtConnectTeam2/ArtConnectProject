@@ -1,5 +1,5 @@
 package com.multi.artConnect.review;
 
-public class ReplyController {
+public class review {
 
 }
