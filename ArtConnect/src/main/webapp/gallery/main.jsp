@@ -18,7 +18,7 @@
 
 
 
-<title>:: ArtConnect ::</title>
+<title>:: 미술관 메인 페이지 ::</title>
 
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
@@ -99,7 +99,7 @@
 			<!-- logo -->
 
 			<h1>
-				<a href="index.html" title="avana LLC"><img id="logo-image"
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
 					src="${pageContext.request.contextPath}/resources/img/gallery/art.png"
 					title="avana LLC" alt="avana LLC" /></a>
 			</h1>
@@ -112,8 +112,7 @@
 
 				<ul>
 
-					<li class="nav-active"><a href="list.jsp" title="Work">전시관
-							조회</a></li>
+					<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
 					<li><a href="about.html" title="About">예약</a></li>
 
@@ -165,13 +164,15 @@
 				style="margin-top: 20px;">
 				<figure class="effect-oscar">
 					<img
-						src="${pageContext.request.contextPath}/resources/img/gallery/home-img/main.png"
+						src="${pageContext.request.contextPath}/resources/img/gallery/home-img/main2.png"
 						alt="" class="img-responsive" />
 					<figcaption>
-					<h2>
-						<p>전체 미술관 목록</p>
-					</h2>
-						<a href="works-details.html">View more</a>
+								<br>
+								<h2>
+									<span style="color: black;"> </span> 
+								</h2>
+								<p>입장하기</p>
+						<a href="${pageContext.request.contextPath}/gallery/list">View more</a>
 					</figcaption>
 				</figure>
 			</section>
@@ -197,75 +198,48 @@
 				<ul class="grid-lod effect-2" id="grid">
 
 					<li>
-
 						<figure class="effect-oscar">
-
 							<img
 								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/1.png"
 								alt="" class="img-responsive" />
-
 							<figcaption>
-
 								<h2>
 									<span>서울 시립 </span> 미술관
 								</h2>
-
-								<p>서울 시립 미술관 전시 프로그램</p>
-
+								<p>View more</p>
 								<a href="works-details.html">View more</a>
-
 							</figcaption>
-
 						</figure>
-
 					</li>
 
 					<li>
-
 						<figure class="effect-oscar">
-
 							<img
 								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/2.png"
 								alt="" class="img-responsive" />
-
 							<figcaption>
-
 								<h2>
 									<span>북 서울 </span> 미술관
 								</h2>
-
-								<p>북 서울 미술관 전시 프로그램</p>
-
+								<p>View more</p>
 								<a href="works-details.html">View more</a>
-
 							</figcaption>
-
 						</figure>
-
 					</li>
 
 					<li>
-
 						<figure class="effect-oscar">
-
 							<img
 								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/3.png"
 								alt="" class="img-responsive" />
-
 							<figcaption>
-
 								<h2>
 									<span>남 서울 </span> 미술관
 								</h2>
-
-								<p>남 서울 미술관 전시 프로그램</p>
-
+								<p>View more</p>
 								<a href="works-details.html">View more</a>
-
 							</figcaption>
-
 						</figure>
-
 					</li>
 					<!-- 첫째줄 추가할꺼면 여기서 부터  -->
 
@@ -278,51 +252,48 @@
 				<ul class="grid-lod effect-2" id="grid">
 
 					<li>
-
 						<figure class="effect-oscar">
-
 							<img
 								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/4.png"
 								alt="" class="img-responsive" />
-
 							<figcaption>
-
 								<h2>
 									<span>아모레 퍼시픽 </span> 미술관
 								</h2>
-
-								<p>아모레 퍼시픽 미술관 전시 프로그램</p>
-
+								<p>View more</p>
 								<a href="works-details.html">View more</a>
-
 							</figcaption>
-
 						</figure>
-
 					</li>
 
 					<li>
-
 						<figure class="effect-oscar">
-
 							<img
 								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/5.png"
 								alt="" class="img-responsive" />
-
 							<figcaption>
-
 								<h2>
 									<span>소마 </span> 미술관
 								</h2>
-
-								<p>소마 미술관 전시 프로그램</p>
-
+								<p>View more</p>
 								<a href="works-details.html">View more</a>
-
 							</figcaption>
-
 						</figure>
-
+					</li>
+					
+					<li>
+						<figure class="effect-oscar">
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/6.png"
+								alt="" class="img-responsive" />
+							<figcaption>
+								<h2>
+									<span>국립 현대 </span> 미술관
+								</h2>
+								<p>View more</p>
+								<a href="works-details.html">View more</a>
+							</figcaption>
+						</figure>
 					</li>
 					<!-- 두째줄 추가할꺼면 여기서 부터  -->
 
