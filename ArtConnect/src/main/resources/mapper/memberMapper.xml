@@ -4,6 +4,7 @@
 
 <mapper namespace="member">
 	<insert id="insert" parameterType="memberVO">
+<<<<<<< HEAD
 		insert into member_c2
 		values (
 		#{id_member},
@@ -20,4 +21,23 @@
 		SELECT *
 		FROM member_e WHERE id_member = #{id_member} AND pw = #{pw}
 	</select>
+=======
+		insert into member
+		values (
+		#{memberID},
+		#{memberPW},
+		#{memberName},
+		#{memberBirth},
+		#{memberGender},
+		#{memberAddr},
+		#{memberTel},
+		#{memberEmail},
+		#{memberAlarm})
+	</insert>
+	
+	 <select id="login" parameterType="memberVO" resultType="memberVO">
+        SELECT * FROM member WHERE BINARY memberID = #{memberID} AND BINARY memberPW = #{memberPW}
+        <!-- 대소문자 구분을 위해 BINARY 사용 -->
+    </select>
+>>>>>>> 43fcf9b65ed668a2c5779c3d268da3cd263c0485
 </mapper>
