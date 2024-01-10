@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.artConnect.reservation.GalleryDAO">
+	<select id="searchGallery" resultType="galleryVO" parameterType="String">
+		SELECT * FROM gallery WHERE galleryName LIKE CONCAT('%', #{galleryName}, '%')
+	</select>
+	<select id="listGallery" resultType="galleryVO">
+		SELECT * FROM gallery
+	</select>
+</mapper>
