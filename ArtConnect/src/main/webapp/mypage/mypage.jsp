@@ -10,7 +10,7 @@
 <!DOCTYPE HTML>
  <html>
  <head>
-	  	<meta charset="UTF-8">
+	  	<meta charset="UTF-8"> 
 
         <title>::Art Connect ::</title>
 	    <title>${memberID} 회원정보수정</title>
