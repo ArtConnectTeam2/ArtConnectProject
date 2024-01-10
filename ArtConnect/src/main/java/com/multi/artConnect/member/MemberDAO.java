@@ -13,6 +13,10 @@ public class MemberDAO {
 	public void insert(MemberVO memberVO) {
 		my.insert("member.insert", memberVO);
 	}
+	
+	public int idCheck(String memberID) {
+		return my.selectOne("member.idCheck", memberID);
+	}
 
 	public MemberVO login(MemberVO memberVO) {
 		return my.selectOne("member.login", memberVO);
