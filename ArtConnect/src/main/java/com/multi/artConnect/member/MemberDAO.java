@@ -18,6 +18,7 @@ public class MemberDAO {
 		return my.selectOne("member.idCheck", memberID);
 	}
 
+
 	public MemberVO login(MemberVO memberVO) {
 		return my.selectOne("member.login", memberVO);
 	}
