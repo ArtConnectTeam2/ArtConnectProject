@@ -96,36 +96,44 @@ button {
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href="mainTest.jsp"> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid"
-						style="max-height: 40px;">
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
 				</div>
 			</nav>
 		</div>
 	</header>
-	<form action="insert.member" method="post">
+	<form action="insert.member" method="post" name="joinForm">
 		<h2 align="center">회원가입</h2>
+
 		<label for="id">아이디:</label> <input type="text" id="memberID"
-			name="memberID" required value="apple"> 
-		<label for="pw">비밀번호:</label> <input type="password" id="pw" name="memberPW" required value="1234">
-		<label for="pwConfirm">비밀번호 확인:</label> <input type="password"
-			id="pwConfirm" name="pwConfirm" required value="12345"> 
-		<label for="name">이름:</label> <input type="text" id="name" name="memberName"
-			required value="홍길동"> 
-		<label for="birth">생년월일:</label> <input type="date" id="birth" name="memberBirth" required value="2023-12-13">
-		<label for="gender">성별:</label> <select id="gender" name="memberGender" required>
+			name="memberID" required value="apple"> <input type="button"
+			value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label>
+
+		<label for="pw">비밀번호:</label> <input type="password" id="pw"
+			name="memberPW" required value="1234"> <label for="pwConfirm">비밀번호
+			확인:</label> <input type="password" id="pwConfirm" name="pwConfirm" required
+			value="12345"> <label for="name">이름:</label> <input
+			type="text" id="name" name="memberName" required value="홍길동">
+		<label for="birth">생년월일:</label> <input type="date" id="birth"
+			name="memberBirth" required value="2023-12-13"> <label
+			for="gender">성별:</label> <select id="gender" name="memberGender"
+			required>
 			<option value="M">남성</option>
 			<option value="F">여성</option>
+			<option value=" ">입력하지않음</option>
 		</select> <label for="addr">주소:</label> <input type="text" id="addr"
-			name="memberAddr" value="1234"> <label for="tel">전화번호:</label> <input
-			type="tel" id="tel" name="memberTel"> <label for="email">이메일:</label>
-		<input type="email" id="email" name="memberEmail" required
-			value="123@gmail.com"> 
-		<label for="alarm">알람 설정:</label> <input type="text" id="alarm" name="memberAlarm">
+			name="memberAddr" value="1234"> <label for="tel">전화번호:</label>
 
-		<button type="submit">회원가입</button>
+		<input type="tel" id="tel" name="memberTel"> <label
+			for="email">이메일:</label> <input type="email" id="email"
+			name="memberEmail" required value="123@gmail.com"> <label
+			for="alarm">알람 설정:</label> <input type="text" id="alarm"
+			name="memberAlarm">
+
+		<button type="submit" onclick="joinMember()">회원가입</button>
 	</form>
-	
+
 	<!-- JavaScript -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
@@ -144,5 +152,58 @@ button {
 	<script
 		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
 		type="text/javascript"></script>
+
+	<script type="text/javascript">
+    function joinMember() {
+        
+    	var joinForm = document.joinForm;
+    	var memberID = document.getElementById("memberID").value;
+        var pw = document.getElementById("pw").value;
+        var pwConfirm = document.getElementById("pwConfirm").value;
+        var name = document.getElementById("name").value;
+        var birth = document.getElementById("birth").value;
+        var gender = document.getElementById("gender").value;
+        var email = document.getElementById("email").value;
+
+        // 필수 항목 검증
+        if (memberID === "") {
+            alert("아이디를 입력해주세요.");
+            return false;
+        
+        }else if (pw === "") {
+            alert("비밀번호를 입력해주세요.");
+            return false;
+        
+        }else if (pwConfirm === "") {
+            alert("비밀번호 확인을 입력해주세요.");
+            return false;
+        
+        }else if (name === "") {
+            alert("이름을 입력해주세요.");
+            return false;
+        }else if (birth === "") {
+            alert("생년월일을 입력해주세요.");
+            return false;
+        }else if (gender === "") {
+            alert("성별을 선택해주세요.");
+            return false;
+        }else if (email === "") {
+            alert("이메일을 입력해주세요.");
+            return false;
+         // 비밀번호 확인
+        }else if  (pw !== pwConfirm) {
+            alert("비밀번호가 일치하지 않습니다.");
+            return false;	
+
+        }else {
+        	joinForm.method="post";
+        	joinForm.action = "insert.member";
+        	
+    	}
+
+        
+</script>
+
+
 </body>
 </html>
