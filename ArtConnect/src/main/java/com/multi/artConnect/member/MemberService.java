@@ -15,7 +15,11 @@ public class MemberService {
         
     }
     
-   
+    public int idCheck(String memberID) {
+        // idCheck 메서드를 통해 중복 여부 확인
+        int result = memberDAO.idCheck(memberID);
+        return result;
+    }
 
     public MemberVO login(MemberVO memberVO) {
         return memberDAO.login(memberVO);
