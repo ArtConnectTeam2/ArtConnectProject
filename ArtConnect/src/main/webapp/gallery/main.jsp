@@ -17,14 +17,11 @@
 <meta name="author" content="">
 
 
-
 <title>:: 미술관 메인 페이지 ::</title>
 
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
-
-
 
 <!-- style -->
 
@@ -84,11 +81,7 @@
 
 </head>
 
-
-
 <body>
-
-
 
 	<!-- header -->
 
@@ -136,11 +129,7 @@
 
 	<main role="main-home-wrapper" class="container">
 
-
-
 		<div class="row">
-
-
 
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
