@@ -10,20 +10,26 @@
 <title>전시관 홈페이지</title>
 
 <!-- Bootstrap -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
 <!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <!-- font-awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/effects/set2.css" rel="stylesheet"
-	type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/effects/normalize.css" rel="stylesheet"
-	type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/effects/component.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
+	rel="stylesheet" type="text/css">
 <style>
 /* 네비게이션 위치 조정 */
 .navy {
@@ -59,15 +65,17 @@
 				</ul>
 				<!-- 로그인 버튼 -->
 				<div class="login">
-					<button class="btn btn-danger" onclick="login()">로그인</button>
+					<a href="${pageContext.request.contextPath}/member/login">
+						<button class="btn btn-danger" onclick="login()">로그인</button>
+					</a>
 				</div>
 			</nav>
 			<!-- 로고 버튼 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href="">  <img
-						src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid"
-						style="max-height: 40px;">
+					<a class="navbar-brand" href=""> <img
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
 				</div>
 			</nav>
@@ -88,38 +96,43 @@
 			</article>
 
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-			<ul class="grid-lod effect-2" id="grid">
-				<li>
-					<figure class="effect-oscar">
-						<img src="${pageContext.request.contextPath}/resources/img/seoul.jpg" class="img-responsive" />
-						<figcaption>
-							<h2>
-								서울 시립<span> 미술관</span>
-							</h2>
-							<p>더 자세한 정보를 원하시면 클릭하세요</p>
-							<a href="https://sema.seoul.go.kr/">상세보기</a>
-						</figcaption>
-					</figure>
-				</li>
+				<ul class="grid-lod effect-2" id="grid">
+					<li>
+						<figure class="effect-oscar">
+							<img
+								src="${pageContext.request.contextPath}/resources/img/seoul.jpg"
+								class="img-responsive" />
+							<figcaption>
+								<h2>
+									서울 시립<span> 미술관</span>
+								</h2>
+								<p>더 자세한 정보를 원하시면 클릭하세요</p>
+								<a href="https://sema.seoul.go.kr/">상세보기</a>
+							</figcaption>
+						</figure>
+					</li>
 
-				<li>
-					<figure class="effect-oscar">
-						<img src="${pageContext.request.contextPath}/resources/img/mmca.jpg" class="img-responsive" />
-						<figcaption>
-							<h2>
-								국립 현대<span> 미술관</span>
-							</h2>
-							<p>더 자세한 정보를 원하시면 클릭하세요</p>
-							<a href="https://www.mmca.go.kr/">상세보기</a>
-						</figcaption>
-					</figure>
-				</li>
+					<li>
+						<figure class="effect-oscar">
+							<img
+								src="${pageContext.request.contextPath}/resources/img/mmca.jpg"
+								class="img-responsive" />
+							<figcaption>
+								<h2>
+									국립 현대<span> 미술관</span>
+								</h2>
+								<p>더 자세한 정보를 원하시면 클릭하세요</p>
+								<a href="https://www.mmca.go.kr/">상세보기</a>
+							</figcaption>
+						</figure>
+					</li>
 				</ul>
 			</section>
-		
+
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
 				<figure class="effect-oscar">
-					<img src="https://ddp.or.kr/resources/img/intro/summary_img.jpg" class="img-responsive" />
+					<img src="https://ddp.or.kr/resources/img/intro/summary_img.jpg"
+						class="img-responsive" />
 					<figcaption>
 						<h2>
 							국립 현대<span> 미술관</span>
@@ -131,7 +144,9 @@
 			</section>
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
 				<figure class="effect-oscar">
-					<img src="${pageContext.request.contextPath}/resources/img/seoul.jpg" class="img-responsive" />
+					<img
+						src="${pageContext.request.contextPath}/resources/img/seoul.jpg"
+						class="img-responsive" />
 					<figcaption>
 						<h2>
 							서울 시립<span> 미술관</span>
@@ -141,22 +156,22 @@
 					</figcaption>
 				</figure>
 			</section>
-			
+
 			<div class="clearfix"></div>
-				
-				<div class="work-details">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-4">
-							<header role="work-title">
-								<h2>Project Name</h2>
-								<a href="#">다양한 미술관을 만나보세요<i class="fa fa-external-link"
-									aria-hidden="true"></i></a>
-							</header>
-						</div>
+
+			<div class="work-details">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-4">
+						<header role="work-title">
+							<h2>Project Name</h2>
+							<a href="#">다양한 미술관을 만나보세요<i class="fa fa-external-link"
+								aria-hidden="true"></i></a>
+						</header>
 					</div>
 				</div>
-			
-			
+			</div>
+
+
 
 			<!-- Content for each tab -->
 			<div id="exhibition" style="display: none;" class="col-md-12">
@@ -189,34 +204,43 @@
 	</footer>
 
 	<!-- JavaScript -->
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
 		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
 		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/effects/classie.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
 		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
-	<script>
-   
-	function login() {
-        window.location.href = 'Login.jsp';
-    }
-</script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
+
 
 </body>
 </html>

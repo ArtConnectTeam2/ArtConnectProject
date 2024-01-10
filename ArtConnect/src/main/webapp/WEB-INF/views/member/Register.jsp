@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 <!DOCTYPE html>
@@ -107,8 +108,13 @@ button {
 		<h2 align="center">회원가입</h2>
 
 		<label for="id">아이디:</label> <input type="text" id="memberID"
-			name="memberID" required value="apple"> <input type="button"
-			value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label>
+			name="memberID" required placeholder="아이디를 입력하세요"> 
+		
+		<!-- 중복확인 버튼 미구현 -->
+<!-- 		<input type="button" value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label> -->
+		<c:if test="${not empty errorMessage}">
+			<div class="error-message">${errorMessage}</div>
+		</c:if>
 
 		<label for="pw">비밀번호:</label> <input type="password" id="pw"
 			name="memberPW" required value="1234"> <label for="pwConfirm">비밀번호
@@ -132,6 +138,8 @@ button {
 			name="memberAlarm">
 
 		<button type="submit" onclick="joinMember()">회원가입</button>
+
+
 	</form>
 
 	<!-- JavaScript -->
@@ -153,56 +161,27 @@ button {
 		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
 		type="text/javascript"></script>
 
+	<!-- 회원가입 버튼을 누를 시 체크사항 -->
 	<script type="text/javascript">
-    function joinMember() {
-        
-    	var joinForm = document.joinForm;
-    	var memberID = document.getElementById("memberID").value;
-        var pw = document.getElementById("pw").value;
-        var pwConfirm = document.getElementById("pwConfirm").value;
-        var name = document.getElementById("name").value;
-        var birth = document.getElementById("birth").value;
-        var gender = document.getElementById("gender").value;
-        var email = document.getElementById("email").value;
+		function joinMember() {
 
-        // 필수 항목 검증
-        if (memberID === "") {
-            alert("아이디를 입력해주세요.");
-            return false;
-        
-        }else if (pw === "") {
-            alert("비밀번호를 입력해주세요.");
-            return false;
-        
-        }else if (pwConfirm === "") {
-            alert("비밀번호 확인을 입력해주세요.");
-            return false;
-        
-        }else if (name === "") {
-            alert("이름을 입력해주세요.");
-            return false;
-        }else if (birth === "") {
-            alert("생년월일을 입력해주세요.");
-            return false;
-        }else if (gender === "") {
-            alert("성별을 선택해주세요.");
-            return false;
-        }else if (email === "") {
-            alert("이메일을 입력해주세요.");
-            return false;
-         // 비밀번호 확인
-        }else if  (pw !== pwConfirm) {
-            alert("비밀번호가 일치하지 않습니다.");
-            return false;	
+		/* 	var joinForm = document.joinForm;
+			var memberID = document.getElementById("memberID").value; */
+			var pw = document.getElementById("pw").value;
+			var pwConfirm = document.getElementById("pwConfirm").value;
+			/* var name = document.getElementById("name").value;
+			var birth = document.getElementById("birth").value;
+			var gender = document.getElementById("gender").value;
+			var email = document.getElementById("email").value; */
 
-        }else {
-        	joinForm.method="post";
-        	joinForm.action = "insert.member";
-        	
-    	}
+			// 비밀번호 확인
+			if (pw !== pwConfirm) {
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
 
-        
-</script>
+			}
+		}
+	</script>
 
 
 </body>

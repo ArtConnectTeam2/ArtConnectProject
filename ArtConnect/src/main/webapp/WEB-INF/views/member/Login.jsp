@@ -7,13 +7,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
 <!-- Bootstrap -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
 <!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <!-- font-awesome -->
 
 <style>
@@ -35,7 +38,7 @@ form {
 	max-width: 400px;
 	width: 100%;
 	max-width: 300px;
-	background-color: #fff; 
+	background-color: #fff;
 }
 
 label {
@@ -51,13 +54,9 @@ input {
 }
 
 .commentys-form input[type="password"] {
-	
 	transition: all .2s linear;
-
 	-o-transition: all .2s linear;
-
 	-moz-transition: all .2s linear;
-
 	-webkit-transition: all .2s linear;
 }
 
@@ -94,8 +93,8 @@ button {
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href="mainTest.jsp"> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid"
-						style="max-height: 40px;">
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
 				</div>
 			</nav>
@@ -121,12 +120,15 @@ button {
 					<!-- 만약 매퍼 파일에서 매퍼id가 수정되었을 경우 여기도 수정되어야 합니다 -->
 					<form action="login.member" method="post">
 						<h2 align="center">로그인</h2>
-						<label for="memberID">아이디:</label> <input type="text" id="memberID" name="memberID" required value="apple"> 
-						<label for="memberPW">비밀번호:</label> <input type="password" id="password" name="memberPW" required value="1234">
+						<label for="memberID">아이디:</label> <input type="text"
+							id="memberID" name="memberID" required value="apple"> <label
+							for="memberPW">비밀번호:</label> <input type="password" id="password"
+							name="memberPW" required value="1234">
 
 						<button type="submit">로그인</button>
 						<p>
-							회원이 아니신가요? <a href="Register.jsp">회원가입</a>
+							회원이 아니신가요? <a
+								href="${pageContext.request.contextPath}/member/register">회원가입</a>
 						</p>
 					</form>
 				</div>
@@ -136,15 +138,23 @@ button {
 	</main>
 
 	<!-- JavaScript -->
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
+		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
+		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
+		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
 
 </body>
 </html>
