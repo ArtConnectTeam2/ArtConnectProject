@@ -1,6 +1,7 @@
 package com.multi.artConnect.member;
 
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,15 @@ public class MemberController {
 
 	@RequestMapping("/member/insert.member")
 
-
-=======	public String insert(MemberVO memberVO, Model model) {
 		System.out.println("Received Data: " + memberVO.toString());
 		memberService.insert(memberVO);
 		model.addAttribute("message", "Registration successful");
 		return "member/RegisterSuccess";
-	}
 
+	}
+	
+	
+	
 	@RequestMapping("/member/login.member")
 	public String login(MemberVO memberVO, Model model, HttpSession session) {
 		MemberVO loggedInUser = memberService.login(memberVO);
