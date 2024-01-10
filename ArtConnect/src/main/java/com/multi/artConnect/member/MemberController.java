@@ -1,7 +1,6 @@
 package com.multi.artConnect.member;
 
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +17,15 @@ public class MemberController {
 	private MemberService memberService;
 
 	@RequestMapping("/member/insert.member")
-	public String insert(MemberVO memberVO, Model model, HttpServletRequest request) {
-	    try {
-	        System.out.println("Received Data: " + memberVO.toString());
-	        memberService.insert(memberVO);
-	        model.addAttribute("message", "Registration successful");
-	        return "member/RegisterSuccess";
-	    } catch (DataIntegrityViolationException e) {
-	        model.addAttribute("errorMessage", "중복된 아이디입니다. 다른 아이디를 사용해주세요");
-	        return "redirect:/member/Register";
-	    } catch (Exception e) {
-	        model.addAttribute("errorMessage", "에러가 발생했습니다");
-	        return "redirect:/member/Register";
-	    }
+
+
+=======	public String insert(MemberVO memberVO, Model model) {
+		System.out.println("Received Data: " + memberVO.toString());
+		memberService.insert(memberVO);
+		model.addAttribute("message", "Registration successful");
+		return "member/RegisterSuccess";
 	}
-	
-	
-	
+
 	@RequestMapping("/member/login.member")
 	public String login(MemberVO memberVO, Model model, HttpSession session) {
 		MemberVO loggedInUser = memberService.login(memberVO);
