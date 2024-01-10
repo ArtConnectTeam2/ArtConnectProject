@@ -1,19 +1,15 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
-<%@page import="com.multi.artConnect.mypage.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
-  <%
-	session.setAttribute("memberID", "test4");
-
-    %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
  <html>
+
  <head>
-	  	<meta charset="UTF-8"> 
+	  	<meta charset="UTF-8">
 
         <title>::Art Connect ::</title>
-	    <title>${memberID} 회원정보수정</title>
+	    <title>${memberID} 님 회원정보수정</title>
 	
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
@@ -32,7 +28,7 @@
 		
 		<!-- sidebar CSS -->
     	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
-	  	
+	  	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>  
     input {
 	width: 500px;
@@ -41,9 +37,30 @@
 	  }
 	</style>
 </head>
-
+<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){
+				 console.log("스크립트가 실행되었습니다.");
+				location.href = "mypage/mypage";
+						    
+			})
+		
+			$("#submit").on("click", function(){
+				if($("#pw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#pw").focus();
+					return false;
+				}	
+			});
+			
+				
+			
+		})
+</script>
 <body>
-    <header role="header">
+
+<header role="header">
         <div class="container">
            
             <!-- Art Connect logo -->
@@ -71,10 +88,10 @@
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="updateOne?id_member=${memberID}">회원정보수정</a>
+                            <a class="nav-link active" aria-current="page" href="#">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="deleteOne?id_member=${memberID}">회원탈퇴</a>     
+                            <a class="nav-link" href="#">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>
@@ -88,21 +105,50 @@
                     </ul>
                 </div>
             </div>
-        
-       
-        <!-- footer -->
 
-        <footer role="footer">
 
+<section id="container">
+				<div class="col-md-9">
+				<h3>회원 탈퇴</h3>
+			<form action="deleteOk" method="post">
+					 <tr>
+                        아이디 <br>
+                        <input type="text" id="id_member" name="id_member" value="${member.id_member}" readonly > <br>
+                        </tr>
+                        <tr>
+                        <br>
+                        비밀번호 <br>
+                        <input type="password" id="pw" name="pw" value="${member.pw}"><br>
+                        </tr>
+                        <tr>
+                        <br>
+                        이름 <br>
+                         <input type="text" id="name" name="name" value="${member.name}" readonly ><br>
+                        </tr>
+                        <tr>
+                        <br>
+				<button type="submit" id="submit" style="width: 100px;" class="btn btn-warning">회원탈퇴</button>
+				 	<button type="submit" style="width: 100px;" class="btn btn-warning">취소</button> 
+				</tr>
+				<br>
+				<br>
+			</form>
+			       </div>
+            </div>
+        </div>
+    </div>
+			<div>
+				<c:if test="${msg == false}">
+					비밀번호가 맞지 않습니다.
+				</c:if>
+			</div>
+		</section>
+		 <footer role="footer">
             <!-- logo -->
-
              <!--    <h1>
-
-                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
-
+                    <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
                 </h1>
  -->
-            <!-- logo -->
 
             <!-- nav -->
             <nav role="footer-nav">
@@ -134,7 +180,6 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- jquery.countdown -->
         <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
-
-    </body>
-
+		
+</body>
 </html>

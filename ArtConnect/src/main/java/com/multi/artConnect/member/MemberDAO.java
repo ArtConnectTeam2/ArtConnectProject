@@ -14,6 +14,7 @@ public class MemberDAO {
 		my.insert("member.insert", memberVO);
 	}
 
+
 	public MemberVO login(MemberVO memberVO) {
 		return my.selectOne("member.login", memberVO);
 	}

@@ -11,7 +11,7 @@ import com.multi.artConnect.mypage.MemberVO;
 
 
 @Repository
-public class MemberDAO {
+public class MypageDAO {
 
 	@Autowired
 	SqlSessionTemplate my; 

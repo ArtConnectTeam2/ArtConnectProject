@@ -1,19 +1,17 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.mypage.MemberVO"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
-  <%
-	session.setAttribute("memberID", "test4");
-
-    %>
+  
 <!DOCTYPE HTML>
  <html>
  <head>
-	  	<meta charset="UTF-8"> 
+	  	<meta charset="UTF-8">
 
         <title>::Art Connect ::</title>
-	    <title>${memberID} 회원정보수정</title>
+	    <title>${memberID} 님 회원정보수정</title>
 	
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
@@ -43,6 +41,7 @@
 </head>
 
 <body>
+
     <header role="header">
         <div class="container">
            
@@ -71,10 +70,10 @@
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="updateOne?id_member=${memberID}">회원정보수정</a>
+                            <a class="nav-link active" aria-current="page" href="#">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="deleteOne?id_member=${memberID}">회원탈퇴</a>     
+                            <a class="nav-link" href="#">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>
@@ -89,20 +88,68 @@
                 </div>
             </div>
         
+        <!-- main content -->
+            <div class="col-md-9">
+                <div class="update-content">
+                    <h2>회원 정보 수정</h2>
+                    	<form action = "updateOk" method = "post">
+                        <tr>
+                        아이디 <br>
+                        <input type="text" name="id_member" value="${member.id_member}" readonly > <br>
+                        </tr>
+                        <tr>
+                        비밀번호 <br>
+                        <input type="password" name="pw" value="${member.pw}"><br>
+                        </tr>
+                        <tr>
+                        이름 <br>
+                         <input type="text" name="name" value="${member.name}" readonly ><br>
+                        </tr>
+                        <tr>
+                        생년월일 <br>
+                        <input type="text" name="birth" value="${member.birth}" readonly ><br>
+                        </tr>
+                        <tr>
+                        성별 <br>
+                         <input type="text" name="gender" value="${member.gender}" readonly ><br>
+                        </tr>
+                        <tr>
+                        주소 <br>
+                         <input type="text" name="addr" value="${member.addr}"><br>
+                        </tr>
+                        <tr>
+                        전화번호 <br>
+                         <input type="text" name="tel" value="${member.tel}"><br>
+                        </tr>
+                        <tr>
+                        알람설정 <br> 
+                        <input type="text" name="alarm" value="${member.alarm}" readonly ><br>
+                        </tr>
+                        <tr>
+                        이메일 <br> 
+                        <input type="text" name="email" value="${member.email}"><br>
+                        </tr>
+                        <tr>
+                        <br>
+					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
+				 	<button type="submit" style="width: 100px;" class="btn btn-warning">취소</button> 
+				</tr>
+                <br>
+                <br>        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
        
         <!-- footer -->
-
         <footer role="footer">
-
             <!-- logo -->
-
              <!--    <h1>
-
-                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
-
+                    <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
                 </h1>
  -->
-            <!-- logo -->
 
             <!-- nav -->
             <nav role="footer-nav">
