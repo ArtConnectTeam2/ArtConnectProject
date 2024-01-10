@@ -1,11 +1,10 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.mypage.MemberVO"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
-    <%
-    	session.setAttribute("memberID", "apple");
-    %>
+  
 <!DOCTYPE HTML>
  <html>
  <head>
@@ -42,6 +41,7 @@
 </head>
 
 <body>
+
     <header role="header">
         <div class="container">
            
@@ -132,7 +132,7 @@
                         <tr>
                         <br>
 					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
-				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+				 	<button type="submit" style="width: 100px;" class="btn btn-warning">취소</button> 
 				</tr>
                 <br>
                 <br>        

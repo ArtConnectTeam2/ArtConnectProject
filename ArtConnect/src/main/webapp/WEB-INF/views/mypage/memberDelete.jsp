@@ -1,13 +1,10 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
-<%@page import="com.multi.artConnect.mypage.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
-    <%
-    	session.setAttribute("memberID", "apple");
-    %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
  <html>
+
  <head>
 	  	<meta charset="UTF-8">
 
@@ -31,7 +28,7 @@
 		
 		<!-- sidebar CSS -->
     	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
-	  	
+	  	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>  
     input {
 	width: 500px;
@@ -40,9 +37,30 @@
 	  }
 	</style>
 </head>
-
+<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){
+				 console.log("스크립트가 실행되었습니다.");
+				location.href = "mypage/mypage";
+						    
+			})
+		
+			$("#submit").on("click", function(){
+				if($("#pw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#pw").focus();
+					return false;
+				}	
+			});
+			
+				
+			
+		})
+</script>
 <body>
-    <header role="header">
+
+<header role="header">
         <div class="container">
            
             <!-- Art Connect logo -->
@@ -87,64 +105,45 @@
                     </ul>
                 </div>
             </div>
-        
-        <!-- main content -->
-            <div class="col-md-9">
-                <div class="update-content">
-                    <h2>회원 정보 수정</h2>
-                    	<form action = "updateOk" method = "post">
-                        <tr>
+
+
+<section id="container">
+				<div class="col-md-9">
+				<h3>회원 탈퇴</h3>
+			<form action="deleteOk" method="post">
+					 <tr>
                         아이디 <br>
-                        <input type="text" name="id_member" value="${member.id_member}" readonly > <br>
-                        </tr>
-                        <tr>
-                        비밀번호 <br>
-                        <input type="password" name="pw" value="${member.pw}"><br>
-                        </tr>
-                        <tr>
-                        이름 <br>
-                         <input type="text" name="name" value="${member.name}" readonly ><br>
-                        </tr>
-                        <tr>
-                        생년월일 <br>
-                        <input type="text" name="birth" value="${member.birth}" readonly ><br>
-                        </tr>
-                        <tr>
-                        성별 <br>
-                         <input type="text" name="gender" value="${member.gender}" readonly ><br>
-                        </tr>
-                        <tr>
-                        주소 <br>
-                         <input type="text" name="addr" value="${member.addr}"><br>
-                        </tr>
-                        <tr>
-                        전화번호 <br>
-                         <input type="text" name="tel" value="${member.tel}"><br>
-                        </tr>
-                        <tr>
-                        알람설정 <br> 
-                        <input type="text" name="alarm" value="${member.alarm}" readonly ><br>
-                        </tr>
-                        <tr>
-                        이메일 <br> 
-                        <input type="text" name="email" value="${member.email}"><br>
+                        <input type="text" id="id_member" name="id_member" value="${member.id_member}" readonly > <br>
                         </tr>
                         <tr>
                         <br>
-					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
-				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+                        비밀번호 <br>
+                        <input type="password" id="pw" name="pw" value="${member.pw}"><br>
+                        </tr>
+                        <tr>
+                        <br>
+                        이름 <br>
+                         <input type="text" id="name" name="name" value="${member.name}" readonly ><br>
+                        </tr>
+                        <tr>
+                        <br>
+				<button type="submit" id="submit" style="width: 100px;" class="btn btn-warning">회원탈퇴</button>
+				 	<button type="submit" style="width: 100px;" class="btn btn-warning">취소</button> 
 				</tr>
-                <br>
-                <br>        
-                    </form>
-                </div>
+				<br>
+				<br>
+			</form>
+			       </div>
             </div>
         </div>
     </div>
-
-       
-        <!-- footer -->
-        <footer role="footer">
+			<div>
+				<c:if test="${msg == false}">
+					비밀번호가 맞지 않습니다.
+				</c:if>
+			</div>
+		</section>
+		 <footer role="footer">
             <!-- logo -->
              <!--    <h1>
                     <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
@@ -181,7 +180,6 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- jquery.countdown -->
         <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
-
-    </body>
-
+		
+</body>
 </html>

@@ -15,10 +15,10 @@ import com.multi.artConnect.mypage.MemberVO;
 
 
 @Controller
-public class MemberController {
+public class MypageController {
 
 	@Autowired
-	MemberDAO dao;
+	MypageDAO dao;
 
 	@RequestMapping("mypage/updateOne") // update 회원정보
 	public String updateOne(String id_member, Model model) {
