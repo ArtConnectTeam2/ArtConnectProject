@@ -140,43 +140,6 @@ td {
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-			<%
-				try {
-				Class.forName("com.mysql.cj.jdbc.Driver"); //driver
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/homepage", "root", "1234"); 
-				String sql = "select * from sinsang"; //DB를 조회할 select문
-				pstmt = conn.prepareStatement(sql); //sql문으로 conn
-				rs = pstmt.executeQuery(); //pstmt 실행 후 결과를 rs에 할당
-
-				while (rs.next()) { //조회되는 로우(행) 반복
-					out.print("<tr>");
-					out.print("<td>" + rs.getString("no") + "</td>"); //DB에서 컬럼에 해당하는 레코드 값을 불러옴
-					out.print("<td>" + rs.getString("id") + "</td>");
-					out.print("<td>" + rs.getInt("name") + "</td>");
-					out.print("<td>" + rs.getInt("title") + "</td>");
-					out.print("<td>" + rs.getInt("tegdate") + "</td>");
-					out.print("<td>" + rs.getInt("hit") + "</td>");
-					out.print("</tr>");
-				}
-
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (rs != null)
-				rs.close();
-					if (pstmt != null)
-				pstmt.close();
-					if (conn != null)
-				conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			%>
 			<tr>
 				<td></td>
 				<td></td>

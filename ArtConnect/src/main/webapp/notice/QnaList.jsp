@@ -113,7 +113,7 @@ td {
 	<div style="display: flex;">
 		<nav class="123">
 			<ul>
-				<form  class="a1" action="noticeInsert">
+				<form  class="a1" action="member/noticeInsert">
 					<input name="name" placeholder="검색어를 입력 하세요.">
 				</form>
 				<button class="b1" id="button1">검색</button>
