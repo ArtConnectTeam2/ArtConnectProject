@@ -29,4 +29,21 @@
     	WHERE reviewNO = #{reviewNO}
 	</update>
 	
+	<update id="boardModifyOk" parameterType="boardVO">
+    UPDATE review
+    SET reviewTitle = #{reviewTitle}, reviewContent = #{reviewContent}
+    WHERE reviewNO = #{reviewNO}
+	</update>
+	
+	<!-- boardMapper.xml -->
+	<select id="selectWithPaging" parameterType="map" resultType="boardVO">
+    SELECT * FROM review
+    ORDER BY reviewNO DESC
+    LIMIT #{start}, #{size}
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+    SELECT COUNT(*) FROM review
+	</select>
+	
 </mapper>

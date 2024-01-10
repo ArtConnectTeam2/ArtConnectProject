@@ -10,19 +10,19 @@
 <link rel="shortcut icon" href="resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
-<link href="resources/css/bootstrap.min.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
 <!-- style -->
-<link href="resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
-<link href="resources/css/font-awesome.min.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <!-- font-awesome -->
-<link href="resources/css/effects/set2.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/set2.css" rel="stylesheet"
 	type="text/css">
-<link href="resources/css/effects/normalize.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/normalize.css" rel="stylesheet"
 	type="text/css">
-<link href="resources/css/effects/component.css" rel="stylesheet"
+<link href="${pageContext.request.contextPath}/resources/css/effects/component.css" rel="stylesheet"
 	type="text/css">
 	
 <style>
@@ -99,11 +99,23 @@
 		</table>
 	</div>
 	<hr>
+	
+	
 	<div>
 	<span style="float: right;">
 		<a href="boardPost" type ="button" class="btn btn-primary">글 쓰기</a>
 	</span>
 	</div>
+	<!-- 페이징 부분 추가 -->
+<div class="container mt-3">
+    <ul class="pagination">
+        <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
+            <li class="${pageVO.page eq i.index ? 'active' : ''}">
+                <a href="boardList?page=${i.index}&size=${pageVO.size}">${i.index}</a>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 	</main>
 	<!-- Footer -->
 	<footer role="footer" class="bg-light mt-5">
