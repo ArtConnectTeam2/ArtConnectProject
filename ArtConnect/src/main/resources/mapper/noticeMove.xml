@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+	<insert id="insert" parameterType="noticeVO" >
+		insert into notice_d
+		values(
+			null,
+			#{id},
+			#{name},
+			#{title},
+			#{content},
+			now(),
+			0
+		)
+	</insert>
+</mapper>

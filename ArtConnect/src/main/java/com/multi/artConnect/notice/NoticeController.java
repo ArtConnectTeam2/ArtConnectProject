@@ -11,9 +11,9 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 	
-	@RequestMapping("notice_insert")
+	@RequestMapping("noticeInsert")
 	public String insert(NoticeVO noticeVO) {
 		service.insert(noticeVO);
-		return "redirect:notice_insert.jsp";
+		return "redirect:noticeInsert.jsp";
 	}
 }

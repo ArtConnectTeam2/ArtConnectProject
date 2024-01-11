@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA 작성</title>
+<title>공지사항작성</title>
 <style type="text/css">
 header {
 	padding: 10px;
@@ -42,7 +42,7 @@ button {
 </head>
 <body>
     <header>
-		<h2>QnA 작성</h2>
+		<h2>공지사항 작성</h2>
     </header>
     
 	    <div align="center">
