@@ -15,4 +15,10 @@
 			0
 		)
 	</insert>
+	
+	<select id="list" resultType="noticeVO">
+		select * from notice_d
+		order by no desc
+	</select>
+	
 </mapper>

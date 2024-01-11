@@ -5,11 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항작성</title>
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
+	type="image/x-icon">
+<!-- Bootstrap -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<!-- style -->
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
+<!-- Font Awesome -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css"> <!-- font-awesome -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
+	rel="stylesheet" type="text/css">
 <style type="text/css">
 header {
 	padding: 10px;
 	text-align: center;
-	}
+}
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
 	width: 30%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
@@ -33,45 +57,84 @@ td {
 th {
 	background-color: #f2f2f2; /* 헤더 배경색 설정 */
 }
-button {
-	background-color: blue;
-	color: white;
-	height: 22px;
-}
+
+
 </style>
 </head>
 <body>
-    <header>
+	<header>
 		<h2>공지사항 작성</h2>
-    </header>
-    
-	    <div align="center">
-			<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
-			<form action="notice_insert">
-			<table border="2" width="200">
+	</header>
+
+	<div align="center">
+		<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
+		<form action="noticeInsert">
+		<table>
+			<input type="hidden" name="id" value="admin">
 				<tr>
-					<td>연번 : </td>
-					<td><input type="text" name="id"></td>
+					<td>글쓴이 :</td>
+					<td><input type="text" name="name" value="관리자"></td>
 				</tr>
 				<tr>
-					<td>글쓴이 : </td>
-					<td><input type="text" name="name"></td>
-				</tr>
-				<tr>
-					<td>제목 : </td>
+					<td>제목 :</td>
 					<td><input type="text" name="title"></td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<textarea cols="50" rows="20" name="content"></textarea>
+					<td colspan="2"><textarea cols="50" rows="20" name="content"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="글쓰기"></td>
+					<td><button type="submit">글쓰기</button></td>
 					<td><input type="reset" value="글쓰기취소"></td>
 				</tr>
-			</table>
-			</form>
-		</div>
+			</tabl>
+		</form>
+	</div>
+
+	<!-- JavaScript -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
+		type="text/javascript"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
+		type="text/javascript"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
+
+	<script>
+		function redirectToWritePage() {
+			// Redirect to the write page URL
+			window.location.href = "noticeList.jsp";
+		}
+	</script>
+
 </body>
 </html>
