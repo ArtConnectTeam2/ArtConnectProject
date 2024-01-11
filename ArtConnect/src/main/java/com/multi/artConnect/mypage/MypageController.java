@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.multi.artConnect.mypage.MemberVO;
+import com.multi.artConnect.member.MemberVO;
 
 
 @Controller
@@ -48,7 +48,7 @@ public class MypageController {
 	public String delete(@RequestParam String id_member, @RequestParam String pw, RedirectAttributes redirectAttributes) {
 	    MemberVO member = dao.one(id_member);
 
-	    if (member != null && member.getPw().equals(pw)) {  
+	    if (member != null && member.getmemberPW().equals(pw)) {  
 	        int result = dao.delete(id_member);  
 	        if (result == 1) {
 	            redirectAttributes.addFlashAttribute("result", "deleteSuccess");

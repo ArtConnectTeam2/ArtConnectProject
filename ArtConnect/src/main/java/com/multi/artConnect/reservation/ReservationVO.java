@@ -1,5 +1,7 @@
 package com.multi.artConnect.reservation;
 
+import java.sql.Time;
+
 public class ReservationVO {
     private int reservationID;
     private int galleryID;
@@ -9,6 +11,20 @@ public class ReservationVO {
     private String programTitle;
     private Boolean payment;
     private String reservationTime;
+    private Time galleryOpentime;
+	private Time galleryClosetime;
+	public Time getGalleryOpentime() {
+		return galleryOpentime;
+	}
+	public void setGalleryOpentime(Time galleryOpentime) {
+		this.galleryOpentime = galleryOpentime;
+	}
+	public Time getGalleryClosetime() {
+		return galleryClosetime;
+	}
+	public void setGalleryClosetime(Time galleryClosetime) {
+		this.galleryClosetime = galleryClosetime;
+	}
 	public int getReservationID() {
 		return reservationID;
 	}
