@@ -71,10 +71,10 @@
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="updateOne?id_member=${memberID}">회원정보수정</a>
+                            <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="deleteOne?id_member=${memberID}">회원탈퇴</a>     
+                        <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>     
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>

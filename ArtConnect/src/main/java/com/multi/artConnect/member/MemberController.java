@@ -18,14 +18,12 @@ public class MemberController {
 	private MemberService memberService;
 
 	@RequestMapping("/member/insert.member")
-
+	public String insert(MemberVO memberVO, Model model) {
 		System.out.println("Received Data: " + memberVO.toString());
 		memberService.insert(memberVO);
 		model.addAttribute("message", "Registration successful");
 		return "member/RegisterSuccess";
-
 	}
-	
 	
 	
 	@RequestMapping("/member/login.member")
@@ -55,3 +53,4 @@ public class MemberController {
 		}
 	}
 }
+

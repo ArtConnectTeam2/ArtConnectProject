@@ -39,13 +39,6 @@
 </head>
 <script type="text/javascript">
 		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				 console.log("스크립트가 실행되었습니다.");
-				location.href = "mypage/mypage";
-						    
-			})
-		
 			$("#submit").on("click", function(){
 				if($("#pw").val()==""){
 					alert("비밀번호를 입력해주세요.");
@@ -53,9 +46,7 @@
 					return false;
 				}	
 			});
-			
-				
-			
+					
 		})
 </script>
 <body>
@@ -113,17 +104,17 @@
 			<form action="deleteOk" method="post">
 					 <tr>
                         아이디 <br>
-                        <input type="text" id="id_member" name="id_member" value="${member.id_member}" readonly > <br>
+                        <input type="text" id="id_member" name="memberID" value="${member.memberID}" readonly > <br>
                         </tr>
                         <tr>
                         <br>
                         비밀번호 <br>
-                        <input type="password" id="pw" name="pw" value="${member.pw}"><br>
+                        <input type="password" id="pw" name="memberPW" value="${member.memberPW}"><br>
                         </tr>
                         <tr>
                         <br>
                         이름 <br>
-                         <input type="text" id="name" name="name" value="${member.name}" readonly ><br>
+                         <input type="text" id="name" name="memberName" value="${member.memberName}" readonly ><br>
                         </tr>
                         <tr>
                         <br>
@@ -137,11 +128,7 @@
             </div>
         </div>
     </div>
-			<div>
-				<c:if test="${msg == false}">
-					비밀번호가 맞지 않습니다.
-				</c:if>
-			</div>
+	
 		</section>
 		 <footer role="footer">
             <!-- logo -->

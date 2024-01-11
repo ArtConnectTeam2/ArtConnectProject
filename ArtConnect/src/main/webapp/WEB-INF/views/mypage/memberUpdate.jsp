@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
     <%
-    	session.setAttribute("memberID", "apple");
+    	session.setAttribute("memberID", "test4");
     %>
 <!DOCTYPE HTML>
  <html>
@@ -70,10 +70,10 @@
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">회원정보수정</a>
+                            <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">회원탈퇴</a>
+                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>
@@ -95,41 +95,40 @@
                     	<form action = "updateOk" method = "post">
                         <tr>
                         아이디 <br>
-                        <input type="text" name="id_member" value="${member.id_member}" readonly > <br>
+                        <input type="text" name="memberID" value="${member.memberID}" readonly > <br>
                         </tr>
                         <tr>
                         비밀번호 <br>
-                        <input type="password" name="pw" value="${member.pw}"><br>
+                        <input type="password" name="memberPW" value="${member.memberPW}"><br>
                         </tr>
                         <tr>
                         이름 <br>
-                         <input type="text" name="name" value="${member.name}" readonly ><br>
+                         <input type="text" name="memberName" value="${member.memberName}" readonly ><br>
                         </tr>
                         <tr>
                         생년월일 <br>
-                        <input type="text" name="birth" value="${member.birth}" readonly ><br>
+                        <input type="text" name="memberBirth" value="${member.memberBirth}" readonly ><br>
                         </tr>
                         <tr>
                         성별 <br>
-                         <input type="text" name="gender" value="${member.gender}" readonly ><br>
+                         <input type="text" name="memberGender" value="${member.memberGender}" readonly ><br>
                         </tr>
                         <tr>
                         주소 <br>
-                         <input type="text" name="addr" value="${member.addr}"><br>
+                         <input type="text" name="memberAddr" value="${member.memberAddr}"><br>
                         </tr>
                         <tr>
                         전화번호 <br>
-                         <input type="text" name="tel" value="${member.tel}"><br>
-                        </tr>
-                        <tr>
-                        알람설정 <br> 
-                        <input type="text" name="alarm" value="${member.alarm}" readonly ><br>
+                         <input type="text" name="memberTel" value="${member.memberTel}"><br>
                         </tr>
                         <tr>
                         이메일 <br> 
-                        <input type="text" name="email" value="${member.email}"><br>
+                        <input type="text" name="memberEmail" value="${member.memberEmail}"><br>
                         </tr>
                         <tr>
+                        알람설정 <br> 
+                        <input type="text" name="memberAlarm" value="${member.memberAlarm}"><br>
+                        </tr>
                         <br>
 					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
 				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 

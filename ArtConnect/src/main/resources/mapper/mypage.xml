@@ -7,30 +7,30 @@
 	<select id="updateOne" resultType="memberVO"
 		parameterType="String">
 		select * from member
-		where id_member = #{id_member}
+		where memberID = #{memberID}
 	</select>
 
 	<update id="update" parameterType="memberVO">
 		update member
-		set pw = #{pw},
-		name = #{name},
-		birth = #{birth},
-		gender = #{gender},
-		addr = #{addr},
-		tel = #{tel},
-		alarm = #{alarm},
-		email = #{email}
-		where id_member = #{id_member}
+		set memberPW = #{memberPW},
+		memberName = #{memberName},
+		memberBirth = #{memberBirth},
+		memberGender = #{memberGender},
+		memberAddr = #{memberAddr},
+		memberTel = #{memberTel},
+		memberEmail = #{memberEmail},
+		memberAlarm = #{memberAlarm}
+		where memberID = #{memberID}
 	</update>
 	
 	<select id="deleteOne" resultType="memberVO"
 		parameterType="String">
 		select * from member
-		where id_member = #{id_member}
+		where memberID = #{memberID}
 	</select>
 
 	 <delete id="delete" parameterType="memberVO">
-		delete from member where id_member = #{id_member}
+		delete from member where memberID = #{memberID}
 
 	</delete> 
 </mapper>
