@@ -93,14 +93,18 @@
 
 					<ul>
 
-						<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Work">메인 화면으로 돌아가기</a></li>
+					<li class="nav-active">
+					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
-						<li><a href="about.html" title="About">예약</a></li>
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-						<li><a href="blog.html" title="Blog">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
 
-						<li><a href="contact.html" title="Contact">마이 페이지</a></li>
-
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 					</ul>
 
                     </nav>
@@ -123,9 +127,9 @@
                         	<div class="col-xs-12 col-sm-12 col-md-5">
                             	<header role="work-title">
                                 	<h2>${gallery.galleryName}</h2>
-                                    <a href="#">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                    <a href="${gallery.homepageAddress}">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
                                     <div style="margin-top: 20px;">
-                                    	<img src="${pageContext.request.contextPath}/resources/img/gallery/home-img/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
+                                    	<img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
                                		</div>
                                 </header>
                             </div>
