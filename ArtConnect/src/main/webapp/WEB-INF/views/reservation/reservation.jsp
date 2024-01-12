@@ -18,10 +18,11 @@
 <!-- FullCalendar CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
 <!-- FullCalendar JavaScript 및 의존성 라이브러리(jQuery) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale-all.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js" type="text/javascript"></script>
+
 <style type="text/css">
 dd {
 vertical-align: middle;
@@ -71,6 +72,16 @@ margin-bottom: 20px;
 	bottom: 450px;
 	right: 100px;
 }
+.navy {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	}
+.pre-page {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	}
 </style>
 <title>예약 페이지</title>
 <script>
@@ -103,10 +114,30 @@ margin-bottom: 20px;
         <div class="container">
             <!-- Logo -->
             <h1>
+                <a href="${pageContext.request.contextPath}/gallery/main.jsp">
                 <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-                        alt="ArtConnect" style="width: 300px; height: auto;"/>
+                        alt="ArtConnect" style="width: 300px; height: auto;"/></a>
             </h1>
-        </div>
+			<h3 class="pre-page"><a href="${pageContext.request.contextPath}/
+				reservation/programSelection/${gallery.galleryID}"> << 전시 목록 </a></h3>
+         <!-- nav -->
+    <nav role="header-nav" class="navy">
+	<ul>
+	<li class="nav-active">
+	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+	<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+	<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+    </ul>
+	</nav>
+    </div>
     </header>
     <footer role="footer" style="margin: 0 20px;">
     <div class="thumbnails-pan" style="font-size: 20px;">
@@ -168,5 +199,10 @@ margin-bottom: 20px;
 	<button class="reservation-button">예약하기</button>
 	</div> <!-- thumbnails-pan -->
 	</footer>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
 </body>
 </html>
