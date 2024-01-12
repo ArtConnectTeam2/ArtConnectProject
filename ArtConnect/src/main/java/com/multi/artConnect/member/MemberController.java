@@ -24,11 +24,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+
 	//로그인 페이지로 넘어가기
 	@GetMapping("/login")
     public String showLoginForm() {
         return "member/Login";
     }
+
 	
 	//회원가입페이지로 넘어가기
 	@GetMapping("/register")
@@ -52,6 +54,7 @@ public class MemberController {
 	    }
 	}
 	
+
 	/*  기존 회원가입 처리시 콘솔창 (개발용)
 	 * System.out.println("입력된 데이터: " + memberVO.toString());
 	 * memberService.insert(memberVO); model.addAttribute("message",
@@ -59,6 +62,7 @@ public class MemberController {
 	 */
 	
 	@RequestMapping("/login.member")
+
 	public String login(MemberVO memberVO, Model model, HttpSession session) {
 		MemberVO loggedInUser = memberService.login(memberVO);
 
@@ -85,3 +89,4 @@ public class MemberController {
 		}
 	}
 }
+

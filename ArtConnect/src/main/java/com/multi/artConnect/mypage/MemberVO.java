@@ -11,7 +11,7 @@ public class MemberVO {
 	private String memberAddr;
 	private String memberTel;
 	private String memberEmail;
-	
+
 	
 	public String getMemberEmail() {
 		return memberEmail;
@@ -73,12 +73,13 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
+
 		return "LoginVO [memberID=" + memberID + ", memberPW=" + memberPW + ", memberName=" + memberName
 				+ ", memberBirth=" + memberBirth + ", memberGender=" + memberGender + ", memberAddr=" + memberAddr
 				+ ", memberTel=" + memberTel + ", memberEmail=" + memberEmail + ", memberAlarm=" + memberAlarm + "]";
 	}
 	
 	
-	
+
 	
 }
