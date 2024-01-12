@@ -97,8 +97,8 @@
 			<!-- logo -->
 
 			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/art.png" title="avana LLC" alt="avana LLC" /></a>
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="art connect"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/art.png" title="art connect" alt="art connect" /></a>
 			</h1>
 
 			<!-- nav -->
@@ -164,6 +164,7 @@
         <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
 </div>
 
+
 			<div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Seoul" id="flexCheckSeoul" onclick="filterData()">
                 <label class="form-check-label" for="flexCheckSeoul">서울</label>
@@ -218,6 +219,20 @@
                 // 초기 로딩 시 모든 데이터 표시
                 displayFilteredData(allData);
             </script>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Default checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Checked checkbox
+  </label>
+</div>
+
 
 <%
     	ArrayList<GalleryVO> list = (ArrayList<GalleryVO>) request.getAttribute("list");

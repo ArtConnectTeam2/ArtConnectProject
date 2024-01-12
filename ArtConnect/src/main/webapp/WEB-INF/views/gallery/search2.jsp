@@ -78,7 +78,7 @@
 
 			<h1>
 				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/art.png" title="avana LLC" alt="avana LLC" /></a>
+					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png" title="avana LLC" alt="avana LLC" /></a>
 			</h1>
 
 			<!-- nav -->
