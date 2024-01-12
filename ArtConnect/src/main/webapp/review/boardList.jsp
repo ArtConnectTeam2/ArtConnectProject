@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>커뮤니티</title>
-<link rel="shortcut icon" href="resources/images/favicon.ico"
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
@@ -44,20 +44,41 @@
 <body>
 	<header role="header">
 		<div class="container">
+		<!-- logo -->
+
+			<h1>
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp"
+					title="Logo"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png"
+					title="art connect" alt="avana LLC" /></a>
+			</h1>
+
+			<!-- logo -->
 			<!-- nav -->
 			<nav role="header-nav" class="navy">
-				<ul>
-					<li class="nav-active"><a href="index.html" title="Work">전시관</a></li>
-					<li><a href="about.html" title="About">예약</a></li>
-					<li><a href="boardList" title="Community">커뮤니티</a></li>
-					<li><a href="contact.html" title="Mypage">마이페이지</a></li>
-				</ul>
+			<ul>
+				<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+			</ul>
 			</nav>
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="resources/img/art.png" alt="Your Logo" class="img-fluid"
+
+						src="${pageContext.request.contextPath}/resources/images/art.png" alt="Your Logo" class="img-fluid"
+
 						style="max-height: 40px;">
 					</a>
 				</div>
@@ -99,11 +120,23 @@
 		</table>
 	</div>
 	<hr>
+	
+	
 	<div>
 	<span style="float: right;">
 		<a href="boardPost" type ="button" class="btn btn-primary">글 쓰기</a>
 	</span>
 	</div>
+	<!-- 페이징 부분 추가 -->
+<div class="container mt-3">
+    <ul class="pagination">
+        <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
+            <li class="${pageVO.page eq i.index ? 'active' : ''}">
+                <a href="boardList?page=${i.index}&size=${pageVO.size}">${i.index}</a>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 	</main>
 	<!-- Footer -->
 	<footer role="footer" class="bg-light mt-5">
