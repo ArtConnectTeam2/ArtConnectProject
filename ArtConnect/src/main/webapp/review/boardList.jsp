@@ -76,7 +76,9 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
+
 						src="${pageContext.request.contextPath}/resources/images/art.png" alt="Your Logo" class="img-fluid"
+
 						style="max-height: 40px;">
 					</a>
 				</div>
