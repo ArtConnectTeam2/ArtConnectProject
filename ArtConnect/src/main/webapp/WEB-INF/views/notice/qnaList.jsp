@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnaList</title>
+<title>Qna게시판</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
