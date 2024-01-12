@@ -92,7 +92,7 @@ button {
 			<!-- 로고 버튼 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href="mainTest.jsp"> <img
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/gallery/main.jsp"> <img
 						src="${pageContext.request.contextPath}/resources/img/art.png"
 						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>

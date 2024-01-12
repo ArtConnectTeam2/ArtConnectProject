@@ -93,10 +93,11 @@ button {
 					<li><a href="contact.html" title="Contact">예약</a></li>
 				</ul>
 			</nav>
+			
 			<!-- ArtConnect 로고 버튼 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href="mainTest.jsp"> <img
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/gallery/main.jsp"> <img
 						src="${pageContext.request.contextPath}/resources/img/art.png"
 						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
@@ -104,23 +105,29 @@ button {
 			</nav>
 		</div>
 	</header>
-	<form action="insert.member" method="post" name="joinForm">
+	<form action="insert.member" method="post" name="joinForm" onsubmit="return joinMember();">
 		<h2 align="center">회원가입</h2>
 
 		<label for="id">아이디:</label> <input type="text" id="memberID"
 			name="memberID" required placeholder="아이디를 입력하세요"> 
 		
 		<!-- 중복확인 버튼 미구현 -->
-<!-- 		<input type="button" value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label> -->
+		<!-- 	<input type="button" value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label> -->
+		
+		<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
 		<c:if test="${not empty errorMessage}">
 			<div class="error-message">${errorMessage}</div>
 		</c:if>
 
-		<label for="pw">비밀번호:</label> <input type="password" id="pw"
-			name="memberPW" required value="1234"> <label for="pwConfirm">비밀번호
-			확인:</label> <input type="password" id="pwConfirm" name="pwConfirm" required
-			value="12345"> <label for="name">이름:</label> <input
-			type="text" id="name" name="memberName" required value="홍길동">
+		<label for="pw">비밀번호:</label> 
+		<input type="password" id="pw" name="memberPW" required value="1234"> 
+		
+		<label for="pwConfirm">비밀번호 확인:</label> 
+		<input type="password" id="pwConfirm" name="pwConfirm" required value="12345"> 
+		
+		<label for="name">이름:</label> 
+		<input type="text" id="name" name="memberName" required value="홍길동">
+		
 		<label for="birth">생년월일:</label> <input type="date" id="birth"
 			name="memberBirth" required value="2023-12-13"> <label
 			for="gender">성별:</label> <select id="gender" name="memberGender"
@@ -164,15 +171,11 @@ button {
 	<!-- 회원가입 버튼을 누를 시 체크사항 -->
 	<script type="text/javascript">
 		function joinMember() {
-
-		/* 	var joinForm = document.joinForm;
-			var memberID = document.getElementById("memberID").value; */
+			console.log("잘 실행됨");
+			
 			var pw = document.getElementById("pw").value;
 			var pwConfirm = document.getElementById("pwConfirm").value;
-			/* var name = document.getElementById("name").value;
-			var birth = document.getElementById("birth").value;
-			var gender = document.getElementById("gender").value;
-			var email = document.getElementById("email").value; */
+		
 
 			// 비밀번호 확인
 			if (pw !== pwConfirm) {
