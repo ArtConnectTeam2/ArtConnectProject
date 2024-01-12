@@ -1,8 +1,9 @@
 package com.multi.artConnect.notice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
@@ -16,5 +17,9 @@ public class NoticeService {
 	
 	public void insert(NoticeVO noticeVO) {
 		dao.insert(noticeVO);
+	}
+	
+	public List<NoticeVO> list() {
+		return dao.list();
 	}
 }

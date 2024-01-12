@@ -1,11 +1,12 @@
 <%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeList</title>
+<title>공지사항게시판</title>
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
@@ -108,8 +109,8 @@ td {
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="resources/img/art.png" alt="Your Logo" class="img-fluid"
-						style="max-height: 40px;">
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
 				</div>
 			</nav>
@@ -141,76 +142,15 @@ td {
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach items="${list}" var="vo">
+				<tr>
+					<td>${vo.no}</td>
+					<td>${vo.title}</td>
+					<td>${vo.name}</td>
+					<td>${vo.regdate}</td>
+					<td>${vo.hit}</td>
+				</tr>
+			</c:forEach>
 		</table>
 
 		<nav class="pagination" aria-label="...">
