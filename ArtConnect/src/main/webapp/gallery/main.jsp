@@ -92,9 +92,10 @@
 			<!-- logo -->
 
 			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/art.png"
-					title="avana LLC" alt="avana LLC" /></a>
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp"
+					title="Logo"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png"
+					title="art connect" alt="avana LLC" /></a>
 			</h1>
 
 			<!-- logo -->
@@ -105,16 +106,37 @@
 
 				<ul>
 
-					<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
 
-					<li><a href="about.html" title="About">예약</a></li>
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
 
-					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 
 				</ul>
-
+				
+				<!-- 로그인 버튼 -->
+				<% if (session.getAttribute("memberID") == null) { %>
+				<div class="login">
+					<a href="${pageContext.request.contextPath}/member/login">
+						<button class="btn btn-danger" onclick="login()">로그인</button>
+					</a>
+				</div>
+				<% } else { %>
+				
+				<!-- 로그아웃 버튼 -->
+				<%= session.getAttribute("memberID") %>님 로그인되었습니다.<br>
+				<a href="Logout.jsp">
+				<button class="btn btn-info">로그아웃</button>
+				</a>
+				<% } %>
 			</nav>
 
 			<!-- nav -->
@@ -153,15 +175,16 @@
 				style="margin-top: 20px;">
 				<figure class="effect-oscar">
 					<img
-						src="${pageContext.request.contextPath}/resources/img/gallery/home-img/main2.png"
+						src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/main2.png"
 						alt="" class="img-responsive" />
 					<figcaption>
-								<br>
-								<h2>
-									<span style="color: black;"> </span> 
-								</h2>
-								<p>입장하기</p>
-						<a href="${pageContext.request.contextPath}/gallery/list">View more</a>
+						<br>
+						<h2>
+							<span style="color: black;"> </span>
+						</h2>
+						<p>입장하기</p>
+						<a href="${pageContext.request.contextPath}/gallery/list">View
+							more</a>
 					</figcaption>
 				</figure>
 			</section>
@@ -189,7 +212,7 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/1.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/1.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
@@ -204,7 +227,7 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/2.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/2.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
@@ -219,7 +242,7 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/3.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/3.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
@@ -243,7 +266,7 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/4.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/4.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
@@ -258,7 +281,7 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/5.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/5.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
@@ -269,11 +292,11 @@
 							</figcaption>
 						</figure>
 					</li>
-					
+
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/6.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/6.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
@@ -290,8 +313,43 @@
 
 			</section>
 
-			<div class="clearfix"></div>
+			
 
+			<div class="clearfix"></div>
+			<!-- 구분선 -->
+			<hr color="red">
+		</div>
+
+		<div class="work-details">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4">
+					<header role="work-title">
+						<h2>Review</h2>
+						<a href="/review/boardList.jsp">View All Reviews<i class="fa fa-external-link"
+							aria-hidden="true"></i></a>
+					</header>
+				</div>
+				<div>
+					<h2>가나다라</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix"></div>
+		<hr style="height: 5px">
+		<div class="work-details">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4">
+					<header role="work-title">
+						<h2>Notice</h2>
+						<a href="#">View All Notices<i class="fa fa-external-link"
+							aria-hidden="true"></i></a>
+					</header>
+				</div>
+				<div>
+					<h2>가나다라</h2>
+				</div>
+			</div>
 		</div>
 
 	</main>

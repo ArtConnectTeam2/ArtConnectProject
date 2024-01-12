@@ -78,7 +78,7 @@
 
 			<h1>
 				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/art.png" title="avana LLC" alt="avana LLC" /></a>
+					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png" title="avana LLC" alt="avana LLC" /></a>
 			</h1>
 
 			<!-- nav -->
@@ -135,7 +135,7 @@
             <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
                 <figure>
                 	<a href="${pageContext.request.contextPath}/gallery/detail?galleryName=${gallery.galleryName}">
-                    <img src="${pageContext.request.contextPath}/resources/img/gallery/home-img/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" /> 
+                    <img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" /> 
                     </a>
                     <figcaption>
                         <h3>${gallery.galleryName}</h3>

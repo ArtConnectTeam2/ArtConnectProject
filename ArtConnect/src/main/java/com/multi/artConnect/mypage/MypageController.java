@@ -48,6 +48,7 @@ public class MypageController {
 
 	    if (member != null && member.getMemberPW().equals(memberPW)) {  
 	        int result = dao.delete(memberID);  
+
 	        if (result == 1) {
 	            redirectAttributes.addFlashAttribute("result", "deleteSuccess");
 	            return "mypage/deleteOk";

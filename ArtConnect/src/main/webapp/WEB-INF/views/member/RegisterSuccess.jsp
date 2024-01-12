@@ -10,8 +10,8 @@
 <body>
 	<h2 align="center">회원가입이 완료되었습니다</h2>
 	<p align="center">환영합니다! 회원가입이 성공적으로 완료되었습니다.</p>
-	<a class="navbar-brand" href="mainTest.jsp"> 
-	<button>메인으로</button>
+	<a class="navbar-brand" href="${pageContext.request.contextPath}/member/login"> 
+	<button>로그인 화면</button>
 	</a>
 </body>
 </html>
