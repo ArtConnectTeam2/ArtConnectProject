@@ -61,6 +61,25 @@
 	top: 10px; /* 원하는 값으로 조정해주세요 */
 	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
+
+/* 체크박스 스타일 */
+.form-check-input {
+    /* 원하는 스타일 속성을 추가하세요 */
+    width: 20px; /* 체크박스의 너비 */
+    height: 20px; /* 체크박스의 높이 */
+    margin-right: 5px; /* 체크박스 간격 조정 */
+    display: inline-block; /* inline-block으로 설정하여 화면에 표시 */
+    border: 2px solid #000; /* 테두리 스타일 설정 */
+}
+
+.form-check-input:checked {
+    background-color: #000; /* 체크됐을 때의 배경색 설정 */
+    border: 2px solid #000; /* 체크됐을 때의 테두리 스타일 설정 */
+}
+
+.form-check-input:not(:checked) {
+    background-color: transparent; /* 체크되지 않았을 때의 배경색 설정 */
+}
 </style>
 
 </head>
@@ -75,8 +94,8 @@
 			<!-- logo -->
 
 			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/art.png" title="avana LLC" alt="avana LLC" /></a>
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="art connect"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/art.png" title="art connect" alt="art connect" /></a>
 			</h1>
 
 			<!-- nav -->
@@ -137,6 +156,19 @@
         <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
 </div>
 
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Default checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Checked checkbox
+  </label>
+</div>
+
 <%
     	ArrayList<GalleryVO> list = (ArrayList<GalleryVO>) request.getAttribute("list");
         for (GalleryVO bag : list) {
@@ -145,7 +177,7 @@
                 <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
                     <figure>
                     	<a href="${pageContext.request.contextPath}/gallery/detail?galleryName=<%= bag.getGalleryName() %>">
-                        <img src="${pageContext.request.contextPath}/resources/img/gallery/home-img/<%= bag.getGalleryImg() %>"  alt="<%= bag.getGalleryName() %> 이미지" class="img-responsive" />
+                        <img src="${pageContext.request.contextPath}/resources/img/gallery/<%= bag.getGalleryImg() %>"  alt="<%= bag.getGalleryName() %> 이미지" class="img-responsive" />
                         </a>
                         <figcaption>
                             <h3><%= bag.getGalleryName() %></h3>
