@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("reservation")
-public class GalleryController {
+public class GalleryController_reserve {
 	
 	@Autowired
-	GalleryDAO galleryDAO;
+	GalleryDAO_reserve galleryDAO_reserve;
 	
 	@RequestMapping("searchGallery/{galleryName}")
 	public String searchGallery(@PathVariable String galleryName, Model model) throws Exception {
-		List<GalleryVO> searchGallery = galleryDAO.searchGallery(galleryName);
+		List<GalleryVO_reserve> searchGallery = galleryDAO_reserve.searchGallery(galleryName);
 		model.addAttribute("searchGallery", searchGallery);
 		return "reservation/searchGallery";
 	}
 
 	@RequestMapping("listGallery")
 	public void listGallery(Model model) throws Exception {
-		List<GalleryVO> listGallery = galleryDAO.listGallery();
+		List<GalleryVO_reserve> listGallery = galleryDAO_reserve.listGallery();
 		model.addAttribute("listGallery", listGallery);
 	}
 }

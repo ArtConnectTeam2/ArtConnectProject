@@ -2,7 +2,7 @@ package com.multi.artConnect.reservation;
 
 import java.sql.Time;
 
-public class GalleryVO {
+public class GalleryVO_reserve {
 	private int galleryID;
 	private String galleryName;
 	private String galleryImg;

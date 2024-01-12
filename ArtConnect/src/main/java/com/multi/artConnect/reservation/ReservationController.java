@@ -17,11 +17,11 @@ public class ReservationController {
 	ProgramDAO programDAO;
 	
 	@Autowired
-	GalleryDAO galleryDAO;
+	GalleryDAO_reserve galleryDAO_reserve;
 	
 	@RequestMapping("reservation/{galleryID}/{programID}")
 	public String reservationPage(@PathVariable int galleryID,@PathVariable int programID, Model model) {
-		GalleryVO gallery = galleryDAO.getGallery(galleryID);
+		GalleryVO_reserve gallery = galleryDAO_reserve.getGallery(galleryID);
 		ProgramVO program = programDAO.getProgram(programID);
 		model.addAttribute("gallery", gallery);
 		model.addAttribute("program", program);

@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProgramController {
 
 	@Autowired
-	GalleryDAO galleryDAO;
+	GalleryDAO_reserve galleryDAO_reserve;
 	
 	@Autowired
 	ProgramDAO programDAO;
 	
 	@RequestMapping("programSelection/{galleryID}")
 	public String programSelection(@PathVariable int galleryID, Model model) {
-		GalleryVO gallery = galleryDAO.getGallery(galleryID);
+		GalleryVO_reserve gallery = galleryDAO_reserve.getGallery(galleryID);
 		model.addAttribute("gallery", gallery);
 		List<ProgramVO> listProgram = programDAO.listProgram(galleryID);
 		model.addAttribute("listProgram", listProgram);
