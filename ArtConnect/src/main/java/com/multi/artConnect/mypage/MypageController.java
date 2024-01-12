@@ -1,6 +1,5 @@
 package com.multi.artConnect.mypage;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.multi.artConnect.mypage.MemberVO;
 
 
 @Controller
@@ -21,8 +19,8 @@ public class MypageController {
 	MypageDAO dao;
 
 	@RequestMapping("mypage/updateOne") // update 회원정보
-	public String updateOne(String id_member, Model model) {
-		MemberVO one = dao.one(id_member);
+	public String updateOne(String memberID, Model model) {
+		MemberVO one = dao.one(memberID);
 		System.out.println(one);
 		model.addAttribute("member", one);
 		return "mypage/memberUpdate";
@@ -36,8 +34,8 @@ public class MypageController {
 	}
 	
 	@RequestMapping("mypage/deleteOne") 
-	public String deleteOne(String id_member, Model model) {
-		MemberVO one = dao.one(id_member);
+	public String deleteOne(String memberID, Model model) {
+		MemberVO one = dao.one(memberID);
 		System.out.println(one);
 		model.addAttribute("member", one);
 		return "mypage/memberDelete";
@@ -45,20 +43,20 @@ public class MypageController {
 	
 	
 	@PostMapping("mypage/deleteOk")
-	public String delete(@RequestParam String id_member, @RequestParam String pw, RedirectAttributes redirectAttributes) {
-	    MemberVO member = dao.one(id_member);
+	public String delete(@RequestParam String memberID, @RequestParam String memberPW, RedirectAttributes redirectAttributes) {
+	    MemberVO member = dao.one(memberID);
 
-	    if (member != null && member.getPw().equals(pw)) {  
-	        int result = dao.delete(id_member);  
+	    if (member != null && member.getMemberPW().equals(memberPW)) {  
+	        int result = dao.delete(memberID);  
 	        if (result == 1) {
 	            redirectAttributes.addFlashAttribute("result", "deleteSuccess");
-	            return "redirect:/mypage/deleteOk";
+	            return "mypage/deleteOk";
 	        }
 	    }
 
 	    // 비밀번호 불일치 - 탈퇴 실패
 	    redirectAttributes.addFlashAttribute("result", "deleteNo");
-	    return "redirect:/mypage/deleteOk";
+	    return "mypage/deleteOk";
 	}
 	
 	 @GetMapping("mypage/deleteOk") 
