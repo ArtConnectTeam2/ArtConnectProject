@@ -1,12 +1,9 @@
 package com.multi.artConnect.mypage;
 
-import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.multi.artConnect.member.MemberVO;
 
 
 
@@ -16,8 +13,8 @@ public class MypageDAO {
 	@Autowired
 	SqlSessionTemplate my; 
 	
-	public MemberVO one(String id_member) {
-		return my.selectOne("member.updateOne", id_member);
+	public MemberVO one(String memberID) {
+		return my.selectOne("member.updateOne", memberID);
 	}
 	
 	public int update(MemberVO vo) {
@@ -25,12 +22,12 @@ public class MypageDAO {
 		return result;
 	}
 	
-	public MemberVO one2(String id_member) {
-		return my.selectOne("member.deleteOne", id_member);
+	public MemberVO one2(String memberID) {
+		return my.selectOne("member.deleteOne", memberID);
 	}
 	
-	public int delete(String id_member) {
-		int result = my.delete("member.delete", id_member);
+	public int delete(String memberID) {
+		int result = my.delete("member.delete", memberID);
 		return result;
 	}
 	
