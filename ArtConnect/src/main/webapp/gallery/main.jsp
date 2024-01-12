@@ -106,9 +106,10 @@
 
 				<ul>
 
-					<li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
+
+					<li class="nav-active">
+					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+
 
 					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
@@ -219,7 +220,7 @@
 									<span>서울 시립 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%84%9C%EC%9A%B8%EC%8B%9C%EB%A6%BD%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -234,7 +235,7 @@
 									<span>북 서울 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EB%B6%81%EC%84%9C%EC%9A%B8%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -249,7 +250,7 @@
 									<span>남 서울 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EB%82%A8%EC%84%9C%EC%9A%B8%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -273,7 +274,7 @@
 									<span>아모레 퍼시픽 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%95%84%EB%AA%A8%EB%A0%88%ED%8D%BC%EC%8B%9C%ED%94%BD%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -288,7 +289,7 @@
 									<span>소마 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%86%8C%EB%A7%88%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -303,7 +304,7 @@
 									<span>국립 현대 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EA%B5%AD%EB%A6%BD%ED%98%84%EB%8C%80%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>

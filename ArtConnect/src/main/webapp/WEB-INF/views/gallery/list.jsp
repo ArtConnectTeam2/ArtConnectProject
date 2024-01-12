@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.multi.artConnect.gallery.GalleryVO" %>
+<%@ page import="com.google.gson.Gson" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -80,6 +82,7 @@
 .form-check-input:not(:checked) {
     background-color: transparent; /* 체크되지 않았을 때의 배경색 설정 */
 }
+
 </style>
 
 </head>
@@ -103,13 +106,18 @@
 
 				<ul>
 
-					<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Work">메인 화면으로 돌아가기</a></li>
+					<li class="nav-active">
+					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
-					<li><a href="about.html" title="About">예약</a></li>
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
 
-					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 
 				</ul>
 
@@ -156,6 +164,62 @@
         <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
 </div>
 
+
+			<div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Seoul" id="flexCheckSeoul" onclick="filterData()">
+                <label class="form-check-label" for="flexCheckSeoul">서울</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Gyeonggi" id="flexCheckGyeonggi" onclick="filterData()">
+                <label class="form-check-label" for="flexCheckGyeonggi">경기</label>
+            </div>
+
+            <div id="filteredData">
+                <!-- 여기에 필터링된 데이터를 표시할 div -->
+            </div>
+
+            <script>
+                // 전역 변수로 전체 데이터를 저장
+                var allData = <%= new Gson().toJson(request.getAttribute("list")) %>;
+
+                function filterData() {
+                    var checkboxes = document.querySelectorAll('.form-check input[type="checkbox"]:checked');
+                    var filterValue = Array.from(checkboxes).map(checkbox => checkbox.value);
+
+                    // 필터링된 데이터를 가져오기
+                    var filteredData = allData.filter(gallery => filterValue.includes(gallery.galleryLocation));
+
+                    // 화면에 표시
+                    displayFilteredData(filteredData);
+                }
+
+                function displayFilteredData(data) {
+                    var filteredDataDiv = document.getElementById('filteredData');
+                    filteredDataDiv.innerHTML = ''; // Clear previous content
+
+                    data.forEach(gallery => {
+                        filteredDataDiv.innerHTML += `
+                            <div class="thumbnails-pan">
+                                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
+                                    <figure>
+                                        <a href="${pageContext.request.contextPath}/gallery/detail?galleryName=${gallery.galleryName}">
+                                            <img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
+                                        </a>
+                                        <figcaption>
+                                            <h3>${gallery.galleryName}</h3>
+                                            <h5>View more</h5>
+                                        </figcaption>
+                                    </figure>
+                                </section>
+                            </div>
+                        `;
+                    });
+                }
+
+                // 초기 로딩 시 모든 데이터 표시
+                displayFilteredData(allData);
+            </script>
+
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -169,10 +233,12 @@
   </label>
 </div>
 
+
 <%
     	ArrayList<GalleryVO> list = (ArrayList<GalleryVO>) request.getAttribute("list");
         for (GalleryVO bag : list) {
 %>
+
             <div class="thumbnails-pan">
                 <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
                     <figure>
