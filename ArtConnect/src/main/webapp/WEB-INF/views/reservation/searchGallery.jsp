@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!-- Display information for multiple galleries -->
 <div>
 	<h1 style="margin-top: -80px; margin-left: 10px">검색된 미술관 목록</h1>
@@ -26,8 +26,8 @@
 							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">${gallery.galleryName}</a></td>
 							<td>${gallery.galleryLocation}</td>
 							<td>${gallery.galleryTel}</td>
-							<td>${gallery.galleryOpentime}</td>
-							<td>${gallery.galleryClosetime}</td>
+							<td><fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/></td>
+							<td><fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/></td>
 							<td>${gallery.closedDay}</td>
 						</tr>
 					</c:forEach>

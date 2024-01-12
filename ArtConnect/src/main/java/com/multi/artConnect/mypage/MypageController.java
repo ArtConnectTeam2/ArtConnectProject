@@ -46,7 +46,7 @@ public class MypageController {
 	public String delete(@RequestParam String memberID, @RequestParam String memberPW, RedirectAttributes redirectAttributes) {
 	    MemberVO member = dao.one(memberID);
 
-	    if (member != null && member.getMemberPW().equals(memberPW)) {  
+	    if (member != null && member.getmemberPW().equals(memberPW)) {  
 	        int result = dao.delete(memberID);  
 
 	        if (result == 1) {

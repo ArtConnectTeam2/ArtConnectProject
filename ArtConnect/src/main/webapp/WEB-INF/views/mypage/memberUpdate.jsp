@@ -1,5 +1,5 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
-<%@page import="com.multi.artConnect.mypage.MemberVO"%>
+<%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     

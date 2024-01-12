@@ -16,7 +16,17 @@
     <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Responsive CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-	<style type="text/css"> th,td {vertical-align: middle; text-align: center; padding: 10px;}</style>
+	<style type="text/css">
+	th,td {
+		vertical-align: middle; text-align: center; padding: 10px;
+	}
+	
+	.navy {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	</style>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
 	$(function() {
@@ -55,12 +65,36 @@
         <div class="container">
             <!-- Logo -->
             <h1>
+                <a href="${pageContext.request.contextPath}/gallery/main.jsp">
                 <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-                        alt="ArtConnect" style="width: 300px; height: auto;"/>
+                        alt="ArtConnect" style="width: 300px; height: auto;"/></a>
             </h1>
         </div>
-    </header>
+    
+         <!-- nav -->
+    <nav role="header-nav" class="navy">
+	<div id="menu-button" class>
+	<span></span>
+	<span></span>
+	<span></span>
+	"Navigation"
+	</div>
+	<ul class style="display: none;">
+	<li class="nav-active">
+	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
+	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+	<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+	<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+    </ul>
+	</nav>
+    </header>
     <!-- Main Content -->
     <main role="main-inner-wrapper container">
         <div style="text-align: center; margin-top: 20px;">
