@@ -6,7 +6,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta charset="utf-8">
-    <title>ProgramList</title>
+    <title>전시 목록 페이지</title>
     <!-- Bootstrap CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
@@ -50,8 +50,8 @@
     </header>
     <footer role="footer" style="margin: 0 20px;">
         <div class="thumbnails-pan" style="font-size: 20px;">
-            <h1 style="margin-top: -80px; margin-left: 10px">전시 목록</h1> <br><br>
-
+            <h1 style="margin-top: -80px; margin-left: 10px">전시 목록</h1> <br>
+            <h2 style="margin-left: 30px">${gallery.galleryName}</h2><br>
             <c:choose>
                 <c:when test="${not empty listProgram}">
                     <table border="1">
@@ -69,10 +69,12 @@
                         <tbody>
                             <c:forEach var="program" items="${listProgram}">
                                 <tr class="program-row">
-                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/${program.programID}">
+                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/
+                                    ${program.galleryID}/${program.programID}">
                                     <img src="${pageContext.request.contextPath}/${program.programImg}"
                                     alt="Program Image" style="width: 200px; height: auto;"></a></td>
-                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/${program.programID}">
+                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/
+                                    ${program.galleryID}/${program.programID}">
                                     ${program.programTitle}</a></td>
                                     <td>${program.artist}</td>
                                     <td>

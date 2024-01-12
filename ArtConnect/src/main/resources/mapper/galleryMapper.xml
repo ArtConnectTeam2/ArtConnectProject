@@ -8,4 +8,7 @@
 	<select id="listGallery" resultType="galleryVO">
 		SELECT * FROM gallery
 	</select>
+	<select id="getGallery" resultType="galleryVO" parameterType="int">
+		SELECT * FROM gallery WHERE galleryID = #{galleryID}
+	</select>
 </mapper>

@@ -23,4 +23,8 @@ public class GalleryDAO {
 		List<GalleryVO> listGallery = my.selectList("com.multi.artConnect.reservation.GalleryDAO.listGallery");
 		return listGallery;
 	}
+	
+	public GalleryVO getGallery(int galleryID) {
+		return my.selectOne("com.multi.artConnect.reservation.GalleryDAO.getGallery", galleryID);
+	}
 }
