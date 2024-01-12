@@ -13,6 +13,7 @@ public class GalleryVO {
     private Time galleryClosetime;
     private String closedDay;
     private String galleryTel;
+    private String homepageAddress;
     private double lat;
     private double lon;
     
@@ -64,6 +65,12 @@ public class GalleryVO {
 	public void setGalleryTel(String galleryTel) {
 		this.galleryTel = galleryTel;
 	}
+	public String getHomepageAddress() {
+		return homepageAddress;
+	}
+	public void setHomepageAddress(String homepageAddress) {
+		this.homepageAddress = homepageAddress;
+	}
 	public double getLat() {
 		return lat;
 	}
@@ -77,11 +84,33 @@ public class GalleryVO {
 		this.lon = lon;
 	}
 	
-	@Override
-	public String toString() {
-		return "GalleryVO [galleryID=" + galleryID + ", galleryName=" + galleryName + ", galleryImg=" + galleryImg
-				+ ", galleryLocation=" + galleryLocation + ", galleryOpentime=" + galleryOpentime
-				+ ", galleryClosetime=" + galleryClosetime + ", closedDay=" + closedDay + ", galleryTel=" + galleryTel
-				+ ", lat=" + lat + ", lon=" + lon + "]";
-	}
+    // 각 칼럼에 대한 값을 반환하는 메서드 추가
+    public Object getValueByColumnName(String columnName) {
+        switch (columnName) {
+            case "galleryID":
+                return galleryID;
+            case "galleryName":
+                return galleryName;
+            case "galleryImg":
+                return galleryImg;
+            case "galleryLocation":
+                return galleryLocation;
+            case "galleryOpentime":
+                return galleryOpentime;
+            case "galleryClosetime":
+                return galleryClosetime;
+            case "closedDay":
+                return closedDay;
+            case "galleryTel":
+                return galleryTel;
+            case "homepageAddress":
+                return homepageAddress;
+            case "lat":
+                return lat;
+            case "lon":
+                return lon;
+            default:
+                return null;
+        }
+    }
 }

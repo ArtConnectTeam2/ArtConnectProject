@@ -105,13 +105,18 @@
 
 				<ul>
 
-					<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+					<li class="nav-active">
+					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
-					<li><a href="about.html" title="About">예약</a></li>
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
 
-					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 
 				</ul>
 
@@ -153,7 +158,7 @@
 				style="margin-top: 20px;">
 				<figure class="effect-oscar">
 					<img
-						src="${pageContext.request.contextPath}/resources/img/gallery/home-img/main2.png"
+						src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/main2.png"
 						alt="" class="img-responsive" />
 					<figcaption>
 								<br>
@@ -189,14 +194,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/1.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/1.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
 									<span>서울 시립 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%84%9C%EC%9A%B8%EC%8B%9C%EB%A6%BD%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -204,14 +209,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/2.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/2.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
 									<span>북 서울 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EB%B6%81%EC%84%9C%EC%9A%B8%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -219,14 +224,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/3.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/3.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
 									<span>남 서울 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EB%82%A8%EC%84%9C%EC%9A%B8%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -243,14 +248,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/4.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/4.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
 									<span>아모레 퍼시픽 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%95%84%EB%AA%A8%EB%A0%88%ED%8D%BC%EC%8B%9C%ED%94%BD%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -258,14 +263,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/5.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/5.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
 									<span>소마 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%86%8C%EB%A7%88%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -273,14 +278,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/home-img/6.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/6.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
 									<span>국립 현대 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="works-details.html">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EA%B5%AD%EB%A6%BD%ED%98%84%EB%8C%80%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
 							</figcaption>
 						</figure>
 					</li>
