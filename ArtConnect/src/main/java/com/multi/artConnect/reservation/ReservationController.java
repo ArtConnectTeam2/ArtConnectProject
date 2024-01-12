@@ -16,9 +16,14 @@ public class ReservationController {
 	@Autowired
 	ProgramDAO programDAO;
 	
-	@RequestMapping("reservation/{programID}")
-	public String reservationPage(@PathVariable int programID, Model model) {
+	@Autowired
+	GalleryDAO_reserve galleryDAO_reserve;
+	
+	@RequestMapping("reservation/{galleryID}/{programID}")
+	public String reservationPage(@PathVariable int galleryID,@PathVariable int programID, Model model) {
+		GalleryVO_reserve gallery = galleryDAO_reserve.getGallery(galleryID);
 		ProgramVO program = programDAO.getProgram(programID);
+		model.addAttribute("gallery", gallery);
 		model.addAttribute("program", program);
 		return "reservation/reservation";
 	}
