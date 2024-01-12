@@ -44,7 +44,7 @@ public class BoardController {
 		System.out.println(vo.getReviewTitle());
 		System.out.println(vo.getReviewContent());
 		dao.boardPostOk(vo);
-		return "redirect:review/boardList";
+		return "redirect:boardList";
 	}
 	
 	@RequestMapping("review/boardOne")
@@ -75,7 +75,7 @@ public class BoardController {
     @RequestMapping("review/boardModifyOk")  // 수정 처리
     public String boardModifyOk(BoardVO vo) {
         dao.boardModifyOk(vo);
-        return "redirect:review/boardOne?reviewNO=" + vo.getReviewNO();
+        return "redirect:boardOne?reviewNO=" + vo.getReviewNO();
     }
 	
 	
