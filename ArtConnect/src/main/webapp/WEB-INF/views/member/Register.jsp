@@ -87,10 +87,19 @@ button {
 			<!-- 상단 메뉴 탭 목록-->
 			<nav role="header-nav" class="navy">
 				<ul>
-					<li class="nav-active"><a href="index.html" title="Work">전시관</a></li>
-					<li><a href="about.html" title="About">예약</a></li>
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
-					<li><a href="contact.html" title="Contact">예약</a></li>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 				</ul>
 			</nav>
 			
