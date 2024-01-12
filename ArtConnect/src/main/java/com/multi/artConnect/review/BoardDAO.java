@@ -1,10 +1,13 @@
 package com.multi.artConnect.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class BoardDAO {
@@ -32,5 +35,19 @@ public class BoardDAO {
 	    my.update("board.increaseHit", reviewNO);
 	  
 	}
+	public void boardModifyOk(BoardVO boardvo) {
+        my.update("board.boardModifyOk", boardvo);
+    }
 	
+	public List<BoardVO> selectWithPaging(int start, int size) {
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("start", start);
+	    params.put("size", size);
+	    return my.selectList("board.selectWithPaging", params);
+	}
+
+    public int getTotalCount() {
+        return my.selectOne("board.getTotalCount");
+    }
+
 }

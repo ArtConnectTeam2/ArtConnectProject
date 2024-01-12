@@ -1,10 +1,10 @@
-<%@page import="com.multi.artConnect.mypage.MemberDAO"%>
+<%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.mypage.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
     <%
-    	session.setAttribute("memberID", "apple");
+    	session.setAttribute("memberID", "test4");
     %>
 <!DOCTYPE HTML>
  <html>
@@ -47,16 +47,25 @@
            
             <!-- Art Connect logo -->
             <h1>
-                <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}/resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px; " /></a>
+                <a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect"><img src="${pageContext.request.contextPath}/resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px; " /></a>
             </h1>
             
             <!-- nav -->
             <nav role="header-nav" class="navy">
                 <ul>
-                    <li class="nav-active"><a href="index.html" title="Work">전시관</a></li>
-                    <li><a href="about.html" title="Reservation">예약</a></li>
-                    <li><a href="blog.html" title="Community">커뮤니티</a></li>
-                    <li><a href="a_update" title="Mypage">마이페이지</a></li>
+                   <li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
                 </ul>
             </nav>
         </div>
@@ -70,10 +79,10 @@
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">회원정보수정</a>
+                            <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">회원탈퇴</a>
+                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">내 예약</a>
@@ -95,41 +104,40 @@
                     	<form action = "updateOk" method = "post">
                         <tr>
                         아이디 <br>
-                        <input type="text" name="id_member" value="${member.id_member}" readonly > <br>
+                        <input type="text" name="memberID" value="${member.memberID}" readonly > <br>
                         </tr>
                         <tr>
                         비밀번호 <br>
-                        <input type="password" name="pw" value="${member.pw}"><br>
+                        <input type="password" name="memberPW" value="${member.memberPW}"><br>
                         </tr>
                         <tr>
                         이름 <br>
-                         <input type="text" name="name" value="${member.name}" readonly ><br>
+                         <input type="text" name="memberName" value="${member.memberName}" readonly ><br>
                         </tr>
                         <tr>
                         생년월일 <br>
-                        <input type="text" name="birth" value="${member.birth}" readonly ><br>
+                        <input type="text" name="memberBirth" value="${member.memberBirth}" readonly ><br>
                         </tr>
                         <tr>
                         성별 <br>
-                         <input type="text" name="gender" value="${member.gender}" readonly ><br>
+                         <input type="text" name="memberGender" value="${member.memberGender}" readonly ><br>
                         </tr>
                         <tr>
                         주소 <br>
-                         <input type="text" name="addr" value="${member.addr}"><br>
+                         <input type="text" name="memberAddr" value="${member.memberAddr}"><br>
                         </tr>
                         <tr>
                         전화번호 <br>
-                         <input type="text" name="tel" value="${member.tel}"><br>
-                        </tr>
-                        <tr>
-                        알람설정 <br> 
-                        <input type="text" name="alarm" value="${member.alarm}" readonly ><br>
+                         <input type="text" name="memberTel" value="${member.memberTel}"><br>
                         </tr>
                         <tr>
                         이메일 <br> 
-                        <input type="text" name="email" value="${member.email}"><br>
+                        <input type="text" name="memberEmail" value="${member.memberEmail}"><br>
                         </tr>
                         <tr>
+                        알람설정 <br> 
+                        <input type="text" name="memberAlarm" value="${member.memberAlarm}"><br>
+                        </tr>
                         <br>
 					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
 				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 

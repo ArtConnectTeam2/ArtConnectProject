@@ -1,77 +1,84 @@
 package com.multi.artConnect.mypage;
 
-public class MemberVO {
+import java.sql.Date;
 
-	private String id_member;
-	private String pw;
-	private String name;
-	private String birth;
-	private String gender;
-	private String addr;
-	private String tel;
-	private String alarm;
-	private String email;
+public class MemberVO {
+	private String memberID;
+	private String memberPW;
+	private String memberName;
+	private Date memberBirth;
+	private String memberGender;
+	private String memberAddr;
+	private String memberTel;
+	private String memberEmail;
+
 	
-	public String getId_member() {
-		return id_member;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
-	public void setId_member(String id_member) {
-		this.id_member = id_member;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
-	public String getPw() {
-		return pw;
+
+	private String memberAlarm;
+	
+	public String getmemberID() {
+		return memberID;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setmemberID(String memberID) {
+		this.memberID = memberID;
 	}
-	public String getName() {
-		return name;
+	public String getmemberPW() {
+		return memberPW;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setmemberPW(String memberPW) {
+		this.memberPW = memberPW;
 	}
-	public String getBirth() {
-		return birth;
+	public String getmemberName() {
+		return memberName;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setmemberName(String memberName) {
+		this.memberName = memberName;
 	}
-	public String getGender() {
-		return gender;
+	public Date getmemberBirth() {
+		return memberBirth;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setmemberBirth(Date memberBirth) {
+		this.memberBirth = memberBirth;
 	}
-	public String getAddr() {
-		return addr;
+	public String getmemberGender() {
+		return memberGender;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setmemberGender(String memberGender) {
+		this.memberGender = memberGender;
 	}
-	public String getTel() {
-		return tel;
+	public String getmemberAddr() {
+		return memberAddr;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setmemberAddr(String memberAddr) {
+		this.memberAddr = memberAddr;
 	}
-	public String getAlarm() {
-		return alarm;
+	public String getmemberTel() {
+		return memberTel;
 	}
-	public void setAlarm(String alarm) {
-		this.alarm = alarm;
+	public void setmemberTel(String memberTel) {
+		this.memberTel = memberTel;
 	}
-	public String getEmail() {
-		return email;
+	public String getmemberAlarm() {
+		return memberAlarm;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setmemberAlarm(String memberAlarm) {
+		this.memberAlarm = memberAlarm;
 	}
 	
 	@Override
 	public String toString() {
-		return "MemberVO [id_member=" + id_member + ", pw=" + pw + ", name=" + name + ", birth=" + birth + ", gender="
-				+ gender + ", addr=" + addr + ", tel=" + tel + ", alarm=" + alarm + ", email=" + email + "]";
+
+		return "LoginVO [memberID=" + memberID + ", memberPW=" + memberPW + ", memberName=" + memberName
+				+ ", memberBirth=" + memberBirth + ", memberGender=" + memberGender + ", memberAddr=" + memberAddr
+				+ ", memberTel=" + memberTel + ", memberEmail=" + memberEmail + ", memberAlarm=" + memberAlarm + "]";
 	}
+	
 	
 
 	

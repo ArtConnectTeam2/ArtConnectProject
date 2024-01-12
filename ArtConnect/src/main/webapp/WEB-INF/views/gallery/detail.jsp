@@ -1,54 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.multi.artConnect.gallery.GalleryVO" %>
-<%@ page import="java.util.List" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.multi.artConnect.gallery.GalleryVO"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
- <html>
+<html>
 
-    <head>
+<head>
 
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-        <meta charset="utf-8">
+<meta charset="utf-8">
 
-        <!-- Description, Keywords and Author -->
+<!-- Description, Keywords and Author -->
 
-        <meta name="description" content="">
+<meta name="description" content="">
 
-        <meta name="author" content="">
+<meta name="author" content="">
 
-        <title>:: 미술관 상세 정보 페이지 ::</title>
+<title>:: 미술관 상세 정보 페이지 ::</title>
 
-		<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
+	type="image/x-icon">
 
-        <!-- style -->
+<!-- style -->
 
-        <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
 
-        <!-- style -->
+<!-- style -->
 
-        <!-- bootstrap -->
+<!-- bootstrap -->
 
-        <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
 
-        <!-- responsive -->
+<!-- responsive -->
 
-        <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/responsive.css"
+	rel="stylesheet" type="text/css">
 
-        <!-- font-awesome -->
+<!-- font-awesome -->
 
-        <link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/fonts.css"
+	rel="stylesheet" type="text/css">
 
-        <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 
-        <!-- font-awesome -->
+<!-- font-awesome -->
 
-        <link href="${pageContext.request.contextPath}/resources/css/effects/set2.css" rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
+	rel="stylesheet" type="text/css">
 
-        <link href="${pageContext.request.contextPath}/resources/css/effects/normalize.css" rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
+	rel="stylesheet" type="text/css">
 
-        <link href="${pageContext.request.contextPath}/resources/css/effects/component.css"  rel="stylesheet" type="text/css" >
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
+	rel="stylesheet" type="text/css">
 
 <style>
 /* 이미지 크기와 위치 조정 */
@@ -66,56 +83,116 @@
 	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
 
+button {
+	cursor: pointer;
+}
 </style>
 
-	</head>
+</head>
 
-    <body>
+<body>
 
-    	<!-- header -->
+	<!-- header -->
 
-        	<header role="header">
+	<header role="header">
 
-            	<div class="container">
+		<div class="container">
 
-                	<!-- logo -->
+			<!-- logo -->
 
 			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/art.png" title="avana LLC" alt="avana LLC" /></a>
+				<a href="${pageContext.request.contextPath}/gallery/main.jsp"
+					title="avana LLC"><img id="logo-image"
+					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png"
+					title="avana LLC" alt="avana LLC" /></a>
 			</h1>
 
-                    <!-- logo -->
+			<!-- logo -->
 
-                    <!-- nav -->
+			<!-- nav -->
 
-                    <nav role="header-nav" class="navy">
+			<nav role="header-nav" class="navy">
 
-					<ul>
+				<ul>
 
-						<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Work">메인 화면으로 돌아가기</a></li>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/main.jsp"
+						title="Work">메인 화면으로 돌아가기</a></li>
 
-						<li><a href="about.html" title="About">예약</a></li>
+					<li><a href="about.html" title="About">예약</a></li>
 
-						<li><a href="blog.html" title="Blog">커뮤니티</a></li>
+					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
 
-						<li><a href="contact.html" title="Contact">마이 페이지</a></li>
+					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
 
+				</ul>
+
+
+					<li class="nav-active">
+					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 					</ul>
 
-                    </nav>
+			</nav>
 
-                    <!-- nav -->
+			<!-- nav -->
 
-                </div>
+		</div>
 
-            </header>
+	</header>
 
-        <!-- header -->
+	<!-- header -->
 
-        <!-- main -->
 
-        <main role="main-inner-wrapper" class="container">
+	<!-- main -->
+
+	<main role="main-inner-wrapper" class="container">
+
+		<!-- work details -->
+		<div class="work-details">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-5">
+					<header role="work-title">
+						<h2>${gallery.galleryName}</h2>
+						<a href="#">Visit online Homepage<i
+							class="fa fa-external-link" aria-hidden="true"></i></a>
+						<div style="margin-top: 20px;">
+							<img
+								src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"
+								alt="${gallery.galleryName} 이미지" class="img-responsive" />
+						</div>
+					</header>
+				</div>
+
+				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
+					<section>
+
+						<p>
+							<strong>Location of Art Museum : </strong>
+							${gallery.galleryLocation} <br /> <strong>Opening hours
+								of Museum : </strong> ${gallery.galleryOpentime} -
+							${gallery.galleryClosetime} <br /> <strong>Closed Day :
+							</strong>${gallery.closedDay}<br /> <strong>Contact : </strong>${gallery.galleryTel}<br />
+						</p>
+
+						<p>
+							<strong>Add later :</strong><br /> cc
+						</p>
+
+						<p>
+							<strong>Like! :</strong><br />
+							<button id="likeButton" onclick="likeGallery()">Like</button>
+						</p>
+
 
                 <!-- work details -->
                 	<div class="work-details">
@@ -123,9 +200,9 @@
                         	<div class="col-xs-12 col-sm-12 col-md-5">
                             	<header role="work-title">
                                 	<h2>${gallery.galleryName}</h2>
-                                    <a href="#">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                    <a href="${gallery.homepageAddress}">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
                                     <div style="margin-top: 20px;">
-                                    	<img src="${pageContext.request.contextPath}/resources/img/gallery/home-img/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
+                                    	<img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
                                		</div>
                                 </header>
                             </div>
@@ -142,27 +219,29 @@
                                 	
                                     <p><strong>Add later :</strong><br/>
 
-									cc </p>
-                                </section>
-                            </div>
-                        </div>
-                        
-                        <div class="clearfix"></div>
+					</section>
+				</div>
+			</div>
 
-                        <div class="work-images grid">
-                        	<div class="work-map" style="margin-top: -10px;">
-    							<div class="row">
-        						<div class="col-xs-12 col-sm-12 col-md-12">
-           							<header role="work-title" style="text-align: left;">
-              							<h2 style="margin-left: 0px;">${gallery.galleryName} 찾아오시는 길</h2>
-            						</header>
-       							 </div>
-    							</div>
-							</div>
-                        
-                             <div id="map" style="width: 100%; height: 400px; margin-bottom: 30px;"></div>
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79876cb9142b1dc6b254e0869dd8bd91"></script>
-								<script type="text/javascript">
+
+			<div class="clearfix"></div>
+
+			<div class="work-images grid">
+				<div class="work-map" style="margin-top: -10px;">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<header role="work-title" style="text-align: left;">
+								<h2 style="margin-left: 0px;">${gallery.galleryName}찾아오시는길</h2>
+							</header>
+						</div>
+					</div>
+				</div>
+
+				<div id="map"
+					style="width: 100%; height: 400px; margin-bottom: 30px;"></div>
+				<script type="text/javascript"
+					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79876cb9142b1dc6b254e0869dd8bd91"></script>
+				<script type="text/javascript">
 									var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 									var options = { //지도를 생성할 때 필요한 기본 옵션
 									center: new kakao.maps.LatLng(${gallery.lat}, ${gallery.lon}), //지도의 중심좌표.
@@ -181,109 +260,151 @@
 								    // 마커가 지도 위에 표시되도록 설정합니다
 								    marker.setMap(map);
 								</script>
-							 
-							<div class="work-program">
-    							<div class="row">
-        						<div class="col-xs-12 col-sm-12 col-md-12">
-           							<header role="work-title" style="text-align: left;">
-              							<h2 style="margin-left: 0px;">${gallery.galleryName} 프로그램</h2>
-            						</header>
-       							 </div>
-    							</div>
-							</div>
 
-<ul class="grid-lod effect-2" id="grid">
-    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
-        <img src="${pageContext.request.contextPath}/resources/images/work/works-image-2.jpg" alt="" class="img-responsive"/>
-    </li>
-    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
-        <img src="${pageContext.request.contextPath}/resources/images/work/works-image-3.jpg" alt="" class="img-responsive"/>
-    </li>
-    <!-- 추가 이미지들도 유사한 방식으로 추가 -->
-</ul>
+				<div class="work-program">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<header role="work-title" style="text-align: left;">
+								<h2 style="margin-left: 0px;">${gallery.galleryName}프로그램</h2>
+							</header>
+						</div>
+					</div>
+				</div>
 
-                        </div>
+				<ul class="grid-lod effect-2" id="grid">
+					<li class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+						style="text-align: left;"><img
+						src="${pageContext.request.contextPath}/resources/images/work/works-image-2.jpg"
+						alt="" class="img-responsive" /></li>
+					<li class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+						style="text-align: left;"><img
+						src="${pageContext.request.contextPath}/resources/images/work/works-image-3.jpg"
+						alt="" class="img-responsive" /></li>
+					<!-- 추가 이미지들도 유사한 방식으로 추가 -->
+				</ul>
 
-                    </div>
+			</div>
 
-                <!-- work details -->
+		</div>
 
-        </main>
+		<!-- work details -->
 
-    	<!-- main -->
+	</main>
 
-        <!-- footer -->
+	<!-- main -->
 
-        <footer role="footer">
+	<!-- footer -->
 
-            <!-- nav -->
+	<footer role="footer">
 
-            <nav role="footer-nav">
+		<!-- nav -->
 
-            	<ul>
+		<nav role="footer-nav">
 
-                	<li><a href="index.html" title="Work">Work</a></li>
+			<ul>
 
-                    <li><a href="about.html" title="About">About</a></li>
+				<li><a href="index.html" title="Work">Work</a></li>
 
-                    <li><a href="blog.html" title="Blog">Blog</a></li>
+				<li><a href="about.html" title="About">About</a></li>
 
-                    <li><a href="contact.html" title="Contact">Contact</a></li>
+				<li><a href="blog.html" title="Blog">Blog</a></li>
 
-                </ul>
+				<li><a href="contact.html" title="Contact">Contact</a></li>
 
-            </nav>
+			</ul>
 
-            <!-- nav -->
+		</nav>
 
-            <ul role="social-icons">
+		<!-- nav -->
 
-            	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+		<ul role="social-icons">
 
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 
-                <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+			<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 
-            </ul>
+			<li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
 
-            <p class="copy-right">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+		</ul>
 
-        </footer>
+		<p class="copy-right">
+			Shared by <i class="fa fa-love"></i><a
+				href="https://bootstrapthemes.co">BootstrapThemes</a>
+		</p>
 
-        <!-- footer -->
+	</footer>
 
-    
+	<!-- footer -->
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
 
-        <!-- custom -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-		<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
+		type="text/javascript"></script>
 
-        <script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
+	<!-- custom -->
 
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
+		type="text/javascript"></script>
 
-        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
+		type="text/javascript"></script>
 
-        <script src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"  type="text/javascript"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
 
-		<script src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"  type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+		type="text/javascript"></script>
 
-		<script src="${pageContext.request.contextPath}/resources/js/effects/classie.js"  type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+		type="text/javascript"></script>
 
-		<script src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"  type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+		type="text/javascript"></script>
 
-        <script src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
+		type="text/javascript"></script>
 
-        <!-- jquery.countdown -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+		type="text/javascript"></script>
 
-        <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
 
-    </body>
+	<!-- jquery.countdown -->
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
+
+	<script>
+	$(function() {
+		// Like 버튼 클릭시
+		$("#likeButton").click(function() {
+			$.ajax({
+				url: "/gallery/like",
+				type: "POST",
+				data: {
+					memberID: 'session.getAttribute("memberID")',
+					galleryID: '${gallery.lon}''
+					
+				}
+			})
+		})
+	})
+}
+
+	
+</script>
+
+</body>
 
 </html>
