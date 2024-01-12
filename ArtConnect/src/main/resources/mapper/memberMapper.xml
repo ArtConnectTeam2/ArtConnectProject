@@ -21,4 +21,11 @@
         SELECT * FROM member WHERE BINARY memberID = #{memberID} AND BINARY memberPW = #{memberPW}
         <!-- 대소문자 구분을 위해 BINARY 사용 -->
     </select>
+    
+    <!-- 아이디 중복 체크 -->
+    <select id="idCheck" resultType="int">
+    	select count(*) from member
+    	where memberID = #{memberID}
+    </select>
+    
 </mapper>

@@ -18,5 +18,15 @@
    	<select id="location" parameterType="String" resultType="galleryVO">
 		select lat, lon from gallery where galleryName = #{galleryName}
 	</select>
+	
+	 <!-- 좋아요 추가 -->
+    <insert id="like" parameterType="map">
+        insert into likes (memberID, galleryID) values (#{memberID}, #{galleryID})
+    </insert>
+    
+     <!-- 좋아요 삭제 -->
+    <delete id="unlike" parameterType="map">
+        delete from likes where memberID = #{memberID} and galleryID = #{galleryID}
+    </delete>
 </mapper>
  -->

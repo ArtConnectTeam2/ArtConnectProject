@@ -88,5 +88,9 @@ public class MemberController {
 			return "member/Loginfail"; // 로그인 실패 시 실패창으로 이동
 		}
 	}
+<<<<<<< HEAD
+}
+=======
 }
 
+>>>>>>> e6da07d7a29fee892a2fc1108cdce14a0a7aa5b9

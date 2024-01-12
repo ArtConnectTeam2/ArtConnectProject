@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 <!DOCTYPE html>
@@ -86,16 +87,26 @@ button {
 			<!-- 상단 메뉴 탭 목록-->
 			<nav role="header-nav" class="navy">
 				<ul>
-					<li class="nav-active"><a href="index.html" title="Work">전시관</a></li>
-					<li><a href="about.html" title="About">예약</a></li>
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
-					<li><a href="contact.html" title="Contact">예약</a></li>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
 				</ul>
 			</nav>
+			
 			<!-- ArtConnect 로고 버튼 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href="mainTest.jsp"> <img
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/gallery/main.jsp"> <img
 						src="${pageContext.request.contextPath}/resources/img/art.png"
 						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
@@ -103,18 +114,29 @@ button {
 			</nav>
 		</div>
 	</header>
-	<form action="insert.member" method="post" name="joinForm">
+	<form action="insert.member" method="post" name="joinForm" onsubmit="return joinMember();">
 		<h2 align="center">회원가입</h2>
 
 		<label for="id">아이디:</label> <input type="text" id="memberID"
-			name="memberID" required value="apple"> <input type="button"
-			value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label>
+			name="memberID" required placeholder="아이디를 입력하세요"> 
+		
+		<!-- 중복확인 버튼 미구현 -->
+		<!-- 	<input type="button" value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label> -->
+		
+		<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
+		<c:if test="${not empty errorMessage}">
+			<div class="error-message">${errorMessage}</div>
+		</c:if>
 
-		<label for="pw">비밀번호:</label> <input type="password" id="pw"
-			name="memberPW" required value="1234"> <label for="pwConfirm">비밀번호
-			확인:</label> <input type="password" id="pwConfirm" name="pwConfirm" required
-			value="12345"> <label for="name">이름:</label> <input
-			type="text" id="name" name="memberName" required value="홍길동">
+		<label for="pw">비밀번호:</label> 
+		<input type="password" id="pw" name="memberPW" required value="1234"> 
+		
+		<label for="pwConfirm">비밀번호 확인:</label> 
+		<input type="password" id="pwConfirm" name="pwConfirm" required value="12345"> 
+		
+		<label for="name">이름:</label> 
+		<input type="text" id="name" name="memberName" required value="홍길동">
+		
 		<label for="birth">생년월일:</label> <input type="date" id="birth"
 			name="memberBirth" required value="2023-12-13"> <label
 			for="gender">성별:</label> <select id="gender" name="memberGender"
@@ -132,6 +154,8 @@ button {
 			name="memberAlarm">
 
 		<button type="submit" onclick="joinMember()">회원가입</button>
+
+
 	</form>
 
 	<!-- JavaScript -->
@@ -153,56 +177,23 @@ button {
 		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
 		type="text/javascript"></script>
 
+	<!-- 회원가입 버튼을 누를 시 체크사항 -->
 	<script type="text/javascript">
-    function joinMember() {
-        
-    	var joinForm = document.joinForm;
-    	var memberID = document.getElementById("memberID").value;
-        var pw = document.getElementById("pw").value;
-        var pwConfirm = document.getElementById("pwConfirm").value;
-        var name = document.getElementById("name").value;
-        var birth = document.getElementById("birth").value;
-        var gender = document.getElementById("gender").value;
-        var email = document.getElementById("email").value;
+		function joinMember() {
+			console.log("잘 실행됨");
+			
+			var pw = document.getElementById("pw").value;
+			var pwConfirm = document.getElementById("pwConfirm").value;
+		
 
-        // 필수 항목 검증
-        if (memberID === "") {
-            alert("아이디를 입력해주세요.");
-            return false;
-        
-        }else if (pw === "") {
-            alert("비밀번호를 입력해주세요.");
-            return false;
-        
-        }else if (pwConfirm === "") {
-            alert("비밀번호 확인을 입력해주세요.");
-            return false;
-        
-        }else if (name === "") {
-            alert("이름을 입력해주세요.");
-            return false;
-        }else if (birth === "") {
-            alert("생년월일을 입력해주세요.");
-            return false;
-        }else if (gender === "") {
-            alert("성별을 선택해주세요.");
-            return false;
-        }else if (email === "") {
-            alert("이메일을 입력해주세요.");
-            return false;
-         // 비밀번호 확인
-        }else if  (pw !== pwConfirm) {
-            alert("비밀번호가 일치하지 않습니다.");
-            return false;	
+			// 비밀번호 확인
+			if (pw !== pwConfirm) {
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
 
-        }else {
-        	joinForm.method="post";
-        	joinForm.action = "insert.member";
-        	
-    	}
-
-        
-</script>
+			}
+		}
+	</script>
 
 
 </body>
