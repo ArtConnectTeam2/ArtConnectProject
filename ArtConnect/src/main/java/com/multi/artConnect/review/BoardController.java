@@ -1,5 +1,7 @@
 package com.multi.artConnect.review;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -14,7 +17,6 @@ public class BoardController {
 	
 	@Autowired
 	BoardDAO dao;
-	
 	
 	@RequestMapping("review/boardList")
     public String boardList(Model model,
@@ -40,13 +42,32 @@ public class BoardController {
 	}
 	
 	@RequestMapping("review/boardPostOk")
-	public String boardPostOk(BoardVO vo) {
-		System.out.println(vo.getReviewTitle());
-		System.out.println(vo.getReviewContent());
+	public String boardPostOk(BoardVO vo, MultipartFile file) {
+		
+		 // 파일 업로드 처리
+        if (file != null && !file.isEmpty()) {
+            try {
+                // 실제 파일을 저장하는 로직 구현 (파일 업로드 경로, 파일명 등 설정)
+                String filePath = "C:\\artconnectFile" + File.separator + file.getOriginalFilename();
+                file.transferTo(new File(filePath));
+
+                // BoardVO에 파일 정보 설정
+                vo.setFile(file);
+                vo.setFilePath(filePath);
+            } catch (IOException e) {
+                // 파일 업로드 중 오류 처리
+                e.printStackTrace();
+                // 오류 발생 시 어떻게 처리할지에 대한 로직 추가
+            }
+        }
+
+
+		
 		dao.boardPostOk(vo);
 		return "redirect:boardList";
 	}
 	
+
 	@RequestMapping("review/boardOne")
 	public void boardOne(int reviewNO, Model model) {
 		//먼저 조회수 증가시킴

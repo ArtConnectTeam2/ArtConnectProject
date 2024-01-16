@@ -2,6 +2,8 @@ package com.multi.artConnect.review;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	private int reviewNO;
 	private String memberID;
@@ -9,7 +11,10 @@ public class BoardVO {
 	private String reviewContent;
 	private Date reviewDate;
 	private int reviewHit;
+	private String reviewFile;
 	
+	private MultipartFile file;
+	private String filePath;
 	
 	public int getReviewNO() {
 		return reviewNO;
@@ -71,12 +76,48 @@ public class BoardVO {
 	}
 
 
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+	public String getReviewFile() {
+		return reviewFile;
+	}
+
+
+	public void setReviewFile(String reviewFile) {
+		this.reviewFile = reviewFile;
+	}
+	
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
 	@Override
 	public String toString() {
 		return "BoardVO [reviewNO=" + reviewNO + ", memberID=" + memberID + ", reviewTitle=" + reviewTitle
 				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", reviewHit=" + reviewHit + "]";
 	}
+
+
 	
+
+	
+
+
+
 	
 	
 
