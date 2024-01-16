@@ -1,0 +1,95 @@
+table {
+width: 100%;
+border-collapse: collapse;
+	}
+
+th, td {
+padding: 5px;
+text-align: center;
+border: 1px solid #ddd;
+	}
+	
+th {
+background-color: #f2f2f2;
+	}
+	
+td {
+height: 15px;
+vertical-align: middle;
+	}
+	
+dd {
+vertical-align: middle;
+margin-bottom: 20px;
+	}
+	
+.prd_info_wrap {
+    display: flex;
+    grid-template-columns: 2fr 1fr;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.thumb {
+    flex: 1.5;
+}
+
+.prd_info {
+	margin-left: 30px;
+    flex: 2;
+}
+
+.prd_info .title h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prd_info dl {
+    margin: 10px 0;
+}
+
+.prd_info dl dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#calendar-header {
+	margin-bottom: 30px;
+}
+
+#calendar-container {
+	flex-direction: column;
+	display: flex;
+	justify-content: start;
+    align-items: center;
+}
+
+#calendar {
+    width: 400px; /* 원하는 너비로 조정하세요 */
+    height: 350px;
+  }
+  
+.reservation-button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #000;
+	color: #fff;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	position: absolute;
+	bottom: 350px;
+	right: 50px;
+}
+
+.navy {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	}
+	
+.pre-page {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	}

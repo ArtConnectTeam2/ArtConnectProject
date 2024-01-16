@@ -58,7 +58,7 @@
                         alt="ArtConnect" style="width: 300px; height: auto;"/></a>
             </h1>
 	<h3 class="pre-page"><a href="${pageContext.request.contextPath}/
-	reservation/gallerySelection.jsp"> << 미술관 목록 </a></h3>
+	reservation/gallerySelection.jsp"> 미술관 목록으로 </a></h3>
          <!-- nav -->
     <nav role="header-nav" class="navy">
 	<ul>
