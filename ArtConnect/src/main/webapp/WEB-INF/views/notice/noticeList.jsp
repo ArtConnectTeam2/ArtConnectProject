@@ -36,8 +36,8 @@
 /* 네비게이션 위치 조정 */
 .navy {
 	position: absolute;
-	top: 70px; /* 원하는 값으로 조정해주세요 */
-	left: 100px; /* 원하는 값으로 조정해주세요 */
+	top: 10px; /* 원하는 값으로 조정해주세요 */
+	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
 
 .navbar-brand {
@@ -90,6 +90,11 @@ td {
 	height: 12px;
 	text-align: center; /* 텍스트를 왼쪽 정렬 */
 }
+
+button.b2 {
+	background-color: #0a0a23;
+	color: #fff;
+}
 </style>
 </head>
 <body>
@@ -99,10 +104,24 @@ td {
 			<!-- nav -->
 			<nav role="header-nav" class="navy">
 				<ul>
-					<li class="nav-active"><a href="index.html" title="Work">전시관</a></li>
-					<li><a href="about.html" title="About">예약</a></li>
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
-					<li><a href="contact.html" title="Contact">예약</a></li>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
+						title="About">예약</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/review/boardList.jsp"
+						title="Blog">커뮤니티</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
+						title="Contact">마이 페이지</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						title="Contact">공지사항</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						title="Contact">QnA</a></li>
 				</ul>
 			</nav>
 			<!-- Navigation -->
@@ -127,16 +146,15 @@ td {
 				<ul>
 					<form class="a1" action="noticeInsert.jsp" method="GET">
 						<input name="name" placeholder="검색어를 입력 하세요.">
-						<button type="submit" class="b1" id="button1">검색</button>
+						<button type="submit" class="btn" style="background-color: pink;" id="button1">검색</button>
 					</form>
-					<button class="b2" id="button2" onclick="redirectToWritePage()">작성</button>
 				</ul>
 			</nav>
 		</div>
-
+		<hr>
 		<table border="1">
 			<tr>
-				<th>연번</th>
+				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
@@ -145,7 +163,7 @@ td {
 			<c:forEach items="${list}" var="vo">
 				<tr>
 					<td>${vo.no}</td>
-					<td>${vo.title}</td>
+					<td><a href="noticeGet?no=${vo.no}">${vo.title}</a></td>
 					<td>${vo.name}</td>
 					<td>${vo.regdate}</td>
 					<td>${vo.hit}</td>
@@ -166,6 +184,10 @@ td {
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
 		</nav>
+		
+		<div>
+			<button type="button" onclick="location.href='noticeInsert.jsp'" class="btn btn-primary">작성</button>
+		</div>
 
 	</main>
 

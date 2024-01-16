@@ -1,29 +1,37 @@
+<%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Qna게시판</title>
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
+<title>QnA 게시판</title>
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
 <!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <!-- font-awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/effects/set2.css" rel="stylesheet"
-	type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/effects/normalize.css" rel="stylesheet"
-	type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/effects/component.css" rel="stylesheet"
-	type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
+	rel="stylesheet" type="text/css">
 <style>
-
 
 /* 네비게이션 위치 조정 */
 .navy {
@@ -38,22 +46,26 @@
 	left: 20px;
 }
 
-.123{
-    display: flex;
-    justify-content: center;
+.123 {
+	display: flex;
+	justify-content: center;
 }
 
-.pagination{
-    display: flex;
-    justify-content: center;
+.pagination {
+	display: flex;
+	justify-content: center;
 }
 
-1234{
-	position: relative;
-	left: 1000px;
+1234
+{
+position
+:
+relative;
+left
+:
+1000px;
 }
-
-.a1{
+.a1 {
 	float: left;
 }
 
@@ -87,18 +99,32 @@ td {
 			<!-- nav -->
 			<nav role="header-nav" class="navy">
 				<ul>
-					<li class="nav-active"><a href="index.html" title="Work">전시관</a></li>
-					<li><a href="about.html" title="About">예약</a></li>
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
-					<li><a href="contact.html" title="Contact">예약</a></li>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
+						title="About">예약</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/review/boardList.jsp"
+						title="Blog">커뮤니티</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
+						title="Contact">마이 페이지</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						title="Contact">공지사항</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						title="Contact">QnA</a></li>
 				</ul>
 			</nav>
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="resources/img/art.png" alt="Your Logo" class="img-fluid"
-						style="max-height: 40px;">
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
 					</a>
 				</div>
 			</nav>
@@ -107,99 +133,38 @@ td {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
-		<h1 style="text-align: center;">QnA게시판</h1>
-		<h5 style="margin-left:100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
+		<h1 style="text-align: center;">질의응답(QnA)게시판</h1>
+		<hr>
+		<h5 style="margin-left: 100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
 
-	<div style="display: flex;">
-		<nav class="123">
-			<ul>
-				<form  class="a1" action="member/noticeInsert">
-					<input name="name" placeholder="검색어를 입력 하세요.">
-				</form>
-				<button class="b1" id="button1">검색</button>
-				<button class="b2" id="button2">작성</button>
-			</ul>
-		</nav>
-	</div>
+		<div style="display: flex;">
+			<nav class="123">
+				<ul>
+					<form class="a1" action="noticeInsert.jsp" method="GET">
+						<input name="name" placeholder="검색어를 입력 하세요.">
+						<button type="submit" class="btn" style="background-color: pink;" id="button1">검색</button>
+					</form>
+				</ul>
+			</nav>
+		</div>
 
 		<table border="1">
 			<tr>
-				<th>연번</th>
+				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach items="${list}" var="vo">
+				<tr>
+					<td>${vo.no}</td>
+					<td><a href="qnaGet?no=${vo.no}">${vo.title}</a></td>
+					<td>${vo.id}</td>
+					<td>${vo.regdate}</td>
+					<td>${vo.hit}</td>
+				</tr>
+			</c:forEach>
 		</table>
 
 		<nav class="pagination" aria-label="...">
@@ -215,6 +180,10 @@ td {
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
 		</nav>
+		
+		<div>
+			<button type="button" onclick="location.href='qnaInsert.jsp'" class="btn btn-primary">작성</button>
+		</div>
 
 	</main>
 
@@ -228,28 +197,49 @@ td {
 	</footer>
 
 	<!-- JavaScript -->
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
 		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
 		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/effects/classie.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
 		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+		type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
+
+	<script>
+		function redirectToWritePage() {
+			// Redirect to the write page URL
+			window.location.href = "${pageContext.request.contextPath}/notice_insert2.jsp";
+		}
+	</script>
 
 </body>
 </html>
