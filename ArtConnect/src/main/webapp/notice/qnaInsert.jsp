@@ -4,12 +4,56 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA작성</title>
+<title>공지사항작성</title>
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
+	type="image/x-icon">
+<!-- Bootstrap -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<!-- style -->
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" type="text/css">
+<!-- Font Awesome -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<!-- font-awesome -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
+	rel="stylesheet" type="text/css">
 <style type="text/css">
+/* 네비게이션 위치 조정 */
+.navy {
+	position: absolute;
+	top: 10px; /* 원하는 값으로 조정해주세요 */
+	right: 10px; /* 원하는 값으로 조정해주세요 */
+}
+
+.navbar-brand {
+	position: absolute;
+	top: 5px;
+	left: 20px;
+}
+
+.login {
+	position: absolute;
+	top: 5px;
+	left: 100px;
+}
+
 header {
 	padding: 10px;
 	text-align: center;
-	}
+}
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
 	width: 30%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
@@ -33,45 +77,141 @@ td {
 th {
 	background-color: #f2f2f2; /* 헤더 배경색 설정 */
 }
-button {
-	background-color: blue;
-	color: white;
-	height: 22px;
-}
 </style>
 </head>
 <body>
-    <header>
-		<h2>QnA 작성</h2>
-    </header>
-    
-	    <div align="center">
+	<header role="header">
+		<div class="container">
+			<!-- nav -->
+			<nav role="header-nav" class="navy">
+				<ul>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
+						title="About">예약</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/review/boardList.jsp"
+						title="Blog">커뮤니티</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
+						title="Contact">마이 페이지</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						title="Contact">공지사항</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						title="Contact">QnA</a></li>
+				</ul>
+				<div class="login">
+					<button class="btn btn-danger" onclick="showLoginModal()">로그인</button>
+				</div>
+			</nav>
+			<!-- Navigation -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
+					</a>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<!-- Main Content -->
+	<main role="main-home-wrapper" class="container">
+		<div align="center">
 			<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
-			<form action="notice_insert">
-			<table border="2" width="200">
-				<tr>
-					<td>연번 : </td>
-					<td><input type="text" name="id"></td>
-				</tr>
-				<tr>
-					<td>글쓴이 : </td>
-					<td><input type="text" name="name"></td>
-				</tr>
-				<tr>
-					<td>제목 : </td>
-					<td><input type="text" name="title"></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<textarea cols="50" rows="20" name="content"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="글쓰기"></td>
-					<td><input type="reset" value="글쓰기취소"></td>
-				</tr>
-			</table>
+			<form action="qnaInsert">
+				<h2>QnA 작성</h2>
+				<hr>
+				<table>
+					<tr>
+						<td>작성자 :</td>
+						<td><input name="id"></td>
+							<!-- 나중에 DB랑 연동되게 수정하기 -->
+					</tr>
+					<tr>
+						<td>제 목 :</td>
+						<td><input type="text" name="title" size="5" maxlength="100"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><textarea name="content" cols="50" rows="20"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<button type="submit" class="btn btn-primary">글쓰기</button>
+						<button type="reset" class="btn btn-primary">취소</button>
+						</td>
+					</tr>
+				</table>
 			</form>
 		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer role="footer" class="bg-light mt-5">
+		<div class="container">
+			<p class="container">
+			<p>COPYRIGHT©멀티캠퍼스 2조. All Rights Reserved</p>
+			<p>본 홈페이지에 게시된 전화번호나 전자우편주소를 영리목적으로 자동 수집·전송하는 행위는 정보통신망법 및
+				개인정보보호법에 의해 처벌됩니다.</p>
+			</p>
+		</div>
+	</footer>
+
+	<!-- JavaScript -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
+		type="text/javascript"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
+		type="text/javascript"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
+		type="text/javascript"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+		type="text/javascript"></script>
+
+	<script>
+		function redirectToWritePage() {
+			// Redirect to the write page URL
+			window.location.href = "noticeList.jsp";
+		}
+	</script>
+
 </body>
 </html>
