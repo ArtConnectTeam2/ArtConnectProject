@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+
+	<select id="myReview"  parameterType="map" resultType="com.multi.artConnect.review.BoardVO">
+		select * from review
+		where memberID = #{memberID}
+	</select>
+	
+		<select id="myReviewList" parameterType="map" resultType="com.multi.artConnect.review.BoardVO">
+    SELECT * FROM review
+    WHERE memberID = #{memberID}
+    ORDER BY reviewNO DESC
+    LIMIT #{start}, #{size}
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+     SELECT COUNT(*) FROM review
+    WHERE memberID = #{memberID}
+	</select>
+	
+</mapper>
+
