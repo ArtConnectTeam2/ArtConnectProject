@@ -8,6 +8,8 @@ public class ReplyVO {
 	private String replyContent;
 	private Date replyDate;
 	private int reviewNO;
+	
+	
 	public int getReplyNO() {
 		return replyNO;
 	}

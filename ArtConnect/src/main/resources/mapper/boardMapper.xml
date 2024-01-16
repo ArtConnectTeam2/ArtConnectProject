@@ -45,5 +45,13 @@
     SELECT COUNT(*) FROM review
 	</select>
 	
+	<!-- boardMapper.xml -->
+	<update id="updateFilePath">
+   	 	UPDATE review
+    	SET reviewFile = #{reviewFile}
+    	WHERE reviewNO = #{reviewNO}
+	</update>
+	
+	
 	
 </mapper>
