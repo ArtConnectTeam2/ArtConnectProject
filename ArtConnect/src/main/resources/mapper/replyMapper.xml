@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+
+    <!-- 특정 게시글에 대한 댓글 목록 불러오기 -->
+    <select id="selectReplies" resultType="replyVO">
+        SELECT * FROM reply WHERE reviewNO = #{reviewNO}
+    </select>
+    
+    <!-- 댓글 추가 -->
+    <insert id="insertReply" parameterType="replyVO">
+        INSERT INTO reply (replyNO, memberID, replyContent, replyDate, reviewNO)
+        VALUES (null, #{memberID}, #{replyContent}, now(), #{reviewNO})
+    </insert>
+
+</mapper>

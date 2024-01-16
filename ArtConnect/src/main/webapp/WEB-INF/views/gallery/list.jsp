@@ -47,6 +47,7 @@
 	type="text/css">
 
 <!-- font-awesome -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 
 <style>
 /* 이미지 크기와 위치 조정 */
@@ -69,18 +70,27 @@
     /* 원하는 스타일 속성을 추가하세요 */
     width: 20px; /* 체크박스의 너비 */
     height: 20px; /* 체크박스의 높이 */
-    margin-right: 5px; /* 체크박스 간격 조정 */
+    margin-right: 10px; /* 체크박스 간격 조정 */
     display: inline-block; /* inline-block으로 설정하여 화면에 표시 */
-    border: 2px solid #000; /* 테두리 스타일 설정 */
+    border: 2px solid #FB5353; /* 테두리 스타일 설정 */
 }
 
 .form-check-input:checked {
-    background-color: #000; /* 체크됐을 때의 배경색 설정 */
-    border: 2px solid #000; /* 체크됐을 때의 테두리 스타일 설정 */
+    background-color: #FB5353; /* 체크됐을 때의 배경색 설정 */
+    border: 2px solid #FB5353; /* 체크됐을 때의 테두리 스타일 설정 */
 }
 
 .form-check-input:not(:checked) {
     background-color: transparent; /* 체크되지 않았을 때의 배경색 설정 */
+}
+
+.gallery-location-label {
+    font-size: 18px; /* 키우고자 하는 글자 크기로 설정하세요 */
+    font-weight: bold; /* 글자를 볼드체로 설정할 수도 있습니다 */
+}
+
+.search-form {
+        margin-bottom: 50px;
 }
 
 </style>
@@ -88,47 +98,8 @@
 </head>
 
 <body>
-	<!-- header -->
 
-	<header role="header">
-
-		<div class="container">
-
-			<!-- logo -->
-
-			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="art connect"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/art.png" title="art connect" alt="art connect" /></a>
-			</h1>
-
-			<!-- nav -->
-			<nav role="header-nav" class="navy">
-
-				<ul>
-
-					<li class="nav-active">
-					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
-
-				</ul>
-
-			</nav>
-			<!-- nav -->
-
-		</div>
-
-	</header>
-
-	<!-- header -->
+<%@ include file="/nav.jsp" %>
 
 	<!-- main -->
 
@@ -162,108 +133,107 @@
         </div>
     </form>
         <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
-</div>
-
+		</div>
 
 			<div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Seoul" id="flexCheckSeoul" onclick="filterData()">
-                <label class="form-check-label" for="flexCheckSeoul">서울</label>
+				<span class="gallery-location-label">Gallery Location</span>
+                <input class="form-check-input check" type="checkbox" value="서울" id="flexCheckSeoul" >
+                <label class="form-check-label" for="flexCheckSeoul">서울시</label>
             </div>
+            
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Gyeonggi" id="flexCheckGyeonggi" onclick="filterData()">
-                <label class="form-check-label" for="flexCheckGyeonggi">경기</label>
+            <span class="gallery-location-label">Closed Day</span>
+                <input class="form-check-input check" type="checkbox" value="Monday" id="flexCheckMonday">
+                <label class="form-check-label" for="flexCheckMonday">월요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Tuesday" id="flexCheckTuesday">
+                <label class="form-check-label" for="flexCheckTuesday">화요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Wednesday" id="flexCheckWednesday">
+                <label class="form-check-label" for="flexCheckWednesday">수요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Thursday" id="flexCheckThursday">
+                <label class="form-check-label" for="flexCheckThursday">목요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Friday" id="flexCheckFriday">
+                <label class="form-check-label" for="flexCheckFriday">금요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Saturday" id="flexCheckSaturday">
+                <label class="form-check-label" for="flexCheckSaturday">토요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Sunday" id="flexCheckSunday">
+                <label class="form-check-label" for="flexCheckSunday">일요일</label>
+                
+                <input class="form-check-input check" type="checkbox" value="Always" id="flexCheckAlways">
+                <label class="form-check-label" for="flexCheckAlways">연중무휴</label>
             </div>
 
             <div id="filteredData">
                 <!-- 여기에 필터링된 데이터를 표시할 div -->
             </div>
 
-            <script>
-                // 전역 변수로 전체 데이터를 저장
-                var allData = <%= new Gson().toJson(request.getAttribute("list")) %>;
+<script>
 
-                function filterData() {
-                    var checkboxes = document.querySelectorAll('.form-check input[type="checkbox"]:checked');
-                    var filterValue = Array.from(checkboxes).map(checkbox => checkbox.value);
+$(function() {
+	   $('.check').on('change', function(){
+	      console.log('filterData is called');
+	      var checkboxes = $('.form-check input[type="checkbox"]:checked');
+	      var filterValues = checkboxes.map(function() {
+	         return this.value;
+	      }).get();
 
-                    // 필터링된 데이터를 가져오기
-                    var filteredData = allData.filter(gallery => filterValue.includes(gallery.galleryLocation));
+	      console.log('==> ' + filterValues[0])
+	      
+	      // 필터링된 데이터를 가져오기 위한 Ajax 호출
+	      $.ajax({
+	         url: "filterData",
+	         data: {
+	            filterValue : filterValues[0], // 필드명을 filterValues로 변경
+	         },
+	         success: function(jsonarr) {
+	            console.log(jsonarr)
+	            displayFilteredData(jsonarr);
+	         },
+	         error: function(err) {
+	            console.error("데이터 필터링 중 오류 발생:", err);
+	         }
+	      });
+	   })
 
-                    // 화면에 표시
-                    displayFilteredData(filteredData);
-                }
+	   function displayFilteredData(jsonarr) {
+	      console.log('displayFilteredData is called with data:', jsonarr);
+	      var filteredDataDiv = $('#filteredData');
 
-                function displayFilteredData(data) {
-                    var filteredDataDiv = document.getElementById('filteredData');
-                    filteredDataDiv.innerHTML = ''; // Clear previous content
+	      filteredDataDiv.empty(); // 이전 내용 지우기
 
-                    data.forEach(gallery => {
-                        filteredDataDiv.innerHTML += `
-                            <div class="thumbnails-pan">
-                                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
-                                    <figure>
-                                        <a href="${pageContext.request.contextPath}/gallery/detail?galleryName=${gallery.galleryName}">
-                                            <img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
-                                        </a>
-                                        <figcaption>
-                                            <h3>${gallery.galleryName}</h3>
-                                            <h5>View more</h5>
-                                        </figcaption>
-                                    </figure>
-                                </section>
-                            </div>
-                        `;
-                    });
-                }
-
-                // 초기 로딩 시 모든 데이터 표시
-                displayFilteredData(allData);
-            </script>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    Default checkbox
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  <label class="form-check-label" for="flexCheckChecked">
-    Checked checkbox
-  </label>
-</div>
-
-
-<%
-    	ArrayList<GalleryVO> list = (ArrayList<GalleryVO>) request.getAttribute("list");
-        for (GalleryVO bag : list) {
-%>
-
-            <div class="thumbnails-pan">
-                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
-                    <figure>
-                    	<a href="${pageContext.request.contextPath}/gallery/detail?galleryName=<%= bag.getGalleryName() %>">
-                        <img src="${pageContext.request.contextPath}/resources/img/gallery/<%= bag.getGalleryImg() %>"  alt="<%= bag.getGalleryName() %> 이미지" class="img-responsive" />
-                        </a>
-                        <figcaption>
-                            <h3><%= bag.getGalleryName() %></h3>
-                            <h5>View more</h5>
-                        </figcaption>
-                    </figure>
-                </section>
-            </div>
-<%
-        }
-%>
-			<!-- thumbnails -->
-
-			<!-- thumbnails -->
+	      jsonarr.forEach(function(gallery) {
+	         console.log(gallery)
+	         console.log(gallery.galleryImg)
+	         filteredDataDiv.append(
+	            '<div class="thumbnails-pan">'+
+	               '<section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">'+
+	                  '<figure>'+
+	                     '<a href=${pageContext.request.contextPath}/gallery/detail?galleryName='+ gallery.galleryName+
+	                        '><img src="${pageContext.request.contextPath}/resources/img/gallery/'+ gallery.galleryImg  +
+	                        ' "alt="+ 이미지" class="img-responsive" /> </a>'+
+	                     ' <figcaption>'+
+	                        ' <h3>'+gallery.galleryName+
+	                        '</h3>'+
+	                        '<h5>View more</h5>'+
+	                     '</figcaption>'+
+	                  '</figure>'+
+	               ' </section>'+
+	            '</div>'
+	         );
+	      });
+	   }
+	});
+	// 초기에 모든 데이터 로딩
+</script>
 
 		</div>
 
 	</main>
-
-	<!-- main -->
 
 	<!-- footer -->
 
@@ -308,27 +278,7 @@
 
 	</footer>
 
-	<!-- footer -->
-
-
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-
-	<!-- custom -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!-- jquery.countdown -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+<%@ include file="/alljs.jsp" %>
 
 </body>
 

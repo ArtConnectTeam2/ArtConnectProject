@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="noticeList">공지사항</a>
+<hr>
+<a href="noticeList">공지사항게시판</a>
+<hr>
+<a href="noticeGet?no=2">공지사항조회</a>
+<hr>
+<a href="noticeModify?no=2">공지사항수정</a>
 </body>
 </html>

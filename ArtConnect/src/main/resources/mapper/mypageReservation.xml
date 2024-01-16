@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservation">
+
+	<select id="myReservation"  parameterType="map" resultType="com.multi.artConnect.reservation.ReservationVO">
+		select * from reservation
+		where memberID = #{memberID}
+	</select>
+	
+
+	
+</mapper>
+

@@ -69,17 +69,10 @@
                 <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
                         alt="ArtConnect" style="width: 300px; height: auto;"/></a>
             </h1>
-        </div>
-    
+                
          <!-- nav -->
     <nav role="header-nav" class="navy">
-	<div id="menu-button" class>
-	<span></span>
-	<span></span>
-	<span></span>
-	"Navigation"
-	</div>
-	<ul class style="display: none;">
+	<ul>
 	<li class="nav-active">
 	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
@@ -94,6 +87,7 @@
 	<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
     </ul>
 	</nav>
+    </div>
     </header>
     <!-- Main Content -->
     <main role="main-inner-wrapper container">
@@ -116,15 +110,10 @@
         <!-- Initial gallery display will be loaded here -->
         </div>
     </footer>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-    <!-- Custom Scripts -->
     <script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-    <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- HTML5 Shiv -->
     <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
 </body>
 

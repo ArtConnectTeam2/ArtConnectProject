@@ -35,6 +35,12 @@
 	height: 40px;
 	font-size: 20px;
 	  }
+	
+	.navy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+	}
 	</style>
 </head>
 <script type="text/javascript">
@@ -48,6 +54,8 @@
 			});
 					
 		})
+		
+
 </script>
 <body>
 
@@ -94,10 +102,10 @@
                             <a class="nav-link" href="#">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">내 예약</a>
+                            <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">내 리뷰</a>
+                            <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">좋아요</a>
@@ -132,6 +140,7 @@
 				</tr>
 				<br>
 				<br>
+				
 			</form>
 			       </div>
             </div>

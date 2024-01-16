@@ -18,7 +18,8 @@
 <!-- Font Awesome -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css"> <!-- font-awesome -->
+	rel="stylesheet" type="text/css">
+<!-- font-awesome -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
 	rel="stylesheet" type="text/css">
@@ -29,6 +30,25 @@
 	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
 	rel="stylesheet" type="text/css">
 <style type="text/css">
+/* 네비게이션 위치 조정 */
+.navy {
+	position: absolute;
+	top: 10px; /* 원하는 값으로 조정해주세요 */
+	right: 10px; /* 원하는 값으로 조정해주세요 */
+}
+
+.navbar-brand {
+	position: absolute;
+	top: 5px;
+	left: 20px;
+}
+
+.login {
+	position: absolute;
+	top: 5px;
+	left: 100px;
+}
+
 header {
 	padding: 10px;
 	text-align: center;
@@ -57,39 +77,95 @@ td {
 th {
 	background-color: #f2f2f2; /* 헤더 배경색 설정 */
 }
-
-
 </style>
 </head>
 <body>
-	<header>
-		<h2>공지사항 작성</h2>
+	<header role="header">
+		<div class="container">
+			<!-- nav -->
+			<nav role="header-nav" class="navy">
+				<ul>
+					<li class="nav-active"><a
+						href="${pageContext.request.contextPath}/gallery/list"
+						title="Work">전시관 조회 및 검색</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
+						title="About">예약</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/review/boardList.jsp"
+						title="Blog">커뮤니티</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
+						title="Contact">마이 페이지</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						title="Contact">공지사항</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						title="Contact">QnA</a></li>
+				</ul>
+				<div class="login">
+					<button class="btn btn-danger" onclick="showLoginModal()">로그인</button>
+				</div>
+			</nav>
+			<!-- Navigation -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
+						src="${pageContext.request.contextPath}/resources/img/art.png"
+						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
+					</a>
+				</div>
+			</nav>
+		</div>
 	</header>
 
-	<div align="center">
-		<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
-		<form action="noticeInsert">
-		<table>
-			<input type="hidden" name="id" value="admin">
-				<tr>
-					<td>글쓴이 :</td>
-					<td><input type="text" name="name" value="관리자"></td>
-				</tr>
-				<tr>
-					<td>제목 :</td>
-					<td><input type="text" name="title"></td>
-				</tr>
-				<tr>
-					<td colspan="2"><textarea cols="50" rows="20" name="content"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td><button type="submit">글쓰기</button></td>
-					<td><input type="reset" value="글쓰기취소"></td>
-				</tr>
-			</tabl>
-		</form>
-	</div>
+	<!-- Main Content -->
+	<main role="main-home-wrapper" class="container">
+		<div align="center">
+			<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
+			<form action="noticeInsert">
+				<h2>공지사항 작성</h2>
+				<hr>
+				<table>
+					<input name="id" value="admin" type="hidden">
+					<tr>
+						<td>글쓴이 :</td>
+						<td><input name="name" value="관 리 자"></td>
+					</tr>
+					<tr>
+						<td>제 목 :</td>
+						<td><input type="text" name="title" size="5" maxlength="100"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><textarea name="content" cols="50" rows="20"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<button type="submit" class="btn btn-primary">글쓰기</button>
+						<button type="reset" class="btn btn-primary">취소</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer role="footer" class="bg-light mt-5">
+		<div class="container">
+			<p class="container">
+			<p>COPYRIGHT©멀티캠퍼스 2조. All Rights Reserved</p>
+			<p>본 홈페이지에 게시된 전화번호나 전자우편주소를 영리목적으로 자동 수집·전송하는 행위는 정보통신망법 및
+				개인정보보호법에 의해 처벌됩니다.</p>
+		</div>
+	</footer>
 
 	<!-- JavaScript -->
 	<script

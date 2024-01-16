@@ -35,9 +35,11 @@
 
 					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
+
 					<li><a href="${pageContext.request.contextPath}/notice/noticeList.jsp" title="Contact">공지사항</a></li>
 					
 					<li><a href="${pageContext.request.contextPath}/notice/qnaList.jsp" title="Contact">QnA</a></li>
+
 
 				</ul>
 				
@@ -64,4 +66,6 @@
 
 	</header>
 
+
 	<!-- header -->
+
