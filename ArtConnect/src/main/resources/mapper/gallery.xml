@@ -1,31 +1,52 @@
-<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="gallery">
 	<select id="list" resultType="galleryVO">
-		select * from gallery order by galleryID
+		select * from gallery order by
+		galleryID
 	</select>
-	
-    <select id="search" parameterType="String" resultType="galleryVO">
-        select * from gallery WHERE galleryName LIKE CONCAT('%', #{galleryName}, '%')
-    </select>
-    
-    <select id="detail" parameterType="String" resultType="galleryVO">
-        select * from gallery WHERE galleryName = #{galleryName}
-    </select>
-    
-   	<select id="location" parameterType="String" resultType="galleryVO">
-		select lat, lon from gallery where galleryName = #{galleryName}
+
+	<select id="search" parameterType="String"
+		resultType="galleryVO">
+		select * from gallery where galleryName LIKE CONCAT('%',
+		#{galleryName},
+		'%')
 	</select>
-	
-	 좋아요 추가
+
+	<select id="detail" parameterType="String"
+		resultType="galleryVO">
+		select * from gallery where galleryName = #{galleryName}
+	</select>
+
+	<select id="location" parameterType="String"
+		resultType="galleryVO">
+		select lat, lon from gallery where galleryName =
+		#{galleryName}
+	</select>
+
+	<!--  좋아요 추가 -->
     <insert id="like" parameterType="map">
-        insert into likes (memberID, galleryID) values (#{memberID}, #{galleryID})
+        insert into likes (memberID, galleryID, galleryName) values (#{memberID}, #{galleryID}, #{galleryName})
     </insert>
     
-     좋아요 삭제
-    <delete id="unlike" parameterType="map">
+     <!-- 좋아요 삭제 -->
+    <delete id="cancleLike" parameterType="map">
         delete from likes where memberID = #{memberID} and galleryID = #{galleryID}
     </delete>
-</mapper> -->
+    
+    <!-- 좋아요 체크 -->
+    <select id="likeCheck" parameterType="map" resultType="int">
+    SELECT COUNT(*) FROM likes
+    WHERE memberID = #{memberID} AND galleryID = #{galleryID}
+	</select>
+
+	<select id="filterData" resultType="galleryVO"
+		parameterType="String">
+		select * from gallery
+		where galleryLocation like concat('%', #{filterValue}, '%')
+		or closedDay like concat('%', #{filterValue}, '%')
+	</select>
+
+</mapper>
