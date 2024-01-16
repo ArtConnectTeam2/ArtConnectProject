@@ -75,10 +75,10 @@ button {
 }
 
 .navy {
-	position: fixed;
-	top: 70px; /* 원하는 값으로 조정해주세요 */
-	left: 100px; /* 원하는 값으로 조정해주세요 */
-}
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
 </style>
 </head>
 <body>
