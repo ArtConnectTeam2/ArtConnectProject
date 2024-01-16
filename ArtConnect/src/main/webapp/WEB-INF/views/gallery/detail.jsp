@@ -7,151 +7,13 @@
 <html>
 
 <head>
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<meta charset="utf-8">
-
-<!-- Description, Keywords and Author -->
-
-<meta name="description" content="">
-
-<meta name="author" content="">
-
-<title>:: 미술관 상세 정보 페이지 ::</title>
-
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
-
-<!-- style -->
-
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet" type="text/css">
-
-<!-- style -->
-
-<!-- bootstrap -->
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-
-<!-- responsive -->
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/responsive.css"
-	rel="stylesheet" type="text/css">
-
-<!-- font-awesome -->
-
-<link href="${pageContext.request.contextPath}/resources/css/fonts.css"
-	rel="stylesheet" type="text/css">
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-
-<!-- font-awesome -->
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
-	rel="stylesheet" type="text/css">
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
-	rel="stylesheet" type="text/css">
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
-	rel="stylesheet" type="text/css">
-
-<style>
-/* 이미지 크기와 위치 조정 */
-#logo-image {
-	max-width: 500px; /* 원하는 크기로 조절 */
-	position: absolute;
-	top: 10px; /* 이미지를 아래로 내리고 싶다면 값을 늘리세요 */
-	left: 650px; /* 이미지를 오른쪽으로 이동하려면 값을 늘리세요 */
-}
-
-/* 네비게이션 위치 조정 */
-.navy {
-	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
-}
-
-button {
-	cursor: pointer;
-}
-</style>
-
+<!-- css 스타일  -->
+<%@ include file="/header.jsp"%>
 </head>
 
 <body>
-
-	<!-- header -->
-
-	<header role="header">
-
-		<div class="container">
-
-			<!-- logo -->
-
-			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp"
-					title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png"
-					title="avana LLC" alt="avana LLC" /></a>
-			</h1>
-
-			<!-- logo -->
-
-			<!-- nav -->
-
-			<nav role="header-nav" class="navy">
-
-				<ul>
-
-					<li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/main.jsp"
-						title="Work">메인 화면으로 돌아가기</a></li>
-
-					<li><a href="about.html" title="About">예약</a></li>
-
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
-
-					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
-
-				</ul>
-
-
-					<li class="nav-active">
-					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
-					</ul>
-
-			</nav>
-
-			<!-- nav -->
-
-		</div>
-
-	</header>
-
-	<!-- header -->
-
+	<!-- nav, logo UI가 달라질 경우 이 부분을 변경해주세요 -->
+	<%@ include file="/nav.jsp"%>
 
 	<!-- main -->
 
@@ -163,7 +25,7 @@ button {
 				<div class="col-xs-12 col-sm-12 col-md-5">
 					<header role="work-title">
 						<h2>${gallery.galleryName}</h2>
-						<a href="#">Visit online Homepage<i
+						<a href="${gallery.homepageAddress}">Visit online Homepage<i
 							class="fa fa-external-link" aria-hidden="true"></i></a>
 						<div style="margin-top: 20px;">
 							<img
@@ -190,39 +52,16 @@ button {
 
 						<p>
 							<strong>Like! :</strong><br />
-							<button id="likeButton" onclick="likeGallery()">Like</button>
+							<button id="likeButton">Like</button>
 						</p>
+						<strong id="likeMessage"></strong>
+						<br>
 
 
-                <!-- work details -->
-                	<div class="work-details">
-                        <div class="row">
-                        	<div class="col-xs-12 col-sm-12 col-md-5">
-                            	<header role="work-title">
-                                	<h2>${gallery.galleryName}</h2>
-                                    <a href="${gallery.homepageAddress}">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
-                                    <div style="margin-top: 20px;">
-                                    	<img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" />
-                               		</div>
-                                </header>
-                            </div>
-                            
-                            <div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
-                            	<section>
-                            	
-                                	<p>
-                                	<strong>Location of Art Museum : </strong> ${gallery.galleryLocation} <br/>
-									<strong>Opening hours of Museum : </strong> ${gallery.galleryOpentime} - ${gallery.galleryClosetime} <br/>
-									<strong>Closed Day : </strong>${gallery.closedDay}<br/>
-									<strong>Contact : </strong>${gallery.galleryTel}<br/>
-                                	</p>
-                                	
-                                    <p><strong>Add later :</strong><br/>
 
 					</section>
 				</div>
 			</div>
-
 
 			<div class="clearfix"></div>
 
@@ -242,24 +81,24 @@ button {
 				<script type="text/javascript"
 					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79876cb9142b1dc6b254e0869dd8bd91"></script>
 				<script type="text/javascript">
-									var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-									var options = { //지도를 생성할 때 필요한 기본 옵션
-									center: new kakao.maps.LatLng(${gallery.lat}, ${gallery.lon}), //지도의 중심좌표.
-									level: 3 //지도의 레벨(확대, 축소 정도)
-									};
-									var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-									
-									// 마커가 표시될 위치입니다 
-								    var markerPosition = new kakao.maps.LatLng(${gallery.lat},${gallery.lon});
+                           var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                           var options = { //지도를 생성할 때 필요한 기본 옵션
+                           center: new kakao.maps.LatLng(${gallery.lat}, ${gallery.lon}), //지도의 중심좌표.
+                           level: 3 //지도의 레벨(확대, 축소 정도)
+                           };
+                           var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+                           
+                           // 마커가 표시될 위치입니다 
+                            var markerPosition = new kakao.maps.LatLng(${gallery.lat},${gallery.lon});
 
-								    // 마커를 생성합니다
-								    var marker = new kakao.maps.Marker({
-								        position: markerPosition
-								    });
+                            // 마커를 생성합니다
+                            var marker = new kakao.maps.Marker({
+                                position: markerPosition
+                            });
 
-								    // 마커가 지도 위에 표시되도록 설정합니다
-								    marker.setMap(map);
-								</script>
+                            // 마커가 지도 위에 표시되도록 설정합니다
+                            marker.setMap(map);
+                        </script>
 
 				<div class="work-program">
 					<div class="row">
@@ -339,70 +178,90 @@ button {
 	<!-- footer -->
 
 
+	<!-- Java Script -->
+	<%@ include file="/alljs.jsp"%>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
-		type="text/javascript"></script>
-
-	<!-- custom -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
-		type="text/javascript"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
-
-	<!-- jquery.countdown -->
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
-		type="text/javascript"></script>
-
+	<!-- Like 관련 스크립트 -->
 	<script>
-	$(function() {
-		// Like 버튼 클릭시
-		$("#likeButton").click(function() {
-			$.ajax({
-				url: "/gallery/like",
-				type: "POST",
-				data: {
-					memberID: 'session.getAttribute("memberID")',
-					galleryID: '${gallery.lon}''
-					
-				}
-			})
-		})
-	})
-}
+	 $(document).ready(function() {
+	        var likeButton = $("#likeButton");
+	        var likeMessage = $("#likeMessage");
+	        
+	        // 좋아요 상태 가져오기
+	        $.ajax({
+	            url: "likeCheck",  
+	            type: "POST",
+	            data: {
+	                galleryID: '${gallery.galleryID}',
+	                galleryName: '${gallery.galleryName}'
+	            },
+	            success: function(response) {
+	                if (response === "liked") {
+	                    likeButton.text("Cancel Like");
+	                    likeMessage.text("이미 좋아요한 항목입니다.");
+	                } else {
+	                    likeButton.text("Like");
+	                    likeMessage.text("*Like를 누르시면 마이페이지에 추가됩니다.");
+	                }
+	            },
+	            error: function(error) {
+	                console.error("Error: " + error);
+	            }
+	        });
 
-	
+	        // Like 버튼 클릭시
+	        $("#likeButton").click(function() {
+	            // Like 버튼 클릭시
+	            var likeButton = document.getElementById('likeButton');
+
+	            if (likeButton.innerText === 'Like') {
+	                // Like 버튼 클릭 처리
+	                $.ajax({
+	                    url: "like",
+	                    type: "POST",
+	                    data: {
+	                        galleryID: '${gallery.galleryID}',
+	                        galleryName: '${gallery.galleryName}'
+	                    },
+	                    success: function(response) {
+	                        alert("좋아요 등록되었습니다");
+	                        likeButton.innerText = 'Cancel Like';
+
+	                        var likeMessage = $("#likeMessage");
+	                        likeMessage.text("마이페이지에 추가되었습니다.");
+	                    },
+	                    error: function(error) {
+	                        console.error("Error 발생: " + error);
+	                        if (error.status === 500) {
+	                            alert("로그인 후 이용가능합니다.");
+	                        } else {
+	                            alert("에러!");
+	                        }
+	                    }
+	                });
+	            } else {
+	                // Cancel Like 버튼 클릭 처리
+	                $.ajax({
+	                    url: "cancleLike",
+	                    type: "POST",
+	                    data: {
+	                        galleryID: '${gallery.galleryID}',
+	                        galleryName: '${gallery.galleryName}'
+	                    },
+	                    success: function(response) {
+	                        alert("좋아요를 취소했습니다");
+	                        likeButton.innerText = 'Like';
+
+	                        var likeMessage = $("#likeMessage");
+	                        likeMessage.text("삭제함");
+	                    },
+	                    error: function(error) {
+	                        console.error("Error: " + error);
+	                    }
+	                });
+	            }
+	        });
+	    });
 </script>
 
 </body>
