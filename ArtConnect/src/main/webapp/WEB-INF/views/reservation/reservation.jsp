@@ -11,108 +11,52 @@
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!-- Custom CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/
+	reservation/style.reservation.css"	rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
 <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Responsive CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-<!-- FullCalendar CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
-<!-- FullCalendar JavaScript 및 의존성 라이브러리(jQuery) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale-all.js"></script>
-<style type="text/css">
-dd {
-vertical-align: middle;
-margin-bottom: 20px;
-	}
-.prd_info_wrap {
-    display: flex;
-    grid-template-columns: 2fr 1fr;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-.thumb {
-    flex: 1.5;
-}
-.prd_info {
-	margin-left: 30px;
-    flex: 2;
-}
-.prd_info .title h3 {
-    font-size: 20px;
-    font-weight: bold;
-}
-.prd_info dl {
-    margin: 10px 0;
-}
-.prd_info dl dt {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-#calendar {
-    width: 30%; /* 원하는 너비로 조정하세요 */
-    height: 40%; /* 원하는 높이로 조정하세요 */
-    float: right;
-  }
-.fc-day {
-        height: 10px; /* 원하는 높이로 조정하세요 */
-    }
-.reservation-button {
-	display: inline-block;
-	padding: 10px 20px;
-	background-color: #000;
-	color: #fff;
-	border-radius: 10px;
-	text-decoration: none;
-	cursor: pointer;
-	position: absolute;
-	bottom: 450px;
-	right: 100px;
-}
-</style>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js" type="text/javascript"></script>
 <title>예약 페이지</title>
-<script>
-    $(document).ready(function () {
-        // FullCalendar 초기화
-        $('#calendar').fullCalendar({
-            // 달력 옵션 및 설정
-            defaultView: 'month', // 기본 뷰를 'month'로 설정
-            header: {
-                left: 'prev',
-                center: 'title',
-                right: 'next'
-            },
-            locale: 'ko', // 한국어로 설정
-            events: [
-                // 이벤트 데이터를 동적으로 추가 (program.programStart 및 program.programEnd에 맞게 수정)
-                {
-                    title: '${program.programTitle}',
-                    start: '${program.programStart}', // 시작 날짜
-                    end: '${program.programEnd}',     // 종료 날짜
-                    url: '#'                          // 클릭 시 이동할 URL
-                }
-            ]
-        });
-    });
-</script>
+
 </head>
 <body>
 	<header role="header">
         <div class="container">
             <!-- Logo -->
             <h1>
+                <a href="${pageContext.request.contextPath}/gallery/main.jsp">
                 <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-                        alt="ArtConnect" style="width: 300px; height: auto;"/>
+                        alt="ArtConnect" style="width: 300px; height: auto;"/></a>
             </h1>
-        </div>
+			<h3 class="pre-page"><a href="${pageContext.request.contextPath}/
+				reservation/programSelection/${gallery.galleryID}"> 전시 목록으로 </a></h3>
+    <!-- nav -->
+    <nav role="header-nav" class="navy">
+	<ul>
+	<li>
+	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+
+	<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					
+	<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					
+	<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+    </ul>
+	</nav>
+	<!-- nav -->
+    </div>
     </header>
     <footer role="footer" style="margin: 0 20px;">
     <div class="thumbnails-pan" style="font-size: 20px;">
 	<h1 style="margin-top: -80px; margin-left: 10px">예약 페이지</h1> <br>
 	<h2 style="margin-left: 30px">${gallery.galleryName}</h2> <br>
-<div class="prd_info_wrap">
+	<div class="prd_info_wrap">
     <div class="thumb" style="text-align: center;">
         <img src="${pageContext.request.contextPath}/${program.programImg}" alt="Program Image"
         style="width: 350px; height: auto;">
@@ -163,10 +107,161 @@ margin-bottom: 20px;
             <dd>${program.programTel}</dd>
         </dl>
     </div> <!-- prd_info -->
-    <div id="calendar"></div>
+    
+    <!-- calendar -->
+    <div id = "calendar-container">
+    <div id = "calendar-header">
+    	<button id="prev-month">＜</button>
+    	<span id="calendar-title"></span>
+    	<button id="next-month">＞</button>
+	</div>
+    <table id = "calendar">
+		<thead>
+            <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 달력 함수 호출 부분 -->
+        </tbody>
+    </table>
+    </div> <!-- calendar-container -->
 	</div> <!-- prd_info_wrap -->
 	<button class="reservation-button">예약하기</button>
 	</div> <!-- thumbnails-pan -->
 	</footer>
+	<script>
+	
+	// 초기 연도, 월, 일
+	var initial = new Date();
+	var initialYear = initial.getFullYear();
+	var initialMonth = initial.getMonth()+1;
+	var initialDate = initial.getDate()+5;
+	
+	// 현재 연도, 월, 일
+	var currentYear = initialYear;
+	var currentMonth = initialMonth;
+	var currentDate = initialDate;
+	
+	// 오늘의 날짜를 업데이트하는 함수
+	function updateToday() {
+		var today = new Date();
+		var initialYear = today.getFullYear();
+		var initialMonth = today.getMonth()+1;
+		var initialDate = today.getDate()+5;
+	}
+	
+	// 달력 만드는 함수
+	function createCalendar(year, month) {
+		updateToday();
+		
+		var firstDay = new Date(year, month, 1);
+		var lastDay = new Date(year, month + 1, 0);
+		var daysInMonth = lastDay.getDate();
+		var startingDay = firstDay.getDay(); // 월의 첫째 날에 대한 요일 (0(일)~6(토))
+
+		var tableBody = document.getElementById("calendar").getElementsByTagName('tbody')[0];
+		tableBody.innerHTML = ''; // 이전 내용 초기화
+
+		var date = 1; // 이번 달의 시작 날짜
+		var nextDate = 1; // 다음 달의 시작 날짜
+		
+		// 각 주의 바깥 루프
+		for (var i = 0; i < 6; i++) {
+    		var row = tableBody.insertRow(i);
+
+    	// 각 일의 안쪽 루프
+    		for (var j = 0; j < 7; j++) {
+        		var cell = row.insertCell(j);
+
+        		if (i === 0 && j < startingDay) {
+                    cell.innerHTML = "";
+        		} else if (date > daysInMonth) {
+        			cell.innerHTML = nextDate;
+        			
+        			// 날짜가 오늘로부터 2주 이내인 경우 클릭 이벤트 추가
+					var nextDateObj = new Date(year, month + 1, nextDate);
+        			var today = new Date(initialYear, initialMonth, currentDate);
+        			var diffTime = Math.abs(nextDateObj - today);
+        			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        			
+        			if (diffDays <= 13) {
+        				cell.style.fontWeight = "bold";  // 글씨를 굵게
+        				cell.style.background = "white";  // 배경을 흰색으로
+        				
+        				cell.addEventListener('click', function() {
+        					// 클릭 이벤트 핸들러 코드 작성
+        					console.log('날짜를 클릭했습니다.');
+        					});
+        				} else {
+                	          cell.style.background = "lightgray";  // 배경을 옅은 회색으로
+              	        }
+            			nextDate++;
+        			} else {
+        			cell.innerHTML = date;
+        			
+        			// 날짜가 오늘로부터 2주 이내인 경우 클릭 이벤트 추가
+        	        if (year === initialYear && month === initialMonth && date >= currentDate && date <= currentDate + 13) {
+        	          cell.style.fontWeight = "bold";  // 글씨를 굵게
+        	          cell.style.background = "white";  // 배경을 흰색으로
+
+        	          cell.addEventListener('click', function() {
+        	            // 클릭 이벤트 핸들러 코드 작성
+        	            console.log('날짜를 클릭했습니다.');
+        	          });
+        	        } else {
+        	          cell.style.background = "lightgray";  // 배경을 옅은 회색으로
+        	        }
+        			date++;
+        		} // if-else if-else
+    		} // for 안쪽 루프
+		} // for 바깥 루프
+		
+		// 달력 헤더에 연도와 월 표시
+		document.getElementById("calendar-title").innerText = year + "년 " + (month + 1) + "월";
+	} // function createCalendar
+	
+	// 달을 변경하는 함수
+	function changeMonth(increment) {
+		currentMonth += increment;
+		
+		if (currentMonth < 0) {
+			currentMonth = 11;
+			currentYear--;
+		} else if (currentMonth > 11) {
+			currentMonth = 0;
+			currentYear++;
+		}
+		createCalendar(currentYear, currentMonth);
+	}
+	
+	// 이전 달로 이동하는 함수
+	function prevMonth() {
+		changeMonth(-1);
+	}
+		
+	// 다음 달로 이동하는 함수
+	function nextMonth() {
+		changeMonth(+1);
+	}
+	
+	// 버튼 클릭 이벤트 설정
+	document.getElementById("prev-month").addEventListener("click", prevMonth);
+	document.getElementById("next-month").addEventListener("click", nextMonth);
+
+	// 2024년 1월 생성하기
+	createCalendar(currentYear, currentMonth);
+	
+	</script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
 </body>
 </html>
