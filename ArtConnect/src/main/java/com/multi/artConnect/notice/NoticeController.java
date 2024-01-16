@@ -1,5 +1,6 @@
 package com.multi.artConnect.notice;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,7 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 	
-	@RequestMapping("notice/noticeInsert")
-	public String insert(NoticeVO noticeVO) {
-		service.insert(noticeVO);
-		return "redirect:noticeList";
-	}
-	
+	//공지사항 목록
 	@RequestMapping("notice/noticeList")
 	public void noticeList(Model model) {
 		List<NoticeVO> list= service.list();
@@ -28,4 +24,47 @@ public class NoticeController {
 		//model이다.
 		model.addAttribute("list",list );
 	}
+	
+	//공지사항 입력
+	@RequestMapping("notice/noticeInsert")
+	public String insert(NoticeVO noticeVO) {
+		service.insert(noticeVO);
+		return "redirect:noticeList";
+	}
+	
+	//공지사항 조회
+	@RequestMapping("notice/noticeGet")
+	public String getpage(NoticeVO noticeVO, Model model) {	
+		NoticeVO vo = service.getpage(noticeVO.getNo());
+		model.addAttribute("vo", vo);		
+		return "notice/noticeGet";}
+	
+	//공지사항 수정1
+	@RequestMapping("notice/noticeModify")
+	//수정할 내용을 DB검색해서 가지고 온 후 JSP에 넣어준다.
+	public String modify(NoticeVO noticeVO, Model model) {	
+		NoticeVO vo = service.getpage(noticeVO.getNo());
+		model.addAttribute("vo", vo);		
+		return "notice/noticeModify";
+	}
+	
+	//공지사항 수정2
+	@RequestMapping("notice/noticeModify2")
+	//수정할 내용을 DB검색해서 가지고 온 후 JSP에 넣어준다.
+	public String modify2(NoticeVO noticeVO, Model model) {	
+		service.modify2(noticeVO);			
+		return "redirect:noticeList";
+	}
+	
+	//공지사항 삭제
+	@RequestMapping("notice/noticeDel") //jsp href=noticeDel?no=10"
+	//noticeVO no ??
+	//setNo(10)
+	public String del(int no, Model model) {	
+		service.del(no);
+		return "redirect:noticeList";
+	//	return String "redirect:noticeList" views/notice/noticeList.jsp
+	//retrun void -> spring view resolver -> views/notice/noticeDel.jsp
+	}
+
 }
