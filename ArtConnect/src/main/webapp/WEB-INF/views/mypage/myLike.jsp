@@ -13,7 +13,7 @@
 <%@ include file="/header.jsp"%>
 </head>
 <body>
-<%@ include file="/logoMypage.jsp"%>
+	<%@ include file="/logoMypage.jsp"%>
 	<!-- 사이드 마이페이지 탭 -->
 	<div class="container">
 		<div class="row">
@@ -51,8 +51,10 @@
 							<c:forEach var="likeInfo" items="${likesList}">
 								<tr>
 									<td>${likeInfo.likesNO}</td>
-									<td>${likeInfo.galleryName}</td>
-									
+									<td><a
+										href="${pageContext.request.contextPath}/gallery/detail?galleryName=${likeInfo.galleryName}">
+											${likeInfo.galleryName} </a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
