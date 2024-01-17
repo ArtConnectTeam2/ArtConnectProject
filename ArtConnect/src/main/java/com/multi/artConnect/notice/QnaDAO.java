@@ -36,6 +36,11 @@ public class QnaDAO {
 	public void del(int no) {
 			my.delete("qna.delete", no);
 	}
+	
+	//QnA 조회수증가
+	public void hit(int no) {
+			my.update("qna.updateHit", no);
+	}
 		
 }
 	

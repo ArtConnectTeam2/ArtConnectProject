@@ -35,6 +35,7 @@ public class QnaController {
 	@RequestMapping("notice/qnaGet")
 	public String getpage(QnaVO qnaVO, Model model) {	
 		QnaVO vo = service.getpage(qnaVO.getNo());
+		service.hit(qnaVO.getNo());
 		model.addAttribute("vo", vo);		
 		return "notice/qnaGet";}
 	
@@ -59,6 +60,13 @@ public class QnaController {
 	@RequestMapping("notice/qnaDel")
 	public String del(int no, Model model) {	
 		service.del(no);
+		return "redirect:qnaList";
+	}
+	
+	//QnA 조회수증가
+	@RequestMapping("notice/qnaHit")
+	public String hit(int no, Model model) {	
+		service.hit(no);
 		return "redirect:qnaList";
 	}
 	

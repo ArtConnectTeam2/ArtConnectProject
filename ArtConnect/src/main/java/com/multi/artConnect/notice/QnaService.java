@@ -39,4 +39,9 @@ public class QnaService {
 		dao.del(no);
 	}
 	
+	//QnA 조회수증가
+	public void hit(int no) {
+		dao.hit(no);
+	}
+	
 }

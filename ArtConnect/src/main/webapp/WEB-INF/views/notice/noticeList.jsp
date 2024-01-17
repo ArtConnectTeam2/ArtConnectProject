@@ -46,7 +46,7 @@
 	left: 20px;
 }
 
-.123 {
+.nav123 {
 	display: flex;
 	justify-content: center;
 }
@@ -140,18 +140,14 @@ button.b2 {
 	<main role="main-home-wrapper" class="container mt-5">
 		<h1 style="text-align: center;">공지사항</h1>
 		<h5 style="margin-left: 100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
-
-		<div style="display: flex;">
-			<nav class="123">
+		
+			<nav class="nav123">
 				<ul>
 					<form class="a1" action="noticeInsert.jsp" method="GET">
 						<input name="name" placeholder="검색어를 입력 하세요.">
-						<button type="submit" class="btn" style="background-color: pink;" id="button1">검색</button>
-					</form>
+						<button type="submit" class="btn" style="background-color: pink;" id="button1">검색</button></form>
 				</ul>
 			</nav>
-		</div>
-		<hr>
 		<table border="1">
 			<tr>
 				<th>번호</th>
