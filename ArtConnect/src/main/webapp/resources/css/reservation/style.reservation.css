@@ -22,7 +22,7 @@ dd {
 vertical-align: middle;
 margin-bottom: 20px;
 	}
-	
+
 .prd_info_wrap {
     display: flex;
     grid-template-columns: 2fr 1fr;
@@ -53,7 +53,23 @@ margin-bottom: 20px;
     margin-bottom: 5px;
 }
 
+#calendar-title {
+	display:inline-block;
+	width: 171px;
+	text-align: center;
+}
+
+#prev-month, #next-month {
+	margin-right: 15px;
+	margin-left: 15px;
+	border: none;
+	background-color: fff;
+	font-size: 40px;
+}
+
 #calendar-header {
+	font-weight: bolder;
+	font-size: 30px;
 	margin-bottom: 30px;
 }
 
@@ -61,25 +77,41 @@ margin-bottom: 20px;
 	flex-direction: column;
 	display: flex;
 	justify-content: start;
-    align-items: center;
+	align-items: center;
 }
 
 #calendar {
     width: 400px; /* 원하는 너비로 조정하세요 */
     height: 350px;
   }
-  
+
+#date {
+	padding: 10px 20px;
+	background-color: #000;
+	color: #fff;
+	border-radius: 10px;
+	text-decoration: none;
+	margin-top: 15px;
+	margin-right: 150px;
+	width: 235px;
+	text-align: center;
+}
+
+#message {
+	margin-top: 15px;
+	margin-right: 150px;
+	font-weight: bold;
+}
+
 .reservation-button {
-	display: inline-block;
 	padding: 10px 20px;
 	background-color: #000;
 	color: #fff;
 	border-radius: 10px;
 	text-decoration: none;
 	cursor: pointer;
-	position: absolute;
-	bottom: 350px;
-	right: 50px;
+	margin-top: 25px;
+	margin-right: -250px;
 }
 
 .navy {

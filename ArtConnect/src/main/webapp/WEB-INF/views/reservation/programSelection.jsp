@@ -62,8 +62,7 @@
          <!-- nav -->
     <nav role="header-nav" class="navy">
 	<ul>
-	<li class="nav-active">
-	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
+	<li><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
 
 	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
@@ -99,12 +98,10 @@
                         <tbody>
                             <c:forEach var="program" items="${listProgram}">
                                 <tr class="program-row">
-                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/
-                                    ${program.galleryID}/${program.programID}">
-                                    <img src="${pageContext.request.contextPath}/${program.programImg}"
+                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/${program.galleryID}/${program.programID}">
+                                    <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
                                     alt="Program Image" style="width: 200px; height: auto;"></a></td>
-                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/
-                                    ${program.galleryID}/${program.programID}">
+                                    <td><a href="${pageContext.request.contextPath}/reservation/reservation/${program.galleryID}/${program.programID}">
                                     ${program.programTitle}</a></td>
                                     <td>${program.artist}</td>
                                     <td>

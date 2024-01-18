@@ -11,13 +11,23 @@
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!-- Custom CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/
-	reservation/style.reservation.css"	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/reservation/style.reservation.css"	rel="stylesheet" type="text/css">
 <!-- Font Awesome -->
 <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Responsive CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js" type="text/javascript"></script>
+
+<!-- js로 gallery 정보 보내기 -->
+<script>
+    let gallery = {
+        galleryOpentime: '<fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/>',
+        galleryClosetime: '<fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/>'
+    };
+    let closedDay = '${gallery.closedDay}';
+</script>
+
+<script src="${pageContext.request.contextPath}/resources/js/reservation/calendar.js"></script>
 <title>예약 페이지</title>
 
 </head>
@@ -58,7 +68,7 @@
 	<h2 style="margin-left: 30px">${gallery.galleryName}</h2> <br>
 	<div class="prd_info_wrap">
     <div class="thumb" style="text-align: center;">
-        <img src="${pageContext.request.contextPath}/${program.programImg}" alt="Program Image"
+        <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}" alt="Program Image"
         style="width: 350px; height: auto;">
         <h2 style="margin-top: 30px;"><strong>${program.programTitle}</strong></h2>
     </div> 
@@ -103,6 +113,8 @@
                     </c:otherwise>
                 </c:choose>
             </dd>
+            <dt>휴무일</dt>
+            <dd>매주 ${gallery.closedDay}요일</dd>
             <dt>연락처</dt>
             <dd>${program.programTel}</dd>
         </dl>
@@ -131,131 +143,20 @@
             <!-- 달력 함수 호출 부분 -->
         </tbody>
     </table>
+    <div id = "date">날짜를 선택해주세요.</div>
+    <div id = "message"></div>
+    <button class="reservation-button">예약하기</button>
     </div> <!-- calendar-container -->
 	</div> <!-- prd_info_wrap -->
-	<button class="reservation-button">예약하기</button>
 	</div> <!-- thumbnails-pan -->
 	</footer>
 	<script>
 	
-	// 초기 연도, 월, 일
-	var initial = new Date();
-	var initialYear = initial.getFullYear();
-	var initialMonth = initial.getMonth()+1;
-	var initialDate = initial.getDate()+5;
-	
-	// 현재 연도, 월, 일
-	var currentYear = initialYear;
-	var currentMonth = initialMonth;
-	var currentDate = initialDate;
-	
-	// 오늘의 날짜를 업데이트하는 함수
-	function updateToday() {
-		var today = new Date();
-		var initialYear = today.getFullYear();
-		var initialMonth = today.getMonth()+1;
-		var initialDate = today.getDate()+5;
-	}
-	
-	// 달력 만드는 함수
-	function createCalendar(year, month) {
-		updateToday();
-		
-		var firstDay = new Date(year, month, 1);
-		var lastDay = new Date(year, month + 1, 0);
-		var daysInMonth = lastDay.getDate();
-		var startingDay = firstDay.getDay(); // 월의 첫째 날에 대한 요일 (0(일)~6(토))
-
-		var tableBody = document.getElementById("calendar").getElementsByTagName('tbody')[0];
-		tableBody.innerHTML = ''; // 이전 내용 초기화
-
-		var date = 1; // 이번 달의 시작 날짜
-		var nextDate = 1; // 다음 달의 시작 날짜
-		
-		// 각 주의 바깥 루프
-		for (var i = 0; i < 6; i++) {
-    		var row = tableBody.insertRow(i);
-
-    	// 각 일의 안쪽 루프
-    		for (var j = 0; j < 7; j++) {
-        		var cell = row.insertCell(j);
-
-        		if (i === 0 && j < startingDay) {
-                    cell.innerHTML = "";
-        		} else if (date > daysInMonth) {
-        			cell.innerHTML = nextDate;
-        			
-        			// 날짜가 오늘로부터 2주 이내인 경우 클릭 이벤트 추가
-					var nextDateObj = new Date(year, month + 1, nextDate);
-        			var today = new Date(initialYear, initialMonth, currentDate);
-        			var diffTime = Math.abs(nextDateObj - today);
-        			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        			
-        			if (diffDays <= 13) {
-        				cell.style.fontWeight = "bold";  // 글씨를 굵게
-        				cell.style.background = "white";  // 배경을 흰색으로
-        				
-        				cell.addEventListener('click', function() {
-        					// 클릭 이벤트 핸들러 코드 작성
-        					console.log('날짜를 클릭했습니다.');
-        					});
-        				} else {
-                	          cell.style.background = "lightgray";  // 배경을 옅은 회색으로
-              	        }
-            			nextDate++;
-        			} else {
-        			cell.innerHTML = date;
-        			
-        			// 날짜가 오늘로부터 2주 이내인 경우 클릭 이벤트 추가
-        	        if (year === initialYear && month === initialMonth && date >= currentDate && date <= currentDate + 13) {
-        	          cell.style.fontWeight = "bold";  // 글씨를 굵게
-        	          cell.style.background = "white";  // 배경을 흰색으로
-
-        	          cell.addEventListener('click', function() {
-        	            // 클릭 이벤트 핸들러 코드 작성
-        	            console.log('날짜를 클릭했습니다.');
-        	          });
-        	        } else {
-        	          cell.style.background = "lightgray";  // 배경을 옅은 회색으로
-        	        }
-        			date++;
-        		} // if-else if-else
-    		} // for 안쪽 루프
-		} // for 바깥 루프
-		
-		// 달력 헤더에 연도와 월 표시
-		document.getElementById("calendar-title").innerText = year + "년 " + (month + 1) + "월";
-	} // function createCalendar
-	
-	// 달을 변경하는 함수
-	function changeMonth(increment) {
-		currentMonth += increment;
-		
-		if (currentMonth < 0) {
-			currentMonth = 11;
-			currentYear--;
-		} else if (currentMonth > 11) {
-			currentMonth = 0;
-			currentYear++;
-		}
-		createCalendar(currentYear, currentMonth);
-	}
-	
-	// 이전 달로 이동하는 함수
-	function prevMonth() {
-		changeMonth(-1);
-	}
-		
-	// 다음 달로 이동하는 함수
-	function nextMonth() {
-		changeMonth(+1);
-	}
-	
 	// 버튼 클릭 이벤트 설정
-	document.getElementById("prev-month").addEventListener("click", prevMonth);
-	document.getElementById("next-month").addEventListener("click", nextMonth);
-
-	// 2024년 1월 생성하기
+	document.getElementById("prev-month").addEventListener("click", changePrevMonth);
+	document.getElementById("next-month").addEventListener("click", changeNextMonth);
+	
+	// 현재 날짜 기준 달력 생성
 	createCalendar(currentYear, currentMonth);
 	
 	</script>
