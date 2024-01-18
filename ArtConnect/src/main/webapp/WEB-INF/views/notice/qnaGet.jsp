@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,7 +144,29 @@ td {
 	<div>
 		<a href="qnaModify?no=${vo.no}" class="btn btn-primary">수정</a>
 		<a onclick="return confirm('정말로삭제하겠습니까?')"href="qnaDel?no=${vo.no}" class="btn btn-primary">삭제</a>
-	</div>		
+	</div>
+	
+	<!-- 댓글조회 -->
+	<hr>
+	<c:forEach items="${list}" var="vo2">
+	<li>
+	<div>
+		<p>${vo2.writer} / ${vo2.regDate}</p>
+		<p>${vo2.content}</p>
+	</div>
+	</li>	
+	</c:forEach>
+	
+	<!-- 댓글작성 -->
+	<div>
+		<form  action="commentInsert">
+		<p><label>댓글 작성자</label> <input type="text" name="writer" value="관 리 자"></p>
+		<p><textarea rows="5" cols="50" name="content"></textarea></p>
+		<p><input type="hidden" name="bno" value="${vo.no}"></p>
+		<p><button type="submit" class="btn btn-primary">댓글 작성</button></p>
+		</form>	
+	</div>
+			
 	</main>
 
 	<!-- Footer -->
