@@ -26,4 +26,17 @@ public class ReplyController {
         // 댓글 추가 후 게시글 상세 페이지로 리다이렉트
         return "redirect:boardOne?reviewNO=" + reply.getReviewNO();
     }
+    
+    @RequestMapping("review/updateReply")
+    public String updateReply(ReplyVO replyVO) {
+        replyDAO.updateReply(replyVO);
+        return "redirect:/review/boardOne?reviewNO=" + replyVO.getReviewNO();
+    }
+
+    @RequestMapping("review/deleteReply")
+    public String deleteReply(int replyNO, int reviewNO) {
+        replyDAO.deleteReply(replyNO);
+        return "redirect:/review/boardOne?reviewNO=" + reviewNO;
+    }
+    
 }

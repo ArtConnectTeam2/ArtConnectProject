@@ -45,7 +45,21 @@
     SELECT COUNT(*) FROM review
 	</select>
 	
-	<!-- boardMapper.xml -->
+	 <select id="getRepliesByReviewNo" resultType="com.multi.artConnect.review.ReplyVO">
+        SELECT * FROM reply WHERE reviewNO = #{reviewNO}
+    </select>
+	
+	<update id="updateReply" parameterType="com.multi.artConnect.review.ReplyVO">
+        UPDATE reply
+        SET replyContent = #{replyContent}
+        WHERE replyNO = #{replyNO}
+    </update>
+
+    <delete id="deleteReply" parameterType="com.multi.artConnect.review.ReplyVO">
+        DELETE FROM reply
+        WHERE replyNO = #{replyNO}
+    </delete>
+	
 	<update id="updateFilePath">
    	 	UPDATE review
     	SET reviewFile = #{reviewFile}
