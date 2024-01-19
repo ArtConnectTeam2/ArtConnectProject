@@ -37,4 +37,8 @@ public class NoticeService {
 		dao.del(no);
 	}
 	
+	//공지사항 조회수증가
+	public void hit(int no) {
+		dao.hit(no);
+	}
 }

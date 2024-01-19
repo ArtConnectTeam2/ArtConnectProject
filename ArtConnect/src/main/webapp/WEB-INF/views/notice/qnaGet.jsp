@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,8 +124,11 @@ td {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
+	<div>
 		<h1 style="text-align: center;">질의응답(QnA)게시판</h1>
+	</div>
 		<hr>
+	<div>
 		<table border="1">
 			<tr>
 				<th>번호</th>
@@ -139,11 +143,38 @@ td {
 				<td>${vo.content}</td>
 			</tr>
 		</table>
+	</div>
 		<hr>
 	<div>
 		<a href="qnaModify?no=${vo.no}" class="btn btn-primary">수정</a>
 		<a onclick="return confirm('정말로삭제하겠습니까?')"href="qnaDel?no=${vo.no}" class="btn btn-primary">삭제</a>
-	</div>		
+	</div>
+	
+	<!-- 댓글조회 -->
+	<div>
+		<table>
+			<c:forEach items="${list}" var="vo2">
+			<tr>
+				<th>${vo2.writer}</th>
+				<th>${vo2.regDate}</th>
+			</tr>
+			<tr>
+				<td colspan="2">${vo2.content}</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
+	<!-- 댓글작성 -->
+	<div>
+		<form  action="commentInsert">
+		<p><label>댓글 작성자</label> <input type="text" name="writer" value="관 리 자"></p>
+		<p><textarea rows="5" cols="50" name="content"></textarea></p>
+		<p><input type="hidden" name="bno" value="${vo.no}"></p>
+		<p><button type="submit" class="btn btn-primary">댓글 작성</button></p>
+		</form>	
+	</div>
+			
 	</main>
 
 	<!-- Footer -->
