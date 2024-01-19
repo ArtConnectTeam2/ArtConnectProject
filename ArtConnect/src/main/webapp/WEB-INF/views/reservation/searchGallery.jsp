@@ -22,7 +22,7 @@
 				<tbody>
 					<c:forEach var="gallery" items="${searchGallery}">
 						<tr>
-							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/${gallery.galleryImg}" alt="Gallery Image" style="width: 150px; height: auto;"></a></td>
+							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="Gallery Image" style="width: 150px; height: auto;"></a></td>
 							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">${gallery.galleryName}</a></td>
 							<td>${gallery.galleryLocation}</td>
 							<td>${gallery.galleryTel}</td>
