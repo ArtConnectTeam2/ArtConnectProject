@@ -31,7 +31,7 @@
 
 					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
 
 					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
@@ -54,7 +54,7 @@
 				
 				<!-- 로그아웃 버튼 -->
 				<%= session.getAttribute("memberID") %>님 로그인되었습니다.<br>
-				<a href="Logout.jsp">
+				<a href="${pageContext.request.contextPath}/member/Logout.jsp">
 				<button class="btn btn-info">로그아웃</button>
 				</a>
 				<% } %>
