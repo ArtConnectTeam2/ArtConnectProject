@@ -15,15 +15,15 @@
 		'%')
 	</select>
 
-	<select id="detail" parameterType="String"
+	<select id="detail" parameterType="int"
 		resultType="galleryVO">
-		select * from gallery where galleryName = #{galleryName}
+		select * from gallery where galleryID = #{galleryID}
 	</select>
 
 	<select id="location" parameterType="String"
 		resultType="galleryVO">
-		select lat, lon from gallery where galleryName =
-		#{galleryName}
+		select lat, lon from gallery where galleryID =
+		#{galleryID}
 	</select>
 
 	<!--  좋아요 추가 -->
