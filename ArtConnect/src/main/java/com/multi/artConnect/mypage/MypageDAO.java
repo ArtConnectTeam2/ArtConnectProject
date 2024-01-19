@@ -66,7 +66,7 @@ public class MypageDAO {
 		
 		public List<Map<String, Object>> myLike(String memberID) {
 			// DAO에서 데이터베이스에서 좋아요 정보를 가져오는 코드 작성
-	        List<Map<String, Object>> likesList = my.selectList("member.myLike", memberID);
+	        List<Map<String, Object>> likesList = my.selectList("mymember.myLike", memberID);
 	        return likesList;
 		}
 		
