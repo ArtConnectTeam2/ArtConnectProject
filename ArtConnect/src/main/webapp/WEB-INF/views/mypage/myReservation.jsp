@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
   <%
-	session.setAttribute("memberID", "test4");
+	session.getAttribute("memberID");
 
     %>
 <!DOCTYPE HTML>
@@ -109,6 +109,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
+                             <li class="nav-item">
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
+                        </li>
                         <li class="nav-item">
                         <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>     
                         </li>
@@ -127,12 +130,16 @@
    
         <!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
-	<h2>Reservation</h2>
+	<h2>나의 예약정보</h2>
 	<hr>
 	<div class="col-md-9">
 	<div class="update-content">
 	<form action = "myReview" method = "post">
 	<div id="result">
+	<c:if test="${empty list}">
+            <p>예약한 내역이 없습니다.</p>
+        </c:if>
+        <c:if test="${not empty list}">
 	<table class="table">
 		<thead>
 			<tr>
@@ -154,29 +161,54 @@
 		<td>${reservation.reservationCount}</td>
 		<td>${reservation.reservationTime}</td>
 		<td>${reservation.payment}</td>
+		<td>
+											<!-- 예약취소 버튼에 직접 이벤트를 추가 -->
+											<button class="cancelReservationBtn">예약취소</button>
+										</td>
 		</tr> 
 		 </c:forEach> 
 		</table>
+		 </c:if>
 		   </form>
 	</div>
 </div>
 
 	<hr>
-
-<%-- 	<!-- 페이징 부분 추가 -->
-<div class="container mt-3">
-    <ul class="pagination">
-        <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
-            <li class="page-item ${pageVO.page eq i.index ? 'active' : ''}">
-                <a class="page-link" href="myReview?page=${i.index}&size=${pageVO.size}">${i.index}</a>
-            </li>
-        </c:forEach>
-    </ul>
-</div> --%>
         <!-- footer -->
 
         <footer role="footer">
+    <script>
+		$(".cancelReservationBtn").click(
+				function() {
+					// 사용자에게 확인 창 띄우기
+					if (confirm("예약을 취소하시겠습니까?")) {
+						// 예를 선택한 경우에만 아래 코드 실행
+						console.log("버튼 클릭됨");
 
+						// 부모 <tr>에서 예약 ID 가져오기
+						var reservationID = $(this).closest('tr').find(
+								'td:first').text();
+						console.log("예약 ID: " + reservationID);
+
+						// Ajax를 통한 예약 삭제
+						$.ajax({
+							url : "deleteReservation",
+							type : "POST",
+							data : {
+								reservationID : reservationID
+							},
+							success : function(response) {
+								alert('예약이 성공적으로 취소되었습니다.');
+								// 예약 목록 업데이트 등의 추가 작업 수행
+							},
+							error : function(error) {
+								alert('예약 취소에 실패했습니다.');
+								console.log("에러 떴습니다", error)
+							}
+						});
+					}
+				});
+	</script>
             <!-- logo -->
 
              <!--    <h1>

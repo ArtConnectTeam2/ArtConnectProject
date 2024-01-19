@@ -1,5 +1,5 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
-<%@page import="com.multi.artConnect.mypage.MemberVO"%>
+<%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
@@ -83,13 +83,16 @@
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">회원탈퇴</a>
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">내 예약</a>
+                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">내 리뷰</a>
+                            <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">좋아요</a>

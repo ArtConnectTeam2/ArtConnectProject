@@ -9,7 +9,10 @@
 		where memberID = #{memberID}
 	</select>
 	
-
+<!-- 예약 삭제 -->
+	 <delete id="deleteReservation" parameterType="int">
+        DELETE FROM reservation WHERE reservationID = #{reservationID}
+    </delete>
 	
 </mapper>
 
