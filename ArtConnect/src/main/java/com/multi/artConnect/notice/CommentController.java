@@ -20,7 +20,7 @@ public class CommentController {
 	
     //댓글 작성
     @RequestMapping("notice/commentInsert")
-	public String insert(CommentVO2 commentVO) {
+	public String insert(CommentVO commentVO) {
 		service.insert(commentVO);
 		return "redirect:qnaGet?no=" + commentVO.getBno();
 	}

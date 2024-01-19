@@ -15,22 +15,22 @@ public class CommentDAO {
 	SqlSessionTemplate my;
 	
 	//댓글 조회
-	public List<CommentVO2> list(int bno) {
+	public List<CommentVO> list(int bno) {
 		return my.selectList("comment.commentList", bno);
 	}
 	
 	//댓글 작성
-	public void insert(CommentVO2 commentVO) {
+	public void insert(CommentVO commentVO) {
 		my.insert("comment.commentInsert", commentVO);
 	}
 	
 	//댓글 수정
-	public void modify(CommentVO2 commentVO) {
+	public void modify(CommentVO commentVO) {
 		my.update("comment.commentModify", commentVO);
 	}
 	
 	// 댓글 삭제
-	public void delete(CommentVO2 commentVO) {
+	public void delete(CommentVO commentVO) {
 		my.delete("comment.commentDelete", commentVO);
 	}
 	

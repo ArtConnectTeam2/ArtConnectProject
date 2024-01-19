@@ -37,8 +37,8 @@
 /* 네비게이션 위치 조정 */
 .navy {
 	position: absolute;
-	top: 70px; /* 원하는 값으로 조정해주세요 */
-	left: 100px; /* 원하는 값으로 조정해주세요 */
+	top: 10px; /* 원하는 값으로 조정해주세요 */
+	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
 
 .navbar-brand {
@@ -91,6 +91,17 @@ td {
 	height: 12px;
 	text-align: center; /* 텍스트를 왼쪽 정렬 */
 }
+#qna_title {
+	border:5px double;
+	border-color:#31B404;
+	border-radius: 1%; /* 모서리전체둥글기지정 */
+	text-align: center;
+	font-size: x-large;
+}
+#qna_search {
+	text-align: center;
+	font-size: medium;
+}
 </style>
 </head>
 <body>
@@ -134,18 +145,25 @@ td {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
-		<h1 style="text-align: center;">질의응답(QnA)게시판</h1>
-		<hr>
+	
+	<div id="qna_title">
+	질의응답(QnA)게시판
+	</div>
+	<hr>
+		<div id="qna_search">
+		<form action="" method="post" name="searchForm">
+			<select>
+				<option valus="subject">제 목</option>
+				<option valus="content">내 용</option>
+			</select>
+			<input type="text" name="searchValue" placeholder="검색어를 입력해주세요" class="textField"/>
+			<input type="button" value="검 색" class="btn" onclick="sendIt();"/>
+		</form>
+	</div>
+	
+	<div id="qna_total">
 		<h5 style="margin-left: 100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
-
-			<nav class="nav123">
-				<ul>
-					<form class="a1" action="noticeInsert.jsp" method="GET">
-						<input name="name" placeholder="검색어를 입력 하세요.">
-						<button type="submit" class="btn" style="background-color: pink;" id="button1">검색</button>
-					</form>
-				</ul>
-			</nav>
+	</div>
 
 		<table border="1">
 			<tr>

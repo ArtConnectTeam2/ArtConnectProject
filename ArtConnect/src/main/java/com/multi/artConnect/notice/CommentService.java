@@ -14,22 +14,22 @@ public class CommentService {
 	CommentDAO dao;
 
 	// 댓글 조회
-	public List<CommentVO2> list(int bno) {
+	public List<CommentVO> list(int bno) {
 		return dao.list(bno);
 	}
 	
 	// 댓글 작성
-	public void insert(CommentVO2 commentVO) {
+	public void insert(CommentVO commentVO) {
 		dao.insert(commentVO);
 	}
 	
 	// 댓글 수정
-	public void modify(CommentVO2 commentVO) {
+	public void modify(CommentVO commentVO) {
 		dao.modify(commentVO);
 	}
 	
 	// 댓글 삭제
-	public void delete(CommentVO2 commentVO) {
+	public void delete(CommentVO commentVO) {
 		dao.delete(commentVO);
 	}
 	

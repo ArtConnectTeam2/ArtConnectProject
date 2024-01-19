@@ -40,7 +40,7 @@ public class QnaController {
 	public String getpage(QnaVO qnaVO, Model model) {		
 		QnaVO vo = service.getpage(qnaVO.getNo());	
 		service.hit(qnaVO.getNo());	
-		List<CommentVO2> list = service2.list(qnaVO.getNo());
+		List<CommentVO> list = service2.list(qnaVO.getNo());
 		System.out.println(list.size());
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);

@@ -2,7 +2,7 @@ package com.multi.artConnect.notice;
 
 import java.sql.Date;
 
-public class CommentVO2 {
+public class CommentVO {
 	
 	private int rno;
 	private int bno;

@@ -124,8 +124,11 @@ td {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
+	<div>
 		<h1 style="text-align: center;">질의응답(QnA)게시판</h1>
+	</div>
 		<hr>
+	<div>
 		<table border="1">
 			<tr>
 				<th>번호</th>
@@ -140,6 +143,7 @@ td {
 				<td>${vo.content}</td>
 			</tr>
 		</table>
+	</div>
 		<hr>
 	<div>
 		<a href="qnaModify?no=${vo.no}" class="btn btn-primary">수정</a>
@@ -147,15 +151,19 @@ td {
 	</div>
 	
 	<!-- 댓글조회 -->
-	<hr>
-	<c:forEach items="${list}" var="vo2">
-	<li>
 	<div>
-		<p>${vo2.writer} / ${vo2.regDate}</p>
-		<p>${vo2.content}</p>
+		<table>
+			<c:forEach items="${list}" var="vo2">
+			<tr>
+				<th>${vo2.writer}</th>
+				<th>${vo2.regDate}</th>
+			</tr>
+			<tr>
+				<td colspan="2">${vo2.content}</td>
+			</tr>
+			</c:forEach>
+		</table>
 	</div>
-	</li>	
-	</c:forEach>
 	
 	<!-- 댓글작성 -->
 	<div>
