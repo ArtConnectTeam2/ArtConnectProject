@@ -1,6 +1,5 @@
 package com.multi.artConnect.gallery;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +23,13 @@ public class GalleryDAO {
 		return list;
 	}
 
-	public GalleryVO detail(String galleryName) {
-		return my.selectOne("gallery.detail", galleryName);
+	public GalleryVO detail(int galleryID) {
+		return my.selectOne("gallery.detail", galleryID);
+	}
+	
+	public List<ProgramVO_gallery> programlist (int galleryID) {
+		List<ProgramVO_gallery> programlist = my.selectList("com.multi.artConnect.gallery.ProgramDAO_gallery.programlist", galleryID);
+		return programlist;
 	}
 
 	public GalleryVO location(String galleryName) {
@@ -48,7 +52,7 @@ public class GalleryDAO {
         return count > 0;
     }
 	
-    public List<GalleryVO> filterData(String filterValue)  {
+	public List<GalleryVO> filterData(String filterValue)  {
         List<GalleryVO> list = my.selectList("gallery.filterData", filterValue);
         return list;
 	}
