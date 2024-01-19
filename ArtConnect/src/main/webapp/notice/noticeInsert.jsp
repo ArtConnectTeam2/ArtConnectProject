@@ -140,7 +140,7 @@ th {
 					</tr>
 					<tr>
 						<td>제 목 :</td>
-						<td><input type="text" name="title" size="5" maxlength="100"></td>
+						<td><input type="text" name="title" size="30" maxlength="100" style="padding:2px 5px 2px 5px;"></td>
 					</tr>
 					<tr>
 						<td colspan="2"><textarea name="content" cols="50" rows="20"></textarea>
@@ -149,7 +149,7 @@ th {
 					<tr>
 						<td colspan="2">
 						<button type="submit" class="btn btn-primary">글쓰기</button>
-						<button type="reset" class="btn btn-primary">취소</button>
+						<button type="reset" class="btn btn-success">취소</button>
 						</td>
 					</tr>
 				</table>

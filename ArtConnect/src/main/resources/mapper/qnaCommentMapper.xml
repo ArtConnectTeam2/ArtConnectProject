@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+
+	<!-- QnA 댓글조회 -->
+	<select id="commentList" resultType="commentVO"  parameterType="int">
+		select
+			rno, bno, writer, content, regdate
+		from comment
+		where bno = #{bno}
+	</select>
+
+	<!-- QnA 댓글작성 -->
+	<insert id="commentInsert" parameterType="commentVO">
+		insert into comment(bno, writer, content, regDate)
+		value(#{bno}, #{writer}, #{content}, #{regDate})
+	</insert>
+	
+	<!-- QnA 수정 -->
+	<update id="commentModify">
+		update comment set
+		writer = #{writer},
+		content = #{content}
+		where rno = #{rno}
+		and bno = #{bno}	
+	</update>
+
+	<!-- QnA 삭제 -->
+	<delete id="commentDelete">
+		delete from comment
+		where rno = #{rno}
+		and bno = ${bno}	
+	</delete>
+
+</mapper>

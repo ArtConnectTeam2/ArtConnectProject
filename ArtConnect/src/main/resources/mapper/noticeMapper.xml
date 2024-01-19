@@ -4,9 +4,17 @@
 
 <mapper namespace="notice">
 
+	<!-- 공지사항 목록 -->
+	<select id="list" resultType="noticeVO">
+		select * from notice
+		order by no
+		desc
+	</select>
+
+	<!-- 공지사항 입력 -->
 	<insert id="insert" parameterType="noticeVO">
 		insert into
-		notice_d
+		notice
 		values(
 		null,
 		#{id},
@@ -18,32 +26,36 @@
 		)
 	</insert>
 
-	<select id="list" resultType="noticeVO">
-		select * from notice_d
-		order by no
-		desc
-	</select>
-
+	<!-- 공지사항 조회 -->
 	<select id="getpage" parameterType="int" resultType="noticeVO">
 		select no
 		, title
 		, name
 		, content
-		from notice_d
+		from notice
 		where no = #{no}
 	</select>
 
+	<!-- 공지사항 수정 -->
 	<update id="update" parameterType="noticeVO">
-		update notice_d
+		update notice
 		set
 		title = #{title},
 		content = #{content}
 		where no = #{no}
 	</update>
 	
+	<!-- 공지사항 삭제 -->
 	<delete id="delete" parameterType="int">
-		delete from notice_d
+		delete from notice
 		where no = #{no}
 	</delete>
+	
+	<!-- 공지사항 조회수증가 -->
+	<update id="updateHit" parameterType="int">
+		update notice
+		set hit = hit + 1
+		where no = #{no}
+	</update>
 
 </mapper>

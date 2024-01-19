@@ -36,6 +36,7 @@ public class NoticeController {
 	@RequestMapping("notice/noticeGet")
 	public String getpage(NoticeVO noticeVO, Model model) {	
 		NoticeVO vo = service.getpage(noticeVO.getNo());
+		service.hit(noticeVO.getNo());
 		model.addAttribute("vo", vo);		
 		return "notice/noticeGet";}
 	
@@ -67,4 +68,11 @@ public class NoticeController {
 	//retrun void -> spring view resolver -> views/notice/noticeDel.jsp
 	}
 
+	//공지사항 조회수증가
+	@RequestMapping("notice/noticeHit")
+	public String hit(int no, Model model) {	
+		service.hit(no);
+		return "redirect:noticeList";
+	}
+	
 }

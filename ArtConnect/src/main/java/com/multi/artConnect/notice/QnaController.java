@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -13,6 +14,9 @@ public class QnaController {
 
 	@Autowired
 	QnaService service;
+	
+	@Autowired
+	CommentService service2;
 	
 	//QnA 목록
 	@RequestMapping("notice/qnaList")
@@ -33,10 +37,15 @@ public class QnaController {
 	
 	//QnA  조회
 	@RequestMapping("notice/qnaGet")
-	public String getpage(QnaVO qnaVO, Model model) {	
-		QnaVO vo = service.getpage(qnaVO.getNo());
-		model.addAttribute("vo", vo);		
-		return "notice/qnaGet";}
+	public String getpage(QnaVO qnaVO, Model model) {		
+		QnaVO vo = service.getpage(qnaVO.getNo());	
+		service.hit(qnaVO.getNo());	
+		List<CommentVO> list = service2.list(qnaVO.getNo());
+		System.out.println(list.size());
+		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
+		return "notice/qnaGet";
+	}
 	
 	//QnA  수정1
 	@RequestMapping("notice/qnaModify")
@@ -59,6 +68,13 @@ public class QnaController {
 	@RequestMapping("notice/qnaDel")
 	public String del(int no, Model model) {	
 		service.del(no);
+		return "redirect:qnaList";
+	}
+	
+	//QnA 조회수증가
+	@RequestMapping("notice/qnaHit")
+	public String hit(int no, Model model) {	
+		service.hit(no);
 		return "redirect:qnaList";
 	}
 	

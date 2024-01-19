@@ -4,6 +4,14 @@
 
 <mapper namespace="qna">
 
+	<!-- QnA 목록 -->
+	<select id="list" resultType="qnaVO">
+		select * from qna
+		order by no
+		desc
+	</select>
+
+	<!-- QnA 입력 -->
 	<insert id="insert" parameterType="qnaVO">
 		insert into qna
 		values(
@@ -11,17 +19,12 @@
 		#{title},
 		#{id},
 		now(),
-		0
+		0,
 		#{content}
 		)
 	</insert>
 
-	<select id="list" resultType="qnaVO">
-		select * from qna
-		order by no
-		desc
-	</select>
-
+	<!-- QnA 조회 -->
 	<select id="getpage" parameterType="int" resultType="qnaVO">
 		select no
 			 , title
@@ -31,6 +34,7 @@
 		where no = #{no}
 	</select>
 
+	<!-- QnA 수정 -->
 	<update id="update" parameterType="qnaVO">
 		update qna
 		set
@@ -38,10 +42,18 @@
 		content = #{content}
 		where no = #{no}
 	</update>
-	
+
+	<!-- QnA 삭제 -->	
 	<delete id="delete" parameterType="int">
 		delete from qna
 		where no = #{no}
 	</delete>
+	
+	<!-- QnA 조회수증가 -->
+	<update id="updateHit" parameterType="int">
+		update qna
+		set hit = hit + 1
+		where no = #{no}
+	</update>
 
 </mapper>
