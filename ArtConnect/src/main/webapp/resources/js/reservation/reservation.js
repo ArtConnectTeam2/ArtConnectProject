@@ -5,26 +5,40 @@ var currentChildCount = 0;
 
 $(document).ready(function() {
 		// 인원 수 변경 시 가격 업데이트
-        $(".adultCount, .teenagerCount, .childCount").on("input", function() {
+        $(".round-button").on("input", function() {
             updateTotalPrice();
         });
+        
+        // Count 변경 이벤트
+	document.getElementById("adultCount").addEventListener("change", updateTotalPrice);
+	document.getElementById("teenagerCount").addEventListener("change", updateTotalPrice);
+	document.getElementById("childCount").addEventListener("change", updateTotalPrice);
+	
+	// increase, decrease 버튼 클릭 이벤트
+    document.getElementById("decreaseAdult").addEventListener("click", decreaseAdultCount);
+    document.getElementById("increaseAdult").addEventListener("click", increaseAdultCount);
+    document.getElementById("decreaseTeenager").addEventListener("click", decreaseTeenagerCount);
+    document.getElementById("increaseTeenager").addEventListener("click", increaseTeenagerCount);
+    document.getElementById("decreaseChild").addEventListener("click", decreaseChildCount);
+    document.getElementById("increaseChild").addEventListener("click", increaseChildCount);
         
         // 페이지 로드 시 처음 한 번 가격 업데이트
         updateTotalPrice();
     });
-
+	
+	// 총 가격 업데이트 메서드
     function updateTotalPrice() {
         // 전시 가격 정보 가져오기
         var priceAdult = extractNumber($(".priceAdult").text());
         var priceTeenager = extractNumber($(".priceTeenager").text());
         var priceChild = extractNumber($(".priceChild").text());
-        var adultCount = parseInt($("#adultCount").text());
-        var teenagerCount = parseInt($("#teenagerCount").text());
-        var childCount = parseInt($("#childCount").text());
+        var adultCount = parseInt(currentAdultCount);
+        var teenagerCount = parseInt(currentTeenagerCount);
+        var childCount = parseInt(currentChildCount);
         var totalPrice = (priceAdult * adultCount) + (priceTeenager * teenagerCount) + (priceChild * childCount);
 		
         // 총 가격 표시
-        $(".totalPrice").text("총 가격: " + totalPrice + "원");
+        $(".totalPrice").text("총 가격 : " + totalPrice + "원");
 
         // 예약 폼에 선택한 가격 및 인원 수 입력
         $("input[name='adultCount']").val(adultCount);

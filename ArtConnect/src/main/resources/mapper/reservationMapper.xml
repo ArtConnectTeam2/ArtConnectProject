@@ -6,7 +6,7 @@
     INSERT INTO `reservation` (`galleryID`, `programID`, `memberID`, `programTitle`,
     `payment`, `reservationTime`, `reservationDay`, `totalPrice`,
     `adultCount`, `teenagerCount`, `childCount`)
-    VALUES (#{galleryID}, #{programID}, #{memberID, jdbcType=NULL}, #{programTitle},
+    VALUES (#{galleryID}, #{programID}, #{memberID}, #{programTitle},
     0, #{reservationTime}, #{reservationDay}, #{totalPrice},
     #{adultCount}, #{teenagerCount}, #{childCount})
   </insert>

@@ -36,9 +36,27 @@
 		// 검색 버튼 클릭 시
 		$('#searchButton').click(function() {
 			var galleryName = $('#galleryNameInput').val();
-			loadGallery("searchGallery/" + encodeURIComponent(galleryName));
+			if (galleryName.trim() === "") {
+				// 검색창이 공란이면 초기 데이터 로딩
+				loadGallery("listGallery");
+			} else {
+				loadGallery("searchGallery/" + encodeURIComponent(galleryName));
+			}
 		});
-
+		
+		// Enter 키 눌렀을 때
+		$('#galleryNameInput').keypress(function(e) {
+			if (e.which === 13) {
+				var galleryName = $('#galleryNameInput').val();
+				if (galleryName.trim() === "") {
+					// 검색창이 공란이면 초기 데이터 로딩
+					loadGallery("listGallery");
+				} else {
+					loadGallery("searchGallery/" + encodeURIComponent(galleryName));
+				}
+			}
+		});
+		
 		// 검색 초기화 버튼 클릭 시
 		$('#resetButton').click(function() {
 			loadGallery("listGallery");

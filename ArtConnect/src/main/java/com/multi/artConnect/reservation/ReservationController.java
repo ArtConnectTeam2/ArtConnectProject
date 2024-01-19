@@ -30,12 +30,12 @@ public class ReservationController {
 		return "reservation/reservation";
 	}
 	
-	@RequestMapping(value = "/insertReservation", method = RequestMethod.POST)
-	public String insertReservation(@RequestBody ReservationVO reservationVO) {
+	@RequestMapping(value = "reservation/{galleryID}/{programID}/insertReservation", method = RequestMethod.POST)
+	public String insertReservation(@PathVariable int galleryID, @PathVariable int programID, @RequestBody ReservationVO reservationVO) {
 		int result = reservationDAO.insertReservation(reservationVO);
 		if (result > 0) {
 			// 삽입 성공
-			return "redirect:/payment";  // 결제 페이지로 리다이렉트
+			return "redirect:/artConnect/reservation/payment.jsp";  // 결제 페이지로 리다이렉트
 		} else {
 			// 삽입 실패
 			return "redirect:/error";  // 에러 페이지로 리다이렉트

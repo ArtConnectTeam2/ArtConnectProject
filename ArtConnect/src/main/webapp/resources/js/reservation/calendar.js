@@ -15,10 +15,31 @@ let selectedDate = null; // 선택한 날짜를 저장하는 전역 변수
 // 달력 클릭 이벤트 함수
 function showGalleryTime(cell, cellDate, isActive) {
 	
-	const week = ["일", "월", "화", "수", "목", "금", "토"];
+	const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	const dayOfWeek = week[new Date(cell.dataset.year,
 		Number(cell.dataset.month), cellDate).getDay()];
 	
+	// 요일 한글로 번역
+	function convertToKoreanDay(dayOfWeek) {
+    switch (dayOfWeek) {
+        case 'Sunday':
+            return '일';
+        case 'Monday':
+            return '월';
+        case 'Tuesday':
+            return '화';
+        case 'Wednesday':
+            return '수';
+        case 'Thursday':
+            return '목';
+        case 'Friday':
+            return '금';
+        case 'Saturday':
+            return '토';
+        default:
+            return '';
+    }
+}
 	if (isActive && dayOfWeek !== closedDay) {
 	
 		cell.style.fontWeight = "bold";  // 글씨를 굵게
@@ -45,10 +66,12 @@ function showGalleryTime(cell, cellDate, isActive) {
 				element: this
 			};
 			
+			const koreanDay = convertToKoreanDay(dayOfWeek);
+			
 			const dateElement = document.getElementById('date');
 			const messageElement = document.getElementById('message');
 			dateElement.innerHTML = `${year}-` + (month < 10 ? `0${month}` : month) +
-				"-" + (date < 10 ? `0${date}` : date) + ` (${dayOfWeek})`;
+				"-" + (date < 10 ? `0${date}` : date) + ` (${koreanDay})`;
 			messageElement.innerHTML = gallery.galleryOpentime + "~" +  gallery.galleryClosetime;
 
 			// 이전에 클릭한 셀 스타일 복원을 위한 조건문
@@ -113,7 +136,7 @@ function createCalendar(year, month) {
 				var diffTime = Math.abs(nextDateObj - today);
 				var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-				if (diffDays <= 18 && (nextYear === initialYear && nextMonth === (initialMonth + 1) || nextYear === initialYear + 1 && nextMonth === 0)) {
+				if (diffDays <= 13 && (nextYear === initialYear && nextMonth === (initialMonth + 1) || nextYear === initialYear + 1 && nextMonth === 0)) {
 					showGalleryTime(cell, nextDate, true);
 				} else {
 					showGalleryTime(cell, nextDate, false);
@@ -129,11 +152,11 @@ function createCalendar(year, month) {
 				cell.dataset.date = date;
 					
 				// 날짜가 오늘로부터 2주 이내인 경우 클릭 이벤트 추가
-				if (year === initialYear && month === initialMonth && date >= initialDate && date <= initialDate + 18) {
+				if (year === initialYear && month === initialMonth && date >= initialDate && date <= initialDate + 13) {
 					showGalleryTime(cell, date, true);
-				} else if (year === initialYear && month === initialMonth + 1 && date <= initialDate + 18 - daysInPrevMonth) {
+				} else if (year === initialYear && month === initialMonth + 1 && date <= initialDate + 13 - daysInPrevMonth) {
 					showGalleryTime(cell, date, true);
-				} else if (year === initialYear + 1 && month === 0 && initialMonth === 11 && date <= initialDate + 18 - daysInPrevMonth) {
+				} else if (year === initialYear + 1 && month === 0 && initialMonth === 11 && date <= initialDate + 13 - daysInPrevMonth) {
 					showGalleryTime(cell, date, true);
 				} else {
 					showGalleryTime(cell, date, false);

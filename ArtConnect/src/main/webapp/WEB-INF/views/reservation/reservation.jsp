@@ -67,26 +67,26 @@
 	<h1 style="margin-top: -80px; margin-left: 10px">예약 페이지</h1> <br>
 	<h2 style="margin-left: 30px">${gallery.galleryName}</h2> <br>
 	<div class="prd_info_wrap">
-    <div class="thumb" style="text-align: center;">
+    <div class="thumb" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
         <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}" alt="Program Image"
-        style="width: 350px; height: auto;">
+        style="max-width: 80%; min-width: 350px; height: auto;">
         <h2 style="margin-top: 30px;"><strong>${program.programTitle}</strong></h2>
-    </div> 
+    </div>
     <div class="prd_info">
         <dl>
-            <dt>전시 기간</dt> 
-            <dd><fmt:formatDate value="${program.programStart}" pattern="yyyy-MM-dd" />
-            ~ <fmt:formatDate value="${program.programEnd}" pattern="yyyy-MM-dd" /></dd>
-            <dt>관람 시간</dt>
-            <dd><fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/> 
-            ~ <fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/></dd>
-            <dt>관람실</dt> 
-            <dd>${program.programRoom}</dd>
-            <c:if test="${fn:length(program.artist) > 0}">
-            	<dt>작가</dt>
-            	<dd>${program.artist}</dd>
-            </c:if>
-            <dt>관람료</dt>
+    <dt>전시 기간</dt> 
+    <dd><fmt:formatDate value="${program.programStart}" pattern="yyyy-MM-dd" />
+    ~ <fmt:formatDate value="${program.programEnd}" pattern="yyyy-MM-dd" /></dd>
+    <dt>관람 시간</dt>
+    <dd><fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/> 
+    ~ <fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/></dd>
+    <dt>관람실</dt> 
+    <dd>${program.programRoom}</dd>
+    <c:if test="${fn:length(program.artist) > 0}">
+    	<dt>작가</dt>
+    	<dd>${program.artist}</dd>
+    </c:if>
+    <dt>관람료</dt>
 <dd>
     <c:choose>
         <c:when test="${program.priceAdult > 0}">
@@ -103,7 +103,7 @@
         <c:otherwise>
             학생 : <span class="priceTeenager">무료</span><br />
         </c:otherwise>
-    </c:choose> 
+    </c:choose>
     <c:choose>
         <c:when test="${program.priceChild > 0}">
             아동 : <span class="priceChild">${program.priceChild}</span>원<br />
@@ -113,12 +113,35 @@
         </c:otherwise>
     </c:choose>
 </dd>
-            <dt>휴무일</dt>
-            <dd>매주 ${gallery.closedDay}요일</dd>
-            <dt>연락처</dt>
-            <dd>${program.programTel}</dd>
-        </dl>
-    </div> <!-- prd_info -->
+<c:choose>
+<c:when test="${gallery.closedDay eq 'Monday'}">
+    <c:set var="koreanDay" value="월" />
+</c:when>
+<c:when test="${gallery.closedDay eq 'Tuesday'}">
+    <c:set var="koreanDay" value="화" />
+</c:when>
+<c:when test="${gallery.closedDay eq 'Wednesday'}">
+    <c:set var="koreanDay" value="수" />
+</c:when>
+<c:when test="${gallery.closedDay eq 'Thursday'}">
+    <c:set var="koreanDay" value="목" />
+</c:when>
+<c:when test="${gallery.closedDay eq 'Friday'}">
+    <c:set var="koreanDay" value="금" />
+</c:when>
+<c:when test="${gallery.closedDay eq 'Saturday'}">
+    <c:set var="koreanDay" value="토" />
+</c:when>
+<c:when test="${gallery.closedDay eq 'Sunday'}">
+    <c:set var="koreanDay" value="일" />
+</c:when>
+</c:choose>
+    <dt>휴무일</dt>
+		<dd>매주 ${koreanDay}요일</dd>
+		<dt>연락처</dt>
+		<dd>${program.programTel}</dd>
+    </dl>
+</div> <!-- prd_info -->
     
     <!-- calendar -->
     <div id = "calendar-container">
@@ -183,10 +206,9 @@
 <form action="${pageContext.request.contextPath}/reservation/confirm" method="post" style="display: none;">
     <input type="hidden" name="galleryID" value="${gallery.galleryID}">
     <input type="hidden" name="programID" value="${program.programID}">
-    <input type="hidden" name="memberID" value="null">
+    <input type="hidden" name="memberID" value="apple">
     <input type="hidden" name="programTitle" value="${program.programTitle}">
-    <input type="hidden" name="galleryOpentime" value="${gallery.galleryOpentime}">
-    <input type="hidden" name="galleryClosetime" value="${gallery.galleryClosetime}">
+    <input type="hidden" name="reservationTime" value="<fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/> ~ <fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/>">
     <input type="hidden" name="adultCount" value="0">
     <input type="hidden" name="teenagerCount" value="0">
     <input type="hidden" name="childCount" value="0">
@@ -208,41 +230,59 @@
 	</script>
 	
 <script>
+
 const reservationButton = document.querySelector('.reservation-button');
 reservationButton.addEventListener('click', function() {
     const dateElement = document.getElementById('date');
+    
+    const adultCount = parseInt(document.getElementById('adultCount').value);
+    const teenagerCount = parseInt(document.getElementById('teenagerCount').value);
+    const childCount = parseInt(document.getElementById('childCount').value);
+    
     if (dateElement.innerHTML === '날짜를 선택해주세요.') {
         alert('날짜를 선택해주세요.');
+    } else if (adultCount === 0 && teenagerCount === 0 && childCount === 0) {
+    	alert('예약하실 인원을 최소 한 명 선택해주세요.');
+    	return; // 인원 수가 0이면 더 이상 진행하지 않음
     } else {
+    	
+    	const totalPrice = parseInt(document.querySelector('.totalPrice').innerText.replace(/[^0-9]/g, ''));
         // 예약 데이터 생성
         const reservationData = {
             'galleryID': document.querySelector('input[name="galleryID"]').value,
             'programID': document.querySelector('input[name="programID"]').value,
             'memberID': document.querySelector('input[name="memberID"]').value,
             'programTitle': document.querySelector('input[name="programTitle"]').value,
-            'payment': 0,
-            'reservationTime': `${document.querySelector('input[name="galleryOpentime"]').value} ~ ${document.querySelector('input[name="galleryClosetime"]').value}`,
+            'payment': false,
+            'reservationTime': document.querySelector('input[name="reservationTime"]').value,
             'reservationDay': dateElement.innerText.trim(),
-            'totalPrice': parseInt(document.querySelector('.totalPrice').innerText.replace(/[^0-9]/g, '')),
-            'adultCount': document.getElementById('adultCount').textContent,
-            'teenagerCount': document.getElementById('teenagerCount').textContent,
-            'childCount': document.getElementById('childCount').textContent
+            'totalPrice': totalPrice,
+            'adultCount': adultCount,
+            'teenagerCount': teenagerCount,
+            'childCount': childCount
         };
-
+        
+        // 최종 확인 창 표시
+        const confirmationMessage = "성인 " + adultCount + "명, 학생 " + teenagerCount + "명, 아동 " + childCount + "명\n가격은 " + totalPrice + "원 입니다. 예약하시겠습니까?";
+        
+        if (confirm(confirmationMessage)) {
         // 서버에 POST 요청 보내기
-        $.ajax({
-            url: '/artConnect/reservation/reservation/1/1',
-            type: 'POST',
-            contentType: 'application/json', 
-            data: JSON.stringify(reservationData), 
-            success: function(data) {
-                console.log('Success:', data);
-                alert('예약 성공');
-            },
-            error: function(error) {
-                console.error('Error:', error);
-            }
-        });
+        	$.ajax({
+            	url: `${program.programID}/insertReservation`,
+	            method: 'POST',
+	            contentType: 'application/json', 
+	            data: JSON.stringify(reservationData), 
+	            success: function(data) {
+	                console.log('Success:', data);
+	                alert('예약 성공');
+	            },
+	            error: function(error) {
+	                console.error('Error:', error);
+	            }
+	        });
+        } else {
+        	alert('예약이 취소되었습니다.');
+        }
     }
 });
 </script>
