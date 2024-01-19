@@ -1,20 +1,17 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-  <%
-	session.getAttribute("memberID");
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    <%
+    	session.getAttribute("memberID");
     %>
- 
 <!DOCTYPE HTML>
  <html>
  <head>
-	  	<meta charset="UTF-8"> 
+	  	<meta charset="UTF-8">
 
         <title>::Art Connect ::</title>
-	    <title>${memberID} 회원정보수정</title>
+	    <title>${memberID} 님 회원정보수정</title>
 	
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
@@ -33,7 +30,37 @@
 		
 		<!-- sidebar CSS -->
     	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
-	  	
+
+
+	   <script type="text/javascript">
+	   function validateForm() {
+	        var isPasswordValid = validatePassword();
+
+	        return isPasswordValid;
+	    }
+	   
+        function validatePassword() {
+        	 var currentmemberPW = document.getElementById("currentmemberPW").value;
+            var memberPW = document.getElementById("memberPW").value;
+            var memberPW2 = document.getElementById("memberPW2").value;
+            var storedPassword = "${mymember.memberPW}"; // 이 값은 서버에서 가져와야 합니다.
+            var messageSpan = document.getElementById("passwordMatchMessage");
+
+            // 현재 비밀번호 확인
+            if (currentmemberPW !== storedPassword) {
+                messageSpan.innerHTML = "현재 비밀번호가 일치하지 않습니다.";
+                return false;
+            }
+            
+            if (memberPW !== memberPW2) {
+                messageSpan.innerHTML = "비밀번호가 일치하지 않습니다.";
+                return false;
+            } else {
+                messageSpan.innerHTML = "비밀번호가 일치합니다."; // 일치하면 메시지를 비웁니다.
+                return true;
+            }
+        }
+    </script>
     <style>  
     input {
 	width: 500px;
@@ -41,33 +68,12 @@
 	font-size: 20px;
 	  }
 	  
-	.navy {
+	  	.navy {
 		position: absolute;
 		top: 10px;
 		right: 10px;
 	}
-	
-	 .pagination {
-        display: inline-block;
-    }
-
-    .pagination li {
-        display: inline;
-        margin-right: 5px;
-    }
-
-    .pagination li.active {
-        font-weight: bold;
-        background-color: #007bff;
-        color: white;
-    }
-
-    .pagination li a {
-        text-decoration: none;
-        color: #007bff;
-    }
 	</style>
-	
 </head>
 
 <body>
@@ -82,7 +88,7 @@
             <!-- nav -->
             <nav role="header-nav" class="navy">
                 <ul>
-                    <li class="nav-active"><a
+                   <li class="nav-active"><a
 						href="${pageContext.request.contextPath}/gallery/list"
 						title="Work">전시관 조회 및 검색</a></li>
 
@@ -107,14 +113,14 @@
                 <div class="sidebar">
                     <h3>마이페이지</h3>
                     <ul class="nav flex-column">
-                        <li class="nav-item">
+                      <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
                              <li class="nav-item">
                         <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>     
+                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
@@ -123,79 +129,48 @@
                             <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">좋아요</a>
+                        <a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
                         </li>
                     </ul>
                 </div>
             </div>
-   
-        <!-- Main Content -->
-	<main role="main-home-wrapper" class="container mt-5">
-	<h2>나의 리뷰</h2>
-	<hr>
-	<div class="col-md-9">
-	<div class="update-content">
-	<form action = "myReview" method = "post">
-	<div id="result">
-	 <c:if test="${empty list}">
-            <p>작성된 리뷰가 없습니다.</p>
-        </c:if>
-        <c:if test="${not empty list}">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>ID</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>등록일</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
- 		<c:forEach var ="review" items="${list}">
-	
-		<tr>
-		<td>${review.reviewNO}</td>
-		<td>${review.memberID}</td>
-		<td>
-		<a href="#">${fn:substring(review.reviewTitle, 0, 20)}</a>
-		</td>
-		<td>${fn:substring(review.reviewContent, 0, 60)}</td>
-		<td><fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td>${review.reviewHit}</td>
-		</tr> 
-		 </c:forEach> 
-		</table>
-		  </c:if>
-		   </form>
-	</div>
-</div>
+        
+        <!-- main content -->
+            <div class="col-md-9">
+                <div class="update-content">
+                    <h2>비밀번호 변경</h2>
+                    	<form id="updateForm" action ="updatePwOk" method = "post" onsubmit="return validateForm();">
+  						
+  						<tr>
+                  		 현재 비밀번호<br>
+                  		<input type="password" id="currentmemberPW" name="currentmemberPW" value="${mymember.memberPW}" required="required" placeholder="비밀번호를 입력해주세요." style="font-size: 15px;"><br>
+              	        </tr>
+  					    <tr>새 비밀번호<br>
+                        <input type="password" id="memberPW" name="memberPW" placeholder="새 비밀번호를 입력해주세요." style="font-size: 15px;"><br>
+                        </tr>
+                        <tr>새 비밀번호 확인<br>
+                        <input type="password" id="memberPW2" name="memberPW2" placeholder="새 비밀번호를 재입력해주세요." style="font-size: 14px;"><br>
+                        <span id="passwordMatchMessage" style="color: green;"></span><br> 
+                        </tr>
+           
+					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
+				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+				</tr>
+                <br>
+                <br>        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<hr>
-
-	<!-- 페이징 부분 추가 -->
-<div class="container mt-3">
-    <ul class="pagination">
-        <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
-            <li class="page-item ${pageVO.page eq i.index ? 'active' : ''}">
-                <a class="page-link" href="myReview?page=${i.index}&size=${pageVO.size}">${i.index}</a>
-            </li>
-        </c:forEach>
-    </ul>
-</div>
         <!-- footer -->
-
         <footer role="footer">
-
             <!-- logo -->
-
              <!--    <h1>
-
-                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
-
+                    <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
                 </h1>
  -->
-            <!-- logo -->
 
             <!-- nav -->
             <nav role="footer-nav">
