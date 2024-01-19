@@ -54,9 +54,9 @@
 
 	<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
-	<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+	<li><a href="${pageContext.request.contextPath}/notice/notice.jsp" title="Contact">공지사항</a></li>
 					
-	<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+	<li><a href="${pageContext.request.contextPath}/notice/qna.jsp" title="Contact">QnA</a></li>
     </ul>
 	</nav>
 	<!-- nav -->
@@ -152,32 +152,29 @@
 <div>
     <table>
         <tr>
-            <td><label for="adultCount">성인 인원 수 :</label></td>
-            <!-- - 버튼 -->
-            <td><button type="button" class="round-button" onclick="decreaseAdultCount()">-</button>
-            <!-- 인원 수 표시 -->
-            <span id="adultCount" class="adultCount">0</span>
-            <!-- + 버튼 -->
-            <button type="button" class="round-button" onclick="increaseAdultCount()">+</button></td>
-        </tr>
-        <tr>
-            <td><label for="teenagerCount">학생 인원 수 :</label></td>
-            <!-- - 버튼 -->
-            <td><button type="button" class="round-button" onclick="decreaseTeenagerCount()">-</button>
-            <!-- 인원 수 표시 -->
-            <span id="teenagerCount" class="teenagerCount">0</span>
-            <!-- + 버튼 -->
-            <button type="button" class="round-button" onclick="increaseTeenagerCount()">+</button></td>
-        </tr>
-        <tr>
-            <td><label for="childCount">아동 인원 수 :</label></td>
-            <!-- - 버튼 -->
-            <td><button type="button" class="round-button" onclick="decreaseChildCount()">-</button>
-            <!-- 인원 수 표시 -->
-            <span id="childCount" class="childCount">0</span>
-            <!-- + 버튼 -->
-            <button type="button" class="round-button" onclick="increaseChildCount()">+</button></td>
-        </tr>
+        <td><label for="adultCount">성인 인원 수 :</label></td>
+        <td>
+            <button type="button" class="round-button" onclick="decreaseAdultCount()">-</button>
+            <input id="adultCount" class="adultCount" value="0" readonly style="border:none; background-color:transparent;">
+            <button type="button" class="round-button" onclick="increaseAdultCount()">+</button>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="teenagerCount">학생 인원 수 :</label></td>
+        <td>
+            <button type="button" class="round-button" onclick="decreaseTeenagerCount()">-</button>
+            <input id="teenagerCount" class="teenagerCount" value="0" readonly style="border:none; background-color:transparent;">
+            <button type="button" class="round-button" onclick="increaseTeenagerCount()">+</button>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="childCount">아동 인원 수 :</label></td>
+        <td>
+            <button type="button" class="round-button" onclick="decreaseChildCount()">-</button>
+            <input id="childCount" class="childCount" value="0" readonly style="border:none; background-color:transparent;">
+            <button type="button" class="round-button" onclick="increaseChildCount()">+</button>
+        </td>
+    </tr>
         <tr>
             <td colspan="3"><span class="totalPrice">총 가격: 0원</span></td>
         </tr>
@@ -210,50 +207,45 @@
 	
 	</script>
 	
-	<script>
-	const reservationButton = document.querySelector('.reservation-button');
-	reservationButton.addEventListener('click', function() {
-		const dateElement = document.getElementById('date');
-		if (dateElement.innerHTML === '날짜를 선택해주세요.') {
-			alert('날짜를 선택해주세요.');
-		} else {
-			// 예약 데이터 생성
-			const data = {
-				galleryID: document.querySelector('input[name="galleryID"]').value,
-			    programID: document.querySelector('input[name="programID"]').value,
-			    memberID: document.querySelector('input[name="memberID"]').value,
-			    programTitle: document.querySelector('input[name="programTitle"]').value,
-			    payment: 0,
-			    reservationTime: `${document.querySelector('input[name="galleryOpentime"]').value} ~ ${document.querySelector('input[name="galleryClosetime"]').value}`,
-			    reservationDay: dateElement.innerText.trim(),
-			    totalPrice: parseInt(document.querySelector('.totalPrice').innerText.replace(/[^0-9]/g, '')),
-			    adultCount: document.querySelector('input[name="adultCount"]').innerText,
-			    teenagerCount: document.querySelector('input[name="teenagerCount"]').innerText,
-			    childCount: document.querySelector('input[name="childCount"]').innerText
-	        };
+<script>
+const reservationButton = document.querySelector('.reservation-button');
+reservationButton.addEventListener('click', function() {
+    const dateElement = document.getElementById('date');
+    if (dateElement.innerHTML === '날짜를 선택해주세요.') {
+        alert('날짜를 선택해주세요.');
+    } else {
+        // 예약 데이터 생성
+        const reservationData = {
+            'galleryID': document.querySelector('input[name="galleryID"]').value,
+            'programID': document.querySelector('input[name="programID"]').value,
+            'memberID': document.querySelector('input[name="memberID"]').value,
+            'programTitle': document.querySelector('input[name="programTitle"]').value,
+            'payment': 0,
+            'reservationTime': `${document.querySelector('input[name="galleryOpentime"]').value} ~ ${document.querySelector('input[name="galleryClosetime"]').value}`,
+            'reservationDay': dateElement.innerText.trim(),
+            'totalPrice': parseInt(document.querySelector('.totalPrice').innerText.replace(/[^0-9]/g, '')),
+            'adultCount': document.getElementById('adultCount').textContent,
+            'teenagerCount': document.getElementById('teenagerCount').textContent,
+            'childCount': document.getElementById('childCount').textContent
+        };
 
-			// 서버에 POST 요청 보내기
-			fetch('/artConnect/reservation/reservation/1/1', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(data),
-			})
-			.then(response => response.text())
-			.then(data => {
-				console.log('Success:', data);
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});
-			
-			alert('예약 성공');
-		}
-	});
-
-	</script>
-	
+        // 서버에 POST 요청 보내기
+        $.ajax({
+            url: '/artConnect/reservation/reservation/1/1',
+            type: 'POST',
+            contentType: 'application/json', 
+            data: JSON.stringify(reservationData), 
+            success: function(data) {
+                console.log('Success:', data);
+                alert('예약 성공');
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+});
+</script>
 	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>

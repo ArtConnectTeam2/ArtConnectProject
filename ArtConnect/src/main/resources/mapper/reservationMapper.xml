@@ -4,8 +4,10 @@
 <mapper namespace="com.multi.artConnect.reservation.ReservationDAO">
   <insert id="insertReservation" parameterType="reservationVO">
     INSERT INTO `reservation` (`galleryID`, `programID`, `memberID`, `programTitle`,
-    `payment`, `reservationTime`, `reservationDay`, `totalPrice`, `adultCount`, `teenagerCount`, `childCount`)
+    `payment`, `reservationTime`, `reservationDay`, `totalPrice`,
+    `adultCount`, `teenagerCount`, `childCount`)
     VALUES (#{galleryID}, #{programID}, #{memberID, jdbcType=NULL}, #{programTitle},
-    0, #{reservationTime}, #{reservationDay}, #{totalPrice}, #{adultCount}, #{teenagerCount}, #{childCount})
+    0, #{reservationTime}, #{reservationDay}, #{totalPrice},
+    #{adultCount}, #{teenagerCount}, #{childCount})
   </insert>
 </mapper>

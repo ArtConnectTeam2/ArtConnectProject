@@ -1,12 +1,16 @@
-$(document).ready(function() {
+// 인원 수 초기화
+var currentAdultCount = 0;
+var currentTeenagerCount = 0;
+var currentChildCount = 0;
 
-        // 인원 수 변경 시 가격 업데이트
+$(document).ready(function() {
+		// 인원 수 변경 시 가격 업데이트
         $(".adultCount, .teenagerCount, .childCount").on("input", function() {
             updateTotalPrice();
         });
-
-        // 초기화
-        updateReservationForm();
+        
+        // 페이지 로드 시 처음 한 번 가격 업데이트
+        updateTotalPrice();
     });
 
     function updateTotalPrice() {
@@ -18,7 +22,7 @@ $(document).ready(function() {
         var teenagerCount = parseInt($("#teenagerCount").text());
         var childCount = parseInt($("#childCount").text());
         var totalPrice = (priceAdult * adultCount) + (priceTeenager * teenagerCount) + (priceChild * childCount);
-
+		
         // 총 가격 표시
         $(".totalPrice").text("총 가격: " + totalPrice + "원");
 
@@ -27,17 +31,6 @@ $(document).ready(function() {
         $("input[name='teenagerCount']").val(teenagerCount);
         $("input[name='childCount']").val(childCount);
         $("input[name='totalPrice']").val(totalPrice);
-    }
-
-    function updateReservationForm() {
-        // 선택한 전시에 대한 예약 폼 초기화
-        currentAdultCount = 0;
-        currentTeenagerCount = 0;
-        currentChildCount = 0;
-        $("#adultCount").text(currentAdultCount);
-        $("#teenagerCount").text(currentTeenagerCount);
-        $("#childCount").text(currentChildCount);
-        updateTotalPrice();
     }
 
     function decreaseAdultCount() {
@@ -77,17 +70,17 @@ $(document).ready(function() {
     }
 
     function updateAdultCount() {
-        $("#adultCount").text(currentAdultCount);
+        $("#adultCount").val(currentAdultCount);
         updateTotalPrice();
     }
 
     function updateTeenagerCount() {
-        $("#teenagerCount").text(currentTeenagerCount);
+        $("#teenagerCount").val(currentTeenagerCount);
         updateTotalPrice();
     }
 
     function updateChildCount() {
-        $("#childCount").text(currentChildCount);
+        $("#childCount").val(currentChildCount);
         updateTotalPrice();
     }
 

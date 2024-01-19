@@ -10,7 +10,7 @@ public class ReservationDAO {
 	SqlSessionTemplate my;
 	
 	public int insertReservation(ReservationVO reservationVO) {
-		int insertReservation = my.insert("com.multi.artConnect.reservation.ReservationDAO", reservationVO);
+		int insertReservation = my.insert("com.multi.artConnect.reservation.ReservationDAO.insertReservation", reservationVO);
 		return insertReservation;
 	}
 }
