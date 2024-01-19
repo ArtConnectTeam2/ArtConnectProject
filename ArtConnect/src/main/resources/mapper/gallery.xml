@@ -46,7 +46,7 @@
 		parameterType="String">
 		select * from gallery
 		where galleryLocation like concat('%', #{filterValue}, '%')
-		or closedDay like concat('%', #{filterValue}, '%')
+		or closedDay not like concat('%', #{filterValue}, '%')
 	</select>
 
 </mapper>

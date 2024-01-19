@@ -49,6 +49,7 @@
 <!-- font-awesome -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 
+
 <style>
 /* 이미지 크기와 위치 조정 */
 #logo-image {
@@ -142,7 +143,7 @@
             </div>
             
             <div class="form-check">
-            <span class="gallery-location-label">Closed Day</span>
+            <span class="gallery-location-label">Open Day</span>
                 <input class="form-check-input check" type="checkbox" value="Monday" id="flexCheckMonday">
                 <label class="form-check-label" for="flexCheckMonday">월요일</label>
                 
