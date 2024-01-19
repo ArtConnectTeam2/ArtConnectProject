@@ -21,5 +21,13 @@ public class ReplyDAO {
 		my.insert("reply.insertReply", reply);
 	}
 	
-	
+	//댓글 수정
+	public void updateReply(ReplyVO replyVO) {
+        my.update("reply.updateReply", replyVO);
+    }
+
+	//댓글 삭제
+    public void deleteReply(int replyNO) {
+        my.delete("reply.deleteReply", replyNO);
+    }
 }

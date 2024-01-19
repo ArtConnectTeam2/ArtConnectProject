@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <% session.setAttribute("memberID", "임시ID"); %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,7 @@
 		</a>
 		</td>
 		<td>${fn:substring(board.reviewContent, 0, 50)}</td>
-		<td>${board.reviewDate}</td>
+		<td><fmt:formatDate value="${board.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 		<td>${board.reviewHit}</td>
 		</tr>
 		</c:forEach>

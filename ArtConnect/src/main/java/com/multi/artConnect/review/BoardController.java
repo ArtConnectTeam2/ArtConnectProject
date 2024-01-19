@@ -18,6 +18,10 @@ public class BoardController {
 	@Autowired
 	BoardDAO dao;
 	
+
+	@Autowired
+	ReplyDAO dao1;
+	
 	@RequestMapping("review/boardList")
     public String boardList(Model model,
                             @RequestParam(name = "page", defaultValue = "1") int page,
@@ -55,9 +59,7 @@ public class BoardController {
                 vo.setFile(file);
                 vo.setFilePath(filePath);
             } catch (IOException e) {
-                // 파일 업로드 중 오류 처리
-                e.printStackTrace();
-                // 오류 발생 시 어떻게 처리할지에 대한 로직 추가
+                
             }
         }
 
@@ -75,8 +77,13 @@ public class BoardController {
 		
 		//그 후에 글 가져옴
 		BoardVO one = dao.one(reviewNO);
-		//모델에 추
+		
+		// 해당 게시글의 댓글 목록 가져오기
+	    List<ReplyVO> replies = dao.getRepliesByReviewNo(reviewNO);
+	   
+		//모델에 추가
 		model.addAttribute("board", one);
+		model.addAttribute("replies", replies);
 	}
 	
 	
