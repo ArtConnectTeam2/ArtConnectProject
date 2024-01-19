@@ -10,7 +10,8 @@ var currentMonth = initialMonth;
 var currentDate = initialDate;
 	
 let prevCell = null; // 클릭한 셀의 스타일 초기화를 위한 전역 변수
-	
+let selectedDate = null; // 선택한 날짜를 저장하는 전역 변수
+
 // 달력 클릭 이벤트 함수
 function showGalleryTime(cell, cellDate, isActive) {
 	
@@ -28,6 +29,21 @@ function showGalleryTime(cell, cellDate, isActive) {
 			const year = this.dataset.year;
 			const month = Number(this.dataset.month) + 1; // 1월이 0부터 시작하기 때문에
 			const date = this.dataset.date;
+			
+			if (selectedDate) {
+				let prevSelectedCell = document.querySelector(`[data-year='${selectedDate.year}'][data-month='${selectedDate.month}'][data-date='${selectedDate.date}']`);
+				if (prevSelectedCell) {
+					prevSelectedCell.style.background = "white";
+					prevSelectedCell.style.color = "black";
+				}
+			}
+			
+			selectedDate = {
+				year: this.dataset.year,
+				month: Number(this.dataset.month),
+				date: this.dataset.date,
+				element: this
+			};
 			
 			const dateElement = document.getElementById('date');
 			const messageElement = document.getElementById('message');
@@ -52,7 +68,7 @@ function showGalleryTime(cell, cellDate, isActive) {
 		cell.style.background = "lightgray";  // 배경을 옅은 회색으로
 		cell.style.cursor = "default";
 	}
-} // function
+} // function showGalleryTime
 	
 // 달력 만드는 함수
 function createCalendar(year, month) {
@@ -117,12 +133,21 @@ function createCalendar(year, month) {
 					showGalleryTime(cell, date, true);
 				} else if (year === initialYear && month === initialMonth + 1 && date <= initialDate + 18 - daysInPrevMonth) {
 					showGalleryTime(cell, date, true);
-				} else if (year === initialYear + 1 && month === 0 && date <= initialDate + 18 - daysInPrevMonth) {
+				} else if (year === initialYear + 1 && month === 0 && initialMonth === 11 && date <= initialDate + 18 - daysInPrevMonth) {
 					showGalleryTime(cell, date, true);
 				} else {
 					showGalleryTime(cell, date, false);
 				}
-        		
+				
+				// 선택한 날짜가 있다면 스타일 변경
+				if (selectedDate && selectedDate.year == cell.dataset.year && selectedDate.month == cell.dataset.month && selectedDate.date == cell.dataset.date) {
+					cell.style.background = "black";  // 배경을 검은색으로
+					cell.style.color = "white";  // 글씨를 흰색으로
+					
+					// 선택한 셀 업데이트
+					selectedDate.element = cell;
+				}
+				
         		date++;
         	} // if-else if-else
     	} // for 안쪽 루프
@@ -145,6 +170,13 @@ function changeMonth(increment) {
 	}
 
 	createCalendar(currentYear, currentMonth);
+	
+	// 달력 업데이트 후 선택한 날짜 스타일 유지
+	if (selectedDate) {
+		let selectedCell = document.querySelector(`[data-year='${selectedDate.year}'][data-month='${selectedDate.month}'][data-date='${selectedDate.date}']`);
+		selectedDate.element.style.background = "black";
+		selectedDate.element.style.color = "white";
+	}
 }
 
 // 이전 달로 이동하는 함수
