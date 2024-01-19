@@ -1,20 +1,17 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.member.MemberVO"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-  <%
-	session.getAttribute("memberID");
-    %>
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
+  
 <!DOCTYPE HTML>
  <html>
  <head>
-	  	<meta charset="UTF-8"> 
+	  	<meta charset="UTF-8">
 
         <title>::Art Connect ::</title>
-	    <title>${memberID} 회원정보수정</title>
+	    <title>${memberID} 님 회원정보수정</title>
 	
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
@@ -40,37 +37,25 @@
 	height: 40px;
 	font-size: 20px;
 	  }
-	  
+	
 	.navy {
-		position: absolute;
-		top: 10px;
-		right: 10px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
 	}
 	
-	 .pagination {
-        display: inline-block;
-    }
-
-    .pagination li {
-        display: inline;
-        margin-right: 5px;
-    }
-
-    .pagination li.active {
-        font-weight: bold;
-        background-color: #007bff;
-        color: white;
-    }
-
-    .pagination li a {
-        text-decoration: none;
-        color: #007bff;
-    }
+	.update-content {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+     margin-top: 50px;
+}
 	</style>
 	
 </head>
 
 <body>
+
     <header role="header">
         <div class="container">
            
@@ -82,7 +67,7 @@
             <!-- nav -->
             <nav role="header-nav" class="navy">
                 <ul>
-                    <li class="nav-active"><a
+                   <li class="nav-active"><a
 						href="${pageContext.request.contextPath}/gallery/list"
 						title="Work">전시관 조회 및 검색</a></li>
 
@@ -114,7 +99,7 @@
                         <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>     
+                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
@@ -128,74 +113,24 @@
                     </ul>
                 </div>
             </div>
-   
-        <!-- Main Content -->
-	<main role="main-home-wrapper" class="container mt-5">
-	<h2>나의 리뷰</h2>
-	<hr>
-	<div class="col-md-9">
-	<div class="update-content">
-	<form action = "myReview" method = "post">
-	<div id="result">
-	 <c:if test="${empty list}">
-            <p>작성된 리뷰가 없습니다.</p>
-        </c:if>
-        <c:if test="${not empty list}">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>ID</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>등록일</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
- 		<c:forEach var ="review" items="${list}">
-	
-		<tr>
-		<td>${review.reviewNO}</td>
-		<td>${review.memberID}</td>
-		<td>
-		<a href="#">${fn:substring(review.reviewTitle, 0, 20)}</a>
-		</td>
-		<td>${fn:substring(review.reviewContent, 0, 60)}</td>
-		<td><fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td>${review.reviewHit}</td>
-		</tr> 
-		 </c:forEach> 
-		</table>
-		  </c:if>
-		   </form>
-	</div>
-</div>
+        
+        <!-- main content -->
+            <div class="col-md-9">
+                <div class="update-content">
+                   비밀번호 수정이 성공적으로 완료되었습니다.
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<hr>
-
-	<!-- 페이징 부분 추가 -->
-<div class="container mt-3">
-    <ul class="pagination">
-        <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
-            <li class="page-item ${pageVO.page eq i.index ? 'active' : ''}">
-                <a class="page-link" href="myReview?page=${i.index}&size=${pageVO.size}">${i.index}</a>
-            </li>
-        </c:forEach>
-    </ul>
-</div>
+       
         <!-- footer -->
-
         <footer role="footer">
-
             <!-- logo -->
-
              <!--    <h1>
-
-                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
-
+                    <a href="index.html" title="Art Connect"><img src="resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
                 </h1>
  -->
-            <!-- logo -->
 
             <!-- nav -->
             <nav role="footer-nav">

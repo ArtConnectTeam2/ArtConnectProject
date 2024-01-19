@@ -98,6 +98,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
+                           <li class="nav-item">
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">회원탈퇴</a>
                         </li>
@@ -117,11 +120,11 @@
 
 <section id="container">
 				<div class="col-md-9">
-				<h3>회원 탈퇴</h3>
+				<h2>회원 탈퇴</h2>
 			<form action="deleteOk" method="post">
 					 <tr>
                         아이디 <br>
-                        <input type="text" id="id_member" name="memberID" value="${member.memberID}" readonly > <br>
+                        <input type="text" id="id_member" name="memberID" value="${mymember.memberID}" readonly > <br>
                         </tr>
                         <tr>
                         <br>
@@ -131,7 +134,7 @@
                         <tr>
                         <br>
                         이름 <br>
-                         <input type="text" id="name" name="memberName" value="${member.memberName}" readonly ><br>
+                         <input type="text" id="name" name="memberName" value="${mymember.memberName}" readonly ><br>
                         </tr>
                         <tr>
                         <br>

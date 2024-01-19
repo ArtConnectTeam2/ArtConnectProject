@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.multi.artConnect.member.MemberVO;
 import com.multi.artConnect.reservation.ReservationVO;
 import com.multi.artConnect.review.BoardVO;
 
@@ -21,20 +22,25 @@ public class MypageDAO {
 	SqlSessionTemplate my; 
 	
 	public MemberVO one(String memberID) {
-		return my.selectOne("member.updateOne", memberID);
+		return my.selectOne("mymember.updateOne", memberID);
 	}
 	
 	public int update(MemberVO vo) {
-		int result = my.update("member.update", vo);
+		int result = my.update("mymember.update", vo);
 		return result;
 	}
 	
+	public int updatePw(MemberVO vo) { // 비밀번호 변경
+		return my.update("mymember.updatePw", vo);
+	}
+	
+	
 	public MemberVO one2(String memberID) {
-		return my.selectOne("member.deleteOne", memberID);
+		return my.selectOne("mymember.deleteOne", memberID);
 	}
 	
 	public int delete(String memberID) {
-		int result = my.delete("member.delete", memberID);
+		int result = my.delete("mymember.delete", memberID);
 		return result;
 	}
 	
@@ -62,5 +68,9 @@ public class MypageDAO {
 			// DAO에서 데이터베이스에서 좋아요 정보를 가져오는 코드 작성
 	        List<Map<String, Object>> likesList = my.selectList("member.myLike", memberID);
 	        return likesList;
+		}
+		
+		public int deleteReservation(int reservationID) {
+		    return my.delete("reservation.deleteReservation", reservationID);
 		}
 }

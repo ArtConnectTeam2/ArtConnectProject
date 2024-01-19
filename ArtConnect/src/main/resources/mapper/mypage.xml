@@ -2,18 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
+<mapper namespace="mymember">
 
-	<select id="updateOne" resultType="memberVO"
+	<select id="updateOne" resultType="com.multi.artConnect.member.MemberVO"
 		parameterType="String">
 		select * from member
 		where memberID = #{memberID}
 	</select>
 
-	<update id="update" parameterType="memberVO">
+	<update id="update" parameterType="com.multi.artConnect.member.MemberVO">
 		update member
-		set memberPW = #{memberPW},
-		memberName = #{memberName},
+		set memberName = #{memberName},
 		memberBirth = #{memberBirth},
 		memberGender = #{memberGender},
 		memberAddr = #{memberAddr},
@@ -23,13 +22,19 @@
 		where memberID = #{memberID}
 	</update>
 	
-	<select id="deleteOne" resultType="memberVO"
+	<update id="updatePw" parameterType="com.multi.artConnect.member.MemberVO">
+		update member
+		set memberPW = #{memberPW}
+		where memberID = #{memberID}
+	</update>
+	
+	<select id="deleteOne" resultType="com.multi.artConnect.member.MemberVO"
 		parameterType="String">
 		select * from member
 		where memberID = #{memberID}
 	</select>
 
-	 <delete id="delete" parameterType="memberVO">
+	 <delete id="delete" parameterType="com.multi.artConnect.member.MemberVO">
 		delete from member where memberID = #{memberID}
 	</delete> 
 	
