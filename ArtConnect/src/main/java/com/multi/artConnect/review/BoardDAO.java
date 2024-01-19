@@ -49,5 +49,18 @@ public class BoardDAO {
     public int getTotalCount() {
         return my.selectOne("board.getTotalCount");
     }
+    
+
+    public List<ReplyVO> getRepliesByReviewNo(int reviewNO) {
+        return my.selectList("board.getRepliesByReviewNo", reviewNO);
+    }
+    
+    public void getStarRating(int reviewNO, int starRating) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("reviewNO", reviewNO);
+        params.put("starRating", starRating);
+        my.insert("board.insertStarRating", params);
+    }
+
 
 }

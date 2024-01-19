@@ -14,5 +14,19 @@
         INSERT INTO reply (replyNO, memberID, replyContent, replyDate, reviewNO)
         VALUES (null, #{memberID}, #{replyContent}, now(), #{reviewNO})
     </insert>
+    
+    <!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="replyVO">
+    	UPDATE reply
+    	SET replyContent = #{replyContent}, replyDate = now()
+    	WHERE replyNO = #{replyNO}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="replyVO">
+    	DELETE FROM reply
+    	WHERE replyNO = #{replyNO}
+	</delete>
+    
 
 </mapper>
