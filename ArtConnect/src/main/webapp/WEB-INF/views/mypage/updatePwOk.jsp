@@ -108,7 +108,7 @@
                             <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">좋아요</a>
+                        	<a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
                         </li>
                     </ul>
                 </div>
