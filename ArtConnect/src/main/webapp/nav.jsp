@@ -31,14 +31,14 @@
 
 					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
 
 					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
 
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList.jsp" title="Contact">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/notice.jsp" title="Contact">공지사항</a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/notice/qnaList.jsp" title="Contact">QnA</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/qna.jsp" title="Contact">QnA</a></li>
 
 
 				</ul>
@@ -54,7 +54,7 @@
 				
 				<!-- 로그아웃 버튼 -->
 				<%= session.getAttribute("memberID") %>님 로그인되었습니다.<br>
-				<a href="Logout.jsp">
+				<a href="${pageContext.request.contextPath}/member/Logout.jsp">
 				<button class="btn btn-info">로그아웃</button>
 				</a>
 				<% } %>

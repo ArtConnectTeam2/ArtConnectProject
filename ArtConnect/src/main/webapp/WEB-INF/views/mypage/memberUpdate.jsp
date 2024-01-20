@@ -2,9 +2,8 @@
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
     <%
-    	session.setAttribute("memberID", "test4");
+    	session.getAttribute("memberID");
     %>
 <!DOCTYPE HTML>
  <html>
@@ -31,7 +30,40 @@
 		
 		<!-- sidebar CSS -->
     	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
-	  	
+
+
+	   <script type="text/javascript">
+	   function validateForm() {
+	        var isEmailValid = validateEmail();
+
+	        return isEmailValid;
+	    }
+	   
+	   function confirmAndUpdate() { // 회원정보수정
+           if (validateEmail()) {
+               if (confirm("회원정보를 수정하시겠습니까?")) {
+                   document.getElementById("updateForm").submit();
+               }
+           }
+       }
+	   
+	   function validateEmail() {
+	        var email = document.getElementById("memberEmail").value;
+	        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+	        var emailErrorMessage = document.getElementById("emailErrorMessage");
+
+	        if (!emailRegex.test(email)) {
+	            emailErrorMessage.innerHTML = "올바른 이메일 형식이 아닙니다.";
+	            emailErrorMessage.style.color = "red";
+	            return false;
+	        } else {
+	            emailErrorMessage.innerHTML = "";
+	            return true;
+	        }
+	    }
+       
+        
+    </script>
     <style>  
     input {
 	width: 500px;
@@ -87,6 +119,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
+                             <li class="nav-item">
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
@@ -97,7 +132,7 @@
                             <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">좋아요</a>
+                        	<a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
                         </li>
                     </ul>
                 </div>
@@ -107,45 +142,42 @@
             <div class="col-md-9">
                 <div class="update-content">
                     <h2>회원 정보 수정</h2>
-                    	<form action = "updateOk" method = "post">
+                    	<form id="updateForm" action = "updateOk" method = "post" onsubmit="return validateForm();">
                         <tr>
                         아이디 <br>
-                        <input type="text" name="memberID" value="${member.memberID}" readonly > <br>
-                        </tr>
-                        <tr>
-                        비밀번호 <br>
-                        <input type="password" name="memberPW" value="${member.memberPW}"><br>
+                        <input type="text" name="memberID" value="${mymember.memberID}" readonly > <br>
                         </tr>
                         <tr>
                         이름 <br>
-                         <input type="text" name="memberName" value="${member.memberName}" readonly ><br>
+                         <input type="text" name="memberName" value="${mymember.memberName}" readonly ><br>
                         </tr>
                         <tr>
                         생년월일 <br>
-                        <input type="date" name="memberBirth" value="${member.memberBirth}"><br>
+                        <input type="date" name="memberBirth" value="${mymember.memberBirth}"><br>
                         </tr>
                         <tr>
                         성별 <br>
-                         <input type="text" name="memberGender" value="${member.memberGender}" readonly ><br>
+                         <input type="text" name="memberGender" value="${mymember.memberGender}" readonly ><br>
                         </tr>
                         <tr>
                         주소 <br>
-                         <input type="text" name="memberAddr" value="${member.memberAddr}"><br>
+                         <input type="text" name="memberAddr" value="${mymember.memberAddr}"><br>
                         </tr>
                         <tr>
                         전화번호 <br>
-                         <input type="text" name="memberTel" value="${member.memberTel}"><br>
+                         <input type="text" name="memberTel" value="${mymember.memberTel}"><br>
                         </tr>
                         <tr>
-                        이메일 <br> 
-                        <input type="text" name="memberEmail" value="${member.memberEmail}"><br>
+                         이메일 <br> 
+                        <input type="text" name="memberEmail" id="memberEmail" value="${mymember.memberEmail}">
+                        <br><span id="emailErrorMessage"></span><br>
                         </tr>
                         <tr>
                         알람설정 <br> 
-                        <input type="text" name="memberAlarm" value="${member.memberAlarm}"><br>
+                        <input type="text" name="memberAlarm" value="${mymember.memberAlarm}"><br>
                         </tr>
                         <br>
-					<button type="submit" style="width: 100px;" class="btn btn-warning">수정</button>
+					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-warning">수정</button>
 				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
 				</tr>
                 <br>
@@ -156,7 +188,6 @@
         </div>
     </div>
 
-       
         <!-- footer -->
         <footer role="footer">
             <!-- logo -->

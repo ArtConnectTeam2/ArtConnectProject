@@ -43,6 +43,13 @@
 	top: 10px;
 	right: 10px;
 	}
+	
+	.update-content {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+     margin-top: 50px;
+}
 	</style>
 	
 </head>
@@ -88,17 +95,20 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
+                             <li class="nav-item">
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">내 예약</a>
+                            <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">내 리뷰</a>
+                            <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">좋아요</a>
+                        	<a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
                         </li>
                     </ul>
                 </div>
@@ -107,9 +117,9 @@
         <!-- main content -->
             <div class="col-md-9">
                 <div class="update-content">
-                   회원정보수정이 완료되었습니다.
+                   회원정보수정이 성공적으로 완료되었습니다.
                    <br>
-                   <a href="updateOne?memberID=${memberID}">수정한 정보 확인</a>
+                   <a href="updateOne?memberID=${memberID}">수정한 정보 확인하러 가기</a>
                 </div>
             </div>
         </div>

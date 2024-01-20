@@ -21,14 +21,24 @@
 				<div class="sidebar">
 					<h3>마이페이지</h3>
 					<ul class="nav flex-column">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">회원탈퇴</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">내 예약</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">내 리뷰</a></li>
-						<li class="nav-item"><a class="nav-link href= "
-							myLike?memberID=${memberID}">좋아요</a></li>
+					  <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
+                        </li>
+                             <li class="nav-item">
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
+                        </li>
 					</ul>
 				</div>
 

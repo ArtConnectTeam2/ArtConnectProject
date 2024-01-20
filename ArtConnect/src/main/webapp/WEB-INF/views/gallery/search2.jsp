@@ -134,7 +134,7 @@
         <c:forEach var="gallery" items="${searchResult}">
             <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">
                 <figure>
-                	<a href="${pageContext.request.contextPath}/gallery/detail?galleryName=${gallery.galleryName}">
+                	<a href="${pageContext.request.contextPath}/gallery/detail?galleryID=${gallery.galleryID}">
                     <img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"  alt="${gallery.galleryName} 이미지" class="img-responsive" /> 
                     </a>
                     <figcaption>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.multi.artConnect.member.MemberVO;
 import com.multi.artConnect.reservation.ReservationVO;
 import com.multi.artConnect.review.BoardVO;
 import com.multi.artConnect.review.PageVO;
@@ -27,31 +28,50 @@ public class MypageController {
 	@Autowired
 	MypageDAO dao;
 
-	@RequestMapping("mypage/updateOne") // update 회원정보
+	@RequestMapping("mypage/updateOne") // 회원정보
 	public String updateOne(String memberID, Model model) {
 		MemberVO one = dao.one(memberID);
 		System.out.println(one);
-		model.addAttribute("member", one);
+		model.addAttribute("mymember", one);
 		return "mypage/memberUpdate";
 	}
 	
-	@PostMapping("mypage/updateOk")
+	@PostMapping("mypage/updateOk") // 회원정보수정
 	public void update(MemberVO vo, Model model) {
 		System.out.println(vo);
 		int result = dao.update(vo);
 		model.addAttribute("result", result);
 	}
+
+	@RequestMapping("mypage/updatePw") 
+	public String updatePw(String memberID, Model model) {
+		MemberVO one = dao.one(memberID);
+		System.out.println(one);
+		model.addAttribute("mymember", one);
+		return "mypage/updatePw";
+	}
+	
+	@RequestMapping("mypage/updatePwOk") // 비밀번호 변경
+	public void updatePw2(MemberVO vo, HttpSession session, Model model) {
+		String memberID = (String) session.getAttribute("memberID");
+		vo.setmemberID(memberID);
+		System.out.println("MemberVO : " + vo);
+		int result = dao.updatePw(vo);
+		model.addAttribute("result", result);
+		
+	}
+	
 	
 	@RequestMapping("mypage/deleteOne") 
 	public String deleteOne(String memberID, Model model) {
 		MemberVO one = dao.one(memberID);
 		System.out.println(one);
-		model.addAttribute("member", one);
+		model.addAttribute("mymember", one);
 		return "mypage/memberDelete";
 	}
-	
-	
-	@PostMapping("mypage/deleteOk")
+
+
+	@PostMapping("mypage/deleteOk") // 회원탈퇴
 	public String delete(@RequestParam String memberID, @RequestParam String memberPW, RedirectAttributes redirectAttributes) {
 	    MemberVO member = dao.one(memberID);
 
@@ -120,5 +140,21 @@ public class MypageController {
 
 		    // 마이페이지로 이동
 		    return "mypage/myLike";
+		}
+		
+		@PostMapping("mypage/deleteReservation")
+		public String deleteReservation(@RequestParam("reservationID") int reservationID, RedirectAttributes redirectAttributes, HttpSession session) {
+		    String memberID = (String) session.getAttribute("memberID");
+		    System.out.println("memberID: " + memberID);
+
+		    try {
+		        // DAO를 통해 예약을 삭제합니다.
+		        dao.deleteReservation(reservationID);
+		        redirectAttributes.addFlashAttribute("deleteResult", "success");
+		    } catch (Exception e) {
+		        redirectAttributes.addFlashAttribute("deleteResult", "failure");
+		        e.printStackTrace();
+		    }
+		    return "redirect:/mypage/myReservation?memberID=" + memberID; // 예약 목록 페이지로 리다이렉트
 		}
 }

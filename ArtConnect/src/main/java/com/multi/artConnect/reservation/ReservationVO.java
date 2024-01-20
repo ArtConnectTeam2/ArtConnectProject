@@ -1,18 +1,54 @@
 package com.multi.artConnect.reservation;
 
 import java.sql.Time;
+import java.util.Date;
 
 public class ReservationVO {
     private int reservationID;
     private int galleryID;
     private int programID;
     private String memberID;
-    private Integer reservationCount;
     private String programTitle;
     private Boolean payment;
     private String reservationTime;
-    private Time galleryOpentime;
+    private Date reservationDay;
+	private Time galleryOpentime;
 	private Time galleryClosetime;
+	private int totalPrice;
+	private int adultCount;
+	private int teenagerCount;
+	private int childCount;
+	
+	public int getAdultCount() {
+		return adultCount;
+	}
+	public void setAdultCount(int adultCount) {
+		this.adultCount = adultCount;
+	}
+	public int getTeenagerCount() {
+		return teenagerCount;
+	}
+	public void setTeenagerCount(int teenagerCount) {
+		this.teenagerCount = teenagerCount;
+	}
+	public int getChildCount() {
+		return childCount;
+	}
+	public void setChildCount(int childCount) {
+		this.childCount = childCount;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public Date getReservationDay() {
+		return reservationDay;
+	}
+	public void setReservationDay(Date reservationDay) {
+		this.reservationDay = reservationDay;
+	}
 	public Time getGalleryOpentime() {
 		return galleryOpentime;
 	}
@@ -48,12 +84,6 @@ public class ReservationVO {
 	}
 	public void setMemberID(String memberID) {
 		this.memberID = memberID;
-	}
-	public Integer getReservationCount() {
-		return reservationCount;
-	}
-	public void setReservationCount(Integer reservationCount) {
-		this.reservationCount = reservationCount;
 	}
 	public String getProgramTitle() {
 		return programTitle;

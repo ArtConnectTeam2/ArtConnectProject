@@ -76,14 +76,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/1.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/101.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
-									<span>서울 시립 </span> 미술관
+									<span>국립 현대 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%84%9C%EC%9A%B8%EC%8B%9C%EB%A6%BD%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=1">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -91,14 +91,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/2.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/102.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
-									<span>북 서울 </span> 미술관
+									<span>DDP 디자인 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EB%B6%81%EC%84%9C%EC%9A%B8%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=2">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -106,14 +106,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/3.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/103.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
-									<span>남 서울 </span> 미술관
+									<span>겸재정선 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EB%82%A8%EC%84%9C%EC%9A%B8%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=3">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -130,14 +130,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/4.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/104.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
-									<span>아모레 퍼시픽 </span> 미술관
+									<span>서울 시립 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%95%84%EB%AA%A8%EB%A0%88%ED%8D%BC%EC%8B%9C%ED%94%BD%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=4">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -145,14 +145,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/5.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/105.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
-									<span>소마 </span> 미술관
+									<span>성북구립 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EC%86%8C%EB%A7%88%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=5">View more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -160,14 +160,14 @@
 					<li>
 						<figure class="effect-oscar">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/6.png"
+								src="${pageContext.request.contextPath}/resources/img/gallery/106.png"
 								alt="" class="img-responsive" />
 							<figcaption>
 								<h2>
-									<span>국립 현대 </span> 미술관
+									<span>최만린 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryName=%EA%B5%AD%EB%A6%BD%ED%98%84%EB%8C%80%20%EB%AF%B8%EC%88%A0%EA%B4%80">View more</a>
+								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=6">View more</a>
 							</figcaption>
 						</figure>
 					</li>

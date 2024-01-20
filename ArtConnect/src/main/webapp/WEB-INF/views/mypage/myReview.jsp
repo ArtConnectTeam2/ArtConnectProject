@@ -1,13 +1,13 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
   <%
-	session.setAttribute("memberID", "test4");
-
+	session.getAttribute("memberID");
     %>
+ 
 <!DOCTYPE HTML>
  <html>
  <head>
@@ -110,6 +110,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
                         </li>
+                             <li class="nav-item">
+                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
+                        </li>
                         <li class="nav-item">
                         <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>     
                         </li>
@@ -120,7 +123,7 @@
                             <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">좋아요</a>
+                        	<a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
                         </li>
                     </ul>
                 </div>
@@ -128,12 +131,16 @@
    
         <!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
-	<h2>Review</h2>
+	<h2>나의 리뷰</h2>
 	<hr>
 	<div class="col-md-9">
 	<div class="update-content">
 	<form action = "myReview" method = "post">
 	<div id="result">
+	 <c:if test="${empty list}">
+            <p>작성된 리뷰가 없습니다.</p>
+        </c:if>
+        <c:if test="${not empty list}">
 	<table class="table">
 		<thead>
 			<tr>
@@ -154,11 +161,12 @@
 		<a href="#">${fn:substring(review.reviewTitle, 0, 20)}</a>
 		</td>
 		<td>${fn:substring(review.reviewContent, 0, 60)}</td>
-		<td>${review.reviewDate}</td>
+		<td><fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 		<td>${review.reviewHit}</td>
 		</tr> 
 		 </c:forEach> 
 		</table>
+		  </c:if>
 		   </form>
 	</div>
 </div>

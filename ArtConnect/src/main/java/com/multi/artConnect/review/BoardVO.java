@@ -12,9 +12,12 @@ public class BoardVO {
 	private Date reviewDate;
 	private int reviewHit;
 	private String reviewFile;
+	private int starRating;
 	
 	private MultipartFile file;
 	private String filePath;
+	
+	
 	
 	public int getReviewNO() {
 		return reviewNO;
@@ -109,6 +112,16 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [reviewNO=" + reviewNO + ", memberID=" + memberID + ", reviewTitle=" + reviewTitle
 				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", reviewHit=" + reviewHit + "]";
+	}
+
+
+	public int getStarRating() {
+		return starRating;
+	}
+
+
+	public void setStarRating(int starRating) {
+		this.starRating = starRating;
 	}
 
 

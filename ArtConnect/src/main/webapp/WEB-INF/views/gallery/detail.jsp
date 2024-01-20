@@ -1,14 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.multi.artConnect.gallery.GalleryVO"%>
+<%@ page import="com.multi.artConnect.gallery.ProgramVO_gallery"%>
 <%@ page import="java.util.List"%>
+
 <!DOCTYPE html>
+
 <html>
 
 <head>
 <!-- css 스타일  -->
 <%@ include file="/header.jsp"%>
+
+<!-- formatDate 영어로  -->
+<fmt:setLocale value="en_US" />
+
+    <script>
+        var userLang = navigator.language || navigator.userLanguage;
+    </script>
+
 </head>
 
 <body>
@@ -20,20 +33,28 @@
 	<main role="main-inner-wrapper" class="container">
 
 		<!-- work details -->
-		<div class="work-details">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-5">
-					<header role="work-title">
-						<h2>${gallery.galleryName}</h2>
-						<a href="${gallery.homepageAddress}">Visit online Homepage<i
-							class="fa fa-external-link" aria-hidden="true"></i></a>
-						<div style="margin-top: 20px;">
-							<img
-								src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"
-								alt="${gallery.galleryName} 이미지" class="img-responsive" />
-						</div>
-					</header>
-				</div>
+ 	<div class="work-details">
+ <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5">
+            <header role="work-title">
+                <h2>${gallery.galleryName}</h2>
+                <c:choose>
+                    <c:when test="${not gallery.homepageAddress.startsWith('https://')}">
+                        <c:set var="modifiedHomepageAddress" value="https://${gallery.homepageAddress}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="modifiedHomepageAddress" value="${gallery.homepageAddress}" />
+                    </c:otherwise>
+                </c:choose>
+                <a href="${modifiedHomepageAddress}">Visit online Homepage<i
+                        class="fa fa-external-link" aria-hidden="true"></i></a>
+                <div style="margin-top: 20px;">
+                    <img
+                        src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"
+                        alt="${gallery.galleryName} 이미지" class="img-responsive" />
+                </div>
+            </header>
+        </div>
 
 				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
 					<section>
@@ -47,20 +68,22 @@
 						</p>
 
 						<p>
-							<strong>Add later :</strong><br /> cc
-						</p>
-
-						<p>
 							<strong>Like! :</strong><br />
 							<button id="likeButton">Like</button>
 						</p>
-						<strong id="likeMessage"></strong>
-						<br>
+						<strong id="likeMessage"></strong> <br>
 
-
+<br>
+						<p>
+							<strong>View Program on display</strong><br /> <a
+								href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">
+								<button id="viewMoreButton">View more</button>
+							</a>
+						</p>
 
 					</section>
 				</div>
+				
 			</div>
 
 			<div class="clearfix"></div>
@@ -70,7 +93,7 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
 							<header role="work-title" style="text-align: left;">
-								<h2 style="margin-left: 0px;">${gallery.galleryName}찾아오시는길</h2>
+								<h2 style="margin-left: 0px;">찾아오시는길</h2>
 							</header>
 						</div>
 					</div>
@@ -104,24 +127,32 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
 							<header role="work-title" style="text-align: left;">
-								<h2 style="margin-left: 0px;">${gallery.galleryName}프로그램</h2>
+								<h2 style="margin-left: 0px;">전시중인 프로그램</h2>
 							</header>
 						</div>
 					</div>
 				</div>
 
-				<ul class="grid-lod effect-2" id="grid">
-					<li class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-						style="text-align: left;"><img
-						src="${pageContext.request.contextPath}/resources/images/work/works-image-2.jpg"
-						alt="" class="img-responsive" /></li>
-					<li class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-						style="text-align: left;"><img
-						src="${pageContext.request.contextPath}/resources/images/work/works-image-3.jpg"
-						alt="" class="img-responsive" /></li>
-					<!-- 추가 이미지들도 유사한 방식으로 추가 -->
-				</ul>
-
+                    <ul class="grid-lod effect-2" id="grid">
+						<c:forEach var="program" items="${programList}">
+                        <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
+                            <section class="blog-content">
+                            	<a href="blog-details.html">
+                                <figure>
+                                    <div class="post-date">
+                                    <span>
+                                    <fmt:formatDate value="${program.programEnd}" pattern="dd" />
+                                    </span>
+                                        <fmt:formatDate value="${program.programEnd}" pattern="MMMM yyyy" />
+                                    </div>
+                                    <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
+									alt="Program Image" style="width: 500px; height: 500px;">
+                                </figure>
+                                </a>
+                            </section>
+                        </li>
+						</c:forEach>
+                    </ul>
 			</div>
 
 		</div>
