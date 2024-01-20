@@ -5,6 +5,8 @@
 
 <head>
 
+<title>:: 미술관 메인 페이지 ::</title>
+
 <%@ include file="/header.jsp" %>
 
 </head>

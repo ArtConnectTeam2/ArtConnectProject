@@ -12,6 +12,8 @@
 <html>
 
 <head>
+
+<title>:: 미술관 상세 페이지 ::</title>
 <!-- css 스타일  -->
 <%@ include file="/header.jsp"%>
 
