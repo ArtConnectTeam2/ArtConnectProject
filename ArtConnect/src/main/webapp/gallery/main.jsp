@@ -203,7 +203,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-4">
 					<header role="work-title">
 						<h2>Review</h2>
-						<a href="/review/boardList.jsp">View All Reviews<i class="fa fa-external-link"
+						<a href="${pageContext.request.contextPath}/review/boardList">View All Reviews<i class="fa fa-external-link"
 							aria-hidden="true"></i></a>
 					</header>
 				</div>
@@ -220,7 +220,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-4">
 					<header role="work-title">
 						<h2>Notice</h2>
-						<a href="#">View All Notices<i class="fa fa-external-link"
+						<a href="${pageContext.request.contextPath}/notice/noticeList">View All Notices<i class="fa fa-external-link"
 							aria-hidden="true"></i></a>
 					</header>
 				</div>

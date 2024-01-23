@@ -56,4 +56,8 @@ public class GalleryDAO {
         List<GalleryVO> list = my.selectList("gallery.filterData", paramMap);
         return list;
     }
+	
+	public ProgramVO_gallery getProgram(int programID) {
+		  return my.selectOne("com.multi.artConnect.gallery.ProgramDAO_gallery.getProgram", programID);
+		}
 }

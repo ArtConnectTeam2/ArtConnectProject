@@ -170,27 +170,31 @@
             </li>
         </c:when>
         
-        <c:otherwise>
-            <!-- 프로그램이 있는 경우 -->
-            <c:forEach var="program" items="${programList}">
-                <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
-                    <section class="blog-content">
-                        <a href="blog-details.html">
-                            <figure>
-                                <div class="post-date">
-                                    <span>
-                                        <fmt:formatDate value="${program.programEnd}" pattern="dd" />
-                                    </span>
-                                    <fmt:formatDate value="${program.programEnd}" pattern="MMMM yyyy" />
-                                </div>
-                                <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
-                                    alt="Program Image" style="width: 500px; height: 500px;">
-                            </figure>
-                        </a>
-                    </section>
-                </li>
-            </c:forEach>
-        </c:otherwise>
+<c:otherwise>
+    <!-- 프로그램이 있는 경우 -->
+    <c:forEach var="program" items="${programList}">
+        <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
+            <section class="blog-content">
+                <!-- 사용자의 programID 값을 가져와 링크를 동적으로 생성 -->
+                <c:url var="programDetailURL" value="/gallery/program_detail">
+                    <c:param name="programID" value="${program.programID}" />
+                </c:url>
+                <a href="${programDetailURL}">
+                    <figure>
+                        <div class="post-date">
+                            <span>
+                                <fmt:formatDate value="${program.programEnd}" pattern="dd" />
+                            </span>
+                            <fmt:formatDate value="${program.programEnd}" pattern="MMMM yyyy" />
+                        </div>
+                        <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
+                             alt="Program Image" style="width: 500px; height: 500px;">
+                    </figure>
+                </a>
+            </section>
+        </li>
+    </c:forEach>
+</c:otherwise>
     </c:choose>
 </ul>
 			</div>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -147,5 +148,12 @@ public class GalleryController {
     @ResponseBody
     public List<GalleryVO> getAllGalleries() throws Exception {
         return dao.list();
+    }
+    
+    @GetMapping("/program_detail")
+    public String getProgramDetail(@RequestParam("programID") int programID, Model model) {
+      ProgramVO_gallery program = dao.getProgram(programID);
+      model.addAttribute("program", program);
+      return "gallery/program_detail";
     }
 }
