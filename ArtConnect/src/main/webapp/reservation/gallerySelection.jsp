@@ -79,8 +79,22 @@
 </head>
 
 <body>
-    <header role="header">
-        <div class="container">
+	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
+		<% String memberID = (String) session.getAttribute("memberID");
+		if (memberID == null || memberID.equals("")) { %>
+			<a href="${pageContext.request.contextPath}/member/login">
+				<button class="btn btn-danger" onclick="login()">로그인</button>
+			</a>
+		<% } else { %>
+			<!-- 로그아웃 버튼 -->
+			<%= memberID %>님 로그인되었습니다.<br>
+			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/gallerySelection.jsp">
+				<button class="btn btn-info">로그아웃</button>
+			</a>
+		<% } %>
+	</div>
+    <header role="header" style="margin-top: -100px; margin-left: 0px;">
+        <div class="container" style="display: inline-block; max-width: 50%;">
             <!-- Logo -->
             <h1>
                 <a href="${pageContext.request.contextPath}/gallery/main.jsp">

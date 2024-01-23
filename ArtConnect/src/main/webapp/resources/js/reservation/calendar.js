@@ -51,6 +51,9 @@ function showGalleryTime(cell, cellDate, isActive) {
 			const month = Number(this.dataset.month) + 1; // 1월이 0부터 시작하기 때문에
 			const date = this.dataset.date;
 			
+			const formattedDate = new Date(year, month - 1, date);
+			updateTotalReserved(formattedDate.toISOString());
+			
 			if (selectedDate) {
 				let prevSelectedCell = document.querySelector(`[data-year='${selectedDate.year}'][data-month='${selectedDate.month}'][data-date='${selectedDate.date}']`);
 				if (prevSelectedCell) {
@@ -92,7 +95,7 @@ function showGalleryTime(cell, cellDate, isActive) {
 		cell.style.cursor = "default";
 	}
 } // function showGalleryTime
-	
+
 // 달력 만드는 함수
 function createCalendar(year, month) {
 

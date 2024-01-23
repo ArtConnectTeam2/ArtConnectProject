@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -33,8 +35,23 @@
 
 </head>
 <body>
-	<header role="header">
-        <div class="container">
+	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
+		<% String memberID = (String) session.getAttribute("memberID");
+		Date reservationDay = (Date) request.getAttribute("reservationDay"); %>
+		<% if (memberID == null || memberID.equals("")) { %>
+			<a href="${pageContext.request.contextPath}/member/login">
+				<button class="btn btn-danger" onclick="login()">로그인</button>
+			</a>
+		<% } else { %>
+			<!-- 로그아웃 버튼 -->
+			<%= memberID %>님 로그인되었습니다.<br>
+			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/reservation/${gallery.galleryID}/${program.programID}">
+				<button class="btn btn-info">로그아웃</button>
+			</a>
+		<% } %>
+	</div>
+	<header role="header" style="margin-top: -100px; margin-left: 0px;">
+        <div class="container" style="display: inline-block; max-width: 50%;">
             <!-- Logo -->
             <h1>
                 <a href="${pageContext.request.contextPath}/gallery/main.jsp">
@@ -50,7 +67,7 @@
 
 	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
 
-	<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
+	<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
 
 	<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
@@ -166,47 +183,51 @@
             <!-- 달력 함수 호출 부분 -->
         </tbody>
     </table>
-    <div id = "date">날짜를 선택해주세요.</div>
-    <div id = "message"></div>
-    <button class="reservation-button">예약하기</button>
-    </div> <!-- calendar-container -->
-</div> <!-- prd_info_wrap -->
-<!-- 인원 수 및 총 가격 표시 -->
-<div>
+    <!-- 인원 수 및 총 가격 표시 -->
+<div class="table-container">
     <table>
-        <tr>
+    <tr class="input-row">
         <td><label for="adultCount">성인 인원 수 :</label></td>
         <td>
             <button type="button" class="round-button" onclick="decreaseAdultCount()">-</button>
-            <input id="adultCount" class="adultCount" value="0" readonly style="border:none; background-color:transparent;">
+            <input id="adultCount" class="input-field" value="0" readonly style="border:none; background-color:transparent;">
             <button type="button" class="round-button" onclick="increaseAdultCount()">+</button>
         </td>
     </tr>
-    <tr>
+    <tr class="input-row">
         <td><label for="teenagerCount">학생 인원 수 :</label></td>
         <td>
             <button type="button" class="round-button" onclick="decreaseTeenagerCount()">-</button>
-            <input id="teenagerCount" class="teenagerCount" value="0" readonly style="border:none; background-color:transparent;">
+            <input id="teenagerCount" class="input-field" value="0" readonly style="border:none; background-color:transparent;">
             <button type="button" class="round-button" onclick="increaseTeenagerCount()">+</button>
         </td>
     </tr>
-    <tr>
+    <tr class="input-row">
         <td><label for="childCount">아동 인원 수 :</label></td>
         <td>
             <button type="button" class="round-button" onclick="decreaseChildCount()">-</button>
-            <input id="childCount" class="childCount" value="0" readonly style="border:none; background-color:transparent;">
+            <input id="childCount" class="input-field" value="0" readonly style="border:none; background-color:transparent;">
             <button type="button" class="round-button" onclick="increaseChildCount()">+</button>
         </td>
     </tr>
-        <tr>
-            <td colspan="3"><span class="totalPrice">총 가격: 0원</span></td>
-        </tr>
+    <tr class="input-row">
+        <td colspan="3"><span class="totalPrice">총 가격: 0원</span></td>
+    </tr>
     </table>
+</div>
+    <div id = "calendar-footer">
+    	<span id = "date">날짜를 선택해주세요.</span>
+    	<span id = "message"></span>
+    	<span id = "remain"></span>
+    	<button class="reservation-button">예약하기</button>
+    </div>
+    </div> <!-- calendar-container -->
+</div> <!-- prd_info_wrap -->
+
     <!-- 예약 폼 추가 (숨김) -->
 <form action="${pageContext.request.contextPath}/reservation/confirm" method="post" style="display: none;">
     <input type="hidden" name="galleryID" value="${gallery.galleryID}">
     <input type="hidden" name="programID" value="${program.programID}">
-    <input type="hidden" name="memberID" value="apple">
     <input type="hidden" name="programTitle" value="${program.programTitle}">
     <input type="hidden" name="reservationTime" value="<fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/> ~ <fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/>">
     <input type="hidden" name="adultCount" value="0">
@@ -214,7 +235,7 @@
     <input type="hidden" name="childCount" value="0">
     <input type="hidden" name="totalPrice" value="0">
 </form>
-</div>
+
 
 	</div> <!-- thumbnails-pan -->
 	</footer>
@@ -228,44 +249,80 @@
 	createCalendar(currentYear, currentMonth);
 	
 	</script>
-	
 <script>
+
+let totalReserved;
+let totalCount;
+let isAvailable;
+
+//날짜 클릭 시 totalReserved를 가져와서 remain에 표시하는 함수
+function updateTotalReserved(reservationDay) {
+    
+    // 서버에 해당 날짜의 totalReserved를 요청하고 결과를 remain에 표시
+    $.ajax({
+        url: `${program.programID}/updateTotalReserved`,
+        method: 'GET',
+        data: {	reservationDay: new Date(reservationDay) },
+        success: function(data) {
+            totalReserved = data.totalReserved; // 서버에서 받아온 totalReserved 값
+
+            // totalReserved와 remainCapacity를 표시
+            document.getElementById('remain').innerText = "남은 예약 인원 수 : "+totalReserved+"/300";
+        },
+        error: function(error) {
+            console.error('Error fetching totalReserved:', error);
+        }
+    });
+}
 
 const reservationButton = document.querySelector('.reservation-button');
 reservationButton.addEventListener('click', function() {
-    const dateElement = document.getElementById('date');
+	
+    // 날짜 데이터
+	const dateElement = document.getElementById('date');
+    const dateString = dateElement.innerText.trim(); // "YYYY-MM-DD (day)" 양식
+    const dateParts = dateString.split(' '); // [YYYY-MM-DD, day]
+    const selectedDate = dateParts[0]; // YYYY-MM-DD
+    const reservationDay = new Date(selectedDate);
     
+    const memberID = '<%= memberID %>';
     const adultCount = parseInt(document.getElementById('adultCount').value);
     const teenagerCount = parseInt(document.getElementById('teenagerCount').value);
     const childCount = parseInt(document.getElementById('childCount').value);
+    
+    isAvailable = totalReserved >= adultCount + teenagerCount + childCount;
     
     if (dateElement.innerHTML === '날짜를 선택해주세요.') {
         alert('날짜를 선택해주세요.');
     } else if (adultCount === 0 && teenagerCount === 0 && childCount === 0) {
     	alert('예약하실 인원을 최소 한 명 선택해주세요.');
     	return; // 인원 수가 0이면 더 이상 진행하지 않음
+    } else if (memberID == "null") {
+    	alert('예약 기능은 로그인 상태에서 이용하실 수 있습니다.')
     } else {
-    	
     	const totalPrice = parseInt(document.querySelector('.totalPrice').innerText.replace(/[^0-9]/g, ''));
         // 예약 데이터 생성
         const reservationData = {
             'galleryID': document.querySelector('input[name="galleryID"]').value,
             'programID': document.querySelector('input[name="programID"]').value,
-            'memberID': document.querySelector('input[name="memberID"]').value,
+            'memberID': memberID,
             'programTitle': document.querySelector('input[name="programTitle"]').value,
             'payment': false,
             'reservationTime': document.querySelector('input[name="reservationTime"]').value,
-            'reservationDay': dateElement.innerText.trim(),
+            'reservationDay': reservationDay,
             'totalPrice': totalPrice,
             'adultCount': adultCount,
             'teenagerCount': teenagerCount,
-            'childCount': childCount
+            'childCount': childCount,
+            'totalCount': adultCount + teenagerCount + childCount
         };
         
         // 최종 확인 창 표시
         const confirmationMessage = "성인 " + adultCount + "명, 학생 " + teenagerCount + "명, 아동 " + childCount + "명\n가격은 " + totalPrice + "원 입니다. 예약하시겠습니까?";
         
-        if (confirm(confirmationMessage)) {
+        if (!isAvailable) {
+        	alert('최대 예약 가능 인원 수를 초과하였습니다.\n다른 날짜를 선택해주세요.')
+        } else if (confirm(confirmationMessage)) {
         // 서버에 POST 요청 보내기
         	$.ajax({
             	url: `${program.programID}/insertReservation`,
@@ -274,10 +331,14 @@ reservationButton.addEventListener('click', function() {
 	            data: JSON.stringify(reservationData), 
 	            success: function(data) {
 	                console.log('Success:', data);
-	                alert('예약 성공');
+	           		alert('예약 성공');
 	            },
 	            error: function(error) {
-	                console.error('Error:', error);
+	                if (error.responseText.includes('Duplicate entry')) {
+	                	alert('해당 아이디로 이미 예약한 기록이 있습니다.')
+	           		} else {
+	           			alert('알 수 없는 오류로 예약에 실패했습니다. 다시 시도해주세요.')
+	           		}
 	            }
 	        });
         } else {

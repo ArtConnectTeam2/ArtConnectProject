@@ -5,9 +5,16 @@
   <insert id="insertReservation" parameterType="reservationVO">
     INSERT INTO `reservation` (`galleryID`, `programID`, `memberID`, `programTitle`,
     `payment`, `reservationTime`, `reservationDay`, `totalPrice`,
-    `adultCount`, `teenagerCount`, `childCount`)
+    `adultCount`, `teenagerCount`, `childCount`, `totalCount`)
     VALUES (#{galleryID}, #{programID}, #{memberID}, #{programTitle},
     0, #{reservationTime}, #{reservationDay}, #{totalPrice},
-    #{adultCount}, #{teenagerCount}, #{childCount})
+    #{adultCount}, #{teenagerCount}, #{childCount}, #{totalCount})
   </insert>
+  
+  <!-- 남은 예약 가능 인원 확인 쿼리 -->
+  <select id="checkTotalCount" parameterType="reservationVO" resultType="int">
+    SELECT 300 - COALESCE(SUM(totalCount), 0) AS totalReserved
+    FROM reservation
+    WHERE galleryID = #{galleryID} AND reservationDay = #{reservationDay}
+  </select>
 </mapper>
