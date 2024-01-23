@@ -20,6 +20,14 @@
 <!-- formatDate 영어로  -->
 <fmt:setLocale value="en_US" />
 
+<style>
+    strong {
+        font-size: 18px; /* 원하는 글자 크기로 조절하세요 */
+        color : black;
+    }
+    
+</style>
+
     <script>
         var userLang = navigator.language || navigator.userLanguage;
     </script>
@@ -37,54 +45,68 @@
 		<!-- work details -->
  	<div class="work-details">
  <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-5">
-            <header role="work-title">
-                <h2>${gallery.galleryName}</h2>
-                <c:choose>
-                    <c:when test="${not gallery.homepageAddress.startsWith('https://')}">
-                        <c:set var="modifiedHomepageAddress" value="https://${gallery.homepageAddress}" />
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="modifiedHomepageAddress" value="${gallery.homepageAddress}" />
-                    </c:otherwise>
-                </c:choose>
-                <a href="${modifiedHomepageAddress}">Visit online Homepage<i
-                        class="fa fa-external-link" aria-hidden="true"></i></a>
-                <div style="margin-top: 20px;">
-                    <img
-                        src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"
-                        alt="${gallery.galleryName} 이미지" class="img-responsive" />
-                </div>
-            </header>
+<div class="col-xs-12 col-sm-12 col-md-5">
+    <header role="work-title">
+        <h2>${gallery.galleryName}</h2>
+        <c:choose>
+            <c:when test="${not gallery.homepageAddress.startsWith('https://')}">
+                <c:set var="modifiedHomepageAddress" value="https://${gallery.homepageAddress}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="modifiedHomepageAddress" value="${gallery.homepageAddress}" />
+            </c:otherwise>
+        </c:choose>
+        <a href="${modifiedHomepageAddress}" target="_blank">Visit online Homepage<i class="fa fa-external-link" aria-hidden="true"></i></a>
+        <div style="margin-top: 20px;">
+            <img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="${gallery.galleryName} 이미지" class="img-responsive" />
         </div>
+    </header>
+</div>
 
 				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
 					<section>
 
 						<p>
-							<strong>Location of Art Museum : </strong>
-							${gallery.galleryLocation} <br /> <strong>Opening hours
-								of Museum : </strong> ${gallery.galleryOpentime} -
-							${gallery.galleryClosetime} <br /> <strong>Closed Day :
-							</strong>${gallery.closedDay}<br /> <strong>Contact : </strong>${gallery.galleryTel}<br />
+							<strong>미술관 주소 : </strong> ${gallery.galleryLocation} <br /> 
+							<strong>미술관 운영시간 : </strong> ${gallery.galleryOpentime} - ${gallery.galleryClosetime} <br /> 
+							<strong>미술관 휴관일 : </strong><span id="closedDayDisplay"></span><br /> 
+							<strong>미술관 연락처 : </strong>${gallery.galleryTel}<br />
 						</p>
 
 						<p>
-							<strong>Like! :</strong><br />
-							<button id="likeButton">Like</button>
+							<strong>좋아요 :</strong><br />
+							<button id="likeButton">좋아요!</button>
 						</p>
 						<strong id="likeMessage"></strong> <br>
-
-<br>
+						<br>
 						<p>
-							<strong>View Program on display</strong><br /> <a
+							<strong>프로그램 예약</strong><br /> <a
 								href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">
-								<button id="viewMoreButton">View more</button>
+								<button id="viewMoreButton">예약하기</button>
 							</a>
 						</p>
 
 					</section>
 				</div>
+				
+				<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const closedDayValue = "${gallery.closedDay}";
+        const dayMapping = {
+            "Monday": "월요일",
+            "Tuesday": "화요일",
+            "Wednesday": "수요일",
+            "Thursday": "목요일",
+            "Friday": "금요일",
+            "Saturday": "토요일",
+            "Sunday": "일요일",
+        };
+
+        const closedDays = closedDayValue.split(',').map(day => dayMapping[day.trim()]);
+
+        document.getElementById('closedDayDisplay').textContent = closedDays.join(', ');
+    });
+</script>
 				
 			</div>
 
@@ -135,26 +157,42 @@
 					</div>
 				</div>
 
-                    <ul class="grid-lod effect-2" id="grid">
-						<c:forEach var="program" items="${programList}">
-                        <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
-                            <section class="blog-content">
-                            	<a href="blog-details.html">
-                                <figure>
-                                    <div class="post-date">
+<ul class="grid-lod effect-2" id="grid">
+    <c:choose>
+        <c:when test="${empty programList}">
+            <!-- 프로그램이 없는 경우 -->
+            <li class="col-xs-12">
+                <section class="blog-content" style="text-align: center;">
+                	<br>
+                	<br>
+                    <p class="no-program-message" style="font-size: 30px; color : black;">전시중인 프로그램이 없습니다. 다음 전시를 기대해주세요.</p>
+                </section>
+            </li>
+        </c:when>
+        
+        <c:otherwise>
+            <!-- 프로그램이 있는 경우 -->
+            <c:forEach var="program" items="${programList}">
+                <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
+                    <section class="blog-content">
+                        <a href="blog-details.html">
+                            <figure>
+                                <div class="post-date">
                                     <span>
-                                    <fmt:formatDate value="${program.programEnd}" pattern="dd" />
+                                        <fmt:formatDate value="${program.programEnd}" pattern="dd" />
                                     </span>
-                                        <fmt:formatDate value="${program.programEnd}" pattern="MMMM yyyy" />
-                                    </div>
-                                    <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
-									alt="Program Image" style="width: 500px; height: 500px;">
-                                </figure>
-                                </a>
-                            </section>
-                        </li>
-						</c:forEach>
-                    </ul>
+                                    <fmt:formatDate value="${program.programEnd}" pattern="MMMM yyyy" />
+                                </div>
+                                <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
+                                    alt="Program Image" style="width: 500px; height: 500px;">
+                            </figure>
+                        </a>
+                    </section>
+                </li>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+</ul>
 			</div>
 
 		</div>
@@ -230,10 +268,10 @@
 	            },
 	            success: function(response) {
 	                if (response === "liked") {
-	                    likeButton.text("Cancel Like");
+	                    likeButton.text("좋아요 취소");
 	                    likeMessage.text("이미 좋아요한 항목입니다.");
 	                } else {
-	                    likeButton.text("Like");
+	                    likeButton.text("좋아요!");
 	                    likeMessage.text("*Like를 누르시면 마이페이지에 추가됩니다.");
 	                }
 	            },
@@ -247,7 +285,7 @@
 	            // Like 버튼 클릭시
 	            var likeButton = document.getElementById('likeButton');
 
-	            if (likeButton.innerText === 'Like') {
+	            if (likeButton.innerText === '좋아요!') {
 	                // Like 버튼 클릭 처리
 	                $.ajax({
 	                    url: "like",
@@ -258,7 +296,7 @@
 	                    },
 	                    success: function(response) {
 	                        alert("좋아요 등록되었습니다");
-	                        likeButton.innerText = 'Cancel Like';
+	                        likeButton.innerText = '좋아요 취소';
 
 	                        var likeMessage = $("#likeMessage");
 	                        likeMessage.text("마이페이지에 추가되었습니다.");
@@ -283,7 +321,7 @@
 	                    },
 	                    success: function(response) {
 	                        alert("좋아요를 취소했습니다");
-	                        likeButton.innerText = 'Like';
+	                        likeButton.innerText = '좋아요!';
 
 	                        var likeMessage = $("#likeMessage");
 	                        likeMessage.text("삭제함");

@@ -9,6 +9,19 @@
 
 <%@ include file="/header.jsp" %>
 
+<style>
+        #entrance-text {
+            font-size: 16px; /* 기본 글자 크기 */
+            display: none; /* 초기에는 텍스트를 숨깁니다 */
+            color: white;
+        }
+
+        .effect-oscar:hover #entrance-text {
+            display: inline; /* 마우스를 올렸을 때 텍스트를 보이게 합니다 */
+            font-size: 70px; /* 마우스를 올렸을 때 글자 크기를 키웁니다 */
+        }
+</style>
+
 </head>
 
 <body>
@@ -46,9 +59,8 @@
 					<figcaption>
 						<br>
 						<h2>
-							<span style="color: black;"> </span>
+							<span  id="entrance-text" style="color: while;">입장하기</span>
 						</h2>
-						<p>입장하기</p>
 						<a href="${pageContext.request.contextPath}/gallery/list">View
 							more</a>
 					</figcaption>

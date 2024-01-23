@@ -52,8 +52,8 @@ public class GalleryDAO {
         return count > 0;
     }
 	
-	public List<GalleryVO> filterData(String filterValue)  {
-        List<GalleryVO> list = my.selectList("gallery.filterData", filterValue);
+    public List<GalleryVO> filterData(Map<String, Object> paramMap) {
+        List<GalleryVO> list = my.selectList("gallery.filterData", paramMap);
         return list;
-	}
+    }
 }

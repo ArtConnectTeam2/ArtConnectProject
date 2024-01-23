@@ -164,9 +164,6 @@
                 
                 <input class="form-check-input check" type="checkbox" value="Sunday" id="flexCheckSunday">
                 <label class="form-check-label" for="flexCheckSunday">일요일</label>
-                
-                <input class="form-check-input check" type="checkbox" value="Always" id="flexCheckAlways">
-                <label class="form-check-label" for="flexCheckAlways">연중무휴</label>
             </div>
 
             <div id="filteredData">
@@ -182,31 +179,39 @@ $(document).ready(function() {
     // 체크박스가 변경될 때마다 필터링된 데이터 가져와서 표시
     $('.check').on('change', function() {
         console.log('filterData is called');
-        var checkboxes = $('.form-check input[type="checkbox"]:checked');
-        var filterValues = checkboxes.map(function() {
-            return this.value;
-        }).get();
+        var filterValues = getCheckedCheckboxValues();
 
         if (filterValues.length === 0) {
             // 만약 아무 체크박스도 선택되지 않았다면 전체 갤러리 데이터 표시
             fetchAllGalleries();
         } else {
             // 필터링된 데이터를 가져오기 위한 Ajax 호출
-            $.ajax({
-                url: "filterData",
-                data: {
-                    filterValue: filterValues[0],
-                },
-                success: function(jsonarr) {
-                    console.log(jsonarr);
-                    displayFilteredData(jsonarr);
-                },
-                error: function(err) {
-                    console.error("데이터 필터링 중 오류 발생:", err);
-                }
-            });
+            fetchFilteredData(filterValues);
         }
     });
+
+    function getCheckedCheckboxValues() {
+        return $('.form-check input[type="checkbox"]:checked').map(function() {
+            return this.value;
+        }).get();
+    }
+
+    function fetchFilteredData(filterValues) {
+        $.ajax({
+            url: "filterData",
+            data: {
+                filterValues: filterValues
+            },
+            traditional: true,
+            success: function(jsonarr) {
+                console.log(jsonarr);
+                displayFilteredData(jsonarr);
+            },
+            error: function(err) {
+                console.error("데이터 필터링 중 오류 발생:", err);
+            }
+        });
+    }
 
     function fetchAllGalleries() {
         // 전체 갤러리 데이터 가져오기 위한 Ajax 호출
@@ -232,25 +237,28 @@ $(document).ready(function() {
             console.log(gallery);
             console.log(gallery.galleryImg);
 
-            // 수정된 부분: 클라이언트에서 URL과 이미지 경로를 직접 구성
-            var galleryDetailUrl = '/artConnect/gallery/detail?galleryID=' + encodeURIComponent(gallery.galleryID);
+            var galleryDetailUrl = '${pageContext.request.contextPath}/gallery/detail?galleryID=' + encodeURIComponent(gallery.galleryID);
 
-            filteredDataDiv.append(
-                '<div class="thumbnails-pan">' +
-                '<section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">' +
-                '<figure>' +
-                '<a href="' + galleryDetailUrl + '">' +
-                '<img src="${pageContext.request.contextPath}/resources/img/gallery/' + gallery.galleryImg + '" alt="이미지" class="img-responsive" />' +
-                '</a>' +
-                '<figcaption>' +
-                '<h3>' + gallery.galleryName + '</h3>' +
-                '<h5>View more</h5>' +
-                '</figcaption>' +
-                '</figure>' +
-                '</section>' +
-                '</div>'
-            );
+            appendGalleryThumbnail(filteredDataDiv, galleryDetailUrl, gallery.galleryImg, gallery.galleryName);
         });
+    }
+
+    function appendGalleryThumbnail(container, url, imgSrc, galleryName) {
+        container.append(
+            '<div class="thumbnails-pan">' +
+            '<section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">' +
+            '<figure>' +
+            '<a href="' + url + '">' +
+            '<img src="${pageContext.request.contextPath}/resources/img/gallery/' + imgSrc + '" alt="이미지" class="img-responsive" />' +
+            '</a>' +
+            '<figcaption>' +
+            '<h3>' + galleryName + '</h3>' +
+            '<h5>View more</h5>' +
+            '</figcaption>' +
+            '</figure>' +
+            '</section>' +
+            '</div>'
+        );
     }
 });
 		// 초기에 모든 데이터 로딩

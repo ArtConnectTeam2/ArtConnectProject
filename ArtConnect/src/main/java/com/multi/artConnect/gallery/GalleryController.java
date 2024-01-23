@@ -131,14 +131,17 @@ public class GalleryController {
 	    return isLiked ? "liked" : "not liked";
 	}
 
-	@RequestMapping("/filterData")
-	@ResponseBody
-	public List<GalleryVO> filterData(String filterValue) {
-		System.out.println(filterValue);
-		List<GalleryVO> list = dao.filterData(filterValue);
-		System.out.println(list.size());
-		return list;
-	}
+    @RequestMapping("/filterData")
+    @ResponseBody
+    public List<GalleryVO> filterData(@RequestParam List<String> filterValues) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filterValues", filterValues);
+        
+        List<GalleryVO> list = dao.filterData(paramMap);
+        System.out.println(list.size());
+        
+        return list;
+    }
 	
     @GetMapping("/allGalleries")
     @ResponseBody
