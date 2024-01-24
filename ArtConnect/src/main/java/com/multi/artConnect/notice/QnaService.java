@@ -1,11 +1,11 @@
 package com.multi.artConnect.notice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 
 
 @Service
@@ -25,8 +25,8 @@ public class QnaService {
 	}
 	
 	//QnA 조회
-	public QnaVO getpage(int no) {
-		return dao.getpage(no);
+	public QnaVO getpage(int qnaNO) {
+		return dao.getpage(qnaNO);
 	}
 	
 	//QnA 수정
@@ -35,13 +35,26 @@ public class QnaService {
 	}
 	
 	//QnA 삭제
-	public void del(int no) {
-		dao.del(no);
+	public void del(int qnaNO) {
+		dao.del(qnaNO);
 	}
 	
 	//QnA 조회수증가
-	public void hit(int no) {
-		dao.hit(no);
+	public void hit(int qnaNO) {
+		dao.hit(qnaNO);
+	}
+	
+	//QnA 게시물갯수(페이징)
+	public int getTotalCount() {
+		return dao.getTotalCount();}
+
+	public List<QnaVO> selectWithPaging(int start, int size) {
+		 Map<String, Object> params = new HashMap<>();
+		    params.put("start", start);
+		    params.put("size", size);
+		    //System.out.println("Map key start : " + params.get("start"));
+		    //System.out.println("Map key size : " + params.get("size"));
+		return dao.selectWithPaging(params); 
 	}
 	
 }

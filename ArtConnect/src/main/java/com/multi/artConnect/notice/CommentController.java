@@ -22,7 +22,7 @@ public class CommentController {
     @RequestMapping("notice/commentInsert")
 	public String insert(CommentVO commentVO) {
 		service.insert(commentVO);
-		return "redirect:qnaGet?no=" + commentVO.getBno();
+		return "redirect:qnaGet?qnaNO=" + commentVO.getCommentBNO();
 	}
     	
 }

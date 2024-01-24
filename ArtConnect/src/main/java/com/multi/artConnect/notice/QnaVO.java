@@ -2,56 +2,54 @@ package com.multi.artConnect.notice;
 
 public class QnaVO {
 
-	private int no;
-	private String title;
-	private String id;
-	private String regdate;
-	private String content;	
-	private int hit;
+	private int qnaNO;
+	private String qnaTitle;
+	private String qnaID;
+	private String qnaRegdate;
+	private String qnaContent;	
+	private int qnaHit;
 	
-	public int getNo() {
-		return no;
+	public int getQnaNO() {
+		return qnaNO;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setQnaNO(int qnaNO) {
+		this.qnaNO = qnaNO;
 	}
-	public String getTitle() {
-		return title;
+	public String getQnaTitle() {
+		return qnaTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
 	}
-	public String getId() {
-		return id;
+	public String getQnaID() {
+		return qnaID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setQnaID(String qnaID) {
+		this.qnaID = qnaID;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getQnaRegdate() {
+		return qnaRegdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setQnaRegdate(String qnaRegdate) {
+		this.qnaRegdate = qnaRegdate;
 	}
-	public String getContent() {
-		return content;
+	public String getQnaContent() {
+		return qnaContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setQnaContent(String qnaContent) {
+		this.qnaContent = qnaContent;
 	}
-	public int getHit() {
-		return hit;
+	public int getQnaHit() {
+		return qnaHit;
 	}
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setQnaHit(int qnaHit) {
+		this.qnaHit = qnaHit;
 	}
 	
 	@Override
 	public String toString() {
-		return "QnaVO [no=" + no + ", title=" + title + ", id=" + id + ", regdate=" + regdate + ", content=" + content
-				+ ", hit=" + hit + "]" ;
+		return "QnaVO [qnaNO=" + qnaNO + ", qnaTitle=" + qnaTitle + ", qnaID=" + qnaID + ", qnaRegdate=" + qnaRegdate
+				+ ", qnaContent=" + qnaContent + ", qnaHit=" + qnaHit + "]";
 	}
-
 	
-		
 }

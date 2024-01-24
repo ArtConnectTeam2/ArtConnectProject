@@ -191,7 +191,7 @@ tfoot{
     <ul class="pagination">
         <c:forEach begin="1" end="${pagingVO.totalPages}" varStatus="i">
             <li class="${pagingVO.page eq i.index ? 'active' : ''}">
-                <a href="noticeList?page=${i.index}&size=${pagingVO.size}">${i.index}</a>
+                <a href="noticeS?page=${i.index}&size=${pagingVO.size}">${i.index}</a>
             </li>
         </c:forEach>
     </ul>
