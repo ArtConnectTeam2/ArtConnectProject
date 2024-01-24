@@ -153,7 +153,6 @@ p.no-reservation-message {
 	<hr>
 	<div class="col-md-9">
 	<div class="update-content">
-	<form action = "myReview" method = "post">
 	<div id="result">
 	<c:if test="${empty list}">
             <p class="no-reservation-message">예약한 내역이 없습니다.</p>
@@ -165,29 +164,39 @@ p.no-reservation-message {
 				<th>No.</th>
 				<th>예약자ID</th>
 				<th>전시명</th>
-				<th>관람일자</th>
-				<th>예약취소</th>
+
+				<th>관람시간</th>
+				<th>결제상태</th>
+				<!-- qr페이지로 이동하는 부분 추가 -->
+				<th>예약 정보 확인</th>
 
 			</tr>
 		</thead>
  		<c:forEach var ="reservation" items="${list}">
-	
-		<tr>
+			<tr>
 		<td>${reservation.reservationID}</td>
 		<td>${reservation.memberID}</td>
+
 		<td>${reservation.programTitle}</td>
+
 		<td>${reservation.reservationTime}</td>
 		
 		<td>
-		<!-- 예약취소 버튼에 직접 이벤트를 추가 -->
-		<button class="cancelReservationBtn">예약취소</button>
+
+			<!-- qr페이지로 이동하는 버튼 -->
+			<a href="${pageContext.request.contextPath}/reservation/qrcreater/${reservation.reservationID}?memberID=${memberID}" target="_blank">
+        		<button class="viewQrCodeBtn">QR 코드 보기</button>
+    		</a>
 		</td>
-		
+		<td>
+			<!-- 예약취소 버튼에 직접 이벤트를 추가 -->
+			<button class="cancelReservationBtn">예약취소</button>
+		</td>
+
 		</tr> 
 		 </c:forEach> 
 		</table>
 		 </c:if>
-		   </form>
 	</div>
 </div>
 </div>

@@ -2,10 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.artConnect.reservation.ReservationDAO">
-  <insert id="insertReservation" parameterType="reservationVO">
+  <insert id="insertReservation" parameterType="reservationVO" useGeneratedKeys="true" keyProperty="reservationID">
     INSERT INTO `reservation` (`galleryID`, `programID`, `memberID`, `programTitle`,
-    `payment`, `reservationTime`, `reservationDay`, `totalPrice`, `adultCount`, `teenagerCount`, `childCount`)
-    VALUES (#{galleryID}, #{programID}, #{memberID, jdbcType=NULL}, #{programTitle},
-    0, #{reservationTime}, #{reservationDay}, #{totalPrice}, #{adultCount}, #{teenagerCount}, #{childCount})
+    `payment`, `reservationTime`, `reservationDay`, `totalPrice`,
+    `adultCount`, `teenagerCount`, `childCount`, `totalCount`)
+    VALUES (#{galleryID}, #{programID}, #{memberID}, #{programTitle},
+    0, #{reservationTime}, #{reservationDay}, #{totalPrice},
+    #{adultCount}, #{teenagerCount}, #{childCount}, #{totalCount})
   </insert>
+  
+  <!-- 남은 예약 가능 인원 확인 쿼리 -->
+  <select id="checkTotalCount" parameterType="reservationVO" resultType="int">
+    SELECT 300 - COALESCE(SUM(totalCount), 0) AS totalReserved
+    FROM reservation
+    WHERE galleryID = #{galleryID} AND reservationDay = #{reservationDay}
+  </select>
+  
+  <select id="getReservation" resultType="reservationVO">
+		SELECT * FROM reservation WHERE memberID = #{memberID} AND reservationID = #{reservationID}
+  </select>
 </mapper>

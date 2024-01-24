@@ -7,5 +7,9 @@
     <select id="programlist" resultType="ProgramVO_gallery" parameterType="int">
         select * from program where galleryID = #{galleryID} order by galleryID
     </select>
-
+    
+    <select id="getProgram" resultType="ProgramVO_gallery" parameterType="int" >
+    	select * from program where programID = #{programID}
+    </select>
+ 
 </mapper>

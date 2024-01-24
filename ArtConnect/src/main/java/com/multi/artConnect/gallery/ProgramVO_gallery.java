@@ -1,6 +1,6 @@
 package com.multi.artConnect.gallery;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProgramVO_gallery {
     private int programID;
