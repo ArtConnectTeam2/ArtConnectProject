@@ -139,7 +139,10 @@
     top: 10px;
     right: 10px;
 	}
-	#update{
+
+#update{
+	  width: 540px;
+	  height: 961px;
       border: 3px solid white; 
       border-radius: 10px;
       padding: 20px;
@@ -148,10 +151,35 @@
       margin-top: -1px;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
-	#update2{
+#update2{
       text-align: center;
-      background-color: white;
+      background-color: transparent;
 }
+
+#updateForm{
+	background-color: transparent;
+}
+
+#updateid {
+	max-width: 100px;
+    font-size: 1.2em; 
+    font-weight: bold;
+    text-align: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}	
+
+#update2 > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#update2 > div > input {
+    flex: 1;
+    margin-left: 10px;
+}
+
 input {
     width: 500px;
     height: 40px;
@@ -176,21 +204,7 @@ input:focus {
 #email_check {
     margin-left: -310px;
 }
-#updateid {
-    margin-left: -450px;
-    font-size: 1.2em; 
-    font-weight: bold;
-}	
-#updateid1 {
-    margin-left: -460px;
-    font-size: 1.2em; 
-    font-weight: bold;
-}	
-#updateid2 {
-    margin-left: -435px;
-    font-size: 1.2em; 
-    font-weight: bold;
-}	
+
 footer {
         bottom: 0;
         width: 100%;
@@ -247,21 +261,21 @@ footer {
                         <div id="updateid">아이디</div>
                         <input type="text" name="memberID" value="${mymember.memberID}" readonly > <br><br>
                         
-                        <div id="updateid1">이름</div> 
+                        <div id="updateid">이름</div> 
                         <input type="text" name="memberName" id="memberName" value="${mymember.memberName}" onblur="validateName()">
                         <div class="check_font" id="name_check"></div><br>
                        
-                        <div id="updateid2">생년월일</div>
+                        <div id="updateid">생년월일</div>
                         <input type="date" name="memberBirth" value="${mymember.memberBirth}"><br><br>
                        
-                        <div id="updateid1">성별</div> 
+                        <div id="updateid">성별</div> 
                         <input type="text" name="memberGender" value="${mymember.memberGender}" readonly ><br><br>
                         <div>
                        
-                        <div id="updateid1">주소</div> 
+                        <div id="updateid">주소</div> 
                         <input type="text" name="memberAddr" value="${mymember.memberAddr}"><br><br>
                        
-                        <div id="updateid2">전화번호</div> 
+                        <div id="updateid">전화번호</div> 
                         <input type="text" name="memberTel" id="memberTel" value="${mymember.memberTel}" onblur="validateTel()">
                         <div class="check_font" id="tel_check"></div> <br>
                        
@@ -269,13 +283,12 @@ footer {
                          <input type="text" name="memberEmail" id="memberEmail" value="${mymember.memberEmail}" onblur="validateEmail()">
                          <div class="check_font" id="email_check"></div><br>
                        
-                         <div id="updateid2">알람설정</div>  
+                         <div id="updateid">알람설정</div>  
                          <input type="text" name="memberAlarm" value="${mymember.memberAlarm}"><br><br>
                          <br>
 					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-warning">수정</button>
 				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
 				</div>
-				</tr>
                 <br>
                 <br>    
                    
