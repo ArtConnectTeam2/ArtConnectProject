@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     session.invalidate(); // 세션을 무효로 만들다.
@@ -12,4 +13,5 @@
 
     // 지정된 페이지로 리다이렉트
     response.sendRedirect(redirectPage);
+
 %>
