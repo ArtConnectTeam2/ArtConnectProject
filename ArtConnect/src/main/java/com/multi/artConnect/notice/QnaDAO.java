@@ -1,6 +1,7 @@
 package com.multi.artConnect.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class QnaDAO {
 	}
 	
 	//QnA 조회
-	public QnaVO getpage(int no) {
-		return my.selectOne("qna.getpage", no);
+	public QnaVO getpage(int qnaNO) {
+		return my.selectOne("qna.getpage", qnaNO);
 	}
 	
 	//QnA 수정
@@ -33,14 +34,25 @@ public class QnaDAO {
 	}
 	
 	//QnA 삭제
-	public void del(int no) {
-			my.delete("qna.delete", no);
+	public void del(int qnaNO) {
+			my.delete("qna.delete", qnaNO);
 	}
 	
 	//QnA 조회수증가
-	public void hit(int no) {
-			my.update("qna.updateHit", no);
+	public void hit(int qnaNO) {
+			my.update("qna.updateHit", qnaNO);
 	}
-		
+	
+	//QnA 게시물갯수(페이징)
+	public int getTotalCount() {
+		return my.selectOne("qna.getTotalCount");
+	}
+	
+	//QnA 목록(페이징)
+	public List<QnaVO> selectWithPaging(Map<String, Object> params) {
+		 //System.out.println("dao list2 call");
+		 return my.selectList("qna.selectWithPaging", params);
+	}
+	
 }
 	

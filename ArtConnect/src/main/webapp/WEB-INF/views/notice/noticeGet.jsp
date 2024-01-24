@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>공지사항 조회</title>
+
+<title>공지사항조회</title>
+
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
@@ -39,39 +41,52 @@
 	top: 10px; /* 원하는 값으로 조정해주세요 */
 	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
-
 .navbar-brand {
 	position: absolute;
 	top: 5px;
 	left: 20px;
 }
-
 .login {
 	position: absolute;
 	top: 5px;
 	left: 100px;
 }
+#notice_title {
+	border:5px double;
+	border-color:#6E6E6E;
+	border-radius: 1%; /* 모서리전체둥글기지정 */
+	text-align: center;
+	font-size: x-large;
+	font-weight: bold; /* 글자굵기 */
+	line-height: 2;
+}
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
 	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
 	height: 200px; /* 테이블의 높이를 200px로 설정 */
-	margin: auto;
+	margin: auto; /* 가로 중앙에 배치 */
 }
-
 th {
-	border: 1px solid #ddd; /* 셀 경계를 실선으로 지정 */
-	padding: 8px; /* 안쪽 여백 설정 */
+	padding: 12px; /* 안쪽 여백 설정 */
 	height: 12px;
-	text-align: center; /* 텍스트를 왼쪽 정렬 */
-	background-color: #f2f2f2;
+	background-color: #dcdcd1;
+	text-align: center; /* 텍스트 정렬 */
 }
-
 td {
-	border: 1px solid #ddd; /* 셀 경계를 실선으로 지정 */
 	padding: 20px; /* 안쪽 여백 설정 */
 	height: 12px;
-	text-align: center; /* 텍스트를 왼쪽 정렬 */
+	border-bottom: 1px solid #ccc;
+	text-align: center; /* 텍스트 정렬 */
 }
+tbody {
+	height: 220px;
+	padding: 20px;
+}
+tfoot {
+	height: 12px;
+}
+
 </style>
 
 </head>
@@ -98,11 +113,11 @@ td {
 						title="Contact">마이 페이지</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList2.jsp"
+						href="${pageContext.request.contextPath}/notice/noticeList"
 						title="Contact">공지사항</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/QnaList.jsp"
+						href="${pageContext.request.contextPath}/notice/qnaList"
 						title="Contact">QnA</a></li>
 				</ul>
 				<div class="login">
@@ -112,10 +127,8 @@ td {
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png"
-						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
-					</a>
+					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
+					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px; "> </a>
 				</div>
 			</nav>
 		</div>
@@ -123,26 +136,51 @@ td {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
-		<h1 style="text-align: center;">공지사항</h1>
-		<hr>
-		<table border="1">
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>내용</th>
-			</tr>
-			<tr>
-				<td>${vo.no}</td>
-				<td>${vo.title}</td>
-				<td>${vo.name}</td>
-				<td>${vo.content}</td>
-			</tr>
-		</table>
-		<hr>
+	
+	<div id="notice_title">
+		공지사항
+	</div>
+	
+	<hr>
+		
 	<div>
-		<a href="noticeModify?no=${vo.no}" class="btn btn-primary">수정</a>
-		<a onclick="return confirm('정말로삭제하겠습니까?')"href="noticeDel?no=${vo.no}" class="btn btn-primary">삭제</a>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>제 목</th>
+					<td colspan="5">${vo.noticeTitle}</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td colspan="5">${vo.noticeName}</td>
+				</tr>
+				<tr>
+					<th>번 호</th>
+					<td>${vo.noticeNO}</td>
+					<th>조회수</th>
+					<td>${vo.noticeHit}</td>
+					<th>작성일</th>
+					<td>${vo.noticeRegdate}</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="6">${vo.noticeContent}</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td style="border-bottom: none;">
+						<a href="noticeList" class="btn btn-primary">목록</a>
+					</td>
+					<td colspan="4" style="border-bottom: none;"></td>
+					<td style="border-bottom: none;">
+						<a href="noticeModify?noticeNO=${vo.noticeNO}" class="btn btn-primary">수정</a>
+						<a onclick="return confirm('정말로삭제하겠습니까?')"href="noticeDel?noticeNO=${vo.noticeNO}" class="btn btn-primary">삭제</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</div>
 	
 	</main>

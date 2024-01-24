@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>공지사항 수정</title>
+
+<title>공지사항수정</title>
+
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
 <!-- Bootstrap -->
@@ -44,26 +46,34 @@
 	top: 5px;
 	left: 100px;
 }
+#notice_title {
+	border:5px double;
+	border-color:#6E6E6E;
+	border-radius: 1%; /* 모서리전체둥글기지정 */
+	text-align: center;
+	font-size: x-large;
+	font-weight: bold; /* 글자굵기 */
+	line-height: 2;
+}
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
 	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
 	height: 200px; /* 테이블의 높이를 200px로 설정 */
-	margin: auto;
+	margin: auto; /* 가로 중앙에 배치 */
 }
 
 th {
-	border: 1px solid #ddd; /* 셀 경계를 실선으로 지정 */
-	padding: 8px; /* 안쪽 여백 설정 */
+	padding: 12px; /* 안쪽 여백 설정 */
 	height: 12px;
-	text-align: center; /* 텍스트를 왼쪽 정렬 */
-	background-color: #f2f2f2;
+	background-color: #dcdcd1;
+	text-align: center; /* 텍스트 정렬 */
 }
 
 td {
-	border: 1px solid #ddd; /* 셀 경계를 실선으로 지정 */
 	padding: 20px; /* 안쪽 여백 설정 */
 	height: 12px;
-	text-align: center; /* 텍스트를 왼쪽 정렬 */
+	border-bottom: 1px solid #ccc;
+	text-align: center; /* 텍스트 정렬 */
 }
 </style>
 
@@ -91,11 +101,11 @@ td {
 						title="Contact">마이 페이지</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList2.jsp"
+						href="${pageContext.request.contextPath}/notice/noticeList"
 						title="Contact">공지사항</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/QnaList.jsp"
+						href="${pageContext.request.contextPath}/notice/qnaList"
 						title="Contact">QnA</a></li>
 				</ul>
 				<div class="login">
@@ -105,10 +115,8 @@ td {
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid"
-						style="max-height: 40px;">
-					</a>
+					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
+					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px; "> </a>
 				</div>
 			</nav>
 		</div>
@@ -116,25 +124,29 @@ td {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
-<form action="noticeModify2">
-				<h2 style="text-align: center;">공지사항 수정</h2>
+	
+	<div id="notice_title">
+		공지사항
+	</div>
+	
+	<form action="noticeModify2">
 				<hr>
 		<table>
-			<input type="hidden" name="no" value="${vo.no}">
+			<input type="hidden" name="noticeNO" value="${vo.noticeNO}">
 				<tr>
-					<td>글쓴이 :</td>
-					<td><input type="text" name="name" value="${vo.name}" readonly="readonly"></td>
+					<th>작성자</th>
+					<td><input type="text" name="noticeName" value="${vo.noticeName}" readonly="readonly"></td>
 				</tr>
 				<tr>
-					<td>제목 :</td>
-					<td><input type="text" name="title" value="${vo.title}"></td>
+					<th>제 목</th>
+					<td><input type="text" name="noticeTitle" value="${vo.noticeTitle}"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea cols="50" rows="20" name="content">${vo.content}</textarea>
+					<td colspan="2"><textarea cols="130" rows="20" name="noticeContent">${vo.noticeContent}</textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="submit" class="btn btn-primary">수정</button></td>					
+					<td colspan="2" style="border-bottom: none;"><button type="submit" class="btn btn-primary">수정</button></td>					
 				</tr>
 			</table>
 		</form>

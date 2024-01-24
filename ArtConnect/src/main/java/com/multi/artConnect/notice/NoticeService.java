@@ -1,6 +1,8 @@
 package com.multi.artConnect.notice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +25,8 @@ public class NoticeService {
 	}	
 	
 	//공지사항 조회
-	public NoticeVO getpage(int no) {
-		return dao.getpage(no);
+	public NoticeVO getpage(int noticeNO) {
+		return dao.getpage(noticeNO);
 	}
 	
 	//공지사항 수정
@@ -33,12 +35,37 @@ public class NoticeService {
 	}
 	
 	//공지사항 삭제
-	public void del(int no) {
-		dao.del(no);
+	public void del(int noticeNO) {
+		dao.del(noticeNO);
 	}
 	
 	//공지사항 조회수증가
-	public void hit(int no) {
-		dao.hit(no);
+	public void hit(int noticeNO) {
+		dao.hit(noticeNO);
 	}
+	
+	//공지사항 카운트
+	public int getTotalCount() {
+		return dao.getTotalCount();
+	}
+	
+	//공지사항 페이징
+	public List<NoticeVO> selectWithPaging(int start, int size) {
+		 Map<String, Object> params = new HashMap<>();
+		    params.put("start", start);
+		    params.put("size", size);
+		    //System.out.println("Map key start : " + params.get("start"));
+		    //System.out.println("Map key size : " + params.get("size"));
+		 return dao.selectWithPaging(params);		    		
+	}
+	
+	//공지사항 검색
+	public List<NoticeVO> listPageSearch(String type, String keyword) {
+		Map<String, Object> searchs = new HashMap<>();
+			searchs.put("type", type);
+			searchs.put("keyword", keyword);
+		return dao.search(searchs);	
+	}
+	
+	
 }

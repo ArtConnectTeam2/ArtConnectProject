@@ -1,11 +1,14 @@
 package com.multi.artConnect.notice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+@SuppressWarnings("unused")
 @Repository
 public class NoticeDAO {
 
@@ -14,6 +17,7 @@ public class NoticeDAO {
 	
 	//공지사항 목록
 	public List<NoticeVO> list() {
+		System.out.println("list  호출");
 		return my.selectList("notice.list");
 	}
 	
@@ -23,8 +27,8 @@ public class NoticeDAO {
 	}
 	
 	//공지사항 조회
-	public NoticeVO getpage(int no) {
-		return my.selectOne("notice.getpage", no);
+	public NoticeVO getpage(int noticeNO) {
+		return my.selectOne("notice.getpage", noticeNO);
 	}
 	
 	//공지사항 수정
@@ -33,15 +37,30 @@ public class NoticeDAO {
 	}
 	
 	//공지사항 삭제
-	public void del(int no) {
-			my.delete("notice.delete", no);
+	public void del(int noticeNO) {
+			my.delete("notice.delete", noticeNO);
 	}
 	
 	//공지사항 조회수증가
-	public void hit(int no) {
-			my.update("notice.updateHit", no);
+	public void hit(int noticeNO) {
+			my.update("notice.updateHit", noticeNO);
 	}
 	
+	//공지사항 게시물갯수(페이징)
+	public int getTotalCount() {
+		return my.selectOne("notice.getTotalCount");
+	}
+	
+	//공지사항 목록(페이징)
+	public List<NoticeVO> selectWithPaging(Map<String, Object> params) {
+		return my.selectList("notice.selectWithPaging", params);
+		//my.selectList("board.selectWithPaging", params);
+	}
+	
+	//공지사항 검색
+	public List<NoticeVO> search(Map<String, Object> searchs) {
+		return my.selectList("notice.search", searchs);
+	}
 	
 }
 	

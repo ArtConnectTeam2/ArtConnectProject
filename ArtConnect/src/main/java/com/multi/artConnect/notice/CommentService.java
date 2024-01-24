@@ -14,8 +14,8 @@ public class CommentService {
 	CommentDAO dao;
 
 	// 댓글 조회
-	public List<CommentVO> list(int bno) {
-		return dao.list(bno);
+	public List<CommentVO> list(int commentBNO) {
+		return dao.list(commentBNO);
 	}
 	
 	// 댓글 작성

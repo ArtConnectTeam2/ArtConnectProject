@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>공지사항작성</title>
+
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
@@ -36,28 +38,31 @@
 	top: 10px; /* 원하는 값으로 조정해주세요 */
 	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
-
 .navbar-brand {
 	position: absolute;
 	top: 5px;
 	left: 20px;
 }
-
 .login {
 	position: absolute;
 	top: 5px;
 	left: 100px;
 }
-
-header {
-	padding: 10px;
+#notice_title {
+	border:5px double;
+	border-color:#6E6E6E;
+	border-radius: 1%; /* 모서리전체둥글기지정 */
 	text-align: center;
-}
-
+	font-size: x-large;
+	font-weight: bold; /* 글자굵기 */
+	line-height: 2;	
+	
+} 
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
-	width: 30%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
+	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
 	height: 200px; /* 테이블의 높이를 200px로 설정 */
+	margin: auto; /* 가로 중앙에 배치 */
 }
 
 th {
@@ -65,6 +70,7 @@ th {
 	padding: 8px; /* 안쪽 여백 설정 */
 	height: 12px;
 	text-align: center; /* 텍스트를 왼쪽 정렬 */
+	background-color: #f2f2f2;
 }
 
 td {
@@ -72,10 +78,6 @@ td {
 	padding: 20px; /* 안쪽 여백 설정 */
 	height: 12px;
 	text-align: center; /* 텍스트를 왼쪽 정렬 */
-}
-
-th {
-	background-color: #f2f2f2; /* 헤더 배경색 설정 */
 }
 </style>
 </head>
@@ -102,11 +104,11 @@ th {
 						title="Contact">마이 페이지</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						href="${pageContext.request.contextPath}/notice/noticeList"
 						title="Contact">공지사항</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						href="${pageContext.request.contextPath}/notice/qnaList"
 						title="Contact">QnA</a></li>
 				</ul>
 				<div class="login">
@@ -116,10 +118,8 @@ th {
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png"
-						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
-					</a>
+					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
+					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px; "> </a>
 				</div>
 			</nav>
 		</div>
@@ -127,34 +127,38 @@ th {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
-		<div align="center">
-			<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
-			<form action="noticeInsert">
-				<h2>공지사항 작성</h2>
-				<hr>
-				<table>
-					<input name="id" value="admin" type="hidden">
-					<tr>
-						<td>글쓴이 :</td>
-						<td><input name="name" value="관 리 자"></td>
-					</tr>
-					<tr>
-						<td>제 목 :</td>
-						<td><input type="text" name="title" size="30" maxlength="100" style="padding:2px 5px 2px 5px;"></td>
-					</tr>
-					<tr>
-						<td colspan="2"><textarea name="content" cols="50" rows="20"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-						<button type="submit" class="btn btn-primary">글쓰기</button>
-						<button type="reset" class="btn btn-success">취소</button>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+			
+	<div id="notice_title">
+		공지사항
+	</div>
+	
+	<hr>
+	
+	<form action="noticeInsert">
+		<div>
+		<table>
+				<input name="noticeID" value="admin" type="hidden">
+			<tr>
+				<th>글쓴이</th>
+				<td><input name="noticeName" value="관리자"></td>
+			</tr>
+			<tr>
+				<th>제 목</th>
+				<td><input type="text" name="noticeTitle" size="70" maxlength="100" placeholder="제목을 입력하세요"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="noticeContent" cols="130" rows="20" placeholder="공지사항을 입력하세요."></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="border-left: none; border-right: none; border-bottom: none;">
+					<button type="submit" class="btn btn-primary">작성완료</button>
+					<button type="reset" class="btn btn-success">취소</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+
 	</main>
 
 	<!-- Footer -->
