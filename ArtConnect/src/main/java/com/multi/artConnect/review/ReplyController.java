@@ -17,7 +17,7 @@ public class ReplyController {
     @RequestMapping(value = "insertReply", method = RequestMethod.POST)
     public String insertReply(ReplyVO reply, Model model) {
     	
-    	String memberID = "임시ID";
+    	String memberID = "apple";
 		// 댓글에 사용자의 ID 설정
         reply.setMemberID(memberID);
     	//댓글 추가 

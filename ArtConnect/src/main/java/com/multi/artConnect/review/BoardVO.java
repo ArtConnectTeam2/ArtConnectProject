@@ -11,10 +11,9 @@ public class BoardVO {
 	private String reviewContent;
 	private Date reviewDate;
 	private int reviewHit;
-	private String reviewFile;
 	private int starRating;
 	
-	private MultipartFile file;
+	private String reviewFile;
 	private String filePath;
 	
 	
@@ -79,16 +78,6 @@ public class BoardVO {
 	}
 
 
-	
-	public MultipartFile getFile() {
-		return file;
-	}
-
-
-	public void setFile(MultipartFile file) {
-		this.file = file;
-	}
-
 	public String getReviewFile() {
 		return reviewFile;
 	}
@@ -111,7 +100,8 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [reviewNO=" + reviewNO + ", memberID=" + memberID + ", reviewTitle=" + reviewTitle
-				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", reviewHit=" + reviewHit + "]";
+				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", reviewHit=" + reviewHit
+				+ ", starRating=" + starRating + ", reviewFile=" + reviewFile + ", filePath=" + filePath + "]";
 	}
 
 
@@ -135,3 +125,5 @@ public class BoardVO {
 	
 
 }
+
+

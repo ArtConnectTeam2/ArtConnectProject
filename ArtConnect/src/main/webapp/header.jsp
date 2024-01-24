@@ -12,9 +12,6 @@
 
 <meta name="author" content="">
 
-
-<title>:: 미술관 메인 페이지 ::</title>
-
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">

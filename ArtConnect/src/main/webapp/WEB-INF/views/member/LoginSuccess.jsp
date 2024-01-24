@@ -15,6 +15,7 @@
 
 </head>
 <body>
+
 	<%@ include file="/nav.jsp"%>
 
 	<main role="main-home-wrapper" class="container">
@@ -74,5 +75,17 @@
 
 	</footer>
 	<%@ include file="/alljs.jsp"%>
+
+	
+	<h2 align="center">로그인이 완료되었습니다</h2>
+	<p align="center">환영합니다! 
+	아이디 : <%= session.getAttribute("memberID") %>로 로그인되었습니다. <br>
+
+	<%= session.getAttribute("memberName") %>님 로그인이 성공적으로 완료되었습니다.</p>
+	
+	<a href="${page.request.contextPath}/artConnect/gallery/main.jsp">
+		<button class="btn btn-info">메인으로</button>
+	</a>
+
 </body>
 </html>
