@@ -23,7 +23,7 @@ form {
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	max-width: 1200px;
+	max-width: 1000px;
 	width: 100%;
 	background-color: #fff;
 }
@@ -82,7 +82,7 @@ button {
 			<div class="clearfix"></div>
 
 			<div class="contat-from-wrapper">
-				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+
 
 					<!-- 만약 매퍼 파일에서 매퍼id가 수정되었을 경우 여기도 수정되어야 합니다 -->
 					<form action="login.member" method="post">
@@ -103,7 +103,7 @@ button {
 					</form>
 				</div>
 			</div>
-		</div>
+
 
 	</main>
 
