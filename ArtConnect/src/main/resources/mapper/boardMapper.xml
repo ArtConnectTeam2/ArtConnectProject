@@ -9,8 +9,8 @@
 	</select>
 	
 	<insert id="boardPostOk" parameterType="boardVO">
-		INSERT INTO review(reviewNO, memberID, reviewTitle, reviewContent, reviewDate, reviewHit) 
-		VALUES(null, #{memberID}, #{reviewTitle}, <![CDATA[#{reviewContent}]]>, now(), 0)
+		INSERT INTO review(reviewNO, memberID, reviewTitle, reviewContent, reviewDate, reviewFile, reviewHit) 
+		VALUES(null, #{memberID}, #{reviewTitle}, <![CDATA[#{reviewContent}]]>, now(), #{reviewFile}, 0)
 	</insert>
 	
 	<select id="one" parameterType="int" resultType="boardVO">
