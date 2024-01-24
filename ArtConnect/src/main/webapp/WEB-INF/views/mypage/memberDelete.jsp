@@ -77,41 +77,52 @@ input:focus {
     border-color: #ffc107; 
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
+#update{
+	  width: 540px;
+	  height: 500px;
+      border: 3px solid white; 
+      border-radius: 10px;
+      padding: 20px;
+      background-color: white;
+      margin : 80px;
+      margin-top: -1px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+#update2{
+      text-align: center;
+      background-color: transparent;
+}
+
+#updateForm{
+	background-color: transparent;
+}
+
 #updateid {
-    margin-left: -450px;
+	max-width: 100px;
     font-size: 1.2em; 
     font-weight: bold;
-}
-#updateid1 {
-    margin-left: -430px;
-    font-size: 1.2em; 
-    font-weight: bold;
-}
-#updateid2 {
-    margin-left: -460px;
-    font-size: 1.2em; 
-    font-weight: bold;
+    text-align: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }	
+
+#update2 > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#update2 > div > input {
+    flex: 1;
+    margin-left: 10px;
+}
 	.navy {
     position: absolute;
     top: 10px;
     right: 10px;
 	}
-    #update{
-    border: 3px solid white; 
-    border-radius: 10px;
-    padding: 20px;
-    background-color: white;
-    margin : 80px;
-    margin-top: -1px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    
-}
-	#update2{
-      text-align: center;
-      background-color: white;
-      
-}
+
 footer {
         bottom: 0;
         width: 100%;
@@ -210,12 +221,12 @@ footer {
                         <input type="text" id="id_member" name="memberID" value="${mymember.memberID}" readonly > <br>
                         <br>
                       
-                       <div id="updateid1"> 비밀번호</div>
+                       <div id="updateid"> 비밀번호</div>
                         <input type="password" id="pw" name="memberPW" placeholder="비밀번호를 입력해주세요" style="font-size: 15px;"><br>
                          <div class="check_font" id="pw_check"></div>
                         <br>
                         
-                        <div id="updateid2">이름</div>
+                        <div id="updateid">이름</div>
                          <input type="text" id="name" name="memberName" value="${mymember.memberName}" readonly ><br>
                         <br>
 				    <button type="submit" id="submit" style="width: 100px;" class="btn btn-warning">회원탈퇴</button>
