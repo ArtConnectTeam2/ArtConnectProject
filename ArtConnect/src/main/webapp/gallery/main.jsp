@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.multi.artConnect.notice.NoticeVO"%>
+<%@ page import="com.multi.artConnect.review.BoardVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 
-<%@ include file="/header.jsp" %>
+<%@ include file="/header.jsp"%>
 
 </head>
 
 <body>
 
-<%@ include file="/nav.jsp" %>
+	<%@ include file="/nav.jsp"%>
 
 	<main role="main-home-wrapper" class="container">
 
@@ -83,7 +87,9 @@
 									<span>국립 현대 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=1">View more</a>
+								<a
+									href="http://localhost:8080/artConnect/gallery/detail?galleryID=1">View
+									more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -98,7 +104,9 @@
 									<span>DDP 디자인 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=2">View more</a>
+								<a
+									href="http://localhost:8080/artConnect/gallery/detail?galleryID=2">View
+									more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -113,7 +121,9 @@
 									<span>겸재정선 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=3">View more</a>
+								<a
+									href="http://localhost:8080/artConnect/gallery/detail?galleryID=3">View
+									more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -137,7 +147,9 @@
 									<span>서울 시립 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=4">View more</a>
+								<a
+									href="http://localhost:8080/artConnect/gallery/detail?galleryID=4">View
+									more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -152,7 +164,9 @@
 									<span>성북구립 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=5">View more</a>
+								<a
+									href="http://localhost:8080/artConnect/gallery/detail?galleryID=5">View
+									more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -167,7 +181,9 @@
 									<span>최만린 </span> 미술관
 								</h2>
 								<p>View more</p>
-								<a href="http://localhost:8080/artConnect/gallery/detail?galleryID=6">View more</a>
+								<a
+									href="http://localhost:8080/artConnect/gallery/detail?galleryID=6">View
+									more</a>
 							</figcaption>
 						</figure>
 					</li>
@@ -177,7 +193,7 @@
 
 			</section>
 
-			
+
 
 			<div class="clearfix"></div>
 			<!-- 구분선 -->
@@ -186,15 +202,30 @@
 
 		<div class="work-details">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4">
+				<div class="col-xs-12 col-sm-12 col-md-3">
 					<header role="work-title">
 						<h2>Review</h2>
-						<a href="/review/boardList.jsp">View All Reviews<i class="fa fa-external-link"
-							aria-hidden="true"></i></a>
+						<a href="/review/boardList.jsp">View All Reviews<i
+							class="fa fa-external-link" aria-hidden="true"></i></a>
 					</header>
 				</div>
-				<div>
-					<h2>가나다라</h2>
+				<div class="col-xs-12 col-sm-12 col-md-9">
+					<div>
+						<a href="${pageContext.request.contextPath}/review/boardOne?reviewNO=32">
+							<h3>몽환적인 여행, 미술관에서의 작품 해석과 감상</h3>
+						</a>
+						<h4>작성자: 임시ID</h4>
+						<hr>
+						<a href="${pageContext.request.contextPath}/review/boardOne?reviewNO=31">
+							<h3>사진 속의 순간, 미술관에서 찍은 감각적인 흑백 사진 리뷰</h3>
+						</a>
+						<h4>작성자: 임시ID</h4>
+						<hr>
+						<a href="${pageContext.request.contextPath}/review/boardOne?reviewNO=30">
+							<h3>문화의 향연, 다양성이 빛나는 미술관 전시회</h3>
+						</a>
+						<h4>작성자: 임시ID</h4>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -203,15 +234,27 @@
 		<hr style="height: 5px">
 		<div class="work-details">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4">
+				<div class="col-xs-12 col-sm-12 col-md-3">
 					<header role="work-title">
 						<h2>Notice</h2>
 						<a href="#">View All Notices<i class="fa fa-external-link"
 							aria-hidden="true"></i></a>
 					</header>
 				</div>
-				<div>
-					<h2>가나다라</h2>
+				<div class="col-xs-12 col-sm-12 col-md-9">
+					<div>
+						<a href="${pageContext.request.contextPath}/notice/noticeGet?no=20">
+							<h3>[공지]아카이브 소장자료 열람 재개 안내</h3>
+						</a>
+						<hr>
+						<a href="${pageContext.request.contextPath}/notice/noticeGet?no=19">
+							<h3>연말 운영일정 안내	</h3>
+						</a>
+						<hr>
+						<a href="${pageContext.request.contextPath}/notice/noticeGet?no=8">
+							<h3>JMA FRIENDS EVENT <크리스마스 파티 인 뮤지엄>	</h3>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -261,7 +304,7 @@
 
 	</footer>
 
-<%@ include file="/alljs.jsp" %>
+	<%@ include file="/alljs.jsp"%>
 
 </body>
 
