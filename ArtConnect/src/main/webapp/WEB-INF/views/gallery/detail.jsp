@@ -237,7 +237,7 @@ strong {
 				<div id="map"
 					style="width: 100%; height: 400px; margin-bottom: 30px;"></div>
 				<script type="text/javascript"
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79876cb9142b1dc6b254e0869dd8bd91"></script>
+					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1663141633918756761abc100acd5e63"></script>
 				<script type="text/javascript">
                            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
                            var options = { //지도를 생성할 때 필요한 기본 옵션
