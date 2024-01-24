@@ -14,14 +14,6 @@ $(document).ready(function() {
     document.getElementById("teenagerCount").addEventListener("change", updateTotalPrice);
     document.getElementById("childCount").addEventListener("change", updateTotalPrice);
     
-    // increase, decrease 버튼 클릭 이벤트
-    document.getElementById("decreaseAdult").addEventListener("click", decreaseAdultCount);
-    document.getElementById("increaseAdult").addEventListener("click", increaseAdultCount);
-    document.getElementById("decreaseTeenager").addEventListener("click", decreaseTeenagerCount);
-    document.getElementById("increaseTeenager").addEventListener("click", increaseTeenagerCount);
-    document.getElementById("decreaseChild").addEventListener("click", decreaseChildCount);
-    document.getElementById("increaseChild").addEventListener("click", increaseChildCount);
-    
     // 페이지 로드 시 처음 한 번 가격 업데이트
     updateTotalPrice();
 });
