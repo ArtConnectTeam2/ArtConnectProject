@@ -86,7 +86,7 @@
 	<div class="prd_info_wrap">
     <div class="thumb" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
         <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}" alt="Program Image"
-        style="max-width: 80%; min-width: 350px; height: auto;">
+        style="max-width: 80%; min-width: 350px; height: 350px;">
         <h2 style="margin-top: 30px;"><strong>${program.programTitle}</strong></h2>
     </div>
     <div class="prd_info">

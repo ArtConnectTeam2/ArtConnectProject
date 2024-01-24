@@ -41,17 +41,6 @@
     .reservation-info h2 {
         font-size: 24px; /* 원하는 글꼴 크기로 조절하세요. */
     }
-
-    .reservation-info dl {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 예약 정보를 2열로 표시 */
-        gap: 10px; /* 열 간격을 조절하세요. */
-    }
-
-    .reservation-info dt, .reservation-info dd {
-        padding: 5px;
-        border: 1px solid #ccc; /* 테두리 스타일을 조절하세요. */
-    }
 </style>
 </head>
 <body>
@@ -105,8 +94,9 @@
     		<div class="prd_info_wrap">
     			<div class="prd_info">
     			<div class="qr-info-container">
+    				<!-- QR코드 생성 부분 -->
     				<img id="qrCodeImage" src="" alt="QR Code"/>
-    				<div clsee="reservation-info">
+    				<div class="reservation-info">
     				<dl>
 						<dt>예약 번호</dt> 
 						<dd>${reservationID}</dd>
@@ -144,7 +134,7 @@
 	var qrData = memberID + '-' + reservationID;
 	
 	// Google Chart API를 통해 QR 코드 이미지 URL 생성
-	var qrcreate = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=' + encodeURIComponent(qrData);
+	var qrcreate = 'https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=' + encodeURIComponent(qrData);
 
 	// qr코드 이미지를 표시할 위치에 소스 설정
 	document.getElementById('qrCodeImage').src = qrcreate;

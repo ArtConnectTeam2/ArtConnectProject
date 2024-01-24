@@ -114,7 +114,7 @@
                                 <tr class="program-row">
                                     <td><a href="${pageContext.request.contextPath}/reservation/reservation/${program.galleryID}/${program.programID}">
                                     <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}"
-                                    alt="Program Image" style="width: 200px; height: auto;"></a></td>
+                                    alt="Program Image" style="width: 200px; height: 200px;"></a></td>
                                     <td><a href="${pageContext.request.contextPath}/reservation/reservation/${program.galleryID}/${program.programID}">
                                     ${program.programTitle}</a></td>
                                     <td>${program.artist}</td>

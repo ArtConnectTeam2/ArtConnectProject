@@ -50,8 +50,6 @@ public class ReservationController {
 		// 삽입 이후에 ReservationVO 객체에 접근하여 생성된 reservationID 가져오기
 		int reservationID = reservationVO.getReservationID();
 		
-		System.out.println("reservationID : " + reservationID);
-		
 		if (insertReservation > 0) {
 	        // 예약이 성공하면 JSON 응답에 reservationID를 포함하여 반환
 	        Map<String, Object> response = new HashMap<>();
