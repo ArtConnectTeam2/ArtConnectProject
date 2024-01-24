@@ -7,9 +7,42 @@
     <select id="programlist" resultType="ProgramVO_gallery" parameterType="int">
         select * from program where galleryID = #{galleryID} order by galleryID
     </select>
+
+	
+	<!-- 프로그램 추가하기 -->
+	<insert id="programinsert" parameterType="ProgramVO_gallery">
+    INSERT INTO program (
+        galleryID,
+        programTitle,
+        programImg,
+        artist,
+        programTheme,
+        programStart,
+        programEnd,
+        priceAdult,
+        priceTeenager,
+        priceChild,
+        programTel
+    ) VALUES (
+        #{galleryID},
+        #{programTitle},
+        #{programImg},
+        #{artist},
+        #{programTheme},
+        #{programStart},
+        #{programEnd},
+        #{priceAdult},
+        #{priceTeenager},
+        #{priceChild},
+        #{programTel}
+    )
+</insert>
+
+
     
     <select id="getProgram" resultType="ProgramVO_gallery" parameterType="int" >
     	select * from program where programID = #{programID}
     </select>
  
+
 </mapper>

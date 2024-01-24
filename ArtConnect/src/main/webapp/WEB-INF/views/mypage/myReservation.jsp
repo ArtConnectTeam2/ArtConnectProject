@@ -1,13 +1,14 @@
 <%@page import="com.multi.artConnect.mypage.MypageDAO"%>
 <%@page import="com.multi.artConnect.member.MemberVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-  <%
+<%
 	session.getAttribute("memberID");
-
-    %>
+%>
 <!DOCTYPE HTML>
+
  <html>
  <head>
 	  	<meta charset="UTF-8"> 
@@ -203,7 +204,71 @@ p.no-reservation-message {
 </div>
 </div>
 	<hr>
-    <script>
+  
+	
+	 <!-- footer -->
+
+        <footer role="footer">
+            <!-- logo -->
+
+             <!--    <h1>
+
+
+                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
+
+                </h1>
+ -->
+
+						<!-- logo -->
+
+						<!-- nav -->
+						<nav role="footer-nav">
+							<ul>
+								<li><a href="index.html" title="Work">Work</a></li>
+								<li><a href="about.html" title="About">About</a></li>
+								<li><a href="blog.html" title="Blog">Blog</a></li>
+								<li><a href="contact.html" title="Contact">Contact</a></li>
+							</ul>
+						</nav>
+
+						<!-- nav -->
+						<ul role="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"
+									aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-facebook"
+									aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"
+									aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-flickr"
+									aria-hidden="true"></i></a></li>
+						</ul>
+						<p class="copy-right">
+							Shared by <i class="fa fa-love"></i><a
+								href="https://bootstrapthemes.co">BootstrapThemes</a>
+						</p>
+					</footer>
+
+					<!-- footer -->
+					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+					<script
+						src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
+						type="text/javascript"></script>
+					<!-- custom -->
+					<script
+						src="${pageContext.request.contextPath}/resources/js/nav.js"
+						type="text/javascript"></script>
+					<script
+						src="${pageContext.request.contextPath}/resources/js/custom.js"
+						type="text/javascript"></script>
+					<!-- Include all compiled plugins (below), or include individual files as needed -->
+					<script
+						src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+						type="text/javascript"></script>
+					<!-- jquery.countdown -->
+					<script
+						src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
+						type="text/javascript"></script>
+				  <script>
 		$(".cancelReservationBtn").click(
 				function() {
 					// 사용자에게 확인 창 띄우기
@@ -235,41 +300,7 @@ p.no-reservation-message {
 					}
 				});
 	</script>
-	
-	 <!-- footer -->
+</body>
 
-        <footer role="footer">
-            <!-- logo -->
-
-             <!--    <h1>
-
-                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
-
-                </h1>
- -->
-            <!-- logo -->
-            <!-- nav -->
-            <nav role="footer-nav">
-            	<ul>
-                	<li><a href="index.html" title="Work">Work</a></li>
-                    <li><a href="about.html" title="About">About</a></li>
-                    <li><a href="blog.html" title="Blog">Blog</a></li>
-                    <li><a href="contact.html" title="Contact">Contact</a></li>
-                </ul>
-            </nav>
-</div>
-            <!-- nav -->
-            <ul role="social-icons">
-            	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
-            </ul>
-            <p class="copy-right">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
-        </footer>
-      
-<!-- JavaScript -->
-	<%@ include file="/alljs.jsp" %>
-    </body>
 
 </html>
