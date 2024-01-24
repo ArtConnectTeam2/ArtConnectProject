@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.artConnect.reservation.ReservationDAO">
-  <insert id="insertReservation" parameterType="reservationVO">
+  <insert id="insertReservation" parameterType="reservationVO" useGeneratedKeys="true" keyProperty="reservationID">
     INSERT INTO `reservation` (`galleryID`, `programID`, `memberID`, `programTitle`,
     `payment`, `reservationTime`, `reservationDay`, `totalPrice`,
     `adultCount`, `teenagerCount`, `childCount`, `totalCount`)
@@ -16,5 +16,9 @@
     SELECT 300 - COALESCE(SUM(totalCount), 0) AS totalReserved
     FROM reservation
     WHERE galleryID = #{galleryID} AND reservationDay = #{reservationDay}
+  </select>
+  
+  <select id="getReservation" resultType="reservationVO">
+		SELECT * FROM reservation WHERE memberID = #{memberID} AND reservationID = #{reservationID}
   </select>
 </mapper>

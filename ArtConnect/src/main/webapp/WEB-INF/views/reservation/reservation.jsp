@@ -214,7 +214,7 @@
         <td colspan="3"><span class="totalPrice">총 가격: 0원</span></td>
     </tr>
     </table>
-</div>
+</div> <!-- table-calendar -->
     <div id = "calendar-footer">
     	<span id = "date">날짜를 선택해주세요.</span>
     	<span id = "message"></span>
@@ -329,10 +329,12 @@ reservationButton.addEventListener('click', function() {
 	            method: 'POST',
 	            contentType: 'application/json', 
 	            data: JSON.stringify(reservationData), 
-	            success: function(data) {
-	                console.log('Success:', data);
+	            success: function(response) {
+	                console.log('Success:', response.reservationID);
 	           		alert('예약 성공');
-	            },
+	           		
+	           		window.location.href = '/artConnect/reservation/qrcreater/'+response.reservationID+'?memberID='+memberID;
+				},
 	            error: function(error) {
 	                if (error.responseText.includes('Duplicate entry')) {
 	                	alert('해당 아이디로 이미 예약한 기록이 있습니다.')
