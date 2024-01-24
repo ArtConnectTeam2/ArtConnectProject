@@ -2,7 +2,7 @@
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>z
 
 <%
 	session.getAttribute("memberID");
@@ -17,8 +17,7 @@
 	    <title>${memberID} 회원정보수정</title>
 		<%@ include file="/header.jsp" %>
 		
-		<!-- sidebar CSS -->
-    	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
+
 	  	
     <style> 
       /* sidebar */
@@ -185,12 +184,14 @@ p.no-reservation-message {
 
 			<!-- qr페이지로 이동하는 버튼 -->
 			<a href="${pageContext.request.contextPath}/reservation/qrcreater/${reservation.reservationID}?memberID=${memberID}" target="_blank">
-        		<button class="viewQrCodeBtn">QR 코드 보기</button>
+        		<button class="btn-gradient red small">QR 코드 보기</button>
     		</a>
 		</td>
 		<td>
 			<!-- 예약취소 버튼에 직접 이벤트를 추가 -->
-			<button class="cancelReservationBtn">예약취소</button>
+			<a href="#" onclick="cancelReservation(event)">
+			<button class="btn-gradient yellow small">예약취소</button>
+			</a>
 		</td>
 
 		</tr> 
@@ -239,38 +240,39 @@ p.no-reservation-message {
 					<!-- footer -->
 					<!-- js 파일 모음 -->
 					<%@ include file="/alljs.jsp" %>
-				  <script>
-		$(".cancelReservationBtn").click(
-				function() {
-					// 사용자에게 확인 창 띄우기
-					if (confirm("예약을 취소하시겠습니까?")) {
-						// 예를 선택한 경우에만 아래 코드 실행
-						console.log("버튼 클릭됨");
+				 <script>
+    function cancelReservation(event) {
+        // 이벤트의 기본 동작 방지
+        event.preventDefault();
 
-						// 부모 <tr>에서 예약 ID 가져오기
-						var reservationID = $(this).closest('tr').find(
-								'td:first').text();
-						console.log("예약 ID: " + reservationID);
+        // 사용자에게 확인 창 띄우기
+        if (confirm("예약을 취소하시겠습니까?")) {
+            // 예를 선택한 경우에만 아래 코드 실행
+            console.log("버튼 클릭됨");
 
-						// Ajax를 통한 예약 삭제
-						$.ajax({
-							url : "deleteReservation",
-							type : "POST",
-							data : {
-								reservationID : reservationID
-							},
-							success : function(response) {
-								alert('예약이 성공적으로 취소되었습니다.');
-								// 예약 목록 업데이트 등의 추가 작업 수행
-							},
-							error : function(error) {
-								alert('예약 취소에 실패했습니다.');
-								console.log("에러 떴습니다", error)
-							}
-						});
-					}
-				});
-	</script>
+            // 부모 <tr>에서 예약 ID 가져오기
+            var reservationID = $(event.target).closest('tr').find('td:first').text();
+            console.log("예약 ID: " + reservationID);
+
+            // Ajax를 통한 예약 삭제
+            $.ajax({
+                url: "deleteReservation",
+                type: "POST",
+                data: {
+                    reservationID: reservationID
+                },
+                success: function(response) {
+                    alert('예약이 성공적으로 취소되었습니다.');
+                    // 예약 목록 업데이트 등의 추가 작업 수행
+                },
+                error: function(error) {
+                    alert('예약 취소에 실패했습니다.');
+                    console.log("에러 떴습니다", error)
+                }
+            });
+        }
+    }
+</script>
 </body>
 
 
