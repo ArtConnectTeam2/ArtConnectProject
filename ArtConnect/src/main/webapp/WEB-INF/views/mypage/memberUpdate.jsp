@@ -12,45 +12,35 @@
 
         <title>::Art Connect ::</title>
 	    <title>${memberID} 님 회원정보수정</title>
-	
+	<%@ include file="/header.jsp" %>
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
-        <!-- style -->
-        <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
-
-        <!-- bootstrap -->
-        <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        
-        <!-- responsive -->
-        <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-        
-        <!-- font-awesome -->
-        <link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
-        <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		
 		<!-- sidebar CSS -->
     	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
 
-
 	   <script type="text/javascript">
-	   function validateForm() {
-	        var isEmailValid = validateEmail();
-
-	        return isEmailValid;
-	    }
-	   
 	   function confirmAndUpdate() { // 회원정보수정
-           if (validateEmail()) {
+           if (validateEmail()  && validateTel() && validateName()) {
                if (confirm("회원정보를 수정하시겠습니까?")) {
                    document.getElementById("updateForm").submit();
                }
            }
        }
 	   
-	   function validateEmail() {
+	   function validateForm() {
+	        var isEmailValid = validateEmail();
+	        var isNameValid = validateName(); 
+	        var isTelValid = validateTel();  
+	        return isEmailValid && isTelValid && isNameValid;
+	    }
+	   
+
+	   
+	   function validateEmail() { // 이메일 유효성 검사
 	        var email = document.getElementById("memberEmail").value;
 	        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-	        var emailErrorMessage = document.getElementById("emailErrorMessage");
+	        var emailErrorMessage = document.getElementById("email_check");
 
 	        if (!emailRegex.test(email)) {
 	            emailErrorMessage.innerHTML = "올바른 이메일 형식이 아닙니다.";
@@ -60,54 +50,163 @@
 	            emailErrorMessage.innerHTML = "";
 	            return true;
 	        }
-	    }
-       
-        
-    </script>
+	   }
+ 	   function validateName() { // 이름 유효성 검사
+           var name = document.getElementById("memberName").value;
+           var nameErrorMessage = document.getElementById("name_check");
+           var nameJ = /^[가-힣]{2,6}$/;
+
+           if (name.trim() === "") {
+               nameErrorMessage.innerHTML = "이름을 입력해주세요.";
+               nameErrorMessage.style.color = "red";
+               return false;
+           } else if (!nameJ.test(name)) {
+               nameErrorMessage.innerHTML = "한글 2~6자로 입력해주세요.";
+               nameErrorMessage.style.color = "red";
+               return false;
+           } else {
+               nameErrorMessage.innerHTML = "";
+               return true;
+           }
+	   }
+	       
+        function validateTel() { // 휴대폰 번호 유효성 검사
+			var tel = document.getElementById("memberTel").value;
+       		var telErrorMessage = document.getElementById("tel_check");
+       		var telJ =/^010[0-9]{4}[0-9]{4}$/;
+       		
+       	 if (tel.trim() === "") {
+       		telErrorMessage.innerHTML = "휴대폰 번호를 입력해주세요.";
+       		telErrorMessage.style.color = "red";
+             return false;
+         } else if (!telJ.test(tel)) {
+        	 telErrorMessage.innerHTML = "휴대폰 번호를 확인해주세요.";
+        	 telErrorMessage.style.color = "red";
+             return false;
+         } else {
+        	 telErrorMessage.innerHTML = "";
+             return true;
+      	 } 
+        } 
+   </script>
+   
     <style>  
-    input {
-	width: 500px;
-	height: 40px;
-	font-size: 20px;
-	  }
-	  
-	  	.navy {
-		position: absolute;
-		top: 10px;
-		right: 10px;
+/* sidebar */
+.sidebar {
+    border-radius: 10px; 
+    padding: 20px; 
+    background-color: white;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.1) 
+}
+
+    .sidebar h3 {
+        color: black; 
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd; 
+    }
+
+    .sidebar li:last-child {
+        border-bottom: none;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black; 
+        display: block; 
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        transition: background-color 0.3s; 
+   
+    }
+
+    .sidebar a:hover {
+        background-color: #f5f5f5; 
+    }
+	.navy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 	}
+	#update{
+      border: 3px solid white; 
+      border-radius: 10px;
+      padding: 20px;
+      background-color: white;
+      margin : 80px;
+      margin-top: -1px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+	#update2{
+      text-align: center;
+      background-color: white;
+}
+input {
+    width: 500px;
+    height: 40px;
+	font-size: 20px;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+input:focus {
+    outline: none;
+    border-color: #ffc107; 
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+#tel_check {
+    margin-left: -330px;
+}
+#name_check {
+    margin-left: -340px;
+}
+#email_check {
+    margin-left: -310px;
+}
+#updateid {
+    margin-left: -450px;
+    font-size: 1.2em; 
+    font-weight: bold;
+}	
+#updateid1 {
+    margin-left: -460px;
+    font-size: 1.2em; 
+    font-weight: bold;
+}	
+#updateid2 {
+    margin-left: -435px;
+    font-size: 1.2em; 
+    font-weight: bold;
+}	
+footer {
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #ddd;
+    }
+    button {
+    margin-right: 25px; 
+}
+.row {
+    margin-top: 80px;
+}
 	</style>
 </head>
 
 <body>
-    <header role="header">
-        <div class="container">
-           
-            <!-- Art Connect logo -->
-            <h1>
-                <a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect"><img src="${pageContext.request.contextPath}/resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px; " /></a>
-            </h1>
-            
-            <!-- nav -->
-            <nav role="header-nav" class="navy">
-                <ul>
-                   <li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<%@ include file="/nav.jsp" %>
 
     <!-- sidebar -->
     <div class="container">
@@ -141,52 +240,52 @@
         <!-- main content -->
             <div class="col-md-9">
                 <div class="update-content">
-                    <h2>회원 정보 수정</h2>
+                <div id="update">
+                <div id="update2">
+                    <h2>회원 정보 수정</h2><br><br>
                     	<form id="updateForm" action = "updateOk" method = "post" onsubmit="return validateForm();">
-                        <tr>
-                        아이디 <br>
-                        <input type="text" name="memberID" value="${mymember.memberID}" readonly > <br>
-                        </tr>
-                        <tr>
-                        이름 <br>
-                         <input type="text" name="memberName" value="${mymember.memberName}" readonly ><br>
-                        </tr>
-                        <tr>
-                        생년월일 <br>
-                        <input type="date" name="memberBirth" value="${mymember.memberBirth}"><br>
-                        </tr>
-                        <tr>
-                        성별 <br>
-                         <input type="text" name="memberGender" value="${mymember.memberGender}" readonly ><br>
-                        </tr>
-                        <tr>
-                        주소 <br>
-                         <input type="text" name="memberAddr" value="${mymember.memberAddr}"><br>
-                        </tr>
-                        <tr>
-                        전화번호 <br>
-                         <input type="text" name="memberTel" value="${mymember.memberTel}"><br>
-                        </tr>
-                        <tr>
-                         이메일 <br> 
-                        <input type="text" name="memberEmail" id="memberEmail" value="${mymember.memberEmail}">
-                        <br><span id="emailErrorMessage"></span><br>
-                        </tr>
-                        <tr>
-                        알람설정 <br> 
-                        <input type="text" name="memberAlarm" value="${mymember.memberAlarm}"><br>
-                        </tr>
-                        <br>
+                        <div id="updateid">아이디</div>
+                        <input type="text" name="memberID" value="${mymember.memberID}" readonly > <br><br>
+                        
+                        <div id="updateid1">이름</div> 
+                        <input type="text" name="memberName" id="memberName" value="${mymember.memberName}" onblur="validateName()">
+                        <div class="check_font" id="name_check"></div><br>
+                       
+                        <div id="updateid2">생년월일</div>
+                        <input type="date" name="memberBirth" value="${mymember.memberBirth}"><br><br>
+                       
+                        <div id="updateid1">성별</div> 
+                        <input type="text" name="memberGender" value="${mymember.memberGender}" readonly ><br><br>
+                        <div>
+                       
+                        <div id="updateid1">주소</div> 
+                        <input type="text" name="memberAddr" value="${mymember.memberAddr}"><br><br>
+                       
+                        <div id="updateid2">전화번호</div> 
+                        <input type="text" name="memberTel" id="memberTel" value="${mymember.memberTel}" onblur="validateTel()">
+                        <div class="check_font" id="tel_check"></div> <br>
+                       
+                         <div id="updateid">이메일</div>  
+                         <input type="text" name="memberEmail" id="memberEmail" value="${mymember.memberEmail}" onblur="validateEmail()">
+                         <div class="check_font" id="email_check"></div><br>
+                       
+                         <div id="updateid2">알람설정</div>  
+                         <input type="text" name="memberAlarm" value="${mymember.memberAlarm}"><br><br>
+                         <br>
 					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-warning">수정</button>
 				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+				</div>
 				</tr>
                 <br>
-                <br>        
+                <br>    
+                   
                     </form>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
+</div>
 
         <!-- footer -->
         <footer role="footer">
@@ -205,7 +304,7 @@
                     <li><a href="contact.html" title="Contact">Contact</a></li>
                 </ul>
             </nav>
-
+</div>
             <!-- nav -->
             <ul role="social-icons">
             	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -216,17 +315,6 @@
             <p class="copy-right">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
         </footer>
       
-        <!-- footer -->
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-        <!-- custom -->
-		<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- jquery.countdown -->
-        <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
-
-    </body>
-
+<%@ include file="/alljs.jsp" %>
+</body>
 </html>

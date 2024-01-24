@@ -77,9 +77,9 @@
 
 					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/notice.jsp" title="Contact">공지사항</a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/qna.jsp" title="Contact">QnA</a></li>
                 </ul>
             </nav>
         </div>
@@ -117,7 +117,11 @@
         <!-- main content -->
             <div class="col-md-9">
                 <div class="update-content">
-                   비밀번호 수정이 성공적으로 완료되었습니다.
+                    <% session.invalidate(); %>
+                   <script>
+                   
+					location.href="${pageContext.request.contextPath}/gallery/main.jsp"
+                   </script>
                 </div>
             </div>
         </div>
