@@ -102,7 +102,7 @@ button {
 						</p>
 					</form>
 				</div>
-			</div>
+			</div><!-- class= row -->
 
 
 	</main>
