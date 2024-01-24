@@ -14,7 +14,7 @@
 				<!-- 로그아웃 버튼 -->
 				
 				<div class="login">
-				<%= session.getAttribute("memberName") %>님 환영합니다<br>
+				<%= session.getAttribute("memberName") %>님 환영합니다.<br>
 				<a href="${pageContext.request.contextPath}/member/Logout.jsp">
 				<button class="btn btn-info">로그아웃</button>
 				</a>

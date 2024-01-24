@@ -8,64 +8,10 @@
 <html>
 
 <head>
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<meta charset="utf-8">
-
-<!-- Description, Keywords and Author -->
-
-<meta name="description" content="">
-
-<meta name="author" content="">
-
-
-
-<title>:: 미술관 조회 및 검색 페이지 ::</title>
-
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
-
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
-
-<!-- bootstrap -->
-
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
-
-<!-- responsive -->
-
-<link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet"
-	type="text/css">
-
-<!-- font-awesome -->
-
-<link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
-
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-
-<!-- font-awesome -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
-
+<title>::미술관 조회 페이지::</title>
+<%@ include file="/header.jsp" %>
 
 <style>
-/* 이미지 크기와 위치 조정 */
-#logo-image {
-	max-width: 500px; /* 원하는 크기로 조절 */
-	position: absolute;
-	top: 10px; /* 이미지를 아래로 내리고 싶다면 값을 늘리세요 */
-	left: 650px; /* 이미지를 오른쪽으로 이동하려면 값을 늘리세요 */
-}
-
-/* 네비게이션 위치 조정 */
-.navy {
-	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
-}
-
 /* 체크박스 스타일 */
 .form-check-input {
     /* 원하는 스타일 속성을 추가하세요 */

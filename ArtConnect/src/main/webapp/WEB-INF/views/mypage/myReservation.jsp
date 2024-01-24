@@ -87,10 +87,9 @@
         text-align: center;
     }
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #ddd;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #ddd;
     }
 th {
     background-color: #d2d2d2;
@@ -209,18 +208,7 @@ p.no-reservation-message {
 	 <!-- footer -->
 
         <footer role="footer">
-            <!-- logo -->
-
-             <!--    <h1>
-
-
-                    <a href="index.html" title="Art Connect"><img src="${pageContext.request.contextPath}resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px;"/></a>
-
-                </h1>
- -->
-
-						<!-- logo -->
-
+     
 						<!-- nav -->
 						<nav role="footer-nav">
 							<ul>
@@ -249,25 +237,8 @@ p.no-reservation-message {
 					</footer>
 
 					<!-- footer -->
-					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-					<script
-						src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
-						type="text/javascript"></script>
-					<!-- custom -->
-					<script
-						src="${pageContext.request.contextPath}/resources/js/nav.js"
-						type="text/javascript"></script>
-					<script
-						src="${pageContext.request.contextPath}/resources/js/custom.js"
-						type="text/javascript"></script>
-					<!-- Include all compiled plugins (below), or include individual files as needed -->
-					<script
-						src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
-						type="text/javascript"></script>
-					<!-- jquery.countdown -->
-					<script
-						src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
-						type="text/javascript"></script>
+					<!-- js 파일 모음 -->
+					<%@ include file="/alljs.jsp" %>
 				  <script>
 		$(".cancelReservationBtn").click(
 				function() {
