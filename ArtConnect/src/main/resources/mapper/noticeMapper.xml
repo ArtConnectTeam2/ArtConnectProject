@@ -7,8 +7,7 @@
 	<!-- 공지사항 목록 -->
 	<select id="list" resultType="noticeVO">
 		select * from notice
-		order by no
-		desc
+		order by noticeNO DESC
 	</select>
 
 	<!-- 공지사항 입력 -->
@@ -17,10 +16,10 @@
 		notice
 		values(
 		null,
-		#{id},
-		#{name},
-		#{title},
-		#{content},
+		#{noticeID},
+		#{noticeName},
+		#{noticeTitle},
+		#{noticeContent},
 		now(),
 		0
 		)
@@ -28,34 +27,65 @@
 
 	<!-- 공지사항 조회 -->
 	<select id="getpage" parameterType="int" resultType="noticeVO">
-		select no
-		, title
-		, name
-		, content
+		select noticeNO
+		, noticeTitle
+		, noticeName
+		, noticeContent
+		, noticeHit
+		, noticeRegdate
 		from notice
-		where no = #{no}
+		where noticeNO = #{noticeNO}
 	</select>
 
 	<!-- 공지사항 수정 -->
 	<update id="update" parameterType="noticeVO">
 		update notice
 		set
-		title = #{title},
-		content = #{content}
-		where no = #{no}
+		noticeTitle = #{noticeTitle},
+		noticeContent = #{noticeContent}
+		where noticeNO = #{noticeNO}
 	</update>
 	
 	<!-- 공지사항 삭제 -->
 	<delete id="delete" parameterType="int">
 		delete from notice
-		where no = #{no}
+		where noticeNO = #{noticeNO}
 	</delete>
 	
 	<!-- 공지사항 조회수증가 -->
 	<update id="updateHit" parameterType="int">
 		update notice
-		set hit = hit + 1
-		where no = #{no}
+		set noticeHit = noticeHit + 1
+		where noticeNO = #{noticeNO}
 	</update>
+	
+	<!-- 공지사항 게시물갯수 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) 
+		from notice
+	</select>
+	
+	<!-- 공지사항 목록 + 페이징 -->
+	<select id="selectWithPaging" parameterType="hashMap" resultType="noticeVO">
+		select * from notice
+ 		order by noticeNO DESC
+  		limit #{start}, #{size}
+	</select>	
+	
+	<!-- 공지사항 검색 -->
+	<select id="search" parameterType="hashMap" resultType="noticeVO">
+ 		select
+  		noticeNO, noticeID, noticeTitle, noticeName
+ 		from notice
+ 		
+ 	<if test='type.equals("subject")'>
+  		WHERE title LIKE concat('%', #{keyword}, '%')
+ 	</if>
+ 	
+ 	<if test='type.equals("content")'>
+ 	 	WHERE content LIKE concat('%', #{keyword}, '%')
+ 	</if>
+
+	</select>
 
 </mapper>

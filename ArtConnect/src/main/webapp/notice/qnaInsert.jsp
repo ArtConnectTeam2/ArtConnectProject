@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항작성</title>
+
+<title>QnA작성</title>
+
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
@@ -49,15 +51,32 @@
 	left: 100px;
 }
 
-header {
-	padding: 10px;
+#qna_title {
+	border:5px double;
+	border-color:#6E6E6E;
+	border-radius: 1%; /* 모서리전체둥글기지정 */
 	text-align: center;
+	font-size: x-large;
+	font-weight: bold; /* 글자굵기 */
+	line-height: 2;
+}
+
+h3{
+    display: block;
+    text-align: left;
+    font-size: 1.4em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
-	width: 30%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
+	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
 	height: 200px; /* 테이블의 높이를 200px로 설정 */
+	margin: auto; /* 가로 중앙에 배치 */
 }
 
 th {
@@ -65,6 +84,7 @@ th {
 	padding: 8px; /* 안쪽 여백 설정 */
 	height: 12px;
 	text-align: center; /* 텍스트를 왼쪽 정렬 */
+	background-color: #f2f2f2;
 }
 
 td {
@@ -72,10 +92,6 @@ td {
 	padding: 20px; /* 안쪽 여백 설정 */
 	height: 12px;
 	text-align: center; /* 텍스트를 왼쪽 정렬 */
-}
-
-th {
-	background-color: #f2f2f2; /* 헤더 배경색 설정 */
 }
 </style>
 </head>
@@ -102,11 +118,11 @@ th {
 						title="Contact">마이 페이지</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						href="${pageContext.request.contextPath}/notice/noticeList"
 						title="Contact">공지사항</a></li>
 
 					<li><a
-						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						href="${pageContext.request.contextPath}/notice/qnaList"
 						title="Contact">QnA</a></li>
 				</ul>
 				<div class="login">
@@ -116,10 +132,8 @@ th {
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png"
-						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
-					</a>
+					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
+					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px; "> </a>
 				</div>
 			</nav>
 		</div>
@@ -127,34 +141,41 @@ th {
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
+	
+	<div id="qna_title">
+		질의응답(QnA)게시판
+	</div>
+	
 		<div align="center">
-			<!-- HTML5에서는 태그 속성을 바로 명시하지 않고, CSS를 작성하여 붙여준다. -->
-			<form action="qnaInsert">
-				<h2>QnA 작성</h2>
-				<hr>
-				<table>
-					<tr>
-						<td>작성자 :</td>
-						<td><input name="id"></td>
-							<!-- 나중에 DB랑 연동되게 수정하기 -->
-					</tr>
-					<tr>
-						<td>제 목 :</td>
-						<td><input type="text" name="title" size="5" maxlength="100"></td>
-					</tr>
-					<tr>
-						<td colspan="2"><textarea name="content" cols="50" rows="20"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-						<button type="submit" class="btn btn-primary">글쓰기</button>
-						<button type="reset" class="btn btn-primary">취소</button>
-						</td>
-					</tr>
-				</table>
-			</form>
+
+	<hr>
+	<h3>◆ 글을 남겨 주시면 빠른 시일 내에 답변해 드리겠습니다.</h3>
+	<hr>
+	
+	<form action="qnaInsert">
+	<table>
+		<tr>
+			<th>작성자</th>
+			<td><input name="qnaID" size="70"></td><!-- 나중에 DB랑 연동되게 수정하기 -->
+		</tr>
+		<tr>
+			<th>제 목</th>
+			<td><input type="text" name="qnaTitle" size="70" maxlength="100" placeholder="제목을 입력하세요"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><textarea name="qnaContent" cols="130" rows="20"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-left: none; border-right: none; border-bottom: none;">
+				<button type="submit" class="btn btn-primary">작성완료</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</td>
+		</tr>
+	</table>
+	</form>
 		</div>
+		
 	</main>
 
 	<!-- Footer -->

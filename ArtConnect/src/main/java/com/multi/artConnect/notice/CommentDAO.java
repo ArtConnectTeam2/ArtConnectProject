@@ -15,8 +15,8 @@ public class CommentDAO {
 	SqlSessionTemplate my;
 	
 	//댓글 조회
-	public List<CommentVO> list(int bno) {
-		return my.selectList("comment.commentList", bno);
+	public List<CommentVO> list(int commentBNO) {
+		return my.selectList("comment.commentList", commentBNO);
 	}
 	
 	//댓글 작성

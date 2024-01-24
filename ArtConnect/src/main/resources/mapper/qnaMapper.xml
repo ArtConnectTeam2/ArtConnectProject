@@ -7,8 +7,7 @@
 	<!-- QnA 목록 -->
 	<select id="list" resultType="qnaVO">
 		select * from qna
-		order by no
-		desc
+		order by qnaNo desc
 	</select>
 
 	<!-- QnA 입력 -->
@@ -16,44 +15,59 @@
 		insert into qna
 		values(
 		null,
-		#{title},
-		#{id},
+		#{qnaTitle},
+		#{qnaID},
 		now(),
 		0,
-		#{content}
+		#{qnaContent}
 		)
 	</insert>
 
 	<!-- QnA 조회 -->
 	<select id="getpage" parameterType="int" resultType="qnaVO">
-		select no
-			 , title
-		     , id
-		     , content
+		select qnaNO
+			 , qnaTitle
+		     , qnaID
+		     , qnaContent
+		     , qnaHit
+		     , qnaRegdate
 		 from qna
-		where no = #{no}
+		where qnaNO = #{qnaNO}
 	</select>
 
 	<!-- QnA 수정 -->
 	<update id="update" parameterType="qnaVO">
 		update qna
 		set
-		title = #{title},
-		content = #{content}
-		where no = #{no}
+		qnaTitle = #{qnaTitle},
+		qnaContent = #{qnaContent}
+		where qnaNO = #{qnaNO}
 	</update>
 
 	<!-- QnA 삭제 -->	
 	<delete id="delete" parameterType="int">
 		delete from qna
-		where no = #{no}
+		where qnaNO = #{qnaNO}
 	</delete>
 	
 	<!-- QnA 조회수증가 -->
 	<update id="updateHit" parameterType="int">
 		update qna
-		set hit = hit + 1
-		where no = #{no}
+		set qnaHit = qnaHit + 1
+		where qnaNO = #{qnaNO}
 	</update>
+	
+	<!-- QnA 게시물갯수 -->
+	<select id="getTotalCount" resultType="int">
+		select count(qnaNO) 
+		from qna
+	</select>
+	
+	<!-- QnA 목록 + 페이징 -->
+	<select id="selectWithPaging" parameterType="hashMap" resultType="qnaVO">
+		select * from qna
+ 		order by qnaNO DESC
+  		limit #{start}, #{size}
+	</select>
 
 </mapper>

@@ -4,48 +4,47 @@ import java.sql.Date;
 
 public class CommentVO {
 	
-	private int rno;
-	private int bno;
-	private String writer;
-	private String content;
-	private Date regDate;
+	private int commentRNO;
+	private int commentBNO;
+	private String commentWriter;
+	private String commentContent;
+	private Date commentRegDate;
 	
-	public int getRno() {
-		return rno;
+	public int getCommentRNO() {
+		return commentRNO;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setCommentRNO(int commentRNO) {
+		this.commentRNO = commentRNO;
 	}
-	public int getBno() {
-		return bno;
+	public int getCommentBNO() {
+		return commentBNO;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setCommentBNO(int commentBNO) {
+		this.commentBNO = commentBNO;
 	}
-	public String getWriter() {
-		return writer;
+	public String getCommentWriter() {
+		return commentWriter;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setCommentWriter(String commentWriter) {
+		this.commentWriter = commentWriter;
 	}
-	public String getContent() {
-		return content;
+	public String getCommentContent() {
+		return commentContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getCommentRegDate() {
+		return commentRegDate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setCommentRegDate(Date commentRegDate) {
+		this.commentRegDate = commentRegDate;
 	}
 	
 	@Override
 	public String toString() {
-		return "CommentVO [rno=" + rno + ", bno=" + bno + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + "]";
+		return "CommentVO [commentRNO=" + commentRNO + ", commentBNO=" + commentBNO + ", commentWriter=" + commentWriter
+				+ ", commentContent=" + commentContent + ", commentRegDate=" + commentRegDate + "]";
 	}
 
-	
 }

@@ -2,61 +2,81 @@ package com.multi.artConnect.notice;
 
 public class NoticeVO {
 	
-	private int no;
-	private String id;
-	private String name;
-	private String title;
-	private String content;
-	private String regdate;
-	private int hit;
+	private int noticeNO;
+	private String noticeID;
+	private String noticeName;
+	private String noticeTitle;
+	private String noticeContent;
+	private String noticeRegdate;
+	private int noticeHit;
 	
-	public int getNo() {
-		return no;
+	//검색필터
+	private String type; //검색타입
+	private String keyworld; //검색내용
+	
+	
+	public int getNoticeNO() {
+		return noticeNO;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setNoticeNO(int noticeNO) {
+		this.noticeNO = noticeNO;
 	}
-	public String getId() {
-		return id;
+	public String getNoticeID() {
+		return noticeID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setNoticeID(String noticeID) {
+		this.noticeID = noticeID;
 	}
-	public String getName() {
-		return name;
+	public String getNoticeName() {
+		return noticeName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNoticeName(String noticeName) {
+		this.noticeName = noticeName;
 	}
-	public String getTitle() {
-		return title;
+	public String getNoticeTitle() {
+		return noticeTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
 	}
-	public String getContent() {
-		return content;
+	public String getNoticeContent() {
+		return noticeContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setNoticeContent(String noticeContent) {
+		this.noticeContent = noticeContent;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getNoticeRegdate() {
+		return noticeRegdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setNoticeRegdate(String noticeRegdate) {
+		this.noticeRegdate = noticeRegdate;
 	}
-	public int getHit() {
-		return hit;
+	public int getNoticeHit() {
+		return noticeHit;
 	}
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setNoticeHit(int noticeHit) {
+		this.noticeHit = noticeHit;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getKeyworld() {
+		return keyworld;
+	}
+	public void setKeyworld(String keyworld) {
+		this.keyworld = keyworld;
 	}
 	
 	@Override
 	public String toString() {
-		return "NoticeVO [no=" + no + ", id=" + id + ", name=" + name + ", title=" + title + ", content=" + content
-				+ ", regdate=" + regdate + ", hit=" + hit + "]";
+		return "NoticeVO [noticeNO=" + noticeNO + ", noticeID=" + noticeID + ", noticeName=" + noticeName
+				+ ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent + ", noticeRegdate="
+				+ noticeRegdate + ", noticeHit=" + noticeHit + ", type=" + type + ", keyworld=" + keyworld + "]";
 	}
 	
+
+
 }

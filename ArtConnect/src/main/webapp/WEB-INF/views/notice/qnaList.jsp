@@ -7,7 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA 게시판</title>
+
+<title>QnA게시판</title>
+
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
 	type="image/x-icon">
@@ -40,16 +42,53 @@
 	top: 10px; /* 원하는 값으로 조정해주세요 */
 	right: 10px; /* 원하는 값으로 조정해주세요 */
 }
-
 .navbar-brand {
 	position: absolute;
 	top: 5px;
 	left: 20px;
 }
-
-.nav123 {
-	display: flex;
-	justify-content: center;
+.login {
+	position: absolute;
+	top: 5px;
+	left: 100px;
+}
+#qna_title {
+	border:5px double;
+	border-color:#6E6E6E;
+	border-radius: 1%; /* 모서리전체둥글기지정 */
+	text-align: center;
+	font-size: x-large;
+	font-weight: bold; /* 글자굵기 */
+	line-height: 2;
+}
+#qna_search {
+	text-align: center;
+	font-size: medium;
+}
+#qna_count {
+	padding: 12px;
+}
+table {
+	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
+	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
+	height: 200px; /* 테이블의 높이를 200px로 설정 */
+	margin: auto;
+}
+th {
+	padding: 12px; /* 안쪽 여백 설정 */
+	height: 12px;
+	background-color: #dcdcd1;
+	border-bottom: 3px solid #036;
+	text-align: center; /* 텍스트 정렬 */
+}
+td {
+	padding: 20px; /* 안쪽 여백 설정 */
+	height: 12px;
+	border-bottom: 1px solid #ccc;
+	text-align: center; /* 텍스트 정렬 */
+}
+tfoot{
+	height: 10px;
 }
 
 .pagination {
@@ -57,51 +96,6 @@
 	justify-content: center;
 }
 
-1234
-{
-position
-:
-relative;
-left
-:
-1000px;
-}
-.a1 {
-	float: left;
-}
-
-table {
-	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
-	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
-	height: 200px; /* 테이블의 높이를 200px로 설정 */
-	margin: auto;
-}
-
-th {
-	border: 1px solid #ddd; /* 셀 경계를 실선으로 지정 */
-	padding: 8px; /* 안쪽 여백 설정 */
-	height: 12px;
-	text-align: center; /* 텍스트를 왼쪽 정렬 */
-	background-color: #f2f2f2;
-}
-
-td {
-	border: 1px solid #ddd; /* 셀 경계를 실선으로 지정 */
-	padding: 20px; /* 안쪽 여백 설정 */
-	height: 12px;
-	text-align: center; /* 텍스트를 왼쪽 정렬 */
-}
-#qna_title {
-	border:5px double;
-	border-color:#31B404;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
-	text-align: center;
-	font-size: x-large;
-}
-#qna_search {
-	text-align: center;
-	font-size: medium;
-}
 </style>
 </head>
 <body>
@@ -124,20 +118,18 @@ td {
 						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
 						title="Contact">마이 페이지</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList.jsp"
+						href="${pageContext.request.contextPath}/notice/noticeList"
 						title="Contact">공지사항</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/notice/qnaList.jsp"
+						href="${pageContext.request.contextPath}/notice/qnaList"
 						title="Contact">QnA</a></li>
 				</ul>
 			</nav>
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-					<a class="navbar-brand" href=""> <!-- 이미지 추가 --> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png"
-						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
-					</a>
+					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
+					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px;"></a>
 				</div>
 			</nav>
 		</div>
@@ -149,22 +141,26 @@ td {
 	<div id="qna_title">
 	질의응답(QnA)게시판
 	</div>
+	
 	<hr>
-		<div id="qna_search">
+	
+	<div id="qna_search">
 		<form action="" method="post" name="searchForm">
 			<select>
 				<option valus="subject">제 목</option>
 				<option valus="content">내 용</option>
+				<option valus="name">작성자</option>
 			</select>
 			<input type="text" name="searchValue" placeholder="검색어를 입력해주세요" class="textField"/>
 			<input type="button" value="검 색" class="btn" onclick="sendIt();"/>
 		</form>
 	</div>
 	
-	<div id="qna_total">
+	<div id="qna_count">
 		<h5 style="margin-left: 100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
 	</div>
-
+	
+	<div id="qna_list">
 		<table border="1">
 			<tr>
 				<th>번호</th>
@@ -174,33 +170,32 @@ td {
 				<th>조회수</th>
 			</tr>
 			<c:forEach items="${list}" var="vo">
-				<tr>
-					<td>${vo.no}</td>
-					<td><a href="qnaGet?no=${vo.no}">${vo.title}</a></td>
-					<td>${vo.id}</td>
-					<td>${vo.regdate}</td>
-					<td>${vo.hit}</td>
-				</tr>
+			<tr>
+				<td>${vo.qnaNO}</td>
+				<td><a href="qnaGet?qnaNO=${vo.qnaNO}">${vo.qnaTitle}</a></td>
+				<td>${vo.qnaID}</td>
+				<td>${vo.qnaRegdate}</td>
+				<td>${vo.qnaHit}</td>
+			</tr>
 			</c:forEach>
+			<tfoot>
+			<tr>
+				<td colspan="4" style="border-bottom: none;"></td>
+				<td style="border-bottom: none;"><button type="button" onclick="location.href='qnaInsert.jsp'" class="btn btn-primary">작성</button></td>
+			</tr>
+			</tfoot>
 		</table>
+	</div>
 
-		<nav class="pagination" aria-label="...">
-			<ul class="pagination">
-				<li class="page-item disabled"><a class="page-link">Previous</a>
-				</li>
-				<li class="page-item active" aria-current="page"><a
-					class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			</ul>
-		</nav>
-		
-		<div>
-			<button type="button" onclick="location.href='qnaInsert.jsp'" class="btn btn-primary">작성</button>
-		</div>
+	<div class="container mt-3">
+    	<ul class="pagination">
+        	<c:forEach begin="1" end="${pagingVO.totalPages}" varStatus="i">
+           	 <li class="${pagingVO.page eq i.index ? 'active' : ''}">
+             	<a href="qnaList?page=${i.index}&size=${pagingVO.size}">${i.index}</a>
+           	 </li>
+        	</c:forEach>
+    	</ul>
+	</div>		
 
 	</main>
 
