@@ -51,12 +51,12 @@
 
 					<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
 
-					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
 					
 
-					<li><a href="${pageContext.request.contextPath}/notice/notice.jsp" title="Contact">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/noticeList" title="Contact">공지사항</a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/notice/qna.jsp" title="Contact">QnA</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
 					
 					<% if ("서울시립미술관".equals(session.getAttribute("memberName"))) {%>
 					<li><a href="${pageContext.request.contextPath}/gallery/programForm" title="Contact">프로그램 등록하기</a></li>
