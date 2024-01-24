@@ -11,9 +11,90 @@
 <meta charset="UTF-8">
 <title>내 Like 목록</title>
 <%@ include file="/header.jsp"%>
+<style>
+   /* sidebar */
+.sidebar {
+    border: 1px solid white; 
+    border-radius: 10px; 
+    padding: 20px; 
+    background-color: white;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.1)
+      
+}
+
+    .sidebar h3 {
+        color: black; 
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd; 
+    }
+
+    .sidebar li:last-child {
+        border-bottom: none;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black; 
+        display: block; 
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        transition: background-color 0.3s; 
+   
+    }
+
+    .sidebar a:hover {
+        background-color: #f5f5f5; 
+    } 
+    
+    .table th,
+    .table td {
+        font-size: 18px; 
+        text-align: center;
+    }
+h2 {
+        font-size: 24px; 
+        font-weight: bold; 
+        text-align: center;
+    }
+th {
+    background-color: #d2d2d2;
+}
+td {
+    background-color: white;
+}
+.table {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 60px; 
+}
+footer {
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        border-top: 1px solid #ddd;
+    }
+p.no-reservation-message {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 80px;
+}
+    
+</style>
 </head>
 <body>
 <%@ include file="/logoMypage.jsp"%>
+
 	<!-- 사이드 마이페이지 탭 -->
 	<div class="container">
 		<div class="row">
@@ -49,10 +130,14 @@
 			<div class="col-md-9">
 				<div class="update-content">
 					<h2>내가 Like한 목록</h2>
+					<c:if test="${empty likesList}">
+            <p class="no-reservation-message">좋아요한 내역이 없습니다.</p>
+        </c:if>
+         <c:if test="${not empty likesList}">
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th width="100px">좋아요 번호</th>
+								<th width="150px">좋아요 번호</th>
 								<th>갤러리 이름</th>
 								<!-- 추가적인 항목이 있다면 추가 -->
 							</tr>
@@ -61,12 +146,16 @@
 							<c:forEach var="likeInfo" items="${likesList}">
 								<tr>
 									<td>${likeInfo.likesNO}</td>
-									<td>${likeInfo.galleryName}</td>
+									<td><a
+										href="${pageContext.request.contextPath}/gallery/detail?galleryID=${likeInfo.galleryID}">
+											${likeInfo.galleryName} </a>
+									</td>
 									
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					 </c:if>
 				</div>
 			</div>
 		</div>

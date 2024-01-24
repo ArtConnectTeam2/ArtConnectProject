@@ -50,6 +50,22 @@
     text-align: center;
      margin-top: 50px;
 }
+a.update-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #ff9800; 
+    color: #fff;
+    border: 1px solid #ff9800; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+a.update-button:hover {
+    background-color: #e6b800; 
+    color: #fff; 
+}
 	</style>
 	
 </head>
@@ -77,9 +93,9 @@
 
 					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/notice.jsp" title="Contact">공지사항</a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/qna.jsp" title="Contact">QnA</a></li>
                 </ul>
             </nav>
         </div>
@@ -119,7 +135,7 @@
                 <div class="update-content">
                    회원정보수정이 성공적으로 완료되었습니다.
                    <br>
-                   <a href="updateOne?memberID=${memberID}">수정한 정보 확인하러 가기</a>
+                   <a href="updateOne?memberID=${memberID}" class="update-button">수정한 정보 확인하러 가기</a>
                 </div>
             </div>
         </div>
