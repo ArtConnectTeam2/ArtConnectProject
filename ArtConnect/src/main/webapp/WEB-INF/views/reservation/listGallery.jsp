@@ -19,6 +19,31 @@
 		</thead>
 		<tbody>
 			<c:forEach var="gallery" items="${listGallery}">
+                <c:set var="dayOfWeek" value="${gallery.closedDay}" />
+                <c:set var="koreanDay" value="" />
+                <c:choose>
+                    <c:when test="${dayOfWeek eq 'Monday'}">
+                        <c:set var="koreanDay" value="월" />
+                    </c:when>
+                    <c:when test="${dayOfWeek eq 'Tuesday'}">
+                        <c:set var="koreanDay" value="화" />
+                    </c:when>
+                    <c:when test="${dayOfWeek eq 'Wednesday'}">
+                        <c:set var="koreanDay" value="수" />
+                    </c:when>
+                    <c:when test="${dayOfWeek eq 'Thursday'}">
+                        <c:set var="koreanDay" value="목" />
+                    </c:when>
+                    <c:when test="${dayOfWeek eq 'Friday'}">
+                        <c:set var="koreanDay" value="금" />
+                    </c:when>
+                    <c:when test="${dayOfWeek eq 'Saturday'}">
+                        <c:set var="koreanDay" value="토" />
+                    </c:when>
+                    <c:when test="${dayOfWeek eq 'Sunday'}">
+                        <c:set var="koreanDay" value="일" />
+                    </c:when>
+                </c:choose>
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="Gallery Image" style="width: 150px; height: auto;"></a></td>
 					<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">${gallery.galleryName}</a></td>
@@ -26,7 +51,7 @@
 					<td>${gallery.galleryTel}</td>
 					<td><fmt:formatDate value="${gallery.galleryOpentime}" pattern="HH:mm"/></td>
 					<td><fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/></td>
-					<td>${gallery.closedDay}</td>
+					<td>매주 ${koreanDay}요일</td>
 				</tr>
 			</c:forEach>
 		</tbody>

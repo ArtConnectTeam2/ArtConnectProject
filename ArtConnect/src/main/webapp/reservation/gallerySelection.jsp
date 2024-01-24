@@ -36,9 +36,27 @@
 		// 검색 버튼 클릭 시
 		$('#searchButton').click(function() {
 			var galleryName = $('#galleryNameInput').val();
-			loadGallery("searchGallery/" + encodeURIComponent(galleryName));
+			if (galleryName.trim() === "") {
+				// 검색창이 공란이면 초기 데이터 로딩
+				loadGallery("listGallery");
+			} else {
+				loadGallery("searchGallery/" + encodeURIComponent(galleryName));
+			}
 		});
-
+		
+		// Enter 키 눌렀을 때
+		$('#galleryNameInput').keypress(function(e) {
+			if (e.which === 13) {
+				var galleryName = $('#galleryNameInput').val();
+				if (galleryName.trim() === "") {
+					// 검색창이 공란이면 초기 데이터 로딩
+					loadGallery("listGallery");
+				} else {
+					loadGallery("searchGallery/" + encodeURIComponent(galleryName));
+				}
+			}
+		});
+		
 		// 검색 초기화 버튼 클릭 시
 		$('#resetButton').click(function() {
 			loadGallery("listGallery");
@@ -61,8 +79,22 @@
 </head>
 
 <body>
-    <header role="header">
-        <div class="container">
+	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
+		<% String memberID = (String) session.getAttribute("memberID");
+		if (memberID == null || memberID.equals("")) { %>
+			<a href="${pageContext.request.contextPath}/member/login">
+				<button class="btn btn-danger" onclick="login()">로그인</button>
+			</a>
+		<% } else { %>
+			<!-- 로그아웃 버튼 -->
+			<%= memberID %>님 로그인되었습니다.<br>
+			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/gallerySelection.jsp">
+				<button class="btn btn-info">로그아웃</button>
+			</a>
+		<% } %>
+	</div>
+    <header role="header" style="margin-top: -100px; margin-left: 0px;">
+        <div class="container" style="display: inline-block; max-width: 50%;">
             <!-- Logo -->
             <h1>
                 <a href="${pageContext.request.contextPath}/gallery/main.jsp">
@@ -79,11 +111,11 @@
 
 	<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
 
-	<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
+	<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
 					
-	<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
+	<li><a href="${pageContext.request.contextPath}/notice/notice.jsp" title="Contact">공지사항</a></li>
 					
-	<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
+	<li><a href="${pageContext.request.contextPath}/notice/qna.jsp" title="Contact">QnA</a></li>
     </ul>
 	</nav>
     </div>

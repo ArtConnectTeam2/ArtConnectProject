@@ -28,4 +28,8 @@
     	where memberID = #{memberID}
     </select>
     
+    <select id="getData" parameterType="String" resultType="memberVO">
+    	select * from member WHERE memberID = #{memberID}
+    </select>
+    
 </mapper>

@@ -9,16 +9,23 @@ public class ReservationVO {
     private int programID;
     private String memberID;
     private String programTitle;
-    private Boolean payment;
+	private Boolean payment;
     private String reservationTime;
     private Date reservationDay;
-	private Time galleryOpentime;
+    private Time galleryOpentime;
 	private Time galleryClosetime;
 	private int totalPrice;
 	private int adultCount;
 	private int teenagerCount;
 	private int childCount;
+	private int totalCount;
 	
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 	public int getAdultCount() {
 		return adultCount;
 	}
