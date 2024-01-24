@@ -58,6 +58,8 @@
 	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
 	rel="stylesheet" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+
 <style>
 /* 이미지 크기와 위치 조정 */
 #logo-image {
@@ -72,5 +74,11 @@
 	position: absolute;
 	top: 10px; /* 원하는 값으로 조정해주세요 */
 	right: 10px; /* 원하는 값으로 조정해주세요 */
+}
+
+.login{
+	text-align: right;
+	margin-top: 75px;
+	margin-right: 20px;
 }
 </style>

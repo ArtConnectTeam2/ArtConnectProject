@@ -18,4 +18,9 @@ public class ProgramDAO_gallery {
 	 * my.selectList("com.multi.artConnect.gallery.ProgramDAO_gallery.programlist",
 	 * galleryID); return programlist; }
 	 */
+	
+	public void programinsert(ProgramVO_gallery programVO_gallery) {
+
+	    my.insert("com.multi.artConnect.gallery.ProgramDAO_gallery.programinsert", programVO_gallery);
+	}
 }

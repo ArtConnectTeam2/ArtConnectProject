@@ -21,24 +21,19 @@
 				<div class="sidebar">
 					<h3>마이페이지</h3>
 					<ul class="nav flex-column">
-					  <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
-                        </li>
-                             <li class="nav-item">
-                        <a class="nav-link" href="updatePw?memberID=${memberID}">비밀번호 변경</a>     
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="deleteOne?memberID=${memberID}">회원탈퇴</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="myReservation?memberID=${memberID}">내 예약</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="myReview?memberID=${memberID}">내 리뷰</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="myLike?memberID=${memberID}">좋아요</a>
-                        </li>
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="updateOne?memberID=${memberID}">회원정보수정</a>
+						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="updatePw?memberID=${memberID}">비밀번호 변경</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="deleteOne?memberID=${memberID}">회원탈퇴</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="myReservation?memberID=${memberID}">내 예약</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="myReview?memberID=${memberID}">내 리뷰</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="myLike?memberID=${memberID}">좋아요</a></li>
 					</ul>
 				</div>
 
@@ -62,9 +57,9 @@
 								<tr>
 									<td>${likeInfo.likesNO}</td>
 									<td><a
-										href="${pageContext.request.contextPath}/gallery/detail?galleryName=${likeInfo.galleryName}">
-											${likeInfo.galleryName} </a>
-									</td>
+										href="${pageContext.request.contextPath}/gallery/detail?galleryID=${likeInfo.galleryID}">
+											${likeInfo.galleryName} </a></td>
+
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -103,5 +98,7 @@
 				href="https://bootstrapthemes.co">BootstrapThemes</a>
 		</p>
 	</footer>
+	
+	<%@ include file="/alljs.jsp" %>
 </body>
 </html>

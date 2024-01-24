@@ -1,6 +1,6 @@
 package com.multi.artConnect.gallery;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProgramVO_gallery {
     private int programID;
@@ -95,4 +95,15 @@ public class ProgramVO_gallery {
 	public void setProgramRoom(String programRoom) {
 		this.programRoom = programRoom;
 	}
+	
+	@Override
+	public String toString() {
+		return "ProgramVO_gallery [programID=" + programID + ", galleryID=" + galleryID + ", programTitle="
+				+ programTitle + ", programImg=" + programImg + ", artist=" + artist + ", programTheme=" + programTheme
+				+ ", programStart=" + programStart + ", programEnd=" + programEnd + ", priceAdult=" + priceAdult
+				+ ", priceTeenager=" + priceTeenager + ", priceChild=" + priceChild + ", programTel=" + programTel
+				+ ", programRoom=" + programRoom + "]";
+	}
+	
+	
 }

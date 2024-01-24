@@ -7,14 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -59,7 +56,7 @@ public class MemberController {
 	 */
 	
 	@RequestMapping("/login.member")
-	public String login(MemberVO memberVO, Model model, HttpSession session) {
+	public String login(MemberVO memberVO, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
 		MemberVO loggedInUser = memberService.login(memberVO);
 
 		if (loggedInUser != null) {
@@ -75,13 +72,14 @@ public class MemberController {
 			return "member/LoginSuccess"; // 로그인 성공 후 이동할 페이지
 		} else {
 			// 로그인 실패
-			
+	        redirectAttributes.addFlashAttribute("errorMessage", "아이디 혹은 비밀번호를 다시 확인해주세요.");
 			// 로그 출력 추가 (나중에 완성되면 지워야함. 테스트 시 로그 확인용)
 			System.out.println("Login Failed. User ID: " + memberVO.getmemberID()); 
 			System.out.println("Login Failed. User PW: " + memberVO.getmemberPW());
+			
 			// 여기는 나중에 지워야 합니다
 			
-			return "member/Loginfail"; // 로그인 실패 시 실패창으로 이동
+			return "redirect:/member/login";
 		}
 	}
 }

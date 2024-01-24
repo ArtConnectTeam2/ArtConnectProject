@@ -1,23 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
-<!-- Bootstrap -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<!-- font-awesome -->
+<%@ include file="/header.jsp"%>
 
 <style>
 body {
@@ -35,9 +23,8 @@ form {
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	max-width: 400px;
+	max-width: 1200px;
 	width: 100%;
-	max-width: 300px;
 	background-color: #fff;
 }
 
@@ -70,52 +57,23 @@ button {
 }
 
 .navy {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-	}
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
 </style>
 </head>
 <body>
-	<header role="header">
-		<div class="container">
-			<!-- 상단 메뉴 탭 목록-->
-			<nav role="header-nav" class="navy">
-				<ul>
-					<li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
+	<!-- 메인 로고, 네비, 로그인-로그아웃 버튼 -->
+	<%@ include file="/nav.jsp"%>
 
-					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
-				</ul>
-
-			</nav>
-			<!-- 로고 버튼 -->
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container">
-					<a class="navbar-brand" href="${pageContext.request.contextPath}/gallery/main.jsp"> <img
-						src="${pageContext.request.contextPath}/resources/img/art.png"
-						alt="Your Logo" class="img-fluid" style="max-height: 40px;">
-					</a>
-				</div>
-			</nav>
-		</div>
-	</header>
 	<main role="main-home-wrapper" class="container">
 		<!-- 메인 인삿말 -->
 		<div class="row">
 			<article role="pge-title-content">
 				<header>
 					<h2>
-						<span>로그인 화면</span> Test
+						<span>로그인 화면</span> 환영합니다
 					</h2>
 				</header>
 
@@ -130,12 +88,15 @@ button {
 					<form action="login.member" method="post">
 						<h2 align="center">로그인</h2>
 						<label for="memberID">아이디:</label> <input type="text"
-							id="memberID" name="memberID" required value="apple"> <label
-							for="memberPW">비밀번호:</label> <input type="password" id="password"
-							name="memberPW" required value="1234">
+							id="memberID" name="memberID" required value="hello2"> <label
+							for="memberPW">비밀번호:</label> <input type="password" id="memberPW"
+							name="memberPW" required value="Asdf1234*">
 
 						<button type="submit">로그인</button>
 						<p>
+							<c:if test="${not empty errorMessage}">
+								<span style="color: red;">${errorMessage}</span>
+							</c:if> <br>
 							회원이 아니신가요? <a
 								href="${pageContext.request.contextPath}/member/register">회원가입</a>
 						</p>
@@ -147,23 +108,20 @@ button {
 	</main>
 
 	<!-- JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
-		type="text/javascript"></script>
+	<%@ include file="/alljs.jsp"%>
+	<script>
+		function validateForm() {
+			var memberID = document.getElementById("memberID").value;
+			var memberPW = document.getElementById("memberPW").value;
 
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
-		type="text/javascript"></script>
-
+			// 단순히 빈 값 여부만 확인하는 예제
+			if (memberID.trim() !== "" && memberPW.trim() !== "") {
+				return true; // 유효한 경우 폼 제출을 허용
+			} else {
+				alert("아이디와 비밀번호를 모두 입력해주세요.");
+				return false; // 폼 제출을 차단
+			}
+		}
+	</script>
 </body>
 </html>
