@@ -15,38 +15,73 @@
 
         <title>::Art Connect ::</title>
 	    <title>${memberID} 회원정보수정</title>
-	
+		<%@ include file="/header.jsp" %>
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
-        <!-- style -->
-        <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
-
-        <!-- bootstrap -->
-        <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        
-        <!-- responsive -->
-        <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-        
-        <!-- font-awesome -->
-        <link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
-        <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		
 		<!-- sidebar CSS -->
     	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sidebar.css">
 	  	
-    <style>  
+    <style> 
+    
+    /* sidebar */
+.sidebar {
+    border: 1px solid white; 
+    border-radius: 10px; 
+    padding: 20px; 
+    background-color: white;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.1)   
+}
+
+    .sidebar h3 {
+        color: black; 
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd; 
+    }
+
+    .sidebar li:last-child {
+        border-bottom: none;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black; 
+        display: block; 
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        transition: background-color 0.3s; 
+   
+    }
+
+    .sidebar a:hover {
+        background-color: #f5f5f5; 
+    } 
     input {
 	width: 500px;
 	height: 40px;
 	font-size: 20px;
+	
 	  }
-	  
 	.navy {
 		position: absolute;
 		top: 10px;
 		right: 10px;
 	}
-	
+	.container.pagination-container {
+    text-align: center;
+}
 	 .pagination {
         display: inline-block;
     }
@@ -66,39 +101,50 @@
         text-decoration: none;
         color: #007bff;
     }
+      h2 {
+        font-size: 24px; 
+        font-weight: bold; 
+        text-align: center;
+    }
+
+    .table th,
+    .table td {
+        font-size: 18px; 
+        text-align: center;
+         
+    }
+th {
+    background-color: #d2d2d2;
+}
+td {
+    background-color: white;
+}
+footer {
+		position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #ddd;
+    }
+    .update-content {
+      margin-left: 50px;
+}
+.table {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 20px; 
+}
+p.no-review-message {
+    font-size: 18px;
+    text-align: center;
+}
+.row {
+    margin-top: 80px;
+}
 	</style>
 	
 </head>
 
 <body>
-    <header role="header">
-        <div class="container">
-           
-            <!-- Art Connect logo -->
-            <h1>
-                <a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect"><img src="${pageContext.request.contextPath}/resources/img/art.png" title="Art Connect" alt="Art Connect" style="max-width: 300px; max-height: 100px; " /></a>
-            </h1>
-            
-            <!-- nav -->
-            <nav role="header-nav" class="navy">
-                <ul>
-                    <li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/review/boardList.jsp" title="Blog">커뮤니티</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp" title="Contact">마이 페이지</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList2.jsp" title="Contact">공지사항</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/QnaList.jsp" title="Contact">QnA</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+	<%@ include file="/nav.jsp" %>
 
     <!-- sidebar -->
     <div class="container">
@@ -130,51 +176,51 @@
             </div>
    
         <!-- Main Content -->
-	<main role="main-home-wrapper" class="container mt-5">
-	<h2>나의 리뷰</h2>
-	<hr>
-	<div class="col-md-9">
-	<div class="update-content">
-	<form action = "myReview" method = "post">
-	<div id="result">
-	 <c:if test="${empty list}">
-            <p>작성된 리뷰가 없습니다.</p>
-        </c:if>
-        <c:if test="${not empty list}">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>ID</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>등록일</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
- 		<c:forEach var ="review" items="${list}">
-	
-		<tr>
-		<td>${review.reviewNO}</td>
-		<td>${review.memberID}</td>
-		<td>
-		<a href="#">${fn:substring(review.reviewTitle, 0, 20)}</a>
-		</td>
-		<td>${fn:substring(review.reviewContent, 0, 60)}</td>
-		<td><fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td>${review.reviewHit}</td>
-		</tr> 
-		 </c:forEach> 
-		</table>
-		  </c:if>
-		   </form>
-	</div>
-</div>
-
-	<hr>
-
+<main role="main-home-wrapper" class="container mt-5">
+    <h2>나의 리뷰</h2>
+    <hr>
+    <div class="col-md-9">
+        <div class="update-content">
+            <form action="myReview" method="post">
+                <div id="result">
+                    <c:if test="${empty list}">
+                        <p class="no-review-message">작성된 리뷰가 없습니다.</p>
+                    </c:if>
+                    <c:if test="${not empty list}">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>제목</th>
+                                    <!-- <th>내용</th> -->
+                                    <th>등록일</th>
+                                    <th>조회수</th>
+                                </tr>
+                            </thead>
+                            <c:forEach var="review" items="${list}">
+                                <tr>
+                                    <td>${review.reviewNO}</td>
+                                    <td>${review.memberID}</td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/review/boardOne?reviewNO=${review.reviewNO}">
+                                            ${fn:substring(review.reviewTitle, 0, 20)}
+                                        </a>
+                                    </td>
+                                    <%-- 	<td>${fn:substring(review.reviewContent, 0, 60)}</td> --%>
+                                    <td><fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                    <td>${review.reviewHit}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:if>
+                </div>
+            </form>
+        </div>
+    </div>
+    
 	<!-- 페이징 부분 추가 -->
-<div class="container mt-3">
+<div class="container mt-3 pagination-container">
     <ul class="pagination">
         <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
             <li class="page-item ${pageVO.page eq i.index ? 'active' : ''}">
@@ -183,6 +229,7 @@
         </c:forEach>
     </ul>
 </div>
+</main>
         <!-- footer -->
 
         <footer role="footer">
@@ -217,17 +264,8 @@
             <p class="copy-right">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
         </footer>
       
-        <!-- footer -->
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-        <!-- custom -->
-		<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- jquery.countdown -->
-        <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
 
+<%@ include file="/alljs.jsp" %>
     </body>
 
 </html>
