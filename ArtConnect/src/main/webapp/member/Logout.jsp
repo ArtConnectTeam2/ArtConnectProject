@@ -5,5 +5,5 @@
 	session.invalidate(); //세션을 무효로 만들다.!
 	//첫페이지로 넘어가자.! ==> 서버가브라우저에 명령하면 됨.
 	//response 내장객체 이용!
-	response.sendRedirect("mainTest.jsp");
+	response.sendRedirect("/artConnect/gallery/main.jsp");
 %>

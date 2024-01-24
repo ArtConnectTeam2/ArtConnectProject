@@ -5,7 +5,22 @@
 
 <head>
 
+<title>:: 미술관 메인 페이지 ::</title>
+
 <%@ include file="/header.jsp" %>
+
+<style>
+        #entrance-text {
+            font-size: 16px; /* 기본 글자 크기 */
+            display: none; /* 초기에는 텍스트를 숨깁니다 */
+            color: white;
+        }
+
+        .effect-oscar:hover #entrance-text {
+            display: inline; /* 마우스를 올렸을 때 텍스트를 보이게 합니다 */
+            font-size: 70px; /* 마우스를 올렸을 때 글자 크기를 키웁니다 */
+        }
+</style>
 
 </head>
 
@@ -44,9 +59,8 @@
 					<figcaption>
 						<br>
 						<h2>
-							<span style="color: black;"> </span>
+							<span  id="entrance-text" style="color: while;">입장하기</span>
 						</h2>
-						<p>입장하기</p>
 						<a href="${pageContext.request.contextPath}/gallery/list">View
 							more</a>
 					</figcaption>
@@ -189,7 +203,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-4">
 					<header role="work-title">
 						<h2>Review</h2>
-						<a href="/review/boardList.jsp">View All Reviews<i class="fa fa-external-link"
+						<a href="${pageContext.request.contextPath}/review/boardList">View All Reviews<i class="fa fa-external-link"
 							aria-hidden="true"></i></a>
 					</header>
 				</div>
@@ -206,7 +220,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-4">
 					<header role="work-title">
 						<h2>Notice</h2>
-						<a href="#">View All Notices<i class="fa fa-external-link"
+						<a href="${pageContext.request.contextPath}/notice/noticeList">View All Notices<i class="fa fa-external-link"
 							aria-hidden="true"></i></a>
 					</header>
 				</div>

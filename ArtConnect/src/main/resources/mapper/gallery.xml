@@ -42,11 +42,12 @@
     WHERE memberID = #{memberID} AND galleryID = #{galleryID}
 	</select>
 
-	<select id="filterData" resultType="galleryVO"
-		parameterType="String">
-		select * from gallery
-		where galleryLocation like concat('%', #{filterValue}, '%')
-		or closedDay like concat('%', #{filterValue}, '%')
-	</select>
+<select id="filterData" resultType="galleryVO" parameterType="java.util.Map">
+    select * from gallery
+    where 
+    <foreach item="filterValue" collection="filterValues" separator=" AND ">
+        (galleryLocation like concat('%', #{filterValue}, '%') or closedDay not like concat('%', #{filterValue}, '%'))
+    </foreach>
+</select>
 
 </mapper>
