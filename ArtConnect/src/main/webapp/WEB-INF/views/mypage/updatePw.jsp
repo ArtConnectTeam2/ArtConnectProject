@@ -120,35 +120,45 @@
     .sidebar a:hover {
         background-color: #f5f5f5; 
     } 
-    #update{
-    border: 3px solid white; 
-    border-radius: 10px;
-    background-color: white;
-    padding: 20px;
-    margin : 80px;
-    margin-top: -1px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-}
-	#update2{
-      text-align: center;
+#update{
+	  width: 540px;
+	  height: 500px;
+      border: 3px solid white; 
+      border-radius: 10px;
+      padding: 20px;
       background-color: white;
-      
-} 
-#updateid {
-    margin-left: -400px;
-    font-size: 1.2em; 
-    font-weight: bold;
+      margin : 80px;
+      margin-top: -1px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
-#updateid1 {
-    margin-left: -410px;
+#update2{
+      text-align: center;
+      background-color: transparent;
+}
+
+#updateForm{
+	background-color: transparent;
+}
+
+#updateid {
+	max-width: 150px;
     font-size: 1.2em; 
     font-weight: bold;
+    text-align: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }	
-#updateid2 {
-    margin-left: -370px;
-    font-size: 1.2em; 
-    font-weight: bold;
-}	
+
+#update2 > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#update2 > div > input {
+    flex: 1;
+    margin-left: 10px;
+}
 	
   input {
     width: 500px;
@@ -236,17 +246,17 @@ footer {
                   		<div id="updateid">현재 비밀번호</div>
                   		<input type="password" id="currentmemberPW" name="currentmemberPW" value="${mymember.memberPW}" onblur="validatePassword()" required="required" placeholder="비밀번호를 입력해주세요." style="font-size: 15px;"><br>
               	        <span id="pw_check" style="color: red;"></span><br> 
-  					    <div id="updateid1">새 비밀번호</div>
+  					    <div id="updateid">새 비밀번호</div>
                         <input type="password" id="memberPW" name="memberPW" placeholder="새 비밀번호를 입력해주세요." style="font-size: 15px;" onblur="validatePassword()"><br>
                         <span id="pw_check1" style="color: red;"></span><br> 
-                        <div id="updateid2">새 비밀번호 확인</div>
+                        <div id="updateid">새 비밀번호 확인</div>
                         <input type="password" id="memberPW2" name="memberPW2" placeholder="새 비밀번호를 재입력해주세요." style="font-size: 14px;" onblur="validatePassword()"><br>
                        <div id="pw_check2" class="check_font" style="color: red;"></div><br>
            
 					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-warning">수정</button>
 				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
 				</div>
-                    </form>
+				</form>
                     </div>
                 <br>
                 <br> 
