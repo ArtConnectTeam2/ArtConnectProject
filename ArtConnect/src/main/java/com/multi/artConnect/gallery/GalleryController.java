@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -131,18 +132,28 @@ public class GalleryController {
 	    return isLiked ? "liked" : "not liked";
 	}
 
-	@RequestMapping("/filterData")
-	@ResponseBody
-	public List<GalleryVO> filterData(String filterValue) {
-		System.out.println(filterValue);
-		List<GalleryVO> list = dao.filterData(filterValue);
-		System.out.println(list.size());
-		return list;
-	}
+    @RequestMapping("/filterData")
+    @ResponseBody
+    public List<GalleryVO> filterData(@RequestParam List<String> filterValues) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filterValues", filterValues);
+        
+        List<GalleryVO> list = dao.filterData(paramMap);
+        System.out.println(list.size());
+        
+        return list;
+    }
 	
     @GetMapping("/allGalleries")
     @ResponseBody
     public List<GalleryVO> getAllGalleries() throws Exception {
         return dao.list();
+    }
+    
+    @GetMapping("/program_detail")
+    public String getProgramDetail(@RequestParam("programID") int programID, Model model) {
+      ProgramVO_gallery program = dao.getProgram(programID);
+      model.addAttribute("program", program);
+      return "gallery/program_detail";
     }
 }

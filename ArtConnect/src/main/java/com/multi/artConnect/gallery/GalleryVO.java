@@ -2,6 +2,7 @@ package com.multi.artConnect.gallery;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 public class GalleryVO {
 
@@ -16,6 +17,7 @@ public class GalleryVO {
     private String homepageAddress;
     private double lat;
     private double lon;
+    private List<ProgramVO_gallery> programList;
     
 	public int getGalleryID() {
 		return galleryID;
@@ -83,6 +85,13 @@ public class GalleryVO {
 	public void setLon(double lon) {
 		this.lon = lon;
 	}
+    public List<ProgramVO_gallery> getProgramList() {
+        return programList;
+    }
+ 
+    public void setProgramList(List<ProgramVO_gallery> programList) {
+        this.programList = programList;
+    }
 	
     // 각 칼럼에 대한 값을 반환하는 메서드 추가
     public Object getValueByColumnName(String columnName) {
