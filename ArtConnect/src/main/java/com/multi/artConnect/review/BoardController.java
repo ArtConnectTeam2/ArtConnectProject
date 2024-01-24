@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,25 +48,39 @@ public class BoardController {
 	}
 	
 	@RequestMapping("review/boardPostOk")
-	public String boardPostOk(BoardVO vo, MultipartFile file) {
-		
+	public String boardPostOk(BoardVO vo,HttpServletRequest request, MultipartFile file) {
+		System.out.println("boardPostOk-------------------------------------------------------");
+		System.out.println("file : " + file);
+		System.out.println("vo : " + vo.getMemberID());
 		 // 파일 업로드 처리
         if (file != null && !file.isEmpty()) {
             try {
                 // 실제 파일을 저장하는 로직 구현 (파일 업로드 경로, 파일명 등 설정)
-                String filePath = "C:\\artconnectFile" + File.separator + file.getOriginalFilename();
-                file.transferTo(new File(filePath));
+               // String filePath = "C:\\artconnectFile" + File.separator + file.getOriginalFilename();
+                //file.transferTo(new File(filePath));
+                
+                String savedName = file.getOriginalFilename();
+        		String uploadPath= request.getSession().getServletContext().getRealPath("resources/upload/review");
+        		System.out.println(uploadPath + "/" + savedName);
+        		
+        		//2. File객체(폴더/디렉토리 + 파일명)를 생성 ==> 파일을 인식(램에 저장)
+        		File target = new File(uploadPath + "/" + savedName);
+        		
+        		//3. 서버 컴퓨터에 파일을 저장시켜야한다. ==> resources아래에 저장! 
+        		file.transferTo(target);
+        		
+        		
 
                 // BoardVO에 파일 정보 설정
-                vo.setFile(file);
-                vo.setFilePath(filePath);
+                vo.setReviewFile(file.getOriginalFilename());
+                vo.setFilePath(uploadPath);
             } catch (IOException e) {
                 
             }
         }
+        System.out.println("boardPostOk!!!!!!");
 
-
-		
+        System.out.println(vo);
 		dao.boardPostOk(vo);
 		return "redirect:boardList";
 	}

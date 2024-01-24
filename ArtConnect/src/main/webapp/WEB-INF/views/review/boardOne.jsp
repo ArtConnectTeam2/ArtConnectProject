@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<% session.setAttribute("memberID", "임시ID"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,58 +16,11 @@
             }
         }
         
-     // 댓글 수정을 위한 함수
-        function updateReply(replyNO) {
-            $.ajax({
-                type: "GET",
-                url: "${pageContext.request.contextPath}/review/updateReply",
-                data: {
-                    replyNO: replyNO
-                },
-                success: function (data) {
-                    // 성공 시 처리
-                    if (data.success) {
-                        // 서버에서 성공 응답을 받은 경우
-                        // 여기에서는 새로고침 예시
-                        location.reload();
-                    } else {
-                        // 서버에서 실패 응답을 받은 경우
-                        alert("댓글 수정에 실패했습니다.");
-                    }
-                },
-                error: function (error) {
-                    // 실패 시 처리
-                    console.log("댓글 수정 중 오류 발생:", error);
-                    // 오류 메시지를 표시하거나 기타 오류 처리를 수행할 수 있음
-                }
-            });
-        }
-
-        // 댓글 삭제를 위한 함수
-        function deleteReply(replyNO) {
-            if (confirm("정말로 삭제하시겠습니까?")) {
-                $.ajax({
-                    type: "GET",
-                    url: "${pageContext.request.contextPath}/review/deleteReply",
-                    data: {
-                        replyNO: replyNO,
-                        reviewNO: ${board.reviewNO}
-                    },
-                    success: function (data) {
-                        // 성공 시 처리
-                        if (data.success) {
-                            location.reload(); // 새로고침 예시
-                        } else {
-                            alert("댓글 삭제에 실패했습니다.");
-                        }
-                    },
-                    error: function (error) {
-                        // 실패 시 처리
-                        console.log("댓글 삭제 중 오류 발생:", error);
-                    }
-                });
-            }
-        }
+    //댓글 수정
+    
+    //댓글 삭제
+    
+    
         
     </script>
 </head>
@@ -100,7 +52,7 @@
             <p>${board.reviewContent}</p>
             <%-- 파일이 이미지인 경우 이미지 태그로 표시 --%>
             <c:if test="${not empty board.reviewFile}">
-                <img src="${board.reviewFile}" alt="Attached Image" style="max-width: 100%;">
+                <img src="${pageContext.request.contextPath}/resources/upload/review/${board.reviewFile}" alt="Attached Image" style="max-width: 100%;">
             </c:if>
         </div>
     </div>
@@ -132,13 +84,14 @@
     	<div class="reply">
     		<p>${reply.memberID}  <fmt:formatDate value="${reply.replyDate}" pattern="yyyy-MM-dd HH:mm:ss" />
         	<span style="float: right;">
-            <a href="javascript:void(0);" onclick="updateReply(${reply.replyNO})">수정</a>
-            <a href="javascript:void(0);" onclick="deleteReply(${reply.replyNO})" class="text-danger">삭제</a>
+            <a href="javascript:void(0);" onclick="review/updateReply(${reply.replyNO})">수정</a>
+            <a href="javascript:void(0);" onclick="review/deleteReply(${reply.replyNO})" class="text-danger">삭제</a>
         	</span>
         	</p>
         	<p>${reply.replyContent}</p>
         	<hr>
     	</div>
+    	
 	</c:forEach>
     
     </main>
@@ -157,3 +110,4 @@
 	<%@ include file="/alljs.jsp" %>
 </body>
 </html>
+
