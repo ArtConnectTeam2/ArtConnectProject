@@ -155,11 +155,12 @@ margin-bottom: 20px;
 
 .reservation-button {
 	padding: 10px 20px;
-	background-color: #000;
+	background-color: #3498db;
 	color: #fff;
 	border-radius: 10px;
 	text-decoration: none;
 	cursor: pointer;
+	border: none;
 }
 
 .navy {

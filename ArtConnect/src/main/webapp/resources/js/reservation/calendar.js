@@ -40,7 +40,11 @@ function showGalleryTime(cell, cellDate, isActive) {
             return '';
     }
 }
-	if (isActive && dayOfWeek !== closedDay) {
+
+function isClosedDay(dayOfWeek) {
+	return closedDays.includes(dayOfWeek);
+}
+	if (isActive && !isClosedDay(dayOfWeek)) {
 	
 		cell.style.fontWeight = "bold";  // 글씨를 굵게
 		cell.style.background = "white";  // 배경을 흰색으로

@@ -104,7 +104,7 @@
 								</h2>
 								<p>View more</p>
 								<a
-									href="http://localhost:8080/artConnect/gallery/detail?galleryID=1">View
+									href="detail?galleryID=1">View
 									more</a>
 							</figcaption>
 						</figure>
@@ -121,7 +121,7 @@
 								</h2>
 								<p>View more</p>
 								<a
-									href="http://localhost:8080/artConnect/gallery/detail?galleryID=2">View
+									href="detail?galleryID=2">View
 									more</a>
 							</figcaption>
 						</figure>
@@ -138,7 +138,7 @@
 								</h2>
 								<p>View more</p>
 								<a
-									href="http://localhost:8080/artConnect/gallery/detail?galleryID=3">View
+									href="detail?galleryID=3">View
 									more</a>
 							</figcaption>
 						</figure>
@@ -164,7 +164,7 @@
 								</h2>
 								<p>View more</p>
 								<a
-									href="http://localhost:8080/artConnect/gallery/detail?galleryID=4">View
+									href="detail?galleryID=4">View
 									more</a>
 							</figcaption>
 						</figure>
@@ -181,7 +181,7 @@
 								</h2>
 								<p>View more</p>
 								<a
-									href="http://localhost:8080/artConnect/gallery/detail?galleryID=5">View
+									href="detail?galleryID=5">View
 									more</a>
 							</figcaption>
 						</figure>
@@ -198,7 +198,7 @@
 								</h2>
 								<p>View more</p>
 								<a
-									href="http://localhost:8080/artConnect/gallery/detail?galleryID=6">View
+									href="detail?galleryID=6">View
 									more</a>
 							</figcaption>
 						</figure>
