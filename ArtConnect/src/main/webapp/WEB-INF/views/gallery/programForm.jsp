@@ -64,7 +64,7 @@ button {
     <input type="text" id="programTitle" name="programTitle" required placeholder="프로그램명을 입력하세요" value="서울시 특별전">
 
       <!-- 히든 필드로 programImg 전달 -->
-    <input type="hidden" id="programImg" name="programImg" value="program4.png">
+    <input type="hidden" id="programImg" name="programImg" value="notyet.png">
     
     <label for="artist">작가:</label>
     <input type="text" id="artist" name="artist" required value="홍길동">
