@@ -157,7 +157,7 @@ tfoot{
 	</div>
 	
 	<div id="qna_count">
-		<h5 style="margin-left: 100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
+		<h5 style="margin-left: 100px">검색결과 총 0건이 검색 되었습니다.</h5>
 	</div>
 	
 	<div id="qna_list">

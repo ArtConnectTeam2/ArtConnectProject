@@ -146,10 +146,10 @@ tfoot{
 	</div>
 	<hr>
 	<div id="notice_search">
-		<form action="" method="post" name="searchForm">
+		<form action="${pageContext.request.contextPath}/notice/noticeSearch" method="GET" name="searchForm">
 			<select name="type">
-				<option valus="subject">제 목</option>
-				<option valus="content">내 용</option>
+				<option value="subject">제 목</option>
+				<option value="content">내 용</option>
 			</select>
 			<input type="text" name="keyworld" placeholder="검색어를 입력해주세요" class="textField"/>
 			<input type="button" value="검 색" class="btn" onclick="sendIt();"/>
@@ -157,7 +157,7 @@ tfoot{
 	</div>
 	
 	<div id="notice_count">
-		<h5 style="margin-left: 100px">Page 1/1 검색결과 총 0건이 검색 되었습니다.</h5>
+		<h5 style="margin-left: 100px">검색결과 총 0건이 검색 되었습니다.</h5>
 	</div>
 	
 	<div>
@@ -178,7 +178,7 @@ tfoot{
 				<td>${vo.noticeHit}</td>
 			</tr>
 			</c:forEach>
-			<c:if test="${sessionScope.loginId eq null }"> <!-- 'admin'으로 연동 -->
+			<c:if test="${sessionScope.memberID eq 'hello' }"> <!-- 'hello'로 로그인시에만 공지사항 작성버튼 나오도록 -->
 			<tr>
 				<td colspan="4" style="border-bottom: none;"></td>
 				<td style="border-bottom: none;"><button type="button" onclick="location.href='noticeInsert.jsp'" class="btn btn-primary">작성</button></td>
@@ -186,7 +186,7 @@ tfoot{
 			</c:if>
 		</table>
 	</div>
-.
+
 <div class="container mt-3">
     <ul class="pagination">
         <c:forEach begin="1" end="${pagingVO.totalPages}" varStatus="i">
@@ -195,8 +195,8 @@ tfoot{
             </li>
         </c:forEach>
     </ul>
-</div>		
-.
+</div>	
+	
 	</main>
 
 	<!-- Footer -->

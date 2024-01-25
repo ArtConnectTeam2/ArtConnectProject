@@ -99,6 +99,32 @@ tfoot{
 	justify-content: center;
 }
 </style>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+	<script type="text/javascript">
+	function getSearchList(){
+		$.ajax({
+			type: 'GET',
+			url : "/getSearchList",
+			data : $("form[name=search-form]").serialize(),
+			success : function(result){
+				//테이블 초기화
+				$('#boardtable > tbody').empty();
+				if(result.length>=1){
+					result.forEach(function(item){
+						str='<tr>'
+						str += "<td>"+vo.noticeID+"</td>";
+						str+="<td>"+vo.noticeName+"</td>";
+						str+="<td><a href = '/notice/noticeList?noticeNO=" + vo.noticeNO + "'>" + vo.noticeNOTitle + "</a></td>";
+						str+="<td>"+vo.noticeRegdate+"</td>";
+						str+="<td>"+vo.noticeHit+"</td>";
+						str+="</tr>"
+						$('#boardtable').append(str);
+	        		})				 
+				}
+			}
+		})
+	}
+</script>
 </head>
 
 <body>
@@ -145,14 +171,15 @@ tfoot{
 		공지사항
 	</div>
 	<hr>
-	<div id="notice_search">
+	
+	<div name="notice-Search">
 		<form action="" method="post" name="searchForm">
 			<select name="type">
-				<option valus="subject">제 목</option>
-				<option valus="content">내 용</option>
+				<option value="subject">제 목</option>
+				<option value="content">내 용</option>
 			</select>
 			<input type="text" name="keyworld" placeholder="검색어를 입력해주세요" class="textField"/>
-			<input type="button" value="검 색" class="btn" onclick="sendIt();"/>
+			<input type="button" value="검 색" class="btn" onclick="getSearchList()"/>
 		</form>
 	</div>
 	
@@ -178,7 +205,7 @@ tfoot{
 				<td>${vo.noticeHit}</td>
 			</tr>
 			</c:forEach>
-			<c:if test="${sessionScope.loginId eq null }"> <!-- 'admin'으로 연동 -->
+			<c:if test="${sessionScope.memberID eq 'apple' }"> <!-- 'admin'으로 연동 -->
 			<tr>
 				<td colspan="4" style="border-bottom: none;"></td>
 				<td style="border-bottom: none;"><button type="button" onclick="location.href='noticeInsert.jsp'" class="btn btn-primary">작성</button></td>
@@ -186,17 +213,7 @@ tfoot{
 			</c:if>
 		</table>
 	</div>
-.
-<div class="container mt-3">
-    <ul class="pagination">
-        <c:forEach begin="1" end="${pagingVO.totalPages}" varStatus="i">
-            <li class="${pagingVO.page eq i.index ? 'active' : ''}">
-                <a href="noticeS?page=${i.index}&size=${pagingVO.size}">${i.index}</a>
-            </li>
-        </c:forEach>
-    </ul>
-</div>		
-.
+	
 	</main>
 
 	<!-- Footer -->
