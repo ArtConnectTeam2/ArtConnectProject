@@ -69,7 +69,7 @@ public class MemberController {
 			//세션에 이름 저장
 			session.setAttribute("memberName", loggedInUser.getmemberName());
 			
-			
+
 			// 로그 출력 추가
 			System.out.println("Login Successful. User ID: " + loggedInUser.getmemberID());
 			return "member/LoginSuccess"; // 로그인 성공 후 이동할 페이지

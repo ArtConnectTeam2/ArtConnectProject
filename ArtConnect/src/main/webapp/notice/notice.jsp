@@ -11,7 +11,7 @@
 <hr>
 <a href="noticeList">공지사항게시판</a>
 <hr>
-<a href="noticeS">공지사항 검색 TEST</a>
+<a href="noticeSearch">공지사항 검색 TEST</a>
 <hr>
 <hr>
 <a href="qnaList">Qna 게시판</a>

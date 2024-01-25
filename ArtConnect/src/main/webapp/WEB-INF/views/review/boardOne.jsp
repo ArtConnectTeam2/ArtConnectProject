@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%
+	session.getAttribute("memberID");
+
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +23,17 @@
         }
         
     //댓글 수정
+     function updateReply(replyNO) {
+            // TODO: 댓글 수정 기능 구현
+            console.log("Update reply with replyNO: " + replyNO);
+        }
+
     
     //댓글 삭제
+    function deleteReply(replyNO) {
+            // TODO: 댓글 삭제 기능 구현
+            console.log("Delete reply with replyNO: " + replyNO);
+        }
     
     
         

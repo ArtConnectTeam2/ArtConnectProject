@@ -46,14 +46,15 @@
 <body>
 <div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
 		<% String memberID = (String) session.getAttribute("memberID");
-		int reservationID = (Integer) request.getAttribute("reservationID"); %>
-		<% if (memberID == null || memberID.equals("")) { %>
+		int reservationID = (Integer) request.getAttribute("reservationID");
+		String memberName = (String) session.getAttribute("memberName");
+		if (memberID == null || memberID.equals("")) { %>
 			<a href="${pageContext.request.contextPath}/member/login">
 				<button class="btn btn-danger" onclick="login()">로그인</button>
 			</a>
 		<% } else { %>
 			<!-- 로그아웃 버튼 -->
-			<%= memberID %>님 로그인되었습니다.<br>
+			<%= memberName %>님 환영합니다.<br>
 			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=">
 				<button class="btn btn-info">로그아웃</button>
 			</a>

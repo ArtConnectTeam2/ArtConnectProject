@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.multi.artConnect.gallery.GalleryVO" %>
 <%@ page import="com.google.gson.Gson" %>
@@ -8,7 +8,9 @@
 <html>
 
 <head>
+
 <title>::미술관 조회 페이지::</title>
+
 <%@ include file="/header.jsp" %>
 
 <style>
@@ -44,33 +46,35 @@
 
 </head>
 
+<title>:: 미술관 조회 및 검색 ::</title>
+
 <body>
 
 <%@ include file="/nav.jsp" %>
 
-	<!-- main -->
+   <!-- main -->
 
-	<main role="main-inner-wrapper" class="container">
-		<div class="row">
-			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+   <main role="main-inner-wrapper" class="container">
+      <div class="row">
+         <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
-				<article role="pge-title-content">
+            <article role="pge-title-content" style="padding-left : 0px;">
 
-					<header>
+               <header>
 
-						<h2>
-							<span>Art Museum </span>Inquiry & Search
-						</h2>
+                  <h2>
+                     <span>Art Museum </span>Inquiry & Search
+                  </h2>
 
-					</header>
+               </header>
 
-					<p>You can search for a list of Art Museums nationwide</p>
+               <p>You can search for a list of Art Museums nationwide</p>
 
-				</article>
+            </article>
 
-			</section>
+         </section>
 
-			<div class="clearfix"></div>
+         <div class="clearfix"></div>
 
 <div class="search-form" style="margin-top: 20px;">
     <form action="${pageContext.request.contextPath}/gallery/search2" method="GET">
@@ -80,15 +84,15 @@
         </div>
     </form>
         <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
-		</div>
+      </div>
 
-			<div class="form-check">
-				<span class="gallery-location-label">Gallery Location</span>
+         <div class="form-check" style="padding-left : 15px;">
+            <span class="gallery-location-label">Gallery Location</span>
                 <input class="form-check-input check" type="checkbox" value="서울" id="flexCheckSeoul" >
                 <label class="form-check-label" for="flexCheckSeoul">서울시</label>
             </div>
             
-            <div class="form-check">
+            <div class="form-check" style="padding-left : 15px;">
             <span class="gallery-location-label">Open Day</span>
                 <input class="form-check-input check" type="checkbox" value="Monday" id="flexCheckMonday">
                 <label class="form-check-label" for="flexCheckMonday">월요일</label>
@@ -207,55 +211,55 @@ $(document).ready(function() {
         );
     }
 });
-		// 초기에 모든 데이터 로딩
-	</script>
+      // 초기에 모든 데이터 로딩
+   </script>
 
-		</div>
+      </div>
 
-	</main>
+   </main>
 
-	<!-- footer -->
+   <!-- footer -->
 
-	<footer role="footer">
+   <footer role="footer">
 
-		<!-- nav -->
+      <!-- nav -->
 
-		<nav role="footer-nav">
+      <nav role="footer-nav">
 
-			<ul>
+         <ul>
 
-				<li><a href="index.html" title="Work">Work</a></li>
+            <li><a href="index.html" title="Work">Work</a></li>
 
-				<li><a href="about.html" title="About">About</a></li>
+            <li><a href="about.html" title="About">About</a></li>
 
-				<li><a href="blog.html" title="Blog">Blog</a></li>
+            <li><a href="blog.html" title="Blog">Blog</a></li>
 
-				<li><a href="contact.html" title="Contact">Contact</a></li>
+            <li><a href="contact.html" title="Contact">Contact</a></li>
 
-			</ul>
+         </ul>
 
-		</nav>
+      </nav>
 
-		<!-- nav -->
+      <!-- nav -->
 
-		<ul role="social-icons">
+      <ul role="social-icons">
 
-			<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 
-			<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 
-			<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 
-			<li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+         <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
 
-		</ul>
+      </ul>
 
-		<p class="copy-right">
-			Shared by <i class="fa fa-love"></i><a
-				href="https://bootstrapthemes.co">BootstrapThemes</a>
-		</p>
+      <p class="copy-right">
+         Shared by <i class="fa fa-love"></i><a
+            href="https://bootstrapthemes.co">BootstrapThemes</a>
+      </p>
 
-	</footer>
+   </footer>
 
 <%@ include file="/alljs.jsp" %>
 
