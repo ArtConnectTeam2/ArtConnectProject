@@ -20,7 +20,6 @@
 	th,td {
 		vertical-align: middle; text-align: center; padding: 10px;
 	}
-	
 	.navy {
 		position: absolute;
 		top: 10px;
