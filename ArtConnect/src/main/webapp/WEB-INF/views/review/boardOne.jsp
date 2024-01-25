@@ -46,13 +46,6 @@
             <p>
             <strong>ID:</strong> ${board.memberID} 
             
-            <div class="star-rating" data-rating="${board.starRating}">
-            <span class="star" data-value="1">&#9733;</span>
-            <span class="star" data-value="2">&#9733;</span>
-            <span class="star" data-value="3">&#9733;</span>
-            <span class="star" data-value="4">&#9733;</span>
-            <span class="star" data-value="5">&#9733;</span>
-        	</div>
         	<span style="float: right;">
             <strong>등록일:</strong> <fmt:formatDate value="${board.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" />
             <strong>조회수:</strong> ${board.reviewHit}
