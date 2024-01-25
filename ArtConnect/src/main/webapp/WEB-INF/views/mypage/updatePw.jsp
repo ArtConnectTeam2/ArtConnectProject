@@ -50,7 +50,7 @@
 	        }
 
 	        if (!pwreg.test(memberPW)) {
-            	pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
+            	pwErroMessage1.innerHTML = "비밀번호는 8자리 이상, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
                 return false;
             } else {
             	pwErroMessage1.innerHTML = ""; 
@@ -77,7 +77,7 @@
     <style>
     /* sidebar */
 .sidebar {
-    border: 1px solid white; 
+    border: 1px solid #333333; 
     border-radius: 10px; 
     padding: 20px; 
     background-color: white;
@@ -123,7 +123,7 @@
 #update{
 	  width: 540px;
 	  height: 500px;
-      border: 3px solid white; 
+      border: 1px solid #333333; 
       border-radius: 10px;
       padding: 20px;
       background-color: white;
@@ -192,14 +192,14 @@ footer {
 #pw_check1 {
     position: relative;
     top: -5px;
-    margin-left : 10px;
+    margin-left : -50px;
     transition: transform 0.3s ease; 
 }
 #pw_check2 {
     margin-left: -340px;
 }
 .row {
-    margin-top: 80px;
+    margin-top: 0px;
 }
 	</style>
 </head>
@@ -253,8 +253,8 @@ footer {
                         <input type="password" id="memberPW2" name="memberPW2" placeholder="새 비밀번호를 재입력해주세요." style="font-size: 14px;" onblur="validatePassword()"><br>
                        <div id="pw_check2" class="check_font" style="color: red;"></div><br>
            
-					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-warning">수정</button>
-				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-primary">수정</button>
+				 	<button type="reset" style="width: 100px;" class="btn btn-primary">취소</button> 
 				</div>
 				</form>
                     </div>

@@ -2,9 +2,18 @@
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    <%
-    	session.getAttribute("memberID");
-    %>
+  <%
+ 		String member = null;
+    if (session.getAttribute("memberID") == null) {
+%>
+        <script>
+            alert("로그인을 먼저 해주세요.");
+            window.location.href = "<%= request.getContextPath() %>/member/login";
+        </script>
+<%
+    } else {
+    	 member = (String) session.getAttribute("memberID");
+   } %>
 <!DOCTYPE HTML>
  <html>
  <head>
@@ -93,6 +102,7 @@
     <style>  
 /* sidebar */
 .sidebar {
+ border: 1px solid #333333; 
     border-radius: 10px; 
     padding: 20px; 
     background-color: white;
@@ -143,7 +153,7 @@
 #update{
 	  width: 540px;
 	  height: 961px;
-      border: 3px solid white; 
+      border: 1px solid #333333; 
       border-radius: 10px;
       padding: 20px;
       background-color: white;
@@ -214,7 +224,7 @@ footer {
     margin-right: 25px; 
 }
 .row {
-    margin-top: 80px;
+    margin-top: 0px;
 }
 	</style>
 </head>
@@ -286,8 +296,8 @@ footer {
                          <div id="updateid">알람설정</div>  
                          <input type="text" name="memberAlarm" value="${mymember.memberAlarm}"><br><br>
                          <br>
-					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-warning">수정</button>
-				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+					<button type="submit" onclick="confirmAndUpdate()" style="width: 100px;" class="btn btn-primary">수정</button>
+				 	<button type="reset" style="width: 100px;" class="btn btn-primary">취소</button> 
 				</div>
                 <br>
                 <br>    
