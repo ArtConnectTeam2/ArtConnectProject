@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%
-	session.getAttribute("memberID");
-
-    %>
-    
+   
 <!DOCTYPE html>
 <html>
 <head>
 
 <title>글 쓰기</title>
 <%@ include file="/header.jsp" %>
-
 
 <style>
 /* 체크박스 스타일 */
@@ -55,7 +50,6 @@
 
 </style>
 <link rel="stylesheet" type="text/css" href="resources/css/star.css">
-
 </head>
 <body>
 		<%@ include file="/nav.jsp" %>
@@ -66,10 +60,9 @@
 	<div class="container">
 	<form action="boardPostOk" id="form" enctype="multipart/form-data"
 		  method="post">
-		  <input type="hidden"  name="memberID" value="apple"> 
+		  <input type="hidden"  name="memberID" value="${memberID}"> 
 	제목: <input type="text" class="form-control-input-sm" name="reviewTitle" id="reviewTitle" size="96" style="height: 40px;">
 	<br><br>
-
 	<!-- 주차공간 유무 체크박스 -->
         <div class="form-check"style="padding-left : 15px;">
         <div class="form-check">
@@ -99,7 +92,6 @@
         </div>
         
         <br><br>
-
 	<textarea name="reviewContent" id="reviewContent" rows="20" cols="150" placeholder="내용을 입력하세요"></textarea>
 	<br><br>
 	첨부파일:<input type="file" name="file"> <!-- 파일 업로드 입력란 -->
