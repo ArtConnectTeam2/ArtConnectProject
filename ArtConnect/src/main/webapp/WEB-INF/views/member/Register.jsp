@@ -18,14 +18,13 @@ body {
 }
 
 form {
-	position: absolute;
 	background-color: #fff;
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	max-width: 1200px;
 	width: 100%;
-	background-color: #fff; 
+	background-color: #fff;
 }
 
 label {
@@ -53,6 +52,10 @@ button {
 	top: 10px;
 	right: 10px;
 }
+
+label, input {
+  font-size: 20px;
+}
 </style>
 </head>
 <body>
@@ -68,49 +71,64 @@ button {
 				onsubmit="return joinMember();">
 				<h2 align="center">회원가입</h2>
 
-				<label for="id">아이디:</label> <input type="text" id="memberID"
-					name="memberID" required placeholder="아이디를 입력하세요" value="hello2">
+				<label for="id">아이디: (필수)</label> <input type="text" id="memberID"
+					name="memberID" required placeholder="아이디를 입력하세요">
 
-				<!-- 중복확인 버튼 미구현 -->
-				<!-- 	<input type="button" value="아이디 중복 확인" onclick="checkId()"> <label id="label1"></label> -->
 
 				<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
 				<c:if test="${not empty errorMessage}">
 					<div class="error-message">${errorMessage}</div>
 				</c:if>
 				<!-- 비밀 번호 -->
-				<label for="pw">비밀번호:</label> <input type="password" id="pw"
-					name="memberPW" required value="1234"> 
+				<label for="pw">비밀번호: (필수)</label> 
+				<input type="password" id="pw" name="memberPW" required placeholder="비밀번호를 입력하세요(8자 이상이며 대문자, 소문자, 특수문자를 포함해야합니다)"> 
 				<span id="pw_check1" style="color: red;"></span><br> 
-				<label for="pwConfirm">비밀번호 확인:</label> 
-				<input type="password" id="pwConfirm" name="pwConfirm" required value="12345"> 
-				<label for="name">이름:</label> 
-				<input type="text" id="name" name="memberName" required value="홍길동"> 
-				<label for="birth">생년월일:</label>
-				<input type="date" id="birth" name="memberBirth" required
-					value="2023-12-13"> <label for="gender">성별:</label> <select
-					id="gender" name="memberGender" required>
+				
+				<label for="pwConfirm">비밀번호 확인: (필수)</label> 
+				<input type="password" id="pwConfirm" name="pwConfirm" required placeholder="비밀번호를 다시 입력하세요"> 
+				
+				<label for="name">이름: (필수)</label> 
+				<input type="text" id="name" name="memberName" required placeholder="이름을 입력하세요"> 
+				
+				<label for="birth">생년월일:(필수)</label> 
+				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요"> 
+				<label for="gender">성별: (선택)</label> 
+				<select id="gender" name="memberGender">
+					<option value=" ">입력하지않음</option>
 					<option value="M">남성</option>
 					<option value="F">여성</option>
-					<option value=" ">입력하지않음</option>
-				</select> <label for="addr">주소:</label> <input type="text" id="addr"
-					name="memberAddr" value="1234"> <label for="tel">전화번호:</label>
 
-				<input type="tel" id="tel" name="memberTel"> <label
-					for="email">이메일:</label> <input type="email" id="email"
-					name="memberEmail" required value="123@gmail.com"> <label
-					for="alarm">알람 설정:</label> <input type="text" id="alarm"
-					name="memberAlarm">
+				</select> 
+				<label for="addr">주소: (선택)</label> 
+				<input type="text" id="addr" name="memberAddr" placeholder="주소를 입력하세요"> 
+				
+				<label for="tel">전화번호: (필수)</label> 
+				<input type="tel" id="tel" name="memberTel" required
+					placeholder="전화번호를 입력하세요"> 
+				<label for="email">이메일: (필수)</label> 
+				<input type="email" id="email" name="memberEmail" required placeholder="이메일을 입력하세요"> 
+				<label for="alarm">알람 설정: (선택)</label> 
+				<select id="alarm" name="memberAlarm">
+  					<option value=" ">입력하지않음</option>
+  					<option value="email">이메일</option>
+  					<option value="sms">SMS</option>
+  					<option value="push">앱 푸시</option>
+				</select>
 
-				<button type="submit" onclick="joinMember()">회원가입</button>
+				<button type="button" onclick="submitForm()">회원가입</button>
 
 
 			</form>
 		</div>
 	</main>
 
+	<!-- footer -->
+	<%@ include file="/footer.jsp"%>
+
+
 	<!-- JavaScript -->
 	<%@ include file="/alljs.jsp"%>
+
 
 	<!-- 회원가입 버튼을 누를 시 체크사항 -->
 	<script type="text/javascript">
@@ -123,12 +141,12 @@ button {
 			var pwreg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
 			if (!pwreg.test(pw)) {
-	           	pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
-	                return false;
-	        } else {
-	            	pwErroMessage1.innerHTML = ""; 
-	        }
-			
+				pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
+				return false;
+			} else {
+				pwErroMessage1.innerHTML = "";
+			}
+
 			// 비밀번호 확인
 			if (pw !== pwConfirm) {
 				alert("비밀번호가 일치하지 않습니다.");
@@ -136,7 +154,24 @@ button {
 
 			}
 		}
+		
+		
 	</script>
+	
+<script>
+    function submitForm() {
+        // 생년월일 필드 값 가져오기
+        var birthValue = document.getElementById("birth").value;
+
+        // 값이 비어있는 경우 null로 설정
+        if (birthValue.trim() === "") {
+            document.getElementById("birth").value = null;
+        }
+
+        // 나머지 폼 데이터를 서버에 전송 또는 폼 submit 로직 수행
+        document.forms["joinForm"].submit();
+    }
+</script>
 
 
 </body>

@@ -69,9 +69,6 @@ public class MemberController {
 			//세션에 이름 저장
 			session.setAttribute("memberName", loggedInUser.getmemberName());
 			
-			 // 이전 페이지 정보 저장
-            String previousPage = request.getHeader("Referer");
-            session.setAttribute("previousPage", previousPage);
 			
 			// 로그 출력 추가
 			System.out.println("Login Successful. User ID: " + loggedInUser.getmemberID());
