@@ -37,7 +37,6 @@ public class MemberController {
 	public String insert(MemberVO memberVO, Model model, HttpServletRequest request) {
 	    try {
 
-	        // 주석 추가
 		System.out.println("Received Data: " + memberVO.toString());
 	        memberService.insert(memberVO);
 	        model.addAttribute("message", "Registration successful");
