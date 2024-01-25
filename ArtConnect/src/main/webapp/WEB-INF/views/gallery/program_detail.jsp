@@ -80,8 +80,7 @@ p{
 						<strong>프로그램 예약 : </strong><br /> 
 						
 						<a href="${pageContext.request.contextPath}/reservation/reservation/${program.galleryID}/${program.programID}">
-							<button id="viewMoreButton"
-								style="background-color: #333; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">예약하기</button>
+							<button id="viewMoreButton" class="btn btn-primary">예약하기</button>
 						</a>
 						
 						</p>
