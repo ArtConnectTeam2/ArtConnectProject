@@ -22,16 +22,11 @@
             }
         }
         
-    //댓글 수정
-     function updateReply(replyNO) {
-            // TODO: 댓글 수정 기능 구현
-            console.log("Update reply with replyNO: " + replyNO);
-        }
 
     
     //댓글 삭제
     function deleteReply(replyNO) {
-            // TODO: 댓글 삭제 기능 구현
+           
             console.log("Delete reply with replyNO: " + replyNO);
         }
     
@@ -99,8 +94,7 @@
     	<div class="reply">
     		<p>${reply.memberID}  <fmt:formatDate value="${reply.replyDate}" pattern="yyyy-MM-dd HH:mm:ss" />
         	<span style="float: right;">
-            <a href="javascript:void(0);" onclick="review/updateReply(${reply.replyNO})">수정</a>
-            <a href="javascript:void(0);" onclick="review/deleteReply(${reply.replyNO})" class="text-danger">삭제</a>
+             <a href="deleteReply?replyNO=${reply.replyNO}&reviewNO=${board.reviewNO}" class="text-danger">삭제</a>
         	</span>
         	</p>
         	<p>${reply.replyContent}</p>
