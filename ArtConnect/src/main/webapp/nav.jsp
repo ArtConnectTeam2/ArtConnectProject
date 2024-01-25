@@ -21,9 +21,9 @@
 				</div>
 				<% } %>
 	<!-- header -->
-	<header role="header">
+	<header role="header" >
 
-		<div class="container">
+		<div class="container"  >
 
 			<!-- logo -->
 

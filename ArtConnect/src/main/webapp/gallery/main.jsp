@@ -40,7 +40,7 @@
 
 				<article role="pge-title-content" style="margin-top: 20px; padding-left : 0px;">
 
-					<header>
+					<header >
 
 						<h2>
 							<span>ArtConnet</span> Where Art Meets Souls
