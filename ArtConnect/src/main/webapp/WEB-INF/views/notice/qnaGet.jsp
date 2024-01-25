@@ -178,10 +178,12 @@ tfoot {
 						<a href="qnaList" class="btn btn-primary">목록</a>
 				</td>
 				<td colspan="4" style="border-left: none; border-right: none; border-bottom: none;"></td>
+				<c:if test="${sessionScope.memberID eq 'hello' }"> <!-- 'hello'로 로그인시에만 공지사항 수정/삭제 버튼 나오도록 -->
 				<td style="border-left: none; border-right: none; border-bottom: none;">
 						<a href="qnaModify?qnaNO=${vo.qnaNO}" class="btn btn-primary">수정</a>
 						<a onclick="return confirm('정말로삭제하겠습니까?')"href="qnaDel?qnaNO=${vo.qnaNO}" class="btn btn-primary">삭제</a>
 				</td>
+				</c:if>
 			</tr>
 			</tfoot>
 		</table>
@@ -208,6 +210,7 @@ tfoot {
 	<hr>
 	
 	<!-- 댓글작성 -->
+	<c:if test="${sessionScope.memberID eq 'hello' }"> <!-- 'hello'로 로그인시에만 공지사항 수정/삭제 버튼 나오도록 -->
 	<div>
 		<form  action="commentInsert">
 		<table>
@@ -228,6 +231,7 @@ tfoot {
 		</table>
 		</form>	
 	</div>
+	</c:if>
 			
 	</main>
 

@@ -76,7 +76,7 @@ public class NoticeController {
 		return "redirect:noticeList";
 	}
 	
-	//공지사항 목록 + 페이징 + 검색
+	//공지사항 목록 + 페이징
 	@RequestMapping("notice/noticeList")
 	public String Listpage(Model model, 
 						@RequestParam(name = "page", defaultValue = "1") int page,
@@ -97,18 +97,30 @@ public class NoticeController {
 		
 		return "notice/noticeList";
 	}
-
-	//공지사항 목록 + 페이징 + 검색
-	@RequestMapping("notice/noticeS")
-	public String Listpage(Model model,
-							@RequestParam("type") String type,
-							@RequestParam("keyword") String keyword) {
-		
-		List<NoticeVO> list = service.listPageSearch(type, keyword);
-		
-		model.addAttribute("list", list);
-		
-		return "notice/noticeList";
-	}
 	
-}
+}	
+	//공지사항 목록 + 페이징 + 검색
+	//@RequestMapping("notice/noticeS")
+	//public String Listpage(Model model,
+							//@RequestParam(name = "page", defaultValue = "1") int page,
+							//@RequestParam(name = "size", defaultValue = "10") int size,
+							//@RequestParam("type") String type,
+							//@RequestParam("keyword") String keyword) {
+		
+		//int totalCount = service.getTotalCount2(type,keyword); //service, dao, mapper추가 
+		
+		//System.out.println("totalCount : " + totalCount);
+        // 페이징 처리를 위한 정보 설정
+		//PagingVO pagingVO = new PagingVO(page, size, totalCount);
+		
+		//System.out.println("pagingVO : " + pagingVO);
+       // int start = pagingVO.getStart(); //0
+       // int end = pagingVO.getSize();    //10
+		
+		//List<NoticeVO> list = service.listPageSearch(type, keyword, start, end); //SERVICE, DAO, MAPPER수정==>START, END (SQL 다시 만들어야 함.)
+		//System.out.println(list.size());
+		
+		//model.addAttribute("list", list);
+	    //model.addAttribute("pagingVO", pagingVO);
+		//return "notice/noticeList";}
+
