@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -13,7 +13,8 @@
 <meta name="author" content="">
 
 <!-- button -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/button.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/button.css">
 
 <!-- style -->
 
@@ -55,26 +56,73 @@
 	rel="stylesheet" type="text/css">
 
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 
 <style>
-/* 이미지 크기와 위치 조정 */
-#logo-image {
-	max-width: 500px; /* 원하는 크기로 조절 */
-	position: relative;
-	top: -100px; /* 이미지를 아래로 내리고 싶다면 값을 늘리세요 */
+.custom-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-/* 네비게이션 위치 조정 */
+.logo {
+	text-align: center;
+	margin-left: 200px;
+	margin-top: 30px;
+}
+
+#logo-image {
+	max-width: 500px;
+	position: relative;
+}
+
 .navy {
 	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
+	top: 10px;
+	right: 10px;
 }
 
-.login{
+.login {
+	position: relative;
 	text-align: right;
-	margin-top: 75px;
-	margin-right: 20px;
+	margin-top: 10px;
+	margin-right: 50px;
+	width: 100%;
+}
+
+.logo-link {
+	display: inline-block;
+}
+
+.login button {
+	font-size: 2em;
+	padding: 10px 20px;
+}
+
+#my-image {
+	max-width: 70px;
+	border: 1px solid #333333;
+	border-radius: 50%; /* 이미지를 원형으로 깎음 */
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+header {
+	padding-top: 10px;
+}
+
+footer {
+	bottom: 0;
+	width: 100%;
+	border-top: 1px solid #ddd;
+}
+
+.customer {
+	left: 5px;
+	position: relative;
+	right: 12px;
+	font-weight: bold;
+	font-size: 20px;
 }
 </style>
