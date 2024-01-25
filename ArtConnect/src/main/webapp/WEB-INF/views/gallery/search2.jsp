@@ -9,125 +9,68 @@
 
 <head>
 
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<meta charset="utf-8">
-
-<!-- Description, Keywords and Author -->
-
-<meta name="description" content="">
-
-<meta name="author" content="">
-
-
-
 <title>:: 미술관 검색 결과 페이지 ::</title>
 
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
-
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
-
-<!-- bootstrap -->
-
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
-
-<!-- responsive -->
-
-<link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet"
-	type="text/css">
-
-<!-- font-awesome -->
-
-<link href="${pageContext.request.contextPath}/resources/css/fonts.css" rel="stylesheet" type="text/css">
-
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-
-<!-- font-awesome -->
+<%@ include file="/header.jsp" %>
 
 <style>
-/* 이미지 크기와 위치 조정 */
-#logo-image {
-	max-width: 500px; /* 원하는 크기로 조절 */
-	position: absolute;
-	top: 10px; /* 이미지를 아래로 내리고 싶다면 값을 늘리세요 */
-	left: 650px; /* 이미지를 오른쪽으로 이동하려면 값을 늘리세요 */
+.rounded-container {
+    border: 2px solid #333; /* 테두리 스타일 설정 */
+    border-radius: 10px; /* 테두리의 모서리를 둥글게 만듭니다. */
+    padding: 20px; /* 적절한 패딩 값 적용 */
+    width: 1170px;
+    background-color: white;
 }
 
-/* 네비게이션 위치 조정 */
-.navy {
-	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
+.rounded-container2 {
+    border: 2px solid #333; /* 테두리 스타일 설정 */
+    border-radius: 10px; /* 테두리의 모서리를 둥글게 만듭니다. */
+    padding: 20px; /* 적절한 패딩 값 적용 */
+    width: 1170px;
+    display: flex;
+  	flex-wrap: wrap;
+  	background-color: white;
 }
+
 </style>
 
 </head>
 
 <body>
-	<!-- header -->
 
-	<header role="header">
-
-		<div class="container">
-
-			<!-- logo -->
-
-			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="avana LLC"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png" title="avana LLC" alt="avana LLC" /></a>
-			</h1>
-
-			<!-- nav -->
-			<nav role="header-nav" class="navy">
-
-				<ul>
-
-					<li class="nav-active"><a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Work">메인 화면으로 돌아가기</a></li>
-
-					<li><a href="about.html" title="About">예약</a></li>
-
-					<li><a href="blog.html" title="Blog">커뮤니티</a></li>
-
-					<li><a href="contact.html" title="Contact">마이 페이지</a></li>
-
-				</ul>
-
-			</nav>
-			<!-- nav -->
-
-		</div>
-
-	</header>
-
-	<!-- header -->
-
-	<!-- main -->
+<%@ include file="/nav.jsp" %>
 
 	<main role="main-inner-wrapper" class="container">
 		<div class="row">
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
-				<article role="pge-title-content">
+				<article role="pge-title-content"  style="padding-left : 0px;">
 
-					<header>
+					<header style="padding-top:0px;">
 
 						<h2>
-							<span>Art Museum </span>Search Result
+							<span>Art Gallery </span>Search Result
 						</h2>
 
 					</header>
 
-					<p>Here's the result of the <strong>"${param.galleryName}"</strong> you searched for</p>
+					<p style="font-size: 25px;"> 키워드 <strong>"${param.galleryName}"</strong>에 대한 검색결과 입니다</p>
 
 				</article>
 
 			</section>
-
+			
+<div class="rounded-container">
 			<div class="clearfix"></div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="rounded-container2">
 
 <div class="thumbnails-pan">
     <c:if test="${not empty searchResult}">
@@ -146,9 +89,9 @@
         </c:forEach>
     </c:if>
 </div>
-			<!-- thumbnails -->
 
-			<!-- thumbnails -->
+</div>
+
 
 		</div>
 
@@ -199,27 +142,7 @@
 
 	</footer>
 
-	<!-- footer -->
-
-
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
-
-	<!-- custom -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js" type="text/javascript"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!-- jquery.countdown -->
-
-	<script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
+<%@ include file="/alljs.jsp" %>
 
 </body>
 

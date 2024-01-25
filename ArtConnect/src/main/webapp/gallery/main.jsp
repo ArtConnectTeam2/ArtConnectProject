@@ -40,7 +40,7 @@
 
 				<article role="pge-title-content" style="margin-top: 20px; padding-left : 0px;">
 
-					<header >
+					<header>
 
 						<h2>
 							<span>ArtConnet</span> Where Art Meets Souls
@@ -63,7 +63,7 @@
 					<figcaption>
 						<br>
 						<h2>
-							<span  id="entrance-text" style="color: while;">입장하기</span>
+							<span  id="entrance-text" style="color: white;">입장하기</span>
 						</h2>
 						<a href="${pageContext.request.contextPath}/gallery/list">View
 							more</a>
