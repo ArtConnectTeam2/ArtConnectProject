@@ -14,6 +14,7 @@
 <head>
 
 <title>:: 미술관 상세 페이지 ::</title>
+
 <!-- css 스타일  -->
 <%@ include file="/header.jsp"%>
 
@@ -43,7 +44,7 @@ strong {
 	<main role="main-inner-wrapper" class="container">
 
 		<!-- work details -->
-		<div class="work-details">
+		<div class="work-details" style = "padding-left : 0px;">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-5">
 					<header role="work-title">
