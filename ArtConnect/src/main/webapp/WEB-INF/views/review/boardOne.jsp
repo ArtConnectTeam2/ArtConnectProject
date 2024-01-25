@@ -51,6 +51,16 @@
             <strong>조회수:</strong> ${board.reviewHit}
             </span>
             </p>
+            <!-- 주차공간 유무 출력 -->
+            <strong>주차공간 유무:</strong>
+            <c:choose>
+                <c:when test="${board.parkingAvailable}">
+                    있음
+                </c:when>
+                <c:otherwise>
+                    없음
+                </c:otherwise>
+            </c:choose>
             <hr>
             <p>${board.reviewContent}</p>
             <%-- 파일이 이미지인 경우 이미지 태그로 표시 --%>
