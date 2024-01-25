@@ -9,11 +9,9 @@
 
 <head>
 
-
 <title>:: 미술관 메인 페이지 ::</title>
 
 <%@ include file="/header.jsp" %>
-
 
 <style>
         #entrance-text {
@@ -40,7 +38,7 @@
 
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
-				<article role="pge-title-content" style="margin-top: 20px;">
+				<article role="pge-title-content" style="margin-top: 20px; padding-left : 0px;">
 
 					<header>
 
@@ -74,7 +72,7 @@
 			</section>
 
 			<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-				<article role="pge-title-content" style="margin-top: 20px;">
+				<article role="pge-title-content" style="margin-top: 20px; padding-left : 0px;">
 
 					<header>
 
@@ -216,7 +214,7 @@
 			<hr color="red">
 		</div>
 
-		<div class="work-details">
+		<div class="work-details" style = "padding-left : 0px;">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-3">
 					<header role="work-title">
@@ -250,7 +248,7 @@
 
 		<div class="clearfix"></div>
 		<hr style="height: 5px">
-		<div class="work-details">
+		<div class="work-details" style = "padding-left : 0px;">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-3">
 					<header role="work-title">
