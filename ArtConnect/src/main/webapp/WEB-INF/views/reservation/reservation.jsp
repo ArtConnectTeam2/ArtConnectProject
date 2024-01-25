@@ -27,6 +27,7 @@
         galleryClosetime: '<fmt:formatDate value="${gallery.galleryClosetime}" pattern="HH:mm"/>'
     };
     let closedDay = '${gallery.closedDay}';
+    let closedDays = closedDay.split(', ');
 </script>
 
 <script src="${pageContext.request.contextPath}/resources/js/reservation/calendar.js"></script>
@@ -37,14 +38,15 @@
 <body>
 	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
 		<% String memberID = (String) session.getAttribute("memberID");
-		Date reservationDay = (Date) request.getAttribute("reservationDay"); %>
-		<% if (memberID == null || memberID.equals("")) { %>
+		Date reservationDay = (Date) request.getAttribute("reservationDay");
+		String memberName = (String) session.getAttribute("memberName");
+			if (memberID == null || memberID.equals("")) { %>
 			<a href="${pageContext.request.contextPath}/member/login">
 				<button class="btn btn-danger" onclick="login()">로그인</button>
 			</a>
 		<% } else { %>
 			<!-- 로그아웃 버튼 -->
-			<%= memberID %>님 로그인되었습니다.<br>
+			<%= memberName %>님 환영합니다.<br>
 			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/reservation/${gallery.galleryID}/${program.programID}">
 				<button class="btn btn-info">로그아웃</button>
 			</a>
@@ -130,34 +132,40 @@
         </c:otherwise>
     </c:choose>
 </dd>
-<c:choose>
-<c:when test="${gallery.closedDay eq 'Monday'}">
-    <c:set var="koreanDay" value="월" />
-</c:when>
-<c:when test="${gallery.closedDay eq 'Tuesday'}">
-    <c:set var="koreanDay" value="화" />
-</c:when>
-<c:when test="${gallery.closedDay eq 'Wednesday'}">
-    <c:set var="koreanDay" value="수" />
-</c:when>
-<c:when test="${gallery.closedDay eq 'Thursday'}">
-    <c:set var="koreanDay" value="목" />
-</c:when>
-<c:when test="${gallery.closedDay eq 'Friday'}">
-    <c:set var="koreanDay" value="금" />
-</c:when>
-<c:when test="${gallery.closedDay eq 'Saturday'}">
-    <c:set var="koreanDay" value="토" />
-</c:when>
-<c:when test="${gallery.closedDay eq 'Sunday'}">
-    <c:set var="koreanDay" value="일" />
-</c:when>
-</c:choose>
-    <dt>휴무일</dt>
-		<dd>매주 ${koreanDay}요일</dd>
-		<dt>연락처</dt>
-		<dd>${program.programTel}</dd>
-    </dl>
+	<c:set var="dayOfWeek" value="${gallery.closedDay}" />
+	<c:set var="closedDays" value="${fn:split(dayOfWeek, ', ')}" />
+	<dt>휴무일</dt>
+	<dd>매주
+	<c:forEach var="day" items="${closedDays}" varStatus="loop">
+	<c:set var="koreanDay" value="" />
+	<c:choose>
+	<c:when test="${day eq 'Monday'}">
+	<c:set var="koreanDay" value="월" />
+	</c:when>
+	<c:when test="${day eq 'Tuesday'}">
+	<c:set var="koreanDay" value="화" />
+	</c:when>
+	<c:when test="${day eq 'Wednesday'}">
+	<c:set var="koreanDay" value="수" />
+	</c:when>
+	<c:when test="${day eq 'Thursday'}">
+	<c:set var="koreanDay" value="목" />
+	</c:when>
+	<c:when test="${day eq 'Friday'}">
+	<c:set var="koreanDay" value="금" />
+	</c:when>
+	<c:when test="${day eq 'Saturday'}">
+	<c:set var="koreanDay" value="토" />
+	</c:when>
+	<c:when test="${day eq 'Sunday'}">
+	<c:set var="koreanDay" value="일" />
+	</c:when>
+	</c:choose>
+	${koreanDay}<c:if test="${!loop.last}">,</c:if><c:if test="${loop.last}"></c:if></c:forEach>요일
+	</dd>
+	<dt>연락처</dt>
+	<dd>${program.programTel}</dd>
+</dl>
 </div> <!-- prd_info -->
     
     <!-- calendar -->
