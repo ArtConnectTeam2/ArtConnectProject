@@ -33,6 +33,7 @@ public class MemberController {
         return "member/Register";
     }
 	
+	// 회원가입 시 사용하는 메서드
 	@RequestMapping("/insert.member")
 	public String insert(MemberVO memberVO, Model model, HttpServletRequest request) {
 	    try {
