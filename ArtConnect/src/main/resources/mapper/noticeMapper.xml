@@ -16,7 +16,7 @@
 		notice
 		values(
 		null,
-		#{noticeID},
+		#{memberID},
 		#{noticeName},
 		#{noticeTitle},
 		#{noticeContent},
@@ -75,16 +75,19 @@
 	<!-- 공지사항 검색 -->
 	<select id="search" parameterType="hashMap" resultType="noticeVO">
  		select
-  		noticeNO, noticeID, noticeTitle, noticeName
+  		noticeNO, memberID, noticeTitle, noticeName
  		from notice
  		
  	<if test='type.equals("subject")'>
-  		WHERE title LIKE concat('%', #{keyword}, '%')
+  		WHERE noticeTitle LIKE concat('%', #{keyword}, '%')
  	</if>
  	
  	<if test='type.equals("content")'>
- 	 	WHERE content LIKE concat('%', #{keyword}, '%')
+ 	 	WHERE noticeContent LIKE concat('%', #{keyword}, '%')
  	</if>
+ 	
+ 	order by noticeRegdate DESC
+ 	limit 10
 
 	</select>
 

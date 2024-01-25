@@ -60,7 +60,7 @@ public class NoticeService {
 	}
 	
 	//공지사항 검색
-	public List<NoticeVO> listPageSearch(String type, String keyword) {
+	public List<NoticeVO> searchList(String type, String keyword) {
 		Map<String, Object> searchs = new HashMap<>();
 			searchs.put("type", type);
 			searchs.put("keyword", keyword);
