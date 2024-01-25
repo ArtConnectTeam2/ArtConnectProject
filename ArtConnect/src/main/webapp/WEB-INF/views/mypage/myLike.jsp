@@ -19,7 +19,8 @@
     padding: 20px; 
     background-color: white;
     box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.1)
-      
+ 	margin-top: 120px;
+    margin-bottom: 120px;
 }
 
     .sidebar h3 {
@@ -77,6 +78,7 @@ td {
 .table {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     margin-top: 60px; 
+    margin : 60px;
 }
 footer {
         bottom: 0;
