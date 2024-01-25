@@ -52,11 +52,6 @@ public class BoardController {
 		System.out.println("boardPostOk-------------------------------------------------------");
 		System.out.println("file : " + file);
 		System.out.println("vo : " + vo.getMemberID());
-		
-		boolean parkingAvailable = false;
-		// 주차공간 유무 값 설정
-	    vo.setParkingAvailable(parkingAvailable);
-
 		 // 파일 업로드 처리
         if (file != null && !file.isEmpty()) {
             try {

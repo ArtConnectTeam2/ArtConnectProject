@@ -22,11 +22,16 @@
             }
         }
         
+    //댓글 수정
+     function updateReply(replyNO) {
+            // TODO: 댓글 수정 기능 구현
+            console.log("Update reply with replyNO: " + replyNO);
+        }
 
     
     //댓글 삭제
     function deleteReply(replyNO) {
-           
+            // TODO: 댓글 삭제 기능 구현
             console.log("Delete reply with replyNO: " + replyNO);
         }
     
@@ -66,11 +71,19 @@
             <p>
             <strong>ID:</strong> ${board.memberID} 
             
+            <div class="star-rating" data-rating="${board.starRating}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        	</div>
         	<span style="float: right;">
             <strong>등록일:</strong> <fmt:formatDate value="${board.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" />
             <strong>조회수:</strong> ${board.reviewHit}
             </span>
             </p>
+
             <!-- 주차공간 유무 출력 -->
             <strong>주차공간:</strong>
             <c:choose>
@@ -99,6 +112,7 @@
                     <input type="radio" name="starRating" value="1" id="rate5" class="star-input" ${board.starRating == 1 ? 'checked' : ''}>
                     <label for="rate5" class="star-label">★</label>
                 </div>
+
             <hr>
             <p>${board.reviewContent}</p>
             <%-- 파일이 이미지인 경우 이미지 태그로 표시 --%>
@@ -135,7 +149,8 @@
     	<div class="reply">
     		<p>${reply.memberID}  <fmt:formatDate value="${reply.replyDate}" pattern="yyyy-MM-dd HH:mm:ss" />
         	<span style="float: right;">
-             <a href="deleteReply?replyNO=${reply.replyNO}&reviewNO=${board.reviewNO}" class="text-danger">삭제</a>
+            <a href="javascript:void(0);" onclick="review/updateReply(${reply.replyNO})">수정</a>
+            <a href="javascript:void(0);" onclick="review/deleteReply(${reply.replyNO})" class="text-danger">삭제</a>
         	</span>
         	</p>
         	<p>${reply.replyContent}</p>

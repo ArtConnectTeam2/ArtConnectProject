@@ -12,7 +12,6 @@ public class BoardVO {
 	private Date reviewDate;
 	private int reviewHit;
 	private int starRating;
-	private boolean parkingAvailable;
 	
 	private String reviewFile;
 	private String filePath;
@@ -113,16 +112,6 @@ public class BoardVO {
 
 	public void setStarRating(int starRating) {
 		this.starRating = starRating;
-	}
-
-
-	public boolean isParkingAvailable() {
-		return parkingAvailable;
-	}
-
-
-	public void setParkingAvailable(boolean parkingAvailable) {
-		this.parkingAvailable = parkingAvailable;
 	}
 
 

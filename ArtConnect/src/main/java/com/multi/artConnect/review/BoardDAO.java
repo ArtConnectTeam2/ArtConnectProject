@@ -21,20 +21,6 @@ public class BoardDAO {
 	
 	public void boardPostOk(BoardVO boardvo) {
 		System.out.println("memberID :"  + boardvo.getMemberID());
-		
-		// 주차공간 유무를 boolean 형태로 DB에 저장
-	    boolean parkingAvailable = boardvo.isParkingAvailable();
-	    int parkingAvailableValue = parkingAvailable ? 1 : 0; // true이면 1, false이면 0으로 매핑
-	    
-	    // Map을 사용하여 주차공간 유무 값을 추가
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("memberID", boardvo.getMemberID());
-	    params.put("reviewTitle", boardvo.getReviewTitle());
-	    params.put("reviewContent", boardvo.getReviewContent());
-	    params.put("reviewFile", boardvo.getReviewFile());
-	    params.put("filePath", boardvo.getFilePath());
-	    params.put("parkingAvailable", parkingAvailableValue);
-		
 		my.insert("board.boardPostOk", boardvo);
 	}
 	

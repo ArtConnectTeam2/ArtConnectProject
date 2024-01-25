@@ -1,7 +1,5 @@
 package com.multi.artConnect.review;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +15,9 @@ public class ReplyController {
 
     //댓글 추가 처리
     @RequestMapping(value = "insertReply", method = RequestMethod.POST)
-    public String insertReply(ReplyVO reply, Model model, HttpSession session) {
+    public String insertReply(ReplyVO reply, Model model) {
     	
-    	String memberID = (String)session.getAttribute("memberID");
+    	String memberID = "apple";
 		// 댓글에 사용자의 ID 설정
         reply.setMemberID(memberID);
     	//댓글 추가 
@@ -35,7 +33,7 @@ public class ReplyController {
         return "redirect:/review/boardOne?reviewNO=" + replyVO.getReviewNO();
     }
 
-    @RequestMapping("deleteReply")
+    @RequestMapping("review/deleteReply")
     public String deleteReply(int replyNO, int reviewNO) {
         replyDAO.deleteReply(replyNO);
         return "redirect:/review/boardOne?reviewNO=" + reviewNO;

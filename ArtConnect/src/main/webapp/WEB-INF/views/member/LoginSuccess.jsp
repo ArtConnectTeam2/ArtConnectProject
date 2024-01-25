@@ -4,12 +4,20 @@
 <html lang="en">
 <head>
 <%@ include file="/header.jsp"%>
+
 <style>
-.container {
-	background-color: white;
+.main-container {
+   
+    background-color: white; 
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 .center {
     text-align: center;
+}
+.center button {
+    display: inline-block;
+    margin-top: 20px; /* 원하는 여백 조절 */
 }
 </style>
 
@@ -19,20 +27,19 @@
 	<%@ include file="/nav.jsp"%>
 
 	<main role="main-home-wrapper" class="container">
-		<article role="pge-title-content">
+		<article role="pge-title-content" class="main-container">
 			<h2 align="center">로그인이 완료되었습니다</h2>
 			<p align="center">
-				환영합니다! 아이디:
+				아이디:
 				<%=session.getAttribute("memberID")%>로 로그인되었습니다. <br>
-				<%=session.getAttribute("memberName")%>님 로그인이 성공적으로 완료되었습니다.
+				환영합니다!  <%=session.getAttribute("memberName")%>님 
 			</p>
 		</article>
-		<div class="center">
-			<a class="navbar-brand"
-				href="${pageContext.request.contextPath}/gallery/main.jsp">
-				<button>메인으로</button>
-			</a>
-		</div>
+		 <div class="center">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/gallery/main.jsp">
+                <button class="btn-gradient red small">메인으로</button>
+            </a>
+        </div>
 	</main>
 	<br>
 	
