@@ -38,8 +38,6 @@ public class MemberController {
 	    try {
 
 	        System.out.println("Received Data: " + memberVO.toString());
-
-	        System.out.println("회원가입 성공: " + memberVO.toString());
 	        memberService.insert(memberVO);
 	        model.addAttribute("message", "Registration successful");
 	        return "/member/RegisterSuccess";
