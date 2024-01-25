@@ -27,6 +27,11 @@ strong {
 	color: black;
 }
 
+ #likeButton {
+        font-size: 25px; /* 원하는 크기로 조정하세요 */
+        padding: 16px;
+    }
+
 </style>
 
 <script>
@@ -80,7 +85,7 @@ strong {
 							<br /> <strong>미술관 휴관일 : </strong><span id="closedDayDisplay"></span><br />
 							<strong>미술관 연락처 : </strong>${gallery.galleryTel}<br />
 							<strong>미술관 좋아요 :</strong><br />
-							<button id="likeButton" class="btn btn-primary">좋아요!</button>
+							<button id="likeButton" class="btn-gradient red small">♡</button>
 							<br>
 							<strong id="likeMessage"></strong> <br><br>
 							<strong>프로그램 예약</strong><br />
@@ -278,10 +283,10 @@ strong {
 	            },
 	            success: function(response) {
 	                if (response === "liked") {
-	                    likeButton.text("좋아요 취소");
+	                    likeButton.text("♥");
 	                    likeMessage.text("이미 좋아요한 항목입니다.");
 	                } else {
-	                    likeButton.text("좋아요!");
+	                    likeButton.text("♡");
 	                    likeMessage.text("*Like를 누르시면 마이페이지에 추가됩니다.");
 	                }
 	            },
@@ -295,7 +300,7 @@ strong {
 	            // Like 버튼 클릭시
 	            var likeButton = document.getElementById('likeButton');
 
-	            if (likeButton.innerText === '좋아요!') {
+	            if (likeButton.innerText === '♡') {
 	                // Like 버튼 클릭 처리
 	                $.ajax({
 	                    url: "like",
@@ -306,7 +311,7 @@ strong {
 	                    },
 	                    success: function(response) {
 	                        alert("좋아요 등록되었습니다");
-	                        likeButton.innerText = '좋아요 취소';
+	                        likeButton.innerText = '♥';
 
 	                        var likeMessage = $("#likeMessage");
 	                        likeMessage.text("마이페이지에 추가되었습니다.");
@@ -331,7 +336,7 @@ strong {
 	                    },
 	                    success: function(response) {
 	                        alert("좋아요를 취소했습니다");
-	                        likeButton.innerText = '좋아요!';
+	                        likeButton.innerText = '♡';
 
 	                        var likeMessage = $("#likeMessage");
 	                        likeMessage.text("삭제함");
