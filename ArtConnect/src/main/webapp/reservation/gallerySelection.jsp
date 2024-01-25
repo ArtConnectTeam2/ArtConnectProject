@@ -16,16 +16,55 @@
     <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Responsive CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-	<style type="text/css">
-	th,td {
-		vertical-align: middle; text-align: center; padding: 10px;
-	}
-	.navy {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-	}
-	</style>
+<style type="text/css">
+
+footer {
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+}
+
+th,td {
+	vertical-align: middle;
+	text-align: center;
+	padding: 10px;
+}
+	
+.navy {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+.thumbnails-pan {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#gallery-container {
+	min-width: 900px;
+	max-width: 1400px;
+	margin: 0 auto;
+	height: auto;
+    border: 1px solid #333333; 
+    border-radius: 10px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 300px;
+    align-content: center;
+}
+
+#logo-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 20px;
+}
+
+</style>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
 	$(function() {
@@ -54,11 +93,6 @@
 					loadGallery("searchGallery/" + encodeURIComponent(galleryName));
 				}
 			}
-		});
-		
-		// 검색 초기화 버튼 클릭 시
-		$('#resetButton').click(function() {
-			loadGallery("listGallery");
 		});
 	});
 
@@ -93,16 +127,8 @@
 			</a>
 		<% } %>
 	</div>
-    <header role="header" style="margin-top: -100px; margin-left: 0px;">
-        <div class="container" style="display: inline-block; max-width: 50%;">
-            <!-- Logo -->
-            <h1>
-                <a href="${pageContext.request.contextPath}/gallery/main.jsp">
-                <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-                        alt="ArtConnect" style="width: 300px; height: auto;"/></a>
-            </h1>
-                
-         <!-- nav -->
+    <header role="header">
+    <!-- nav -->
     <nav role="header-nav" class="navy">
 	<ul>
 	<li><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
@@ -118,28 +144,47 @@
 	<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
     </ul>
 	</nav>
-    </div>
     </header>
     <!-- Main Content -->
     <main role="main-inner-wrapper container">
-        <div style="text-align: center; margin-top: 20px;">
+    	<!-- Logo -->
+                <div id="logo-image" style="display: inline-block;"><a href="${pageContext.request.contextPath}/gallery/main.jsp" style="max-width: 300px;">
+                <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
+                        alt="ArtConnect" style="width: 450px; height: auto;"/></a></div>
+        <div id="search-container" style="text-align: center; margin-top: 20px;">
             <!-- Search bar for gallery ID -->
             <input type="text" id="galleryNameInput" placeholder="미술관 이름을 입력하세요."
                 class="form-control input-lg" style="width: 300px; display: inline-block;">
             <button id="searchButton" class="btn btn-primary btn-lg">검색</button>
-            <button id="resetButton" class="btn btn-default btn-lg">검색 초기화</button>
         </div>
-
+        <br><br>
+		<div id="gallery-container">
+			<!-- Display area for galleries -->
+        	<div id="galleryDisplay" class="thumbnails-pan" style="font-size: 20px;">
+        	<!-- Initial gallery display will be loaded here -->
+        	</div>
+		</div>
         <hr>
-
     </main>
 
     <!-- Footer -->
-    <footer role="footer" style="margin: 0 20px;">
-        <!-- Display area for galleries -->
-        <div id="galleryDisplay" class="thumbnails-pan" style="font-size: 20px;">
-        <!-- Initial gallery display will be loaded here -->
-        </div>
+    <footer role="footer">
+       	<nav role="footer-nav">
+            <ul>
+               	<li><a href="index.html" title="Work">Work</a></li>
+                <li><a href="about.html" title="About">About</a></li>
+                <li><a href="blog.html" title="Blog">Blog</a></li>
+                <li><a href="contact.html" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- nav -->
+        <ul role="social-icons">
+         	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+        </ul>
+        <p class="copy-right">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
     </footer>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/resources/js/nav.js" type="text/javascript"></script>
@@ -147,5 +192,4 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/resources/js/html5shiv.js" type="text/javascript"></script>
 </body>
-
 </html>
