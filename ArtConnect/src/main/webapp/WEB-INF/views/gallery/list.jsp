@@ -9,6 +9,8 @@
 
 <head>
 
+<title>::미술관 조회 페이지::</title>
+
 <%@ include file="/header.jsp" %>
 
 <style>

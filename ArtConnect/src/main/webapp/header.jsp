@@ -12,9 +12,8 @@
 
 <meta name="author" content="">
 
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
+<!-- button -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/button.css">
 
 <!-- style -->
 
@@ -54,6 +53,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
 	rel="stylesheet" type="text/css">
+
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 
