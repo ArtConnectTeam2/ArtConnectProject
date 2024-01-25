@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%
 	session.getAttribute("memberID");
 %>
@@ -23,10 +22,11 @@
     <style> 
       /* sidebar */
 .sidebar {
-    border: 1px solid white; 
+    border: 1px solid #333333; 
     border-radius: 10px; 
     padding: 20px; 
     background-color: white;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.1) 
       
 }
 
@@ -87,13 +87,12 @@
         text-align: center;
     }
 footer {
-    position: fixed;
     bottom: 0;
     width: 100%;
     border-top: 1px solid #ddd;
     }
 th {
-    background-color: #d2d2d2;
+    background-color: #F8F8E7 ;
 }
 td {
     background-color: white;
@@ -102,6 +101,7 @@ td {
       margin-left: 50px;
 }
 .table {
+
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     margin-top: 20px; 
 }
@@ -110,7 +110,7 @@ p.no-reservation-message {
     text-align: center;
 }
 .row {
-    margin-top: 80px;
+    margin-top: 0px;
 }
 	</style>
 	

@@ -19,7 +19,8 @@
     <style>  
     /* sidebar */
 .sidebar {
-    border-radius: 10px; 
+    border-radius: 10px;
+     border: 1px solid #333333;  
     padding: 20px; 
     background-color: white;
     box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.1) 
@@ -86,6 +87,7 @@ input:focus {
       background-color: white;
       margin : 80px;
       margin-top: -1px;
+       border: 1px solid #333333; 
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -130,9 +132,10 @@ footer {
     }
     button {
     margin-right: 25px; 
+    
 }
 .row {
-    margin-top: 80px;
+    margin-top: 0px;
 }
 	
 	
@@ -229,8 +232,8 @@ footer {
                         <div id="updateid">이름</div>
                          <input type="text" id="name" name="memberName" value="${mymember.memberName}" readonly ><br>
                         <br>
-				    <button type="submit" id="submit" style="width: 100px;" class="btn btn-warning">회원탈퇴</button>
-				 	<button type="reset" style="width: 100px;" class="btn btn-warning">취소</button> 
+				    <button type="submit" id="submit" style="width: 100px;"  class="btn btn-primary">회원탈퇴</button>
+				 	<button type="reset" style="width: 100px;" class="btn btn-primary">취소</button> 
 				<br>
 				<br>
 			</form>

@@ -14,7 +14,7 @@
 <style>
    /* sidebar */
 .sidebar {
-    border: 1px solid white; 
+    border: 1px solid #333333; 
     border-radius: 10px; 
     padding: 20px; 
     background-color: white;
@@ -69,7 +69,7 @@ h2 {
         text-align: center;
     }
 th {
-    background-color: #d2d2d2;
+    background-color: #F8F8E7 ;
 }
 td {
     background-color: white;

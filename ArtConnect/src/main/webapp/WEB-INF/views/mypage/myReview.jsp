@@ -26,7 +26,7 @@
     
     /* sidebar */
 .sidebar {
-    border: 1px solid white; 
+    border: 1px solid #333333; 
     border-radius: 10px; 
     padding: 20px; 
     background-color: white;
@@ -114,13 +114,16 @@
          
     }
 th {
-    background-color: #d2d2d2;
+    background-color: #F8F8E7;
+    
+    
 }
 td {
     background-color: white;
+    
 }
+ border: 1px solid #333333; 
 footer {
-		position: fixed;
         bottom: 0;
         width: 100%;
         border-top: 1px solid #ddd;
@@ -131,14 +134,16 @@ footer {
 .table {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     margin-top: 20px; 
+    
 }
 p.no-review-message {
     font-size: 18px;
     text-align: center;
 }
 .row {
-    margin-top: 80px;
+    margin-top: 0px;
 }
+
 	</style>
 	
 </head>
@@ -218,6 +223,8 @@ p.no-review-message {
             </form>
         </div>
     </div>
+        </div>
+            </div>
     
 	<!-- 페이징 부분 추가 -->
 <div class="container mt-3 pagination-container">
