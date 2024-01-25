@@ -36,7 +36,9 @@ public class MemberController {
 	@RequestMapping("/insert.member")
 	public String insert(MemberVO memberVO, Model model, HttpServletRequest request) {
 	    try {
-	    	/* 이 부분에서 깃 충돌 발생 */
+
+	        System.out.println("Received Data: " + memberVO.toString());
+
 	        System.out.println("회원가입 성공: " + memberVO.toString());
 	        memberService.insert(memberVO);
 	        model.addAttribute("message", "Registration successful");
