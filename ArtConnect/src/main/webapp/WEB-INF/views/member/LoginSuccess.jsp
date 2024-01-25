@@ -10,6 +10,7 @@
    
     background-color: white; 
     padding: 20px;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 .center {
     text-align: center;
