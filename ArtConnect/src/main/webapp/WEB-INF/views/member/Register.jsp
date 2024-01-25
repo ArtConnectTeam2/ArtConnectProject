@@ -53,8 +53,11 @@ button {
 	right: 10px;
 }
 
-label, input {
+label{
   font-size: 20px;
+}
+input{
+  font-size: 15px;
 }
 </style>
 </head>
@@ -77,7 +80,7 @@ label, input {
 
 				<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
 				<c:if test="${not empty errorMessage}">
-					<div class="error-message">${errorMessage}</div>
+					<div class="error-message" style="color: red">${errorMessage}</div>
 				</c:if>
 				<!-- 비밀 번호 -->
 				<label for="pw">비밀번호: (필수)</label> 
@@ -91,7 +94,7 @@ label, input {
 				<input type="text" id="name" name="memberName" required placeholder="이름을 입력하세요"> 
 				
 				<label for="birth">생년월일:(필수)</label> 
-				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요"> 
+				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요" min="1950-01-01" max="2020-12-31"> 
 				<label for="gender">성별: (선택)</label> 
 				<select id="gender" name="memberGender">
 					<option value=" ">입력하지않음</option>
@@ -115,7 +118,7 @@ label, input {
   					<option value="push">앱 푸시</option>
 				</select>
 
-				<button type="button" onclick="submitForm()">회원가입</button>
+				<button type="submit" onclick="joinMember()">회원가입</button>
 
 
 			</form>
@@ -130,35 +133,51 @@ label, input {
 	<%@ include file="/alljs.jsp"%>
 
 
-	<!-- 회원가입 버튼을 누를 시 체크사항 -->
 	<script type="text/javascript">
-		function joinMember() {
-			console.log("잘 실행됨");
+    function joinMember() {
+        console.log("잘 실행됨");
 
-			var pw = document.getElementById("pw").value;
-			var pwConfirm = document.getElementById("pwConfirm").value;
-			var pwErroMessage1 = document.getElementById("pw_check1");
-			var pwreg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+        var pw = document.getElementById("pw").value;
+        var pwConfirm = document.getElementById("pwConfirm").value;
+        var pwErroMessage1 = document.getElementById("pw_check1");
+        
+        // 비밀번호가 비어있을 경우 조건 체크를 하지 않음
+        if (pw.trim() === "") {
+            pwErroMessage1.innerHTML = "";
+        } else {
+            var pwreg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-			if (!pwreg.test(pw)) {
-				pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
-				return false;
-			} else {
-				pwErroMessage1.innerHTML = "";
-			}
+            if (!pwreg.test(pw)) {
+                pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
+                alert("비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.");
+                return false;
+            } else {
+                pwErroMessage1.innerHTML = "";
+            }
+        }
 
-			// 비밀번호 확인
-			if (pw !== pwConfirm) {
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
+        // 비밀번호 확인
+        if (pw !== pwConfirm) {
+            alert("비밀번호가 일치하지 않습니다.");
+            return false;
+        }
 
-			}
-		}
-		
-		
-	</script>
-	
-<script>
+        // 필수 입력 필드 체크
+        var requiredFields = ["memberID", "memberPW", "pwConfirm", "memberName", "memberBirth", "memberTel", "memberEmail"];
+        for (var i = 0; i < requiredFields.length; i++) {
+            var fieldId = requiredFields[i];
+            var fieldValue = document.getElementById(fieldId).value.trim();
+
+            if (fieldValue === "") {
+                alert("필수 입력 항목을 모두 입력하세요.");
+                return false;
+            }
+        }
+
+        // 모든 조건을 통과하면 회원가입 실행
+        return true;
+    }
+
     function submitForm() {
         // 생년월일 필드 값 가져오기
         var birthValue = document.getElementById("birth").value;
