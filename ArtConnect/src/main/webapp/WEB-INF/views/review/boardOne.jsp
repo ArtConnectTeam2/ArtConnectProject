@@ -33,6 +33,26 @@
     
         
     </script>
+    <style>
+        .star-input {
+            display: none;
+        }
+
+        .star-label {
+            font-size: 2em;
+            color: transparent;
+            text-shadow: 0 0 0 #f0f0f0;
+            cursor: pointer;
+        }
+
+        .star-label:hover {
+            text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+        }
+
+        .star-input:checked ~ .star-label {
+            text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+        }
+    </style>
 </head>
 <body>
 <%@ include file="/nav.jsp" %>
@@ -52,7 +72,7 @@
             </span>
             </p>
             <!-- 주차공간 유무 출력 -->
-            <strong>주차공간 유무:</strong>
+            <strong>주차공간:</strong>
             <c:choose>
                 <c:when test="${board.parkingAvailable}">
                     있음
@@ -61,6 +81,24 @@
                     없음
                 </c:otherwise>
             </c:choose>
+            <!--  별점 -->
+            <br>
+                <div>
+                    <input type="radio" name="starRating" value="5" id="rate1" class="star-input" ${board.starRating == 5 ? 'checked' : ''}>
+                    <label for="rate1" class="star-label">★</label>
+
+                    <input type="radio" name="starRating" value="4" id="rate2" class="star-input" ${board.starRating == 4 ? 'checked' : ''}>
+                    <label for="rate2" class="star-label">★</label>
+
+                    <input type="radio" name="starRating" value="3" id="rate3" class="star-input" ${board.starRating == 3 ? 'checked' : ''}>
+                    <label for="rate3" class="star-label">★</label>
+
+                    <input type="radio" name="starRating" value="2" id="rate4" class="star-input" ${board.starRating == 2 ? 'checked' : ''}>
+                    <label for="rate4" class="star-label">★</label>
+
+                    <input type="radio" name="starRating" value="1" id="rate5" class="star-input" ${board.starRating == 1 ? 'checked' : ''}>
+                    <label for="rate5" class="star-label">★</label>
+                </div>
             <hr>
             <p>${board.reviewContent}</p>
             <%-- 파일이 이미지인 경우 이미지 태그로 표시 --%>
