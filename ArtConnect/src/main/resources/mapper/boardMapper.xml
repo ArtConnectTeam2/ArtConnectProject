@@ -9,14 +9,9 @@
 	</select>
 	
 	<insert id="boardPostOk" parameterType="boardVO">
-    	INSERT INTO review(reviewNO, memberID, reviewTitle, reviewContent, reviewDate, reviewFile, reviewHit, parkingAvailable) 
-    	VALUES(null, #{memberID}, #{reviewTitle}, <![CDATA[#{reviewContent}]]>, now(), #{reviewFile}, 0,
-    	<choose>
-        <when test="parkingAvailable">1</when>
-        <otherwise>0</otherwise>
-    </choose>)
+		INSERT INTO review(reviewNO, memberID, reviewTitle, reviewContent, reviewDate, reviewFile, reviewHit) 
+		VALUES(null, #{memberID}, #{reviewTitle}, <![CDATA[#{reviewContent}]]>, now(), #{reviewFile}, 0)
 	</insert>
-
 	
 	<select id="one" parameterType="int" resultType="boardVO">
 		select * from review

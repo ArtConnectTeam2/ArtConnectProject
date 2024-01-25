@@ -189,12 +189,6 @@ footer {
      button {
     margin-right: 25px; 
     }
-#pw_check {
-    position: relative;
-    top: -5px;
-    margin-left : -280px;
-    transition: transform 0.3s ease; 
-}
 #pw_check1 {
     position: relative;
     top: -5px;
@@ -250,7 +244,7 @@ footer {
                     <h2>비밀번호 변경</h2><br>
                     	<form id="updateForm" action ="updatePwOk" method = "post" onsubmit="return validateForm();">
                   		<div id="updateid">현재 비밀번호</div>
-                  		<input type="password" id="currentmemberPW" name="currentmemberPW" onblur="validatePassword()" required="required" placeholder="비밀번호를 입력해주세요." style="font-size: 15px;"><br>
+                  		<input type="password" id="currentmemberPW" name="currentmemberPW" value="${mymember.memberPW}" onblur="validatePassword()" required="required" placeholder="비밀번호를 입력해주세요." style="font-size: 15px;"><br>
               	        <span id="pw_check" style="color: red;"></span><br> 
   					    <div id="updateid">새 비밀번호</div>
                         <input type="password" id="memberPW" name="memberPW" placeholder="새 비밀번호를 입력해주세요." style="font-size: 15px;" onblur="validatePassword()"><br>

@@ -94,7 +94,8 @@ p.no-reservation-message {
 </head>
 <body>
 
-	<%@ include file="/nav.jsp" %>
+	<%@ include file="/logoMypage.jsp"%>
+
 	<!-- 사이드 마이페이지 탭 -->
 	<div class="container">
 		<div class="row">
