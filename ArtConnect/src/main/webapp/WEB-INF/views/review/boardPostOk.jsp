@@ -1,6 +1,10 @@
 <%@page import="com.multi.artConnect.review.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	session.getAttribute("memberID");
+
+    %>
     
 <!DOCTYPE html>
 <html>
