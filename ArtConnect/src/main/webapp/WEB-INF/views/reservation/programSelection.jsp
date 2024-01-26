@@ -1,20 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<meta charset="utf-8">
 <title>전시 목록 페이지</title>
-<!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<!-- Custom CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<!-- Responsive CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
+<%@ include file="/header.jsp"%>
 <style type="text/css">
 
 i {
@@ -68,54 +59,10 @@ th, td {
     margin-bottom: 200px;
 }
 
-#logo-image {
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 20px;
-}
-
 </style>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 </head>
 <body>
-	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
-		<% String memberID = (String) session.getAttribute("memberID");
-		String memberName = (String) session.getAttribute("memberName");
-		if (memberID == null || memberID.equals("")) { %>
-			<a href="${pageContext.request.contextPath}/member/login">
-				<button class="btn btn-danger" onclick="login()">로그인</button>
-			</a>
-		<% } else { %>
-			<!-- 로그아웃 버튼 -->
-			<%= memberName %>님 환영합니다.<br>
-			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/programSelection/${gallery.galleryID}">
-				<button class="btn btn-info">로그아웃</button>
-			</a>
-		<% } %>
-	</div>
-<header role="header">
-    <!-- nav -->
-    <nav role="header-nav" class="navy">
-	<ul>
-	<li><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/noticeList" title="Contact">공지사항</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
-    </ul>
-	</nav>
-    </header>
-    <!-- Logo -->
-	<div id="logo-image"><a href="${pageContext.request.contextPath}/gallery/main.jsp">
-    <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-		alt="ArtConnect" style="width: 450px; height: auto;"/></a></div>
+<%@ include file="/nav.jsp"%>
     <div id="program-container">
             <h1>전시 목록</h1> <br>
             <h2>${gallery.galleryName}</h2><br>

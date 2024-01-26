@@ -75,13 +75,6 @@ margin-bottom: 20px;
     margin-bottom: 5px;
 }
 
-#logo-image {
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 20px;
-}
-
 #calendar-title {
 	display:inline-block;
 	width: 171px;
