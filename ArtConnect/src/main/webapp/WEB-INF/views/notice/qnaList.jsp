@@ -10,80 +10,39 @@
 
 <title>QnA게시판</title>
 
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
-<!-- Bootstrap -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<!-- font-awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
-	rel="stylesheet" type="text/css">
+<%@ include file="/header.jsp" %>
+
 <style>
 
-/* 네비게이션 위치 조정 */
-.navy {
-	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
-}
-.navbar-brand {
-	position: absolute;
-	top: 5px;
-	left: 20px;
-}
-.login {
-	position: absolute;
-	top: 5px;
-	left: 100px;
-}
 #qna_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;
+	height: 90px;
+	padding: 17px;
 }
-#qna_search {
-	text-align: center;
-	font-size: medium;
-}
-#qna_count {
-	padding: 12px;
-}
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
-	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
-	height: 200px; /* 테이블의 높이를 200px로 설정 */
-	margin: auto;
+	width: 95%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
+	margin: auto; /* 가로 중앙에 배치 */
 }
+
 th {
-	padding: 12px; /* 안쪽 여백 설정 */
-	height: 12px;
+	padding: 20px; /* 안쪽 여백 설정 */
+	height: 50px;
 	background-color: #dcdcd1;
 	border-bottom: 3px solid #036;
+	font-size: 17px;
 	text-align: center; /* 텍스트 정렬 */
 }
+
 td {
 	padding: 20px; /* 안쪽 여백 설정 */
-	height: 12px;
+	height: 20px;
+	font-size: 15px;
 	border-bottom: 1px solid #ccc;
 	text-align: center; /* 텍스트 정렬 */
 }
@@ -100,40 +59,7 @@ tfoot{
 </head>
 <body>
 
-	<header role="header">
-		<div class="container">
-			<!-- nav -->
-			<nav role="header-nav" class="navy">
-				<ul>
-					<li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
-						title="About">예약</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/review/boardList.jsp"
-						title="Blog">커뮤니티</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
-						title="Contact">마이 페이지</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList"
-						title="Contact">공지사항</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/notice/qnaList"
-						title="Contact">QnA</a></li>
-				</ul>
-			</nav>
-			<!-- Navigation -->
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container">
-					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
-					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px;"></a>
-				</div>
-			</nav>
-		</div>
-	</header>
+	<%@ include file="/nav.jsp"%>
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
@@ -144,27 +70,11 @@ tfoot{
 	
 	<hr>
 	
-	<div id="qna_search">
-		<form action="" method="post" name="searchForm">
-			<select>
-				<option valus="subject">제 목</option>
-				<option valus="content">내 용</option>
-				<option valus="name">작성자</option>
-			</select>
-			<input type="text" name="searchValue" placeholder="검색어를 입력해주세요" class="textField"/>
-			<input type="button" value="검 색" class="btn" onclick="sendIt();"/>
-		</form>
-	</div>
-	
-	<div id="qna_count">
-		<h5 style="margin-left: 100px">검색결과 총 0건이 검색 되었습니다.</h5>
-	</div>
-	
 	<div id="qna_list">
 		<table border="1">
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
+				<th>제 목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
@@ -173,7 +83,7 @@ tfoot{
 			<tr>
 				<td>${vo.qnaNO}</td>
 				<td><a href="qnaGet?qnaNO=${vo.qnaNO}">${vo.qnaTitle}</a></td>
-				<td>${vo.qnaID}</td>
+				<td>${vo.memberID}</td>
 				<td>${vo.qnaRegdate}</td>
 				<td>${vo.qnaHit}</td>
 			</tr>
@@ -208,50 +118,7 @@ tfoot{
 		</div>
 	</footer>
 
-	<!-- JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
-		type="text/javascript"></script>
-
-	<script>
-		function redirectToWritePage() {
-			// Redirect to the write page URL
-			window.location.href = "${pageContext.request.contextPath}/notice_insert2.jsp";
-		}
-	</script>
+	<%@ include file="/alljs.jsp"%>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
 
 <!-- List all galleries -->
 <div>
-	<h1 style="margin-top: -80px; margin-left: 10px">미술관 목록</h1>
+	<h1>미술관 목록</h1>
 	<br><br>
 	<table border="1" style="text-align: center;">
 		<thead>
@@ -24,7 +24,7 @@
                 	<c:set var="dayOfWeek" value="${gallery.closedDay}" />
 					<c:set var="closedDays" value="${fn:split(dayOfWeek, ', ')}" />
 						<tr>
-							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="Gallery Image" style="width: 150px; height: auto;"></a></td>
+							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="Gallery Image" style="width: 200px; height: 200px;"></a></td>
 							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">${gallery.galleryName}</a></td>
 							<td>${gallery.galleryLocation}</td>
 							<td>${gallery.galleryTel}</td>

@@ -108,9 +108,10 @@ tfoot{
 			data : $("form[name=search-form]").serialize(),
 			success : function(result){
 				//테이블 초기화
-				$('#boardtable > tbody').empty();
+				console.log(result)
+				$('#noticetable > tbody').empty();
 				if(result.length>=1){
-					result.forEach(function(item){
+					result.forEach(function(vo){
 						str='<tr>'
 						str += "<td>"+vo.noticeID+"</td>";
 						str+="<td>"+vo.noticeName+"</td>";
@@ -118,7 +119,7 @@ tfoot{
 						str+="<td>"+vo.noticeRegdate+"</td>";
 						str+="<td>"+vo.noticeHit+"</td>";
 						str+="</tr>"
-						$('#boardtable').append(str);
+						$('#noticetable').html(str);
 	        		})				 
 				}
 			}
@@ -173,7 +174,7 @@ tfoot{
 	<hr>
 	
 	<div name="notice-Search">
-		<form action="" method="post" name="searchForm">
+		<form action="" method="get" name="searchForm">
 			<select name="type">
 				<option value="subject">제 목</option>
 				<option value="content">내 용</option>

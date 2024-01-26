@@ -127,7 +127,7 @@
       border-radius: 10px;
       padding: 20px;
       background-color: white;
-      margin : 80px;
+      margin : 80px auto;
       margin-top: -1px;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }

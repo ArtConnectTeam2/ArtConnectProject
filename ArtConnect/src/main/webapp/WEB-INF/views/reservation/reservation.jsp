@@ -52,15 +52,7 @@
 			</a>
 		<% } %>
 	</div>
-	<header role="header" style="margin-top: -100px; margin-left: 0px;">
-        <div class="container" style="display: inline-block; max-width: 50%;">
-            <!-- Logo -->
-            <h1>
-                <a href="${pageContext.request.contextPath}/gallery/main.jsp">
-                <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-                        alt="ArtConnect" style="width: 300px; height: auto;"/></a>
-            </h1>
-			<h3 class="pre-page"><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"> 전시 목록으로 </a></h3>
+	<header role="header">
     <!-- nav -->
     <nav role="header-nav" class="navy">
 	<ul>
@@ -79,12 +71,14 @@
     </ul>
 	</nav>
 	<!-- nav -->
-    </div>
     </header>
-    <footer role="footer" style="margin: 0 20px;">
+    <!-- Logo -->
+	<div id="logo-image"><a href="${pageContext.request.contextPath}/gallery/main.jsp">
+	<img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
+		alt="ArtConnect" style="width: 450px; height: auto;"/></a></div>
     <div class="thumbnails-pan" style="font-size: 20px;">
-	<h1 style="margin-top: -80px; margin-left: 10px">예약 페이지</h1> <br>
-	<h2 style="margin-left: 30px">${gallery.galleryName}</h2> <br>
+	<h1>예약 페이지</h1> <br>
+	<h2>${gallery.galleryName}</h2> <br>
 	<div class="prd_info_wrap">
     <div class="thumb" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
         <img src="${pageContext.request.contextPath}/resources/img/program/${program.programImg}" alt="Program Image"
@@ -243,10 +237,26 @@
     <input type="hidden" name="childCount" value="0">
     <input type="hidden" name="totalPrice" value="0">
 </form>
+</div> <!-- thumbnails-pan -->
 
-
-	</div> <!-- thumbnails-pan -->
-	</footer>
+	<footer role="footer">
+	<nav role="footer-nav">
+            <ul>
+               	<li><a href="index.html" title="Work">Work</a></li>
+                <li><a href="about.html" title="About">About</a></li>
+                <li><a href="blog.html" title="Blog">Blog</a></li>
+                <li><a href="contact.html" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- nav -->
+        <ul role="social-icons">
+         	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+        </ul>
+    <p class="copy-right">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+    </footer>
 	
 	<script>
 	// 버튼 클릭 이벤트 설정

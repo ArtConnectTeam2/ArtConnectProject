@@ -52,15 +52,44 @@
         .star-input:checked ~ .star-label {
             text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
         }
+        
+       
+    .container.mt-3 {
+        background-color: #ffffff; /* 배경색을 원하는 색상으로 설정 */
+        padding: 20px; /* 적절한 여백 설정 */
+        border-radius: 10px; /* 원하는 형태의 모서리 설정 */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
+        max-width: 1100px; /* 원하는 최대 가로 너비 설정 */
+        margin: 0 auto; /* 가운데 정렬을 위한 마진 설정 */
+    }
+
+    .reply-container {
+        background-color: #ffffff; /* 배경색을 원하는 색상으로 설정 */
+        padding: 20px; /* 적절한 여백 설정 */
+        border-radius: 10px; /* 원하는 형태의 모서리 설정 */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
+        max-width: 1100px; /* 원하는 최대 가로 너비 설정 */
+        margin: 0 auto; /* 가운데 정렬을 위한 마진 설정 */
+
+    }
+    
+    .review-content{
+    	font-size: 16px;
+    }
+    
+    .reply{
+    	font-size: 16px;
+    }
+        
     </style>
 </head>
 <body>
 <%@ include file="/nav.jsp" %>
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
+    <div class="container mt-3">
     <h1>REVIEW</h1>
     <hr>
-    <div class="container mt-3">
         <div class="review-content">
             <h3>${board.reviewTitle}</h3><br>
             <p>
@@ -72,7 +101,7 @@
             </span>
             </p>
             <!-- 주차공간 유무 출력 -->
-            <strong>주차공간 유무:</strong>
+            <strong>주차공간 :</strong>
             <c:choose>
                 <c:when test="${board.parkingAvailable}">
                     있음
@@ -82,7 +111,6 @@
                 </c:otherwise>
             </c:choose>
             <!--  별점 -->
-            <span class="text-bold">별점:</span>
                 <div>
                     <input type="radio" name="starRating" value="5" id="rate1" class="star-input" ${board.starRating == 5 ? 'checked' : ''}>
                     <label for="rate1" class="star-label">★</label>
@@ -100,13 +128,12 @@
                     <label for="rate5" class="star-label">★</label>
                 </div>
             <hr>
-            <p>${board.reviewContent}</p>
+            <p class="review-content">${board.reviewContent}</p>
             <%-- 파일이 이미지인 경우 이미지 태그로 표시 --%>
             <c:if test="${not empty board.reviewFile}">
                 <img src="${pageContext.request.contextPath}/resources/upload/review/${board.reviewFile}" alt="Attached Image" style="max-width: 100%;">
             </c:if>
         </div>
-    </div>
     <hr>
     <div>
     	<a href="boardList" type="button" class="btn btn-primary">글 목록</a>
@@ -115,14 +142,16 @@
         <button type="button" class="btn btn-primary" onclick="deleteBoard(${board.reviewNO})">삭제</button>
         </span>
     </div>
+    </div>
     
     <hr>
+    <div class="reply-container">
     <h3>댓글</h3>
     <br>
     <!-- 댓글 작성 폼 추가 -->
     <form action="${pageContext.request.contextPath}/review/insertReply" method="post">
     	<input type="hidden" name="reviewNO" value="${board.reviewNO}">
-    	<textarea name="replyContent" rows="4" cols="150" placeholder="댓글을 입력하세요"></textarea>
+    	<textarea name="replyContent" rows="4" cols="140" placeholder="댓글을 입력하세요"></textarea>
     	<br><br>
     	<span style="float: right;">
     	<button type="submit" class="btn btn-primary">댓글 등록</button>
@@ -143,6 +172,7 @@
     	</div>
     	
 	</c:forEach>
+	</div>
     
     </main>
 	
