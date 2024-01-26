@@ -53,8 +53,9 @@ public class BoardController {
 		System.out.println("file : " + file);
 		System.out.println("vo : " + vo.getMemberID());
 		
-		boolean parkingAvailable = false;
 		// 주차공간 유무 값 설정
+		String parkingAvailableValue = request.getParameter("parkingAvailable");
+		boolean parkingAvailable = "true".equals(parkingAvailableValue);
 	    vo.setParkingAvailable(parkingAvailable);
 
 		 // 파일 업로드 처리
@@ -87,6 +88,7 @@ public class BoardController {
 
         System.out.println(vo);
 		dao.boardPostOk(vo);
+		
 		return "redirect:boardList";
 	}
 	
