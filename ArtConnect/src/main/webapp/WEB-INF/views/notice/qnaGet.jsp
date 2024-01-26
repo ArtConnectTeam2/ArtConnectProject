@@ -16,13 +16,13 @@
 <style>
 
 #qna_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;
+	height: 90px;
+	padding: 17px;
 }
 
 table {
@@ -87,7 +87,7 @@ tfoot {
 			</tr>
 			<tbody>
 			<tr>
-				<td colspan="6">${vo.qnaContent}</td>
+				<td colspan="6"><c:out value="${vo.qnaContent}" /></td>
 			</tr>
 			</tbody>
 			<tfoot>

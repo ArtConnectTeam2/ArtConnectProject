@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,13 +16,13 @@
 <style>
 
 #qna_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;
+	height: 90px;
+	padding: 17px;
 }
 
 table {
@@ -75,7 +76,7 @@ td {
 					<td><input type="text" name="qnaTitle" value="${vo.qnaTitle}"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea cols="130" rows="20" name="qnaContent">${vo.qnaContent}</textarea>
+					<td colspan="2"><textarea cols="130" rows="20" name="qnaContent"><c:out value="${vo.qnaContent}" /></textarea>
 					</td>
 				</tr>
 				<tr>

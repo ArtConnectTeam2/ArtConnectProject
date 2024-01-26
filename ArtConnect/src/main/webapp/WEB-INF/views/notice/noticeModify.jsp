@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +16,15 @@
 <style>
 
 #notice_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;
+	height: 90px;
+	padding: 17px;
 }
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
 	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
@@ -70,7 +72,7 @@ td {
 					<td><input type="text" name="noticeTitle" value="${vo.noticeTitle}"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea cols="130" rows="20" name="noticeContent">${vo.noticeContent}</textarea>
+					<td colspan="2"><textarea cols="130" rows="20" name="noticeContent"><c:out value="${vo.noticeContent}" /></textarea>
 					</td>
 				</tr>
 				<tr>

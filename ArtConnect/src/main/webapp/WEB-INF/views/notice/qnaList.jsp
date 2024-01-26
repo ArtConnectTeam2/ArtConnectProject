@@ -15,37 +15,34 @@
 <style>
 
 #qna_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;
+	height: 90px;
+	padding: 17px;
 }
-#qna_search {
-	text-align: center;
-	font-size: medium;
-}
-#qna_count {
-	padding: 12px;
-}
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
-	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
-	height: 200px; /* 테이블의 높이를 200px로 설정 */
-	margin: auto;
+	width: 95%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
+	margin: auto; /* 가로 중앙에 배치 */
 }
+
 th {
-	padding: 12px; /* 안쪽 여백 설정 */
-	height: 12px;
+	padding: 20px; /* 안쪽 여백 설정 */
+	height: 50px;
 	background-color: #dcdcd1;
 	border-bottom: 3px solid #036;
+	font-size: 17px;
 	text-align: center; /* 텍스트 정렬 */
 }
+
 td {
 	padding: 20px; /* 안쪽 여백 설정 */
-	height: 12px;
+	height: 20px;
+	font-size: 15px;
 	border-bottom: 1px solid #ccc;
 	text-align: center; /* 텍스트 정렬 */
 }
@@ -77,7 +74,7 @@ tfoot{
 		<table border="1">
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
+				<th>제 목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
