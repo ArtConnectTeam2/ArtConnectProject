@@ -60,62 +60,14 @@ button {
 	top: 10px;
 	right: 10px;
 }
+
+.btn.btn-danger {
+  display: none;
+}
 </style>
 </head>
 <body>
-	<!-- header -->
-	<header role="header">
-
-		<div class="container">
-
-			<!-- logo -->
-
-			<h1>
-				<a href="${pageContext.request.contextPath}/gallery/main.jsp"
-					title="Logo"><img id="logo-image"
-					src="${pageContext.request.contextPath}/resources/img/gallery/메인 홈페이지/art.png"
-					title="art connect" alt="avana LLC" /></a>
-			</h1>
-
-			<!-- logo -->
-
-			<!-- nav -->
-
-			<nav role="header-nav" class="navy">
-
-				<ul>
-
-
-					<li class="nav-active">
-					<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-
-					<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
-
-					<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
-					
-
-					<li><a href="${pageContext.request.contextPath}/notice/noticeList" title="Contact">공지사항</a></li>
-					
-					<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
-					
-					<% if ("서울시립미술관".equals(session.getAttribute("memberName"))) {%>
-					<li><a href="${pageContext.request.contextPath}/gallery/programForm" title="Contact">프로그램 등록하기</a></li>
-					<% } %>
-				</ul>
-				<br>
-				
-			</nav>
-			
-			<!-- nav -->
-		
-		</div>
-		
-
-	</header>
-
+<%@ include file="/nav.jsp"%>
 	<main role="main-home-wrapper" class="container">
 		<!-- 메인 인삿말 -->
 		<div class="row">
