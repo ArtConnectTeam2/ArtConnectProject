@@ -12,13 +12,24 @@
     
     <title>커뮤니티</title>
 	<%@ include file="/header.jsp" %>
+	
+	<style>
+	.modify-container {
+        background-color: #ffffff; /* 배경색을 원하는 색상으로 설정 */
+        padding: 20px; /* 적절한 여백 설정 */
+        border-radius: 10px; /* 원하는 형태의 모서리 설정 */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
+        max-width: 1100px; /* 원하는 최대 가로 너비 설정 */
+        margin: 0 auto; /* 가운데 정렬을 위한 마진 설정 */
+    }
+	</style>
 </head>
 <body>
 <%@ include file="/nav.jsp" %>
 	
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
-    <div class="container mt-5">
+    <div class="modify-container">
         <h3>글 수정</h3><br>
         <form:form action="boardModifyOk" method="post" modelAttribute="board">
             <input type="hidden" name="reviewNO" value="${board.reviewNO}" />

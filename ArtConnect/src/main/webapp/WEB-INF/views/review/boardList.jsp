@@ -9,6 +9,37 @@
 <head>
 <title>커뮤니티</title>
 <%@ include file="/header.jsp" %>
+<style>
+
+.container.mt-3 {
+        background-color: #ffffff; /* 배경색을 원하는 색상으로 설정 */
+        padding: 20px; /* 적절한 여백 설정 */
+        border-radius: 10px; /* 원하는 형태의 모서리 설정 */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
+        max-width: 1200px; /* 원하는 최대 가로 너비 설정 */
+        margin: 0 auto; /* 가운데 정렬을 위한 마진 설정 */
+    }
+    
+ .table th, .table td {
+        font-size: 16px; /* 원하는 글씨 크기로 조정 */
+    }
+    
+  .table th a,
+    .table td a {
+        color: black; /* 기본으로 검정색으로 설정 */
+        text-decoration: none; /* 링크의 밑줄 제거 */
+        transition: color 0.3s; /* 부드러운 색상 전환을 위한 트랜지션 추가 */
+    }
+
+    .table th a:hover,
+    .table td a:hover {
+        color: red; /* 호버 시에 빨간색으로 변경 */
+        text-decoration: underline; /* 호버 시에만 밑줄 표시 */
+    }  
+  
+  
+  
+</style>
 </head>
 
 <body>
@@ -16,9 +47,9 @@
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container mt-5">
+	<div class="container mt-3">
 	<h1>REVIEW</h1>
 	<hr>
-	<div class="container mt-3">
 	<table class="table">
 		<thead>
 			<tr>
@@ -37,10 +68,10 @@
 		<td>${board.memberID}</td>
 		<td>
 		<a href="boardOne?reviewNO=${board.reviewNO}">
-		${fn:substring(board.reviewTitle, 0, 15)}
+		${fn:substring(board.reviewTitle, 0, 12)}
 		</a>
 		</td>
-		<td>${fn:substring(board.reviewContent, 0, 50)}</td>
+		<td>${fn:substring(board.reviewContent, 0, 40)}</td>
 		<td><fmt:formatDate value="${board.reviewDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 		<td>${board.reviewHit}</td>
 		</tr>
@@ -56,7 +87,7 @@
 	</span>
 	</div>
 	<!-- 페이징 부분 추가 -->
-<div class="container mt-3">
+<div class="paging">
     <ul class="pagination">
         <c:forEach begin="1" end="${pageVO.totalPages}" varStatus="i">
             <li class="${pageVO.page eq i.index ? 'active' : ''}">
