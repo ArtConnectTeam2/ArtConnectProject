@@ -29,6 +29,20 @@ strong {
 p{
 	color: black;
 }
+
+.rounded-container {
+    border: 2px solid #333; /* 테두리 스타일 설정 */
+    border-radius: 10px; /* 테두리의 모서리를 둥글게 만듭니다. */
+    padding: 20px; /* 적절한 패딩 값 적용 */
+    width: 1170px;
+    background-color: white;
+}
+
+#viewMoreButton {
+    font-size: 1.3em;
+    margin-left : 0px;
+}
+
 </style>
 
 <script>
@@ -47,8 +61,8 @@ p{
 
 		<!-- work details -->
 		<div class="work-details" style="margin-left: 0; padding: 0;">
-			<div class="row">
-				<h2 style="padding-left : 15px;">${program.programTitle}</h2>
+			<div class="row rounded-container">
+				<h2 style="padding-left : 15px; font-size: 36px;" >${program.programTitle}</h2>
 				<div class="col-xs-12 col-sm-12 col-md-5">
 					<header role="work-title">
 
@@ -59,25 +73,26 @@ p{
 					</header>
 				</div>
 
+
 				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 0px;">
 					<section>
-						<h2 style="margin-left: 0px;">프로그램 정보</h2>
+						<h2 style="margin-left: 0px; font-size: 36px;">프로그램 정보</h2>
 						
-						<p>
-							<strong>프로그램 대표 아티스트 : </strong> ${program.artist} <br /> <strong>프로그램
-							전시실 : </strong> ${program.programRoom} <br /> <strong>프로그램 전시기간
-							: </strong>
+						<p style="font-size: 25px; line-height: 1.5; color : black;">
+							<strong style="font-size: 25px;">프로그램 대표 아티스트 : </strong> ${program.artist} <br /> 
+							<strong style="font-size: 25px;">프로그램 전시실 : </strong> ${program.programRoom} <br /> 
+							<strong style="font-size: 25px;">프로그램 전시기간 : </strong>
 						<fmt:formatDate value="${program.programStart}"
-							pattern="yyyy년 MM월 dd일" />
+							pattern="yyyy.MM.dd" />
 						-
 						<fmt:formatDate value="${program.programEnd}"
-							pattern="yyyy년 MM월 dd일" />
+							pattern="yyyy.MM.dd" />
 						<br/> 
-						<strong>성인 요금 : </strong> ${program.priceAdult}원 <br />
-						<strong>청소년 요금 : </strong> ${program.priceTeenager}원 <br /> 
-						<strong>아동 요금 : </strong> ${program.priceChild}원 <br /> 
-						<strong>프로그램 문의처 : </strong>${program.programTel}<br/><br>
-						<strong>프로그램 예약 : </strong><br /> 
+						<strong style="font-size: 25px;">성인 요금 : </strong> ${program.priceAdult}원 <br />
+						<strong style="font-size: 25px;">청소년 요금 : </strong> ${program.priceTeenager}원 <br /> 
+						<strong style="font-size: 25px;">아동 요금 : </strong> ${program.priceChild}원 <br /> 
+						<strong style="font-size: 25px;">프로그램 문의처 : </strong>${program.programTel}<br/><br>
+						<strong style="font-size: 25px;">프로그램 예약 </strong><br /> 
 						
 						<a href="${pageContext.request.contextPath}/reservation/reservation/${program.galleryID}/${program.programID}">
 							<button id="viewMoreButton" class="btn btn-primary">예약하기</button>
@@ -89,18 +104,23 @@ p{
 			</div>
 		</div>
 
-			<div class="work-explain">
+<br>
+<br>
+<br>
+<br>
+<br>
+			<div class="work-explain rounded-container" style="margin-left:-15px;">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<header role="work-title" style="text-align: left;">
-							<h2 style="margin-left: 0px;">프로그램 설명</h2>
+							<h2 style="margin-left: 0px; font-size: 36px;">프로그램 설명</h2>
 						</header>
 						
 						<br>
 				<%-- 프로그램 설명을 출력할 부분 --%>
 				<c:choose>
 					<c:when test="${program.programID eq 1}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							<strong style="font-weight: bold; font-size: 18px;">MMCA 현대차 시리즈</strong> 2023
 							2023.09.06 ~ 2024.02.25 <br> 
 							<strong style="font-weight: bold; font-size: 18px;">김구림</strong> 2023.08.25 ~ 2024.02.12<br> 
@@ -112,7 +132,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 2}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							<strong style="font-weight: bold; font-size: 18px;">갈라 포라스-김(2전시실)</strong>
 <br>
 							갈라 포라스-김은 LA와 런던을 오가며 활동하는 작가이다. <br> 
@@ -147,7 +167,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 3}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							MMCA 현대차 시리즈는 한국 현대미술의 지평을 넓히고 한국의 주요 작가들의 국제적 위상을 높이는 계기를 마련하고자 2014년부터 마련된 연례 프로그램으로, 10회째를 맞이한 2023년에는 작가 정연두가 선정되었다. <br>
 							정연두는 평범한 사람들의 이야기와 역사적 사건을 소재로 기억과 재현, 현실과 이미지, 거대서사와 개별서사의 역설적 관계에 대해 질문을 던지는, 퍼포먼스와 연출 중심의 사진과 영상, 설치 작업으로 국내외 미술계의 조명을 받아왔다. <br>
 							특히 2014년 이후에는 전쟁, 재난, 이주, 국가, 이데올로기와 같은 거시적 내러티브를 개인 서사 및 신화와 설화 등을 통해 재구성하고, 시와 음악, 연극의 언어를 경유하면서 다큐멘터리적 서사가 조직되는 과정에서 드러나지 않은
@@ -170,7 +190,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 4}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							리솔츠는 ‘생각하는 아름다움’의 가치가 깃든 스킨, 헤어, 바디 케어 제품을 제안합니다.<br> 
 							균형된 삶이 가져다 주는 아름다움과 그것을 찾아가는 과정에 대한 공감을 바탕으로 리솔츠만의 리추얼을 설계합니다.<br>
 							리솔츠와 비더비는 전시를 통해 여러분에게 매력적인 삶과 아름다움에 대한 이야기를 전합니다. <br> 
@@ -193,7 +213,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 5}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							대담하고 도발적인 디자인으로 널리 찬사를 받는 세계적인 디자이너 스테판 사그마이스터(Stefan Sagmeister)는 이번 전시에서 과거와 현재의 데이터를 비교해 ‘지금이 더 나은 세상이다’ 라는 긍정적인 메시지를 보여주는 100여점의 작품을 선보입니다.<br> 
 							스테판 사그마이스터는 짧게는 50년에서 길게는 200년까지 삶의 질, 기대수명, 죽음, 빈곤, 범죄율, 온실가스 배출 등의 글로벌 이슈와 연관된 유의미한 데이터와 근거자료를 조사하고 이를 바탕으로 디자이너의 시각을 표현한 혼합매체 작품 시리즈를 제작했습니다.<br> 
 <br>
@@ -208,11 +228,11 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 6}">
-						<p style="font-size: 17px;">프로그램 설명이 없습니다.</p>
+						<p style="font-size: 17px; line-height: 2;">프로그램 설명이 없습니다.</p>
 					</c:when>
 
 					<c:when test="${program.programID eq 7}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							현대의 한국화는 동양의 전통적 사유체계를 기반으로 다양한 철학적 변주를 보여주고 있습니다. <br> 
 							기후 변화, 생태 환경의 파괴 등을 바라보며 인간의 통제 속에 가두려 했던 기존의 사고방식을 재고하여 자연과 공생하는 인간으로서 세계를 어떻게 이해해야 할지의 논재를 고민해야 할 시점입니다.<br>
 <br> 
@@ -227,7 +247,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 8}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							2022년 7월 26일부터 2023년 3월 12일까지 서울시립 북서울미술관은 관람객 참여형 어린이 전시《서도호와 아이들 : 아트랜드를 개최했습니다. <br> 
 							이를 통해 약 14,000명의 어린이들이 만든 61개의 섬으로 이어진 거대한 아트랜드가 탄생하였습니다.<br> 
 							서도호 작가와 그의 두 아이들은 집에서 어린이용 점토를 사용해 다양한 동식물이 사는 복잡하고 환상적인 생태계 ‘아트랜드’를 만들었습니다. <br> 
@@ -240,7 +260,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 9}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							2023 유휴공간 프로젝트 빛나는 방, 속삭이는 거울(Glowing Chambers, Whispering Mirrors)새롭게 조성되어 시민들의 활용도가 높은 북서울미술관 2층 ‘라운지’와 3층 아트라이브러리 유휴공간에 람한 작가의 작품을 전시함으로써 서울시립미술관의 소장품 향유 기회를 확대합니다.<br> 
 <br> 
 							<strong style="font-weight: bold; font-size: 18px;">유휴공간 프로젝트</strong><br> 
@@ -251,7 +271,7 @@ p{
 					</c:when>
 
 					<c:when test="${program.programID eq 10}">
-						<p style="font-size: 17px;">
+						<p style="font-size: 17px; line-height: 2;">
 							성북구립미술관은 2022년 7월 30일부터 2024년 6월 30일까지 미술관 외부에 위치한 복합문화공간 ‘거리갤러리’에서 공공미술 프로젝트로 기획된 조각가 정현의 『시간의 초상을 개최한다.<br> 
 <br>
 							2018년 첫 개관한 성북구립미술관 거리갤러리에서는 최정화, 김승영 등 한국을 대표하는 현대미술가들의 다채로운 설치 작품들을 지속적으로 선보여왔다. <br> 
