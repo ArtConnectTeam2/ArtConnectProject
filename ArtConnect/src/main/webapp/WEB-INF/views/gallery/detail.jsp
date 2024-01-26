@@ -27,9 +27,18 @@ strong {
 }
 
  #likeButton {
-        font-size: 25px; /* 원하는 크기로 조정하세요 */
-        padding: 16px;
+        font-size: 65px; /* 원하는 크기로 조정하세요 */
+        color: red;
+        background-color: transparent;
+        border:none;
     }
+
+#like-container {
+	width: 65px;
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+}
 
 </style>
 
@@ -71,6 +80,7 @@ strong {
 							<img
 								src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}"
 								alt="${gallery.galleryName} 이미지" class="img-responsive" />
+								<div id="like-container"><button id="likeButton">♡</button></div>
 						</div>
 					</header>
 				</div>
@@ -82,15 +92,12 @@ strong {
 							<strong>미술관 주소 : </strong> ${gallery.galleryLocation} <br /> <strong>미술관
 								운영시간 : </strong> ${gallery.galleryOpentime} - ${gallery.galleryClosetime}
 							<br /> <strong>미술관 휴관일 : </strong><span id="closedDayDisplay"></span><br />
-							<strong>미술관 연락처 : </strong>${gallery.galleryTel}<br />
-							<strong>미술관 좋아요 :</strong><br />
-							<button id="likeButton" class="btn-gradient red small">♡</button>
-							<br>
-							<strong id="likeMessage"></strong> <br><br>
-							<strong>프로그램 예약</strong><br />
+							<strong>미술관 연락처 : </strong>${gallery.galleryTel}<br><br>
+							<strong>프로그램 예약</strong><br>
 							<a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">
 							<button class="btn btn-primary">예약하기</button>
-							</a>
+							</a><br><br><br>
+							<strong id="likeMessage"></strong> 
 						</p>
 					</section>
 				</div>

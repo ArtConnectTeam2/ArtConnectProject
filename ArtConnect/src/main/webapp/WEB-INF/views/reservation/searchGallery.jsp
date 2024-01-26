@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!-- Display information for multiple galleries -->
 <div>
-	<h1 style="margin-top: -80px; margin-left: 10px">검색된 미술관 목록</h1>
+	<h1>검색된 미술관 목록</h1>
 	<br><br>
 	<c:choose>
 		<c:when test="${not empty searchGallery}">
@@ -25,7 +25,7 @@
                 	<c:set var="dayOfWeek" value="${gallery.closedDay}" />
 					<c:set var="closedDays" value="${fn:split(dayOfWeek, ', ')}" />
 						<tr>
-							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="Gallery Image" style="width: 150px; height: auto;"></a></td>
+							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}"><img src="${pageContext.request.contextPath}/resources/img/gallery/${gallery.galleryImg}" alt="Gallery Image" style="width: 200px; height: 200px;"></a></td>
 							<td><a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">${gallery.galleryName}</a></td>
 							<td>${gallery.galleryLocation}</td>
 							<td>${gallery.galleryTel}</td>
