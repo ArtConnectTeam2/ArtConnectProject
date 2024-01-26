@@ -79,6 +79,11 @@
 		top: 10px;
 		right: 10px;
 	}
+	.container.mt-3.pagination-container {
+    text-align:center; /* 오른쪽 정렬 */
+    margin-top: -200px; /* 위에서 원하는 여백 값으로 조절 */
+      margin-bottom: 150px;
+}
 	.container.pagination-container {
     text-align: center;
 }

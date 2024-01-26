@@ -157,7 +157,7 @@
       border-radius: 10px;
       padding: 20px;
       background-color: white;
-      margin : 80px;
+      margin : 80px auto;
       margin-top: -1px;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
@@ -206,12 +206,15 @@ input:focus {
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 #tel_check {
+	margin-top: -5px;
     margin-left: -330px;
 }
 #name_check {
-    margin-left: -340px;
+	margin-top: -5px;
+    margin-left: -330px;
 }
 #email_check {
+	margin-top: -5px;
     margin-left: -310px;
 }
 
@@ -225,6 +228,13 @@ footer {
 }
 .row {
     margin-top: 0px;
+}
+.btn-primary {
+    margin-top: -40px; 
+}
+
+.btn-secondary {
+    margin-top: -40px;
 }
 	</style>
 </head>
