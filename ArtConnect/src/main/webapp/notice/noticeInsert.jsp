@@ -7,57 +7,20 @@
 
 <title>공지사항작성</title>
 
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
-<!-- Bootstrap -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<!-- font-awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
-	rel="stylesheet" type="text/css">
+<%@ include file="/header.jsp" %>
+
 <style type="text/css">
-/* 네비게이션 위치 조정 */
-.navy {
-	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
-}
-.navbar-brand {
-	position: absolute;
-	top: 5px;
-	left: 20px;
-}
-.login {
-	position: absolute;
-	top: 5px;
-	left: 100px;
-}
+
 #notice_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;	
-	
+	height: 90px;
+	padding: 17px;
 } 
+
 table {
 	border-collapse: collapse; /* 테이블 셀 경계를 합침 */
 	width: 80%; /* 테이블의 전체 너비를 화면에 맞게 설정 */
@@ -82,48 +45,8 @@ td {
 </style>
 </head>
 <body>
-	<header role="header">
-		<div class="container">
-			<!-- nav -->
-			<nav role="header-nav" class="navy">
-				<ul>
-					<li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
 
-					<li><a
-						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
-						title="About">예약</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/review/boardList.jsp"
-						title="Blog">커뮤니티</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
-						title="Contact">마이 페이지</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList"
-						title="Contact">공지사항</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/notice/qnaList"
-						title="Contact">QnA</a></li>
-				</ul>
-				<div class="login">
-					<button class="btn btn-danger" onclick="showLoginModal()">로그인</button>
-				</div>
-			</nav>
-			<!-- Navigation -->
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container">
-					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
-					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px; "> </a>
-				</div>
-			</nav>
-		</div>
-	</header>
+	<%@ include file="/nav.jsp"%>
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
@@ -137,7 +60,7 @@ td {
 	<form action="noticeInsert">
 		<div>
 		<table>
-				<input name="noticeID" value="admin" type="hidden">
+				<input name="memberID" value="admin" type="hidden">
 			<tr>
 				<th>글쓴이</th>
 				<td><input name="noticeName" value="관리자"></td>
@@ -171,50 +94,7 @@ td {
 		</div>
 	</footer>
 
-	<!-- JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
-		type="text/javascript"></script>
-
-	<script>
-		function redirectToWritePage() {
-			// Redirect to the write page URL
-			window.location.href = "noticeList.jsp";
-		}
-	</script>
+	<%@ include file="/alljs.jsp"%>
 
 </body>
 </html>

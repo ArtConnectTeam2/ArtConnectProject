@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class NoticeController {
@@ -96,6 +97,20 @@ public class NoticeController {
         model.addAttribute("pagingVO", pagingVO);
 		
 		return "notice/noticeList";
+	}
+	
+	//공지사항 목록 + 검색
+	@RequestMapping("notice/noticeSearch")
+	@ResponseBody
+	public List<NoticeVO> searchList(Model model,
+							@RequestParam("type") String type,
+							@RequestParam("keyword") String keyword) {
+		
+		System.out.println(type);
+		List<NoticeVO> list2 = service.searchList(type, keyword);
+
+		//model.addAttribute("list2",list2);
+		return list2;
 	}
 	
 }	

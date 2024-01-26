@@ -3,7 +3,7 @@ package com.multi.artConnect.notice;
 public class NoticeVO {
 	
 	private int noticeNO;
-	private String noticeID;
+	private String memberID;
 	private String noticeName;
 	private String noticeTitle;
 	private String noticeContent;
@@ -21,11 +21,11 @@ public class NoticeVO {
 	public void setNoticeNO(int noticeNO) {
 		this.noticeNO = noticeNO;
 	}
-	public String getNoticeID() {
-		return noticeID;
+	public String getMemberID() {
+		return memberID;
 	}
-	public void setNoticeID(String noticeID) {
-		this.noticeID = noticeID;
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 	public String getNoticeName() {
 		return noticeName;
@@ -70,13 +70,13 @@ public class NoticeVO {
 		this.keyworld = keyworld;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "NoticeVO [noticeNO=" + noticeNO + ", noticeID=" + noticeID + ", noticeName=" + noticeName
+		return "NoticeVO [noticeNO=" + noticeNO + ", memberID=" + memberID + ", noticeName=" + noticeName
 				+ ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent + ", noticeRegdate="
 				+ noticeRegdate + ", noticeHit=" + noticeHit + ", type=" + type + ", keyworld=" + keyworld + "]";
 	}
-	
 
 
 }

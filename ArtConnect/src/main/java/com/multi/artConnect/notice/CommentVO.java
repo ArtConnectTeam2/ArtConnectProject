@@ -6,7 +6,7 @@ public class CommentVO {
 	
 	private int commentRNO;
 	private int commentBNO;
-	private String commentWriter;
+	private String memberID;
 	private String commentContent;
 	private Date commentRegDate;
 	
@@ -22,11 +22,11 @@ public class CommentVO {
 	public void setCommentBNO(int commentBNO) {
 		this.commentBNO = commentBNO;
 	}
-	public String getCommentWriter() {
-		return commentWriter;
+	public String getMemberID() {
+		return memberID;
 	}
-	public void setCommentWriter(String commentWriter) {
-		this.commentWriter = commentWriter;
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 	public String getCommentContent() {
 		return commentContent;
@@ -43,7 +43,7 @@ public class CommentVO {
 	
 	@Override
 	public String toString() {
-		return "CommentVO [commentRNO=" + commentRNO + ", commentBNO=" + commentBNO + ", commentWriter=" + commentWriter
+		return "CommentVO [commentRNO=" + commentRNO + ", commentBNO=" + commentBNO + ", memberID=" + memberID
 				+ ", commentContent=" + commentContent + ", commentRegDate=" + commentRegDate + "]";
 	}
 

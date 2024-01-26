@@ -7,22 +7,22 @@
 	<!-- QnA 댓글조회 -->
 	<select id="commentList" resultType="commentVO"  parameterType="int">
 		select
-			commentRNO, commentBNO, commentWriter, commentContent, commentRegdate
+			commentRNO, commentBNO, memberID, commentContent, commentRegdate
 		from comment
 		where commentBNO = #{commentBNO}
 	</select>
 
 	<!-- QnA 댓글작성 -->
 	<insert id="commentInsert" parameterType="commentVO">
-		insert into comment(commentBNO, commentWriter, commentContent, commentRegDate)
-		value(#{commentBNO}, #{commentWriter}, #{commentContent}, now())
+		insert into comment(commentBNO, memberID, commentContent, commentRegDate)
+		value(#{commentBNO}, #{memberID}, #{commentContent}, now())
 	</insert>
 	
 	<!-- QnA 수정 -->
 	<update id="commentModify">
 		update comment set
-		writer = #{commentWriter},
-		content = #{commentContent}
+		memberID = #{memberID},
+		commentContent = #{commentContent}
 		where commentRNO = #{commentRNO}
 		and commentBNO = #{commentBNO}	
 	</update>

@@ -11,60 +11,18 @@
 
 <title>QnA조회</title>
 
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/images/favicon.ico"
-	type="image/x-icon">
-<!-- Bootstrap -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<!-- style -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<!-- font-awesome -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/set2.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/normalize.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/effects/component.css"
-	rel="stylesheet" type="text/css">
+<%@ include file="/header.jsp" %>
 	
 <style>
 
-/* 네비게이션 위치 조정 */
-.navy {
-	position: absolute;
-	top: 10px; /* 원하는 값으로 조정해주세요 */
-	right: 10px; /* 원하는 값으로 조정해주세요 */
-}
-
-.navbar-brand {
-	position: absolute;
-	top: 5px;
-	left: 20px;
-}
-
-.login {
-	position: absolute;
-	top: 5px;
-	left: 100px;
-}
-
 #qna_title {
-	border:5px double;
-	border-color:#6E6E6E;
-	border-radius: 1%; /* 모서리전체둥글기지정 */
+	border: 5px solid #FFAAAA;
+	background-color: #FFDDDD;
 	text-align: center;
-	font-size: x-large;
+	font-size: 30px;
 	font-weight: bold; /* 글자굵기 */
-	line-height: 2;
+	height: 90px;
+	padding: 17px;
 }
 
 table {
@@ -97,48 +55,8 @@ tfoot {
 
 </head>
 <body>
-	<header role="header">
-		<div class="container">
-			<!-- nav -->
-			<nav role="header-nav" class="navy">
-				<ul>
-					<li class="nav-active"><a
-						href="${pageContext.request.contextPath}/gallery/list"
-						title="Work">전시관 조회 및 검색</a></li>
 
-					<li><a
-						href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp"
-						title="About">예약</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/review/boardList.jsp"
-						title="Blog">커뮤니티</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/mypage/mypage.jsp"
-						title="Contact">마이 페이지</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/notice/noticeList"
-						title="Contact">공지사항</a></li>
-
-					<li><a
-						href="${pageContext.request.contextPath}/notice/qnaList"
-						title="Contact">QnA</a></li>
-				</ul>
-				<div class="login">
-					<button class="btn btn-danger" onclick="showLoginModal()">로그인</button>
-				</div>
-			</nav>
-			<!-- Navigation -->
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container">
-					<a href="${pageContext.request.contextPath}/gallery/main.jsp" title="Art Connect">
-					<img src="${pageContext.request.contextPath}/resources/img/art.png" alt="Your Logo" class="img-fluid" style="max-width: 300px; max-height: 100px; "> </a>
-				</div>
-			</nav>
-		</div>
-	</header>
+	<%@ include file="/nav.jsp"%>
 
 	<!-- Main Content -->
 	<main role="main-home-wrapper" class="container">
@@ -157,7 +75,7 @@ tfoot {
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td colspan="5">${vo.qnaID}</td>
+				<td colspan="5">${vo.memberID}</td>
 			</tr>
 			<tr>
 				<th>번 호</th>
@@ -169,7 +87,7 @@ tfoot {
 			</tr>
 			<tbody>
 			<tr>
-				<td colspan="6">${vo.qnaContent}</td>
+				<td colspan="6"><c:out value="${vo.qnaContent}" /></td>
 			</tr>
 			</tbody>
 			<tfoot>
@@ -178,7 +96,7 @@ tfoot {
 						<a href="qnaList" class="btn btn-primary">목록</a>
 				</td>
 				<td colspan="4" style="border-left: none; border-right: none; border-bottom: none;"></td>
-				<c:if test="${sessionScope.memberID eq 'hello' }"> <!-- 'hello'로 로그인시에만 공지사항 수정/삭제 버튼 나오도록 -->
+				<c:if test="${sessionScope.memberID eq 'admin' }"> <!-- 'admin'로 로그인시에만 qna 수정/삭제 버튼 나오도록 -->
 				<td style="border-left: none; border-right: none; border-bottom: none;">
 						<a href="qnaModify?qnaNO=${vo.qnaNO}" class="btn btn-primary">수정</a>
 						<a onclick="return confirm('정말로삭제하겠습니까?')"href="qnaDel?qnaNO=${vo.qnaNO}" class="btn btn-primary">삭제</a>
@@ -197,7 +115,7 @@ tfoot {
 		<table>
 			<c:forEach items="${list}" var="vo2">
 			<tr>
-				<th>${vo2.commentWriter}</th>
+				<th>${vo2.memberID}</th>
 				<th>${vo2.commentRegDate}</th>
 			</tr>
 			<tr>
@@ -210,13 +128,13 @@ tfoot {
 	<hr>
 	
 	<!-- 댓글작성 -->
-	<c:if test="${sessionScope.memberID eq 'hello' }"> <!-- 'hello'로 로그인시에만 공지사항 수정/삭제 버튼 나오도록 -->
+	<c:if test="${sessionScope.memberID eq 'admin' }"> <!-- 'admin'로 로그인시에만 qna 수정/삭제 버튼 나오도록 -->
 	<div>
 		<form  action="commentInsert">
 		<table>
 			<tr>
 				<th colspan="2">댓글작성자</th>
-				<td colspan="2"><input type="text" name="commentWriter" value="관리자"></td>
+				<td colspan="2"><input type="text" name="memberID" value="관리자"></td>
 			</tr>
 			<tr>
 				<td colspan="4"><textarea rows="3" cols="110" name="commentContent"></textarea></td>
@@ -245,43 +163,7 @@ tfoot {
 		</div>
 	</footer>
 
-	<!-- JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/nav.js"
-		type="text/javascript"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/js/custom.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/masonry.pkgd.min.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/imagesloaded.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/classie.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/AnimOnScroll.js"
-		type="text/javascript"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/effects/modernizr.custom.js"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/html5shiv.js"
-		type="text/javascript"></script>
+	<%@ include file="/alljs.jsp"%>
 
 </body>
 </html>

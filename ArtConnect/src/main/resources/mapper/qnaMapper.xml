@@ -16,7 +16,7 @@
 		values(
 		null,
 		#{qnaTitle},
-		#{qnaID},
+		#{memberID},
 		now(),
 		0,
 		#{qnaContent}
@@ -27,7 +27,7 @@
 	<select id="getpage" parameterType="int" resultType="qnaVO">
 		select qnaNO
 			 , qnaTitle
-		     , qnaID
+		     , memberID
 		     , qnaContent
 		     , qnaHit
 		     , qnaRegdate

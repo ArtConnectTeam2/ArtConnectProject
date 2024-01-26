@@ -4,7 +4,7 @@ public class QnaVO {
 
 	private int qnaNO;
 	private String qnaTitle;
-	private String qnaID;
+	private String memberID;
 	private String qnaRegdate;
 	private String qnaContent;	
 	private int qnaHit;
@@ -21,11 +21,11 @@ public class QnaVO {
 	public void setQnaTitle(String qnaTitle) {
 		this.qnaTitle = qnaTitle;
 	}
-	public String getQnaID() {
-		return qnaID;
+	public String getMemberID() {
+		return memberID;
 	}
-	public void setQnaID(String qnaID) {
-		this.qnaID = qnaID;
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 	public String getQnaRegdate() {
 		return qnaRegdate;
@@ -48,8 +48,11 @@ public class QnaVO {
 	
 	@Override
 	public String toString() {
-		return "QnaVO [qnaNO=" + qnaNO + ", qnaTitle=" + qnaTitle + ", qnaID=" + qnaID + ", qnaRegdate=" + qnaRegdate
-				+ ", qnaContent=" + qnaContent + ", qnaHit=" + qnaHit + "]";
+		return "QnaVO [qnaNO=" + qnaNO + ", qnaTitle=" + qnaTitle + ", memberID=" + memberID + ", qnaRegdate="
+				+ qnaRegdate + ", qnaContent=" + qnaContent + ", qnaHit=" + qnaHit + "]";
 	}
+	
+	
+
 	
 }
