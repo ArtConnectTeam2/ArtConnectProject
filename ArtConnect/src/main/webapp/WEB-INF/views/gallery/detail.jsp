@@ -31,8 +31,7 @@ strong {
         color: red;
         background-color: transparent;
         border:none;
-    }
-
+  }
 
 .rounded-container {
     border: 2px solid #333; /* 테두리 스타일 설정 */
@@ -45,6 +44,7 @@ strong {
 .btn.btn-primary {
     font-size: 1.3em;
     margin-left : 0px;
+}
 
 #like-container {
 	width: 65px;
@@ -98,16 +98,21 @@ strong {
 
 				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
 					<section>
-						<p>
-							<strong>미술관 주소 : </strong> ${gallery.galleryLocation} <br /> <strong>미술관
-								운영시간 : </strong> ${gallery.galleryOpentime} - ${gallery.galleryClosetime}
-							<br /> <strong>미술관 휴관일 : </strong><span id="closedDayDisplay"></span><br />
-							<strong>미술관 연락처 : </strong>${gallery.galleryTel}<br><br>
-							<strong>프로그램 예약</strong><br>
+
+						<p style="font-size: 25px; line-height: 1.5; color : black; margin-bottom:0px; padding-top : 15px;">
+							<strong style="font-size: 25px;">미술관 주소 : </strong> ${gallery.galleryLocation} <br /> 
+							<strong style="font-size: 25px;">미술관 운영시간 : </strong> ${gallery.galleryOpentime} - ${gallery.galleryClosetime}<br /> 
+							<strong style="font-size: 25px;">미술관 휴관일 : </strong><span id="closedDayDisplay"></span><br />
+							<strong style="font-size: 25px;">미술관 연락처 : </strong>${gallery.galleryTel}<br />
+							<strong style="font-size: 25px;">프로그램 예약</strong><br />
 							<a href="${pageContext.request.contextPath}/reservation/programSelection/${gallery.galleryID}">
 							<button class="btn btn-primary">예약하기</button>
-							</a><br><br><br>
-							<strong id="likeMessage"></strong> 
+							</a>
+							<br><br><br>
+							
+							<strong id = "likeMessage" style="font-size: 25px;">미술관 좋아요</strong><br />
+				
+							
 						</p>
 					</section>
 				</div>
@@ -340,7 +345,7 @@ strong {
 	                        likeButton.innerText = '♥';
 
 	                        var likeMessage = $("#likeMessage");
-	                        likeMessage.text("마이페이지에 추가되었습니다.");
+	                        likeMessage.text("좋아요가 마이페이지에 추가되었습니다.");
 	                    },
 	                    error: function(error) {
 	                        console.error("Error 발생: " + error);
@@ -365,7 +370,7 @@ strong {
 	                        likeButton.innerText = '♡';
 
 	                        var likeMessage = $("#likeMessage");
-	                        likeMessage.text("삭제함");
+	                        likeMessage.text("좋아요가 마이페이지에서 삭제되었습니다");
 	                    },
 	                    error: function(error) {
 	                        console.error("Error: " + error);

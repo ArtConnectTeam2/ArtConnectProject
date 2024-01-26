@@ -76,7 +76,7 @@ p{
 
 				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 0px;">
 					<section>
-						<h2 style="margin-left: 0px; font-size: 36px;">프로그램 정보</h2>
+						<h2 style="margin-left: 0px; font-size: 36px;  padding-top : 10px;">프로그램 정보</h2>
 						
 						<p style="font-size: 25px; line-height: 1.5; color : black;">
 							<strong style="font-size: 25px;">프로그램 대표 아티스트 : </strong> ${program.artist} <br /> 
