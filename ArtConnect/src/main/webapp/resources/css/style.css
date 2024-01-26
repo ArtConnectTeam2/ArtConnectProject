@@ -329,7 +329,7 @@ article[role="pge-title-content"].contact-header p a:hover{color:#fb5353; text-d
 
 /*== Work Details ==*/
 
-.work-details,.blog-details{ padding:0 69px; margin-top:73px}
+.work-details,.blog-details{ padding:0 69px; margin-top:0px}
 
 .work-details header h2{ color:#343434; font-size:36px; font-weight:800}
 

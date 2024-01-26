@@ -33,6 +33,19 @@ strong {
         border:none;
     }
 
+
+.rounded-container {
+    border: 2px solid #333; /* 테두리 스타일 설정 */
+    border-radius: 10px; /* 테두리의 모서리를 둥글게 만듭니다. */
+    padding: 20px; /* 적절한 패딩 값 적용 */
+    width: 1170px;
+    background-color: white;
+}
+
+.btn.btn-primary {
+    font-size: 1.3em;
+    margin-left : 0px;
+
 #like-container {
 	width: 65px;
 	position: absolute;
@@ -56,9 +69,7 @@ strong {
 
 	<main role="main-inner-wrapper" class="container">
 
-		<!-- work details -->
-		<div class="work-details">
-			<div class="row">
+			<div class="row rounded-container work-details">
 				<div class="col-xs-12 col-sm-12 col-md-5">
 					<header role="work-title">
 						<h2>${gallery.galleryName}</h2>
@@ -87,7 +98,6 @@ strong {
 
 				<div class="col-xs-12 col-sm-12 col-md-7" style="margin-top: 110px;">
 					<section>
-
 						<p>
 							<strong>미술관 주소 : </strong> ${gallery.galleryLocation} <br /> <strong>미술관
 								운영시간 : </strong> ${gallery.galleryOpentime} - ${gallery.galleryClosetime}
@@ -125,12 +135,18 @@ strong {
 
 			<div class="clearfix"></div>
 
-			<div class="work-images grid">
+<br>
+<br>
+<br>
+<br>
+<br>
+
+			<div class="work-images grid rounded-container" style="margin-left:-15px; margin-top:0px;">
 				<div class="work-map" style="margin-top: -10px;">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
 							<header role="work-title" style="text-align: left;">
-								<h2 style="margin-left: 0px;">찾아오시는길</h2>
+								<h2 style="margin-left: 0px; margin-bottom : 20px; font-size: 36px;">찾아오시는길</h2>
 							</header>
 						</div>
 					</div>
@@ -159,12 +175,20 @@ strong {
                             // 마커가 지도 위에 표시되도록 설정합니다
                             marker.setMap(map);
                         </script>
+				</div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
+			<div class="rounded-container" style="margin-left:-15px;">
 				<div class="work-program">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
 							<header role="work-title" style="text-align: left;">
-								<h2 style="margin-left: 0px;">전시중인 프로그램</h2>
+								<h2 style="margin-left: 0px; margin-bottom : 20px; font-size: 36px;">전시중인 프로그램</h2>
 							</header>
 						</div>
 					</div>
@@ -215,10 +239,6 @@ strong {
 					</c:choose>
 				</ul>
 			</div>
-
-		</div>
-
-		<!-- work details -->
 
 	</main>
 

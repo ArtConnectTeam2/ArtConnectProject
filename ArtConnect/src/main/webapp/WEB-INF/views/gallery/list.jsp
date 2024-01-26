@@ -9,7 +9,7 @@
 
 <head>
 
-<title>::미술관 조회 페이지::</title>
+<title>:: 미술관 조회 및 검색 ::</title>
 
 <%@ include file="/header.jsp" %>
 
@@ -17,9 +17,9 @@
 /* 체크박스 스타일 */
 .form-check-input {
     /* 원하는 스타일 속성을 추가하세요 */
-    width: 20px; /* 체크박스의 너비 */
-    height: 20px; /* 체크박스의 높이 */
-    margin-right: 10px; /* 체크박스 간격 조정 */
+    width: 30px; /* 체크박스의 너비 */
+    height: 30px; /* 체크박스의 높이 */
+    margin-right: 30px; /* 체크박스 간격 조정 */
     display: inline-block; /* inline-block으로 설정하여 화면에 표시 */
     border: 2px solid #FB5353; /* 테두리 스타일 설정 */
 }
@@ -40,13 +40,26 @@
 
 .search-form {
         margin-bottom: 50px;
+         font-size: larger; 
+}
+
+.rounded-container {
+    border: 2px solid #333; /* 테두리 스타일 설정 */
+    border-radius: 10px; /* 테두리의 모서리를 둥글게 만듭니다. */
+    padding: 20px; /* 적절한 패딩 값 적용 */
+    width: 1170px;
+    background-color: white;
+}
+
+#filteredData {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1170px;
 }
 
 </style>
 
 </head>
-
-<title>:: 미술관 조회 및 검색 ::</title>
 
 <body>
 
@@ -60,63 +73,68 @@
 
             <article role="pge-title-content" style="padding-left : 0px;">
 
-               <header>
+               <header style="padding-top:0px;">
 
                   <h2>
-                     <span>Art Museum </span>Inquiry & Search
+                     <span>Art Gallery </span>Inquiry & Search
                   </h2>
 
                </header>
 
-               <p>You can search for a list of Art Museums nationwide</p>
+               <p style="font-size: 25px;">미술관 조회 및 검색을 할 수 있습니다</p>
 
             </article>
 
          </section>
-
+<div class="rounded-container">
+         
          <div class="clearfix"></div>
 
 <div class="search-form" style="margin-top: 20px;">
     <form action="${pageContext.request.contextPath}/gallery/search2" method="GET">
-        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 400px; margin: 0 auto; text-align: center;">
-            <input type="text" name="galleryName" placeholder="Search by Museum Name" required style="flex: 1; padding: 10px; text-align: center; width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 400px; margin: 0 auto; text-align: center; border: 2px solid #333; border-radius: 5px; overflow: hidden;">
+            <input type="text" name="galleryName" placeholder="Search by Gallery Name" required style="flex: 1; padding: 10px; text-align: center; width: 100%; border: none; outline: none;">
             <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">Search</button>
         </div>
     </form>
-        <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
-      </div>
+    <a href="${pageContext.request.contextPath}/gallery/search"  style="text-decoration: none;"></a>
+</div>
 
          <div class="form-check" style="padding-left : 15px;">
-            <span class="gallery-location-label">Gallery Location</span>
-                <input class="form-check-input check" type="checkbox" value="서울" id="flexCheckSeoul" >
-                <label class="form-check-label" for="flexCheckSeoul">서울시</label>
+            <span class="gallery-location-label" style="font-size: 25px;">Gallery Location  </span>
+                <input class="form-check-input check" type="checkbox" value="서울" id="flexCheckSeoul" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckSeoul" style="font-size: 20px; margin-bottom:0px;">서울시</label>
             </div>
             
             <div class="form-check" style="padding-left : 15px;">
-            <span class="gallery-location-label">Open Day</span>
-                <input class="form-check-input check" type="checkbox" value="Monday" id="flexCheckMonday">
-                <label class="form-check-label" for="flexCheckMonday">월요일</label>
+            <span class="gallery-location-label" style="font-size: 25px;">Open Day  </span>
+                <input class="form-check-input check" type="checkbox" value="Monday" id="flexCheckMonday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckMonday" style="font-size: 20px; margin-bottom:0px;">월요일</label>
                 
-                <input class="form-check-input check" type="checkbox" value="Tuesday" id="flexCheckTuesday">
-                <label class="form-check-label" for="flexCheckTuesday">화요일</label>
+                <input class="form-check-input check" type="checkbox" value="Tuesday" id="flexCheckTuesday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckTuesday" style="font-size: 20px; margin-bottom:0px;">화요일</label>
                 
-                <input class="form-check-input check" type="checkbox" value="Wednesday" id="flexCheckWednesday">
-                <label class="form-check-label" for="flexCheckWednesday">수요일</label>
+                <input class="form-check-input check" type="checkbox" value="Wednesday" id="flexCheckWednesday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckWednesday" style="font-size: 20px; margin-bottom:0px;">수요일</label>
                 
-                <input class="form-check-input check" type="checkbox" value="Thursday" id="flexCheckThursday">
-                <label class="form-check-label" for="flexCheckThursday">목요일</label>
+                <input class="form-check-input check" type="checkbox" value="Thursday" id="flexCheckThursday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckThursday" style="font-size: 20px; margin-bottom:0px;">목요일</label>
                 
-                <input class="form-check-input check" type="checkbox" value="Friday" id="flexCheckFriday">
-                <label class="form-check-label" for="flexCheckFriday">금요일</label>
+                <input class="form-check-input check" type="checkbox" value="Friday" id="flexCheckFriday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckFriday" style="font-size: 20px; margin-bottom:0px;">금요일</label>
                 
-                <input class="form-check-input check" type="checkbox" value="Saturday" id="flexCheckSaturday">
-                <label class="form-check-label" for="flexCheckSaturday">토요일</label>
+                <input class="form-check-input check" type="checkbox" value="Saturday" id="flexCheckSaturday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckSaturday" style="font-size: 20px; margin-bottom:0px;">토요일</label>
                 
-                <input class="form-check-input check" type="checkbox" value="Sunday" id="flexCheckSunday">
-                <label class="form-check-label" for="flexCheckSunday">일요일</label>
+                <input class="form-check-input check" type="checkbox" value="Sunday" id="flexCheckSunday" style = "margin-top : 0;">
+                <label class="form-check-label" for="flexCheckSunday" style="font-size: 20px; margin-bottom:0px;">일요일</label>
             </div>
-
-            <div id="filteredData">
+</div>	
+<br>
+<br>
+<br>
+<br>
+            <div id="filteredData"  style="margin-top:15px;">
                 <!-- 여기에 필터링된 데이터를 표시할 div -->
             </div>
 
@@ -182,6 +200,7 @@ $(document).ready(function() {
         var filteredDataDiv = $('#filteredData');
 
         filteredDataDiv.empty(); // 이전 내용 지우기
+        filteredDataDiv.append('<div class="rounded-container">');
 
         jsonarr.forEach(function(gallery) {
             console.log(gallery);
@@ -191,11 +210,12 @@ $(document).ready(function() {
 
             appendGalleryThumbnail(filteredDataDiv, galleryDetailUrl, gallery.galleryImg, gallery.galleryName);
         });
+        filteredDataDiv.append('</div>');
     }
 
     function appendGalleryThumbnail(container, url, imgSrc, galleryName) {
-        container.append(
-            '<div class="thumbnails-pan">' +
+        container.find('.rounded-container').append(
+            '<div class="thumbnails-pan">'  +
             '<section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 " style="margin-bottom: 30px;">' +
             '<figure>' +
             '<a href="' + url + '">' +
