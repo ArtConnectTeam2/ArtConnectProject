@@ -268,16 +268,16 @@
 				<div class="col-xs-12 col-sm-12 col-md-9">
 					<div>
 						<a
-							href="${pageContext.request.contextPath}/notice/noticeGet?no=20">
+							href="${pageContext.request.contextPath}/notice/noticeGet?noticeNO=20">
 							<h3>[공지]아카이브 소장자료 열람 재개 안내</h3>
 						</a>
 						<hr>
 						<a
-							href="${pageContext.request.contextPath}/notice/noticeGet?no=19">
+							href="${pageContext.request.contextPath}/notice/noticeGet?noticeNO=19">
 							<h3>연말 운영일정 안내</h3>
 						</a>
 						<hr>
-						<a href="${pageContext.request.contextPath}/notice/noticeGet?no=8">
+						<a href="${pageContext.request.contextPath}/notice/noticeGet?noticeNO=8">
 							<h3>
 								JMA FRIENDS EVENT
 								<크리스마스 파티 인 뮤지엄>
