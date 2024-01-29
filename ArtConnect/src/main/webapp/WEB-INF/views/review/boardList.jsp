@@ -50,6 +50,7 @@
 	<div class="container mt-3">
 	<h1>REVIEW</h1>
 	<hr>
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -76,9 +77,12 @@
 		<td>${board.reviewHit}</td>
 		</tr>
 		</c:forEach>
+		
+		
 		</table>
 	</div>
 	<hr>
+	
 	
 	
 	<div>
@@ -96,6 +100,17 @@
         </c:forEach>
     </ul>
 </div>
+
+	 <!-- 검색 폼 추가 -->
+    <div style="text-align: center;">
+        <form action="boardList" method="get" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="search" placeholder="검색..." class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">검색</button>
+        </form>
+    </div>
+	
 	</main>
 	<!-- Footer -->
 	<footer role="footer" class="bg-light mt-5">

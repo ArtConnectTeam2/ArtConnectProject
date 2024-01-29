@@ -1,22 +1,17 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta charset="utf-8">
-    <title>ArtConnect</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
-    <!-- Bootstrap CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
-    <!-- Font Awesome -->
-    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Responsive CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
+    <title>ArtConnect</title>
+    <%@ include file="/header.jsp"%>
+    
 <style type="text/css">
+
+#searchButton {
+	margin-bottom: 15px;
+}
 
 footer {
     bottom: 0;
@@ -29,7 +24,7 @@ th,td {
 	text-align: center;
 	padding: 10px;
 }
-	
+
 .navy {
 	position: fixed;
 	top: 10px;
@@ -57,15 +52,7 @@ th,td {
     align-content: center;
 }
 
-#logo-image {
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 20px;
-}
-
 </style>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
 	$(function() {
 		// 초기 데이터 로딩
@@ -112,45 +99,9 @@ th,td {
 </head>
 
 <body>
-	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
-		<% String memberID = (String) session.getAttribute("memberID");
-		String memberName = (String) session.getAttribute("memberName");
-		if (memberID == null || memberID.equals("")) { %>
-			<a href="${pageContext.request.contextPath}/member/login">
-				<button class="btn btn-danger" onclick="login()">로그인</button>
-			</a>
-		<% } else { %>
-			<!-- 로그아웃 버튼 -->
-			<%= memberName %>님 환영합니다.<br>
-			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/gallerySelection.jsp">
-				<button class="btn btn-info">로그아웃</button>
-			</a>
-		<% } %>
-	</div>
-    <header role="header">
-    <!-- nav -->
-    <nav role="header-nav" class="navy">
-	<ul>
-	<li><a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/noticeList" title="Contact">공지사항</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
-    </ul>
-	</nav>
-    </header>
+<%@ include file="/nav.jsp"%>
     <!-- Main Content -->
     <main role="main-inner-wrapper container">
-    	<!-- Logo -->
-                <div id="logo-image" style="display: inline-block;"><a href="${pageContext.request.contextPath}/gallery/main.jsp" style="max-width: 300px;">
-                <img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-                        alt="ArtConnect" style="width: 450px; height: auto;"/></a></div>
         <div id="search-container" style="text-align: center; margin-top: 20px;">
             <!-- Search bar for gallery ID -->
             <input type="text" id="galleryNameInput" placeholder="미술관 이름을 입력하세요."

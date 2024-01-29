@@ -24,23 +24,37 @@ public class BoardController {
 	@Autowired
 	ReplyDAO dao1;
 	
-	@RequestMapping("review/boardList")
+    @RequestMapping("review/boardList")
     public String boardList(Model model,
                             @RequestParam(name = "page", defaultValue = "1") int page,
-                            @RequestParam(name = "size", defaultValue = "10") int size) {
-        int totalCount = dao.getTotalCount();
+                            @RequestParam(name = "size", defaultValue = "10") int size,
+                            @RequestParam(name = "search", required = false) String search) {
+        int totalCount;
+        List<BoardVO> list;
 
-        // 페이징 처리를 위한 정보 설정
-        PageVO pageVO = new PageVO(page, size, totalCount);
-        int start = pageVO.getStart();
-        int end = pageVO.getSize();
+        if (search != null && !search.isEmpty()) {
+            // 검색어가 있을 경우 검색 결과를 가져옴
+            totalCount = dao.getTotalCountBySearch(search);
+            PageVO pageVO = new PageVO(page, size, totalCount);
+            int start = pageVO.getStart();
+            int end = pageVO.getSize();
+            list = dao.searchWithPaging(search, start, end);
+        } else {
+            // 검색어가 없을 경우 전체 목록을 가져옴
+            totalCount = dao.getTotalCount();
+            PageVO pageVO = new PageVO(page, size, totalCount);
+            int start = pageVO.getStart();
+            int end = pageVO.getSize();
+            list = dao.selectWithPaging(start, end);
+        }
 
-        List<BoardVO> list = dao.selectWithPaging(start, end);
         model.addAttribute("list", list);
-        model.addAttribute("pageVO", pageVO);
+        model.addAttribute("pageVO", new PageVO(page, size, totalCount));
+        model.addAttribute("search", search);
 
         return "review/boardList";
     }
+
 	
 	@RequestMapping("review/boardPost")
 	public String boardPost() {
