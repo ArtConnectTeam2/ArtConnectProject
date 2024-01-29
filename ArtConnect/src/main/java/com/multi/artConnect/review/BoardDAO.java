@@ -77,7 +77,20 @@ public class BoardDAO {
         params.put("starRating", starRating);
         my.insert("board.insertStarRating", params);
     }
+    
+    public int getTotalCountBySearch(String search) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("search", search);
+        return my.selectOne("board.getTotalCountBySearch", params);
+    }
+
+    public List<BoardVO> searchWithPaging(String search, int start, int size) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("search", search);
+        params.put("start", start);
+        params.put("size", size);
+        return my.selectList("board.searchWithPaging", params);
+    }
 
 
 }
-

@@ -15,10 +15,10 @@
     let closedDay = '${gallery.closedDay}';
     let closedDays = closedDay.split(', ');
 </script>
+<%@ include file="/header.jsp"%>
 <script src="${pageContext.request.contextPath}/resources/js/reservation/calendar.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/reservation/reservation.js"></script>
 <title>예약 페이지</title>
-<%@ include file="/header.jsp"%>
 <link href="${pageContext.request.contextPath}/resources/css/reservation/style.reservation.css" rel="stylesheet" type="text/css">
 </head>
 <body>

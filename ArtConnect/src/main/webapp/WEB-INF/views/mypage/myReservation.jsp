@@ -2,7 +2,8 @@
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 
@@ -170,7 +171,7 @@ p.no-reservation-message {
 				<th>No.</th>
 				<th>예약자ID</th>
 				<th>전시명</th>
-
+				<th>예약날짜</th>
 				<th>관람시간</th>
 				<th>결제상태</th>
 				<!-- qr페이지로 이동하는 부분 추가 -->
@@ -182,9 +183,9 @@ p.no-reservation-message {
 			<tr>
 		<td>${reservation.reservationID}</td>
 		<td>${reservation.memberID}</td>
-
-		<td>${reservation.programTitle}</td>
-
+		<td style="max-width: 130px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${reservation.programTitle}</td>
+		<%-- <td>${reservation.programTitle}</td> --%>
+		<td><fmt:formatDate value="${reservation.reservationDay}" pattern="yyyy-MM-dd"/> </td>
 		<td>${reservation.reservationTime}</td>
 		
 		<td>
