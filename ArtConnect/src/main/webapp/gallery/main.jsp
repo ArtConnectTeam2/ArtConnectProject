@@ -57,7 +57,7 @@
 					<header>
 
 						<h2>
-							<span>ArtConnet</span> Where Art Meets Souls
+							<span>ArtConncet</span> Where Art Meets Souls
 						</h2>
 
 					</header>
@@ -235,19 +235,19 @@
 							href="${pageContext.request.contextPath}/review/boardOne?reviewNO=32">
 							<h3>몽환적인 여행, 미술관에서의 작품 해석과 감상</h3>
 						</a>
-						<h4>작성자: 임시ID</h4>
+						<h4>작성자: apple</h4>
 						<hr>
 						<a
 							href="${pageContext.request.contextPath}/review/boardOne?reviewNO=31">
 							<h3>사진 속의 순간, 미술관에서 찍은 감각적인 흑백 사진 리뷰</h3>
 						</a>
-						<h4>작성자: 임시ID</h4>
+						<h4>작성자: lemon</h4>
 						<hr>
 						<a
 							href="${pageContext.request.contextPath}/review/boardOne?reviewNO=30">
 							<h3>문화의 향연, 다양성이 빛나는 미술관 전시회</h3>
 						</a>
-						<h4>작성자: 임시ID</h4>
+						<h4>작성자: apple</h4>
 					</div>
 				</div>
 			</div>

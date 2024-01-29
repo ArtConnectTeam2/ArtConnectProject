@@ -12,22 +12,11 @@ public class MemberService {
     @Autowired
     private MemberDAO memberDAO;
 
-    // 회원가입 메서드
+  //회원가입 메서드
     public void insert(MemberVO memberVO) {
-        // 입력된 비밀번호를 가지고온다.
-    	String pwd = memberVO.getmemberPW();
-    	
-    	// 암호화 과정 (BCrypt 이용)
-    	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    	String encodedPwd = encoder.encode(pwd);
-    	
-    	// 암호화 된 코드를 memberVO에 다시 넣는다
-    	memberVO.setmemberPW(encodedPwd);
-    	
-    	memberDAO.insert(memberVO);
+        memberDAO.insert(memberVO);
         
     }
-    
     
     // 회원가입시 아이디 중복 체크
     public int idCheck(String memberID) {

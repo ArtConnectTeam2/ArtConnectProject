@@ -1,25 +1,11 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<meta charset="utf-8">
-<!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<!-- Custom CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css"	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/reservation/style.reservation.css"	rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<!-- Responsive CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js" type="text/javascript"></script>
-
 <!-- js로 gallery 정보 보내기 -->
 <script>
     let gallery = {
@@ -29,53 +15,15 @@
     let closedDay = '${gallery.closedDay}';
     let closedDays = closedDay.split(', ');
 </script>
-
+<%@ include file="/header.jsp"%>
 <script src="${pageContext.request.contextPath}/resources/js/reservation/calendar.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/reservation/reservation.js"></script>
 <title>예약 페이지</title>
-
+<link href="${pageContext.request.contextPath}/resources/css/reservation/style.reservation.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
-		<% String memberID = (String) session.getAttribute("memberID");
-		Date reservationDay = (Date) request.getAttribute("reservationDay");
-		String memberName = (String) session.getAttribute("memberName");
-			if (memberID == null || memberID.equals("")) { %>
-			<a href="${pageContext.request.contextPath}/member/login">
-				<button class="btn btn-danger" onclick="login()">로그인</button>
-			</a>
-		<% } else { %>
-			<!-- 로그아웃 버튼 -->
-			<%= memberName %>님 환영합니다.<br>
-			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=../reservation/reservation/${gallery.galleryID}/${program.programID}">
-				<button class="btn btn-info">로그아웃</button>
-			</a>
-		<% } %>
-	</div>
-	<header role="header">
-    <!-- nav -->
-    <nav role="header-nav" class="navy">
-	<ul>
-	<li>
-	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/noticeList" title="Contact">공지사항</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
-    </ul>
-	</nav>
-	<!-- nav -->
-    </header>
-    <!-- Logo -->
-	<div id="logo-image"><a href="${pageContext.request.contextPath}/gallery/main.jsp">
-	<img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-		alt="ArtConnect" style="width: 450px; height: auto;"/></a></div>
+	<% String memberID = (String) session.getAttribute("memberID"); %>
+	<%@ include file="/nav.jsp"%>
     <div class="thumbnails-pan" style="font-size: 20px;">
 	<h1>예약 페이지</h1> <br>
 	<h2>${gallery.galleryName}</h2> <br>

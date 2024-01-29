@@ -1,21 +1,11 @@
-<%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<!-- Custom CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css"	rel="stylesheet" type="text/css">
-<!-- Font Awesome -->
-<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<!-- Responsive CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js" type="text/javascript"></script>
 <title>예약 정보 확인</title>
+<%@ include file="/header.jsp"%>
 <style>
 
 dl {
@@ -36,21 +26,15 @@ dd {
 	min-width: 900px;
 	max-width: 1000px;
 	margin: 0 auto;
-	height: 1200px;
+	height: 1300px;
     border: 1px solid #333333; 
     border-radius: 10px;
     padding: 30px;
     background-color: white;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 300px;
+    margin-bottom: 200px;
 }
 
-#logo-image {
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 20px;
-}
     /* QR 코드 이미지와 정보를 수평으로 배치하는 컨테이너 스타일 */
 .qr-info-container {
     display: block;
@@ -98,46 +82,10 @@ dd {
 </style>
 </head>
 <body>
-<div class="login" style="display: block; text-align: right; margin-top: 75px; margin-right: 20px;">
+<%@ include file="/nav.jsp"%>
 		<% String memberID = (String) session.getAttribute("memberID");
 		int reservationID = (Integer) request.getAttribute("reservationID");
-		String memberName = (String) session.getAttribute("memberName");
-		if (memberID == null || memberID.equals("")) { %>
-			<a href="${pageContext.request.contextPath}/member/login">
-				<button class="btn btn-danger" onclick="login()">로그인</button>
-			</a>
-		<% } else { %>
-			<!-- 로그아웃 버튼 -->
-			<%= memberName %>님 환영합니다.<br>
-			<a href="${pageContext.request.contextPath}/member/Logout.jsp?redirectPage=">
-				<button class="btn btn-info">로그아웃</button>
-			</a>
-		<% } %>
-	</div>
-	<header role="header" style="margin-top: -100px; margin-left: 0px;">
-    <!-- nav -->
-    <nav role="header-nav" class="navy">
-	<ul>
-	<li>
-	<a href="${pageContext.request.contextPath}/gallery/list" title="Work">전시관 조회 및 검색</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/reservation/gallerySelection.jsp" title="About">예약</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/review/boardList" title="Blog">커뮤니티</a></li>
-
-	<li><a href="${pageContext.request.contextPath}/mypage/updateOne?memberID=${memberID}" title="Contact">마이 페이지</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/noticeList" title="Contact">공지사항</a></li>
-					
-	<li><a href="${pageContext.request.contextPath}/notice/qnaList" title="Contact">QnA</a></li>
-    </ul>
-	</nav>
-	<!-- nav -->
-    </header>
-    <!-- Logo -->
-	<div id="logo-image"><a href="${pageContext.request.contextPath}/gallery/main.jsp">
-	<img src="${pageContext.request.contextPath}/resources/img/art.png" title="ArtConnect"
-		alt="ArtConnect" style="width: 300px; height: auto;"/></a></div>
+		String memberName = (String) session.getAttribute("memberName"); %>
    	<div class="thumbnails-pan" style="font-size: 20px;">
    		<h1>예약 확인 페이지</h1> <br>
 		<h2>${member.memberName}님의 예약 정보입니다.</h2> <br>
